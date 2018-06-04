@@ -1,0 +1,2 @@
+﻿-Add a mechanism for adding and removing components to ComponentLookupService as they are built
+	-Create a hook that adds them when created, or register them
