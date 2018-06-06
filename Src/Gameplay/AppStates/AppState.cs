@@ -1,7 +1,7 @@
 ﻿using Manabind.Src.UI;
 using Microsoft.Xna.Framework.Input;
 
-namespace Manabind.Src.Game.AppStates
+namespace Manabind.Src.Gameplay.AppStates
 {
     public abstract class AppState
     {
