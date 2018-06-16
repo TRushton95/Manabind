@@ -1,6 +1,7 @@
 ﻿using Manabind.Src.UI.Components;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace Manabind.Src.UI
 {
@@ -8,7 +9,7 @@ namespace Manabind.Src.UI
     {
         #region Fields
 
-        private List<BaseComponent> components;
+        private Frame baseFrame;
 
         #endregion
 
@@ -16,36 +17,28 @@ namespace Manabind.Src.UI
 
         public UIManager()
         {
-            this.components = new List<BaseComponent>();
+            this.baseFrame = new Frame();
         }
+
+        #endregion
+
+        #region Properties
+
+
 
         #endregion
 
         #region Methods
 
-        public BaseComponent GetById(string id)
+        public void LoadUI(string fileName)
         {
-            return this.components.SingleOrDefault(component => component.Id == id);
-        }
+            XmlSerializer serializer = new XmlSerializer(typeof(List<BaseComponent>));
 
-        public List<BaseComponent> GetAll()
-        {
-            return this.components;
-        }
-
-        public void AddComponent(BaseComponent component)
-        {
-            this.components.Add(component);
-        }
-
-        public void RemoveComponent(BaseComponent component)
-        {
-            this.components.Remove(component);
-        }
-
-        public void LoadFromXml(string filePath)
-        {
-            //To be implemented
+            string path = Path.Combine(Appsettings.UIDefinitionPath, fileName);
+            using (StreamReader reader = new StreamReader(path))
+            {
+                baseFrame.Components = (List<BaseComponent>)serializer.Deserialize(reader);
+            }
         }
 
         #endregion
