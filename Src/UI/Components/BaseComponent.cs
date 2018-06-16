@@ -5,7 +5,7 @@ using System;
 
 namespace Manabind.Src.UI.Components
 {
-    public abstract class BaseComponent : BaseInstance
+    public abstract class BaseComponent : BaseResourceInstance
     {
         #region Fields
 

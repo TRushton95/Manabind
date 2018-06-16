@@ -36,7 +36,7 @@ namespace Manabind.Src.UI.Components
         #endregion
 
         #region Properties
-
+        
         public List<BaseComponent> Components
         {
             get;

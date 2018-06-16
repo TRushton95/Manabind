@@ -2,7 +2,7 @@
 
 namespace Manabind.Src.UI.Components
 {
-    public abstract class BaseInstance
+    public abstract class BaseResourceInstance
     {
         private static GraphicsDevice _graphicsDevice;
 

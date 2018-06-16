@@ -47,7 +47,7 @@
     <Compile Include="Src\Gameplay\AppStates\AppState.cs" />
     <Compile Include="Src\UI\Components\BaseComponent.cs" />
     <Compile Include="Src\UI\Components\Frame.cs" />
-    <Compile Include="Src\UI\Components\BaseInstance.cs" />
+    <Compile Include="Src\UI\Components\BaseResourceInstance.cs" />
     <Compile Include="Src\UI\Components\TextBox.cs" />
     <Compile Include="Src\UI\Enums\FontFlow.cs" />
     <Compile Include="Src\UI\Enums\HorizontalAlign.cs" />
