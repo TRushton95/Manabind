@@ -10,7 +10,7 @@ namespace Manabind.Src.UI.Components
     {
         #region Fields
 
-        protected int posX, posY, width, height;
+        protected int posX, posY;
 
         #endregion
 
@@ -46,7 +46,19 @@ namespace Manabind.Src.UI.Components
             get;
             set;
         }
-        
+
+        public int Width
+        {
+            get;
+            set;
+        }
+
+        public int Height
+        {
+            get;
+            set;
+        }
+
         [XmlElement(typeof(RelativePositionProfile))]
         public BasePositionProfile PositionProfile
         {
@@ -67,12 +79,12 @@ namespace Manabind.Src.UI.Components
 
         public Vector2 GetSize()
         {
-            return new Vector2(this.width, this.height);
+            return new Vector2(this.Width, this.Height);
         }
 
         public Rectangle GetBounds()
         {
-            return new Rectangle(this.posX, this.posY, this.width, this.height);
+            return new Rectangle(this.posX, this.posY, this.Width, this.Height);
         }
 
         protected void InitialiseCoordinates()

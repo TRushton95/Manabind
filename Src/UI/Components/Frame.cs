@@ -23,8 +23,8 @@ namespace Manabind.Src.UI.Components
         public Frame(string parentId, int width, int height, BasePositionProfile positionProfile, Color displayColour)
             : base(parentId, positionProfile)
         {
-            this.width = width;
-            this.height = height;
+            this.Width = width;
+            this.Height = height;
             this.PositionProfile = positionProfile;
             this.DisplayColour = displayColour;
             this.Components = new List<BaseComponent>();
@@ -67,9 +67,9 @@ namespace Manabind.Src.UI.Components
 
         private void InitialiseTexture()
         {
-            Texture2D newTexture = new Texture2D(this.GraphicsDevice, this.width, this.height);
+            Texture2D newTexture = new Texture2D(this.GraphicsDevice, this.Width, this.Height);
 
-            Color[] data = new Color[this.width * this.height];
+            Color[] data = new Color[this.Width * this.Height];
             for (int pixel = 0; pixel < data.Length; pixel++)
             {
                 data[pixel] = DisplayColour;

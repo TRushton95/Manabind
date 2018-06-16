@@ -97,8 +97,8 @@ namespace Manabind.Src.UI.Components
         {
             Vector2 dimensions = this.font.MeasureString(this.displayText);
 
-            this.width = (int)(dimensions.X * this.Scale);
-            this.height = (int)(dimensions.Y * this.Scale);
+            this.Width = (int)(dimensions.X * this.Scale);
+            this.Height = (int)(dimensions.Y * this.Scale);
         }
 
         private void WrapText()

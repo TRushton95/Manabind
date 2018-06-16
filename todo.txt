@@ -3,3 +3,5 @@
 
 -Textures have a colour set, and a colour is sent as a parameter to the draw method
 	-What's up with that?
+
+-Fix xml doc (was copied from previous version)

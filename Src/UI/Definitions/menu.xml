@@ -4,125 +4,125 @@
     <Frame>
       <Width>250</Width>
       <Height>150</Height>
-      <RelativeProfile>
+      <PositionProfile>
         <HorizontalAlign>Middle</HorizontalAlign>
         <VerticalAlign>Middle</VerticalAlign>
         <OffsetX>10</OffsetX>
         <OffsetY>10</OffsetY>
-      </RelativeProfile>
-      <Colour>
+      </PositionProfile>
+      <DisplayColour>
         <R>255</R>
         <G>182</G>
         <B>193</B>
         <A>255</A>
-      </Colour>
+      </DisplayColour>
       <Components>
-        <FontGraphics>
+        <TextBox>
           <Text>This is a good large portion of text to test out our wrappy thing, just to make doubly sure it's all good.</Text>
-          <Width>200</Width>
+          <MaxWidth>200</MaxWidth>
           <FontFlow>Wrap</FontFlow>
           <FontName>Font</FontName>
-          <RelativeProfile>
+          <PositionProfile>
             <HorizontalAlign>Middle</HorizontalAlign>
             <VerticalAlign>Top</VerticalAlign>
             <OffsetX>0</OffsetX>
             <OffsetY>10</OffsetY>
-          </RelativeProfile>
-          <Colour>
+          </PositionProfile>
+          <DisplayColour>
             <R>0</R>
             <G>0</G>
             <B>0</B>
             <A>255</A>
-          </Colour>
-        </FontGraphics>
+          </DisplayColour>
+        </TextBox>
       </Components>
     </Frame>
 
     <Frame>
       <Width>150</Width>
       <Height>50</Height>
-      <RelativeProfile>
+      <PositionProfile>
         <HorizontalAlign>Right</HorizontalAlign>
         <VerticalAlign>Bottom</VerticalAlign>
         <OffsetX>0</OffsetX>
         <OffsetY>0</OffsetY>
-      </RelativeProfile>
-      <Colour>
+      </PositionProfile>
+      <DisplayColour>
         <R>224</R>
         <G>255</G>
         <B>255</B>
         <A>255</A>
-      </Colour>
+      </DisplayColour>
       <Components>
-        <FontGraphics>
+        <TextBox>
           <Text>This text should shrink to fit.</Text>
-          <Width>130</Width>
+          <MaxWidth>130</MaxWidth>
           <FontFlow>Shrink</FontFlow>
           <FontName>Font</FontName>
-          <RelativeProfile>
+          <PositionProfile>
             <HorizontalAlign>Middle</HorizontalAlign>
             <VerticalAlign>Middle</VerticalAlign>
             <OffsetX>0</OffsetX>
             <OffsetY>0</OffsetY>
-          </RelativeProfile>
-          <Colour>
+          </PositionProfile>
+          <DisplayColour>
             <R>0</R>
             <G>0</G>
             <B>0</B>
             <A>255</A>
-          </Colour>
-        </FontGraphics>
+          </DisplayColour>
+        </TextBox>
       </Components>
     </Frame>
 
     <Frame>
       <Width>75</Width>
       <Height>100</Height>
-      <RelativeProfile>
+      <PositionProfile>
         <HorizontalAlign>Left</HorizontalAlign>
         <VerticalAlign>Bottom</VerticalAlign>
         <OffsetX>150</OffsetX>
         <OffsetY>-100</OffsetY>
-      </RelativeProfile>
-      <Colour>
+      </PositionProfile>
+      <DisplayColour>
         <R>128</R>
         <G>0</G>
         <B>128</B>
         <A>255</A>
-      </Colour>
+      </DisplayColour>
     </Frame>
 
     <Frame>
       <Width>100</Width>
       <Height>50</Height>
-      <RelativeProfile>
+      <PositionProfile>
         <HorizontalAlign>Middle</HorizontalAlign>
         <VerticalAlign>Top</VerticalAlign>
         <OffsetX>0</OffsetX>
         <OffsetY>0</OffsetY>
-      </RelativeProfile>
-      <Colour>
+      </PositionProfile>
+      <DisplayColour>
         <R>0</R>
         <G>0</G>
         <B>255</B>
         <A>255</A>
-      </Colour>
+      </DisplayColour>
       <Components>
         <Frame>
           <Width>50</Width>
           <Height>25</Height>
-          <RelativeProfile>
+          <PositionProfile>
             <HorizontalAlign>Middle</HorizontalAlign>
             <VerticalAlign>Middle</VerticalAlign>
             <OffsetX>0</OffsetX>
             <OffsetY>0</OffsetY>
-          </RelativeProfile>
-          <Colour>
+          </PositionProfile>
+          <DisplayColour>
             <R>255</R>
             <G>0</G>
             <B>0</B>
             <A>255</A>
-          </Colour>
+          </DisplayColour>
         </Frame>
       </Components>
     </Frame>
