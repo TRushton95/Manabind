@@ -2,7 +2,7 @@
 
 namespace Manabind
 {
-    public static class Appsettings
+    public static class AppSettings
     {
         public static string MenuUIFileName { get => ConfigurationManager.AppSettings["MenuUIFileName"]; }
 

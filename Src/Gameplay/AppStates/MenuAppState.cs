@@ -15,7 +15,7 @@ namespace Manabind.Src.Gameplay.AppStates
 
         #region Properties
 
-        protected override string UIDefinitionFilename { get => Appsettings.MenuUIFileName; }
+        protected override string UIDefinitionFilename { get => AppSettings.MenuUIFileName; }
 
         #endregion
 

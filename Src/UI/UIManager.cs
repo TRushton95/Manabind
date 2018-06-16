@@ -34,7 +34,7 @@ namespace Manabind.Src.UI
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<BaseComponent>));
 
-            string path = Path.Combine(Appsettings.UIDefinitionPath, fileName);
+            string path = Path.Combine(AppSettings.UIDefinitionPath, fileName);
             using (StreamReader reader = new StreamReader(path))
             {
                 baseFrame.Components = (List<BaseComponent>)serializer.Deserialize(reader);
