@@ -8,8 +8,7 @@ namespace Manabind.Src.UI.Components
     public class Frame : BaseComponent
     {
         #region Fields
-
-        private Color displayColour;
+        
         private Texture2D texture;
 
         #endregion
@@ -26,7 +25,7 @@ namespace Manabind.Src.UI.Components
             this.width = width;
             this.height = height;
             this.PositionProfile = positionProfile;
-            this.displayColour = displayColour;
+            this.DisplayColour = displayColour;
             this.Components = new List<BaseComponent>();
 
             this.InitialiseCoordinates();
@@ -36,6 +35,12 @@ namespace Manabind.Src.UI.Components
         #endregion
 
         #region Properties
+
+        public Color DisplayColour
+        {
+            get;
+            set;
+        }
         
         public List<BaseComponent> Components
         {
@@ -49,7 +54,7 @@ namespace Manabind.Src.UI.Components
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.GetCoordinates(), this.displayColour);
+            spriteBatch.Draw(this.texture, this.GetCoordinates(), this.DisplayColour);
 
             foreach(BaseComponent component in Components)
             {
@@ -64,7 +69,7 @@ namespace Manabind.Src.UI.Components
             Color[] data = new Color[this.width * this.height];
             for (int pixel = 0; pixel < data.Length; pixel++)
             {
-                data[pixel] = displayColour;
+                data[pixel] = DisplayColour;
             }
 
             newTexture.SetData(data);

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Xml.Serialization;
 
 namespace Manabind.Src.UI.Components
 {
@@ -32,18 +33,21 @@ namespace Manabind.Src.UI.Components
 
         #region Properties
 
+        [XmlIgnore]
         public string Id
         {
             get;
             set;
         }
 
+        [XmlIgnore]
         public string ParentId
         {
             get;
             set;
         }
-
+        
+        [XmlElement(typeof(RelativePositionProfile))]
         public IPositionProfile PositionProfile
         {
             get;

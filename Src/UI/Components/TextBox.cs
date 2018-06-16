@@ -10,13 +10,9 @@ namespace Manabind.Src.UI.Components
     public class TextBox : BaseComponent
     {
         #region Fields
-
-        private int maxWidth;
-        private string text, displayText;
-        private float scale;
-        private Color displayColour;
+        
+        private string displayText;
         private SpriteFont font;
-        private FontFlow fontFlow;
 
         #endregion
 
@@ -29,13 +25,13 @@ namespace Manabind.Src.UI.Components
         public TextBox(string parentId, string text, int maxWidth, int gutter, IPositionProfile positionProfile, FontFlow fontFlow, Color displayColour, SpriteFont font)
             : base(parentId, positionProfile)
         {
-            this.text = text;
+            this.Text = text;
             this.displayText = text;
-            this.maxWidth = maxWidth;
-            this.fontFlow = fontFlow;
-            this.displayColour = displayColour;
+            this.MaxWidth = maxWidth;
+            this.FontFlow = fontFlow;
+            this.DisplayColour = displayColour;
             this.font = font;
-            this.scale = 1;
+            this.Scale = 1;
 
             this.InitialiseDisplay();
             this.InitialiseDimensions();
@@ -44,16 +40,50 @@ namespace Manabind.Src.UI.Components
 
         #endregion
 
+        #region Fields
+
+        public string Text
+        {
+            get;
+            set;
+        }
+
+        public Color DisplayColour
+        {
+            get;
+            set;
+        }
+
+        public float Scale
+        {
+            get;
+            set;
+        }
+
+        public FontFlow FontFlow
+        {
+            get;
+            set;
+        }
+
+        public int MaxWidth
+        {
+            get;
+            set;
+        }
+
+        #endregion
+
         #region Methods
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(this.font, this.displayText, this.GetCoordinates(), this.displayColour, 0, default(Vector2), this.scale, SpriteEffects.None, 0);
+            spriteBatch.DrawString(this.font, this.displayText, this.GetCoordinates(), this.DisplayColour, 0, default(Vector2), this.Scale, SpriteEffects.None, 0);
         }
 
         private void InitialiseDisplay()
         {
-            switch (this.fontFlow)
+            switch (this.FontFlow)
             {
                 case FontFlow.Wrap:
                     break;
@@ -67,20 +97,20 @@ namespace Manabind.Src.UI.Components
         {
             Vector2 dimensions = this.font.MeasureString(this.displayText);
 
-            this.width = (int)(dimensions.X * this.scale);
-            this.height = (int)(dimensions.Y * this.scale);
+            this.width = (int)(dimensions.X * this.Scale);
+            this.height = (int)(dimensions.Y * this.Scale);
         }
 
         private void WrapText()
         {
-            string[] words = this.text.Split(' ');
+            string[] words = this.Text.Split(' ');
 
             StringBuilder result = new StringBuilder();
             StringBuilder line = new StringBuilder();
 
             foreach (string word in words)
             {
-                if (this.font.MeasureString(line).X + this.font.MeasureString(word).X > this.maxWidth)
+                if (this.font.MeasureString(line).X + this.font.MeasureString(word).X > this.MaxWidth)
                 {
                     result.Append(line);
                     result.Append("\n");
@@ -111,13 +141,13 @@ namespace Manabind.Src.UI.Components
         {
             Vector2 dimensions = this.font.MeasureString(this.displayText);
 
-            if (dimensions.X > this.maxWidth)
+            if (dimensions.X > this.MaxWidth)
             {
-                this.scale = this.maxWidth / dimensions.X;
+                this.Scale = this.MaxWidth / dimensions.X;
             }
             else
             {
-                this.scale = 1;
+                this.Scale = 1;
             }
         }
 
