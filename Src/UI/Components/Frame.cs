@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Manabind.Src.UI.PositionProfiles;
+using System.Xml.Serialization;
 
 namespace Manabind.Src.UI.Components
 {
@@ -19,7 +20,7 @@ namespace Manabind.Src.UI.Components
         {
         }
 
-        public Frame(string parentId, int width, int height, IPositionProfile positionProfile, Color displayColour)
+        public Frame(string parentId, int width, int height, BasePositionProfile positionProfile, Color displayColour)
             : base(parentId, positionProfile)
         {
             this.width = width;
@@ -42,6 +43,8 @@ namespace Manabind.Src.UI.Components
             set;
         }
         
+        [XmlArrayItem(typeof(Frame))]
+        [XmlArrayItem(typeof(TextBox))]
         public List<BaseComponent> Components
         {
             get;

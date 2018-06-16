@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Manabind.Src.Gameplay.AppStates;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -19,6 +20,7 @@ namespace Manabind.Src
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            MenuAppState appState = new MenuAppState();
         }
 
         #endregion

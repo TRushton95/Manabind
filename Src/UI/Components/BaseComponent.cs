@@ -21,7 +21,7 @@ namespace Manabind.Src.UI.Components
             this.Id = Guid.NewGuid().ToString();
         }
 
-        public BaseComponent(string parentId, IPositionProfile positionProfile)
+        public BaseComponent(string parentId, BasePositionProfile positionProfile)
         {
             this.ParentId = parentId;
             this.PositionProfile = positionProfile;
@@ -48,7 +48,7 @@ namespace Manabind.Src.UI.Components
         }
         
         [XmlElement(typeof(RelativePositionProfile))]
-        public IPositionProfile PositionProfile
+        public BasePositionProfile PositionProfile
         {
             get;
             set;

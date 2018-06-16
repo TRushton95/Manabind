@@ -1,6 +1,8 @@
 ﻿using Manabind.Src.UI.Components;
+using Manabind.Src.UI.Serialisation;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace Manabind.Src.UI
@@ -32,12 +34,19 @@ namespace Manabind.Src.UI
 
         public void LoadUI(string fileName)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<BaseComponent>));
+            XmlSerializer serializer = new XmlSerializer(typeof(ComponentList));
 
-            string path = Path.Combine(AppSettings.UIDefinitionPath, fileName);
+            //TODO this should use architecture agnostic pathing
+            string path = string.Join("/", AppSettings.UIDefinitionPath, fileName);
             using (StreamReader reader = new StreamReader(path))
             {
-                baseFrame.Components = (List<BaseComponent>)serializer.Deserialize(reader);
+                ComponentList cl = (ComponentList)serializer.Deserialize(reader);
+                baseFrame.Components = cl.Components;
+            }
+
+            if (baseFrame.Components.Count == 0)
+            {
+                throw new XmlException("Failed to deserialise ui definition.");
             }
         }
 

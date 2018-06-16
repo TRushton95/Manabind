@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Manabind.Src.UI.PositionProfiles
 {
-    public class RelativePositionProfile : IPositionProfile
+    public class RelativePositionProfile : BasePositionProfile
     {
         #region Constructors
 
@@ -51,7 +51,7 @@ namespace Manabind.Src.UI.PositionProfiles
 
         #region Methods
 
-        public Vector2 GetCoordinates(Rectangle parent, Rectangle element)
+        public override Vector2 GetCoordinates(Rectangle parent, Rectangle element)
         {
             int resultX = parent.X + OffsetX;
 

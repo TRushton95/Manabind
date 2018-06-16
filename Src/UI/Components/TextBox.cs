@@ -22,7 +22,7 @@ namespace Manabind.Src.UI.Components
         {
         }
 
-        public TextBox(string parentId, string text, int maxWidth, int gutter, IPositionProfile positionProfile, FontFlow fontFlow, Color displayColour, SpriteFont font)
+        public TextBox(string parentId, string text, int maxWidth, int gutter, BasePositionProfile positionProfile, FontFlow fontFlow, Color displayColour, SpriteFont font)
             : base(parentId, positionProfile)
         {
             this.Text = text;

@@ -8,7 +8,7 @@ namespace Manabind.Src.Gameplay.AppStates
         #region Fields
 
         private MouseState currentMouseState, prevMouseState;
-        private UIManager uiManager;
+        protected UIManager uiManager;
 
         #endregion
 
@@ -17,17 +17,13 @@ namespace Manabind.Src.Gameplay.AppStates
         public AppState()
         {
             this.uiManager = new UIManager();
-            this.uiManager.LoadUI(this.UIDefinitionFilename);
         }
 
         #endregion
 
         #region Properties
 
-        protected abstract string UIDefinitionFilename
-        {
-            get;
-        }
+        protected abstract string UIDefinitionFilename { get; }
 
         #endregion
 

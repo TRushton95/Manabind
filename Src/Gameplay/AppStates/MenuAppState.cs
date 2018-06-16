@@ -8,14 +8,14 @@ namespace Manabind.Src.Gameplay.AppStates
 
         public MenuAppState()
         {
-
+            this.uiManager.LoadUI(this.UIDefinitionFilename);
         }
 
         #endregion
 
         #region Properties
 
-        protected override string UIDefinitionFilename { get => AppSettings.MenuUIFileName; }
+        protected override string UIDefinitionFilename => AppSettings.MenuUIFileName;
 
         #endregion
 
