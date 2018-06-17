@@ -1,36 +1,40 @@
 ﻿using Manabind.Src.UI.Components;
 using Manabind.Src.UI.Serialisation;
-using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
 
-namespace Manabind.Src.UI
+namespace Manabind.Src.UI.Components
 {
-    public class UIManager
+    public class RootComponent : BaseComponent
     {
         #region Fields
 
-        private Frame baseFrame;
+        private List<BaseComponent> components;
 
         #endregion
 
         #region Constructors
 
-        public UIManager()
+        public RootComponent()
         {
-            this.baseFrame = new Frame();
+            this.components = new List<BaseComponent>();
         }
 
         #endregion
 
-        #region Properties
-
-
-
-        #endregion
-
         #region Methods
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            foreach (BaseComponent component in components)
+            {
+                component.Draw(spriteBatch);
+            }
+        }
 
         public void LoadUI(string fileName)
         {
@@ -41,12 +45,22 @@ namespace Manabind.Src.UI
             using (StreamReader reader = new StreamReader(path))
             {
                 ComponentList cl = (ComponentList)serializer.Deserialize(reader);
-                baseFrame.Components = cl.Components;
+                components = cl.Components;
             }
 
-            if (baseFrame.Components.Count == 0)
+            if (components.Count == 0)
             {
                 throw new XmlException("Failed to deserialise ui definition.");
+            }
+        }
+
+        public void Initialise(GraphicsDevice device)
+        {
+            this.InitialiseResources(device);
+
+            foreach (BaseComponent component in components)
+            {
+                //initialise components
             }
         }
 
