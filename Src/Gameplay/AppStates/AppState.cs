@@ -1,4 +1,4 @@
-﻿using Manabind.Src.UI;
+﻿using Manabind.Src.UI.Components;
 using Microsoft.Xna.Framework.Input;
 
 namespace Manabind.Src.Gameplay.AppStates
@@ -8,7 +8,7 @@ namespace Manabind.Src.Gameplay.AppStates
         #region Fields
 
         private MouseState currentMouseState, prevMouseState;
-        protected RootComponent uiManager;
+        protected RootComponent rootComponent;
 
         #endregion
 
@@ -16,7 +16,7 @@ namespace Manabind.Src.Gameplay.AppStates
 
         public AppState()
         {
-            this.uiManager = new RootComponent();
+            this.rootComponent = new RootComponent();
         }
 
         #endregion

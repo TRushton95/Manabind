@@ -1,11 +1,10 @@
-﻿using Manabind.Src.UI.Components;
-using Manabind.Src.UI.Serialisation;
+﻿using Manabind.Src.UI.Serialisation;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
+using System;
 
 namespace Manabind.Src.UI.Components
 {
@@ -36,6 +35,14 @@ namespace Manabind.Src.UI.Components
             }
         }
 
+        public override void Initialise()
+        {
+            foreach (BaseComponent component in components)
+            {
+                component.Initialise();
+            }
+        }
+
         public void LoadUI(string fileName)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(ComponentList));
@@ -51,16 +58,6 @@ namespace Manabind.Src.UI.Components
             if (components.Count == 0)
             {
                 throw new XmlException("Failed to deserialise ui definition.");
-            }
-        }
-
-        public void Initialise(GraphicsDevice device)
-        {
-            this.InitialiseResources(device);
-
-            foreach (BaseComponent component in components)
-            {
-                //initialise components
             }
         }
 

@@ -33,9 +33,7 @@ namespace Manabind.Src.UI.Components
             this.font = font;
             this.Scale = 1;
 
-            this.InitialiseDisplay();
-            this.InitialiseDimensions();
-            this.InitialiseCoordinates();
+            this.Initialise();
         }
 
         #endregion
@@ -79,6 +77,13 @@ namespace Manabind.Src.UI.Components
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(this.font, this.displayText, this.GetCoordinates(), this.DisplayColour, 0, default(Vector2), this.Scale, SpriteEffects.None, 0);
+        }
+
+        public override void Initialise()
+        {
+            this.InitialiseDisplay();
+            this.InitialiseDimensions();
+            this.InitialiseCoordinates();
         }
 
         private void InitialiseDisplay()

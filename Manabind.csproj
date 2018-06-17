@@ -58,7 +58,7 @@
     <Compile Include="Src\UI\PositionProfiles\IPositionProfile.cs" />
     <Compile Include="Src\UI\PositionProfiles\RelativePositionProfile.cs" />
     <Compile Include="Src\UI\Serialisation\ComponentList.cs" />
-    <Compile Include="Src\UI\UIManager.cs" />
+    <Compile Include="Src\UI\Components\RootComponent.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

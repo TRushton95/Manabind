@@ -72,6 +72,8 @@ namespace Manabind.Src.UI.Components
 
         public abstract void Draw(SpriteBatch spriteBatch);
 
+        public abstract void Initialise();
+
         public Vector2 GetCoordinates()
         {
             return new Vector2(this.posX, this.posY);

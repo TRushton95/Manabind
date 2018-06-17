@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Manabind.Src.UI.PositionProfiles;
 using System.Xml.Serialization;
+using System;
 
 namespace Manabind.Src.UI.Components
 {
@@ -29,8 +30,7 @@ namespace Manabind.Src.UI.Components
             this.DisplayColour = displayColour;
             this.Components = new List<BaseComponent>();
 
-            this.InitialiseCoordinates();
-            this.InitialiseTexture();
+            this.Initialise();
         }
 
         #endregion
@@ -62,6 +62,17 @@ namespace Manabind.Src.UI.Components
             foreach(BaseComponent component in Components)
             {
                 component.Draw(spriteBatch);
+            }
+        }
+
+        public override void Initialise()
+        {
+            this.InitialiseCoordinates();
+            this.InitialiseTexture();
+
+            foreach (BaseComponent component in Components)
+            {
+                component.Initialise();
             }
         }
 
