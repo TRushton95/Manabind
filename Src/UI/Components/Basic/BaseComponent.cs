@@ -18,34 +18,16 @@ namespace Manabind.Src.UI.Components.Basic
 
         public BaseComponent()
         {
-            this.Id = Guid.NewGuid().ToString();
         }
 
         public BaseComponent(string parentId, BasePositionProfile positionProfile)
         {
-            this.ParentId = parentId;
             this.PositionProfile = positionProfile;
-
-            this.Id = Guid.NewGuid().ToString();
         }
 
         #endregion
 
         #region Properties
-
-        [XmlIgnore]
-        public string Id
-        {
-            get;
-            set;
-        }
-
-        [XmlIgnore]
-        public string ParentId
-        {
-            get;
-            set;
-        }
 
         public int Width
         {

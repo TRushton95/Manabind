@@ -1,4 +1,4 @@
-﻿using Manabind.Src.UI.Components;
+﻿using Manabind.Src.UI.Components.Basic;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
