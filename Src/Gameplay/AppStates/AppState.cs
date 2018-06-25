@@ -1,4 +1,4 @@
-﻿using Manabind.Src.UI.Components;
+﻿using Manabind.Src.UI.Components.Basic;
 using Microsoft.Xna.Framework.Input;
 
 namespace Manabind.Src.Gameplay.AppStates

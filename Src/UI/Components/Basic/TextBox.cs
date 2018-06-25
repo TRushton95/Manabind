@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Text;
 
-namespace Manabind.Src.UI.Components
+namespace Manabind.Src.UI.Components.Basic
 {
     public class TextBox : BaseComponent
     {

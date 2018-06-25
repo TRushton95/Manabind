@@ -47,10 +47,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\Gameplay\AppStates\AppState.cs" />
     <Compile Include="Src\Gameplay\AppStates\MenuAppState.cs" />
-    <Compile Include="Src\UI\Components\BaseComponent.cs" />
-    <Compile Include="Src\UI\Components\Frame.cs" />
+    <Compile Include="Src\UI\Components\Basic\BaseComponent.cs" />
     <Compile Include="Src\UI\Components\BaseResourceInstance.cs" />
-    <Compile Include="Src\UI\Components\TextBox.cs" />
+    <Compile Include="Src\UI\Components\Basic\Frame.cs" />
+    <Compile Include="Src\UI\Components\Basic\RootComponent.cs" />
+    <Compile Include="Src\UI\Components\Basic\TextBox.cs" />
     <Compile Include="Src\UI\Enums\FontFlow.cs" />
     <Compile Include="Src\UI\Enums\HorizontalAlign.cs" />
     <Compile Include="Src\UI\Enums\VerticalAlign.cs" />
@@ -58,7 +59,6 @@
     <Compile Include="Src\UI\PositionProfiles\IPositionProfile.cs" />
     <Compile Include="Src\UI\PositionProfiles\RelativePositionProfile.cs" />
     <Compile Include="Src\UI\Serialisation\ComponentList.cs" />
-    <Compile Include="Src\UI\Components\RootComponent.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -80,7 +80,9 @@
     <None Include="App.config" />
     <None Include="app.manifest" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Src\UI\Components\Complex\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

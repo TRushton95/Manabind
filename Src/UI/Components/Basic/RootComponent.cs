@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
 
-namespace Manabind.Src.UI.Components
+namespace Manabind.Src.UI.Components.Basic
 {
     public class RootComponent : BaseComponent
     {

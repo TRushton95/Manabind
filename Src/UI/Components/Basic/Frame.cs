@@ -3,9 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Manabind.Src.UI.PositionProfiles;
 using System.Xml.Serialization;
-using System;
 
-namespace Manabind.Src.UI.Components
+namespace Manabind.Src.UI.Components.Basic
 {
     public class Frame : BaseComponent
     {

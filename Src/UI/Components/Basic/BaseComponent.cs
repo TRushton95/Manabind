@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Xml.Serialization;
 
-namespace Manabind.Src.UI.Components
+namespace Manabind.Src.UI.Components.Basic
 {
     public abstract class BaseComponent : BaseResourceInstance
     {
