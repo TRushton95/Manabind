@@ -1,12 +1,12 @@
 ﻿using Manabind.Src.UI.PositionProfiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Xml.Serialization;
+using Manabind.Src.UI.Components.BaseInstanceResources;
 
 namespace Manabind.Src.UI.Components.Basic
 {
-    public abstract class BaseComponent : BaseResourceInstance
+    public abstract class BaseComponent : BaseInstance
     {
         #region Fields
 

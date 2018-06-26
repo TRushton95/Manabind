@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace Manabind.Src.UI.Components
+namespace Manabind.Src.UI.Components.BaseInstanceResources
 {
-    public abstract class BaseResourceInstance
+    public abstract class BaseInstance
     {
         #region Fields
 
@@ -12,13 +12,9 @@ namespace Manabind.Src.UI.Components
 
         #region Properties
 
-        public GraphicsDevice GraphicsDevice
-        {
-            get
-            {
-                return _graphicsDevice;
-            }
-        }
+        protected static GraphicsDevice GraphicsDevice => _graphicsDevice;
+
+        protected static Textures Textures => Textures.Instance;
 
         #endregion
 

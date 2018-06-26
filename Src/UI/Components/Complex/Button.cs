@@ -4,6 +4,7 @@ using Manabind.Src.UI.PositionProfiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Enums;
+using Manabind.Src.UI.Components.BaseInstanceResources;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -27,7 +28,7 @@ namespace Manabind.Src.UI.Components.Complex
             : base(positionProfile)
         {
             frame = new Frame(width, height, positionProfile, backgroundColour);
-            //textBox = new TextBox(text, width, 20, positionProfile, FontFlow.Shrink, textColour, ); USE PRESET RESOURCES FONT HERE
+            textBox = new TextBox(text, width, 20, positionProfile, FontFlow.Shrink, textColour, Textures.ButtonFont); 
         }
 
         public override void Draw(SpriteBatch spriteBatch)

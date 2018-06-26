@@ -20,16 +20,6 @@ namespace Manabind.Src.UI.Components.Complex
 
         #endregion
 
-        #region Properties
-
-        protected List<BaseComponent> Components
-        {
-            get;
-            set;
-        }
-
-        #endregion
-
         #region Methods
 
         public abstract void OnClick();

@@ -58,7 +58,7 @@ namespace Manabind.Src.UI.Components.Basic
 
         private void InitialiseTexture()
         {
-            Texture2D newTexture = new Texture2D(this.GraphicsDevice, this.Width, this.Height);
+            Texture2D newTexture = new Texture2D(GraphicsDevice, this.Width, this.Height);
 
             Color[] data = new Color[this.Width * this.Height];
             for (int pixel = 0; pixel < data.Length; pixel++)

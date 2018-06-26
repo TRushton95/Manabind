@@ -47,8 +47,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\Gameplay\AppStates\AppState.cs" />
     <Compile Include="Src\Gameplay\AppStates\MenuAppState.cs" />
+    <Compile Include="Src\UI\Components\BaseInstanceResources\Textures.cs" />
     <Compile Include="Src\UI\Components\Basic\BaseComponent.cs" />
-    <Compile Include="Src\UI\Components\BaseResourceInstance.cs" />
+    <Compile Include="Src\UI\Components\BaseInstanceResources\BaseInstance.cs" />
     <Compile Include="Src\UI\Components\Basic\Frame.cs" />
     <Compile Include="Src\UI\Components\Basic\RootComponent.cs" />
     <Compile Include="Src\UI\Components\Basic\TextBox.cs" />
