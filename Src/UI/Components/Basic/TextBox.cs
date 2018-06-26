@@ -22,8 +22,8 @@ namespace Manabind.Src.UI.Components.Basic
         {
         }
 
-        public TextBox(string parentId, string text, int maxWidth, int gutter, BasePositionProfile positionProfile, FontFlow fontFlow, Color displayColour, SpriteFont font)
-            : base(parentId, positionProfile)
+        public TextBox(string text, int maxWidth, int gutter, BasePositionProfile positionProfile, FontFlow fontFlow, Color displayColour, SpriteFont font)
+            : base(positionProfile)
         {
             this.Text = text;
             this.displayText = text;

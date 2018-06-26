@@ -20,14 +20,13 @@ namespace Manabind.Src.UI.Components.Basic
         {
         }
 
-        public Frame(string parentId, int width, int height, BasePositionProfile positionProfile, Color displayColour)
-            : base(parentId, positionProfile)
+        public Frame(int width, int height, BasePositionProfile positionProfile, Color displayColour)
+            : base(positionProfile)
         {
             this.Width = width;
             this.Height = height;
             this.PositionProfile = positionProfile;
             this.DisplayColour = displayColour;
-            this.Components = new List<BaseComponent>();
 
             this.Initialise();
         }
@@ -41,14 +40,6 @@ namespace Manabind.Src.UI.Components.Basic
             get;
             set;
         }
-        
-        [XmlArrayItem(typeof(Frame))]
-        [XmlArrayItem(typeof(TextBox))]
-        public List<BaseComponent> Components
-        {
-            get;
-            set;
-        }
 
         #endregion
 
@@ -57,22 +48,12 @@ namespace Manabind.Src.UI.Components.Basic
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(this.texture, this.GetCoordinates(), this.DisplayColour);
-
-            foreach(BaseComponent component in Components)
-            {
-                component.Draw(spriteBatch);
-            }
         }
 
         public override void Initialise()
         {
             this.InitialiseCoordinates();
             this.InitialiseTexture();
-
-            foreach (BaseComponent component in Components)
-            {
-                component.Initialise();
-            }
         }
 
         private void InitialiseTexture()

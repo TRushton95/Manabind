@@ -52,6 +52,8 @@
     <Compile Include="Src\UI\Components\Basic\Frame.cs" />
     <Compile Include="Src\UI\Components\Basic\RootComponent.cs" />
     <Compile Include="Src\UI\Components\Basic\TextBox.cs" />
+    <Compile Include="Src\UI\Components\Complex\BaseComplexComponent.cs" />
+    <Compile Include="Src\UI\Components\Complex\Button.cs" />
     <Compile Include="Src\UI\Enums\FontFlow.cs" />
     <Compile Include="Src\UI\Enums\HorizontalAlign.cs" />
     <Compile Include="Src\UI\Enums\VerticalAlign.cs" />
@@ -80,9 +82,7 @@
     <None Include="App.config" />
     <None Include="app.manifest" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Src\UI\Components\Complex\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

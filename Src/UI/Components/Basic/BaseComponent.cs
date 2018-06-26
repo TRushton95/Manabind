@@ -20,7 +20,7 @@ namespace Manabind.Src.UI.Components.Basic
         {
         }
 
-        public BaseComponent(string parentId, BasePositionProfile positionProfile)
+        public BaseComponent(BasePositionProfile positionProfile)
         {
             this.PositionProfile = positionProfile;
         }
