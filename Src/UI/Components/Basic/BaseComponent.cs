@@ -1,12 +1,12 @@
 ﻿using Manabind.Src.UI.PositionProfiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Xml.Serialization;
+using Manabind.Src.UI.Components.BaseInstanceResources;
 
-namespace Manabind.Src.UI.Components
+namespace Manabind.Src.UI.Components.Basic
 {
-    public abstract class BaseComponent : BaseResourceInstance
+    public abstract class BaseComponent : BaseInstance
     {
         #region Fields
 
@@ -18,34 +18,16 @@ namespace Manabind.Src.UI.Components
 
         public BaseComponent()
         {
-            this.Id = Guid.NewGuid().ToString();
         }
 
-        public BaseComponent(string parentId, BasePositionProfile positionProfile)
+        public BaseComponent(BasePositionProfile positionProfile)
         {
-            this.ParentId = parentId;
             this.PositionProfile = positionProfile;
-
-            this.Id = Guid.NewGuid().ToString();
         }
 
         #endregion
 
         #region Properties
-
-        [XmlIgnore]
-        public string Id
-        {
-            get;
-            set;
-        }
-
-        [XmlIgnore]
-        public string ParentId
-        {
-            get;
-            set;
-        }
 
         public int Width
         {
@@ -73,6 +55,10 @@ namespace Manabind.Src.UI.Components
         public abstract void Draw(SpriteBatch spriteBatch);
 
         public abstract void Initialise();
+
+        public abstract void OnHover();
+
+        public abstract void OnHoverLeave();
 
         public Vector2 GetCoordinates()
         {

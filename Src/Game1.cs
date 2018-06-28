@@ -12,6 +12,8 @@ namespace Manabind.Src
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
+        private AppState appState;
+
         #endregion
 
         #region Constructors
@@ -19,8 +21,12 @@ namespace Manabind.Src
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 720;
+            this.IsMouseVisible = true;
+
             Content.RootDirectory = "Content";
-            MenuAppState appState = new MenuAppState();
+            appState = new MenuAppState();
         }
 
         #endregion
@@ -30,6 +36,7 @@ namespace Manabind.Src
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            appState.Initialise(GraphicsDevice, Content, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height);
 
             base.Initialize();
         }
@@ -59,11 +66,16 @@ namespace Manabind.Src
         
         protected override void Draw(GameTime gameTime)
         {
+            spriteBatch.Begin();
+
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            appState.Draw(spriteBatch);
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+
+            spriteBatch.End();
         }
 
         #endregion

@@ -1,0 +1,35 @@
+﻿using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace Manabind.Src.UI.Components.BaseInstanceResources
+{
+    public abstract class BaseInstance
+    {
+        #region Fields
+
+        private static GraphicsDevice _graphicsDevice;
+
+        #endregion
+
+        #region Properties
+
+        protected static GraphicsDevice GraphicsDevice => _graphicsDevice;
+
+        protected static Textures Textures => Textures.Instance;
+
+        protected static Settings Settings => Settings.Instance;
+
+        #endregion
+
+        #region Methods
+
+        public void InitialiseResources(GraphicsDevice device, ContentManager content, int windowWidth, int windowHeight)
+        {
+            _graphicsDevice = device;
+            Textures.Initialise(content);
+            Settings.Initialise(windowWidth, windowHeight);
+        }
+
+        #endregion
+    }
+}

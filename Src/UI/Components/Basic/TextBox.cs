@@ -5,14 +5,18 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Text;
 
-namespace Manabind.Src.UI.Components
+namespace Manabind.Src.UI.Components.Basic
 {
     public class TextBox : BaseComponent
     {
         #region Fields
         
-        private string displayText;
+        private string text, displayText;
         private SpriteFont font;
+        private Color colour, defaultColour, hoverColour;
+        private float scale;
+        private int maxWidth;
+        private FontFlow fontFlow;
 
         #endregion
 
@@ -22,52 +26,21 @@ namespace Manabind.Src.UI.Components
         {
         }
 
-        public TextBox(string parentId, string text, int maxWidth, int gutter, BasePositionProfile positionProfile, FontFlow fontFlow, Color displayColour, SpriteFont font)
-            : base(parentId, positionProfile)
+        public TextBox(string text, int maxWidth, int gutter, BasePositionProfile positionProfile, FontFlow fontFlow, Color defaultColour, Color hoverColour, SpriteFont font)
+            : base(positionProfile)
         {
-            this.Text = text;
+            this.text = text;
             this.displayText = text;
-            this.MaxWidth = maxWidth;
-            this.FontFlow = fontFlow;
-            this.DisplayColour = displayColour;
+            this.maxWidth = maxWidth;
+            this.fontFlow = fontFlow;
+            this.defaultColour = defaultColour;
+            this.hoverColour = hoverColour;
             this.font = font;
-            this.Scale = 1;
+            this.scale = 1;
+
+            this.colour = defaultColour;
 
             this.Initialise();
-        }
-
-        #endregion
-
-        #region Fields
-
-        public string Text
-        {
-            get;
-            set;
-        }
-
-        public Color DisplayColour
-        {
-            get;
-            set;
-        }
-
-        public float Scale
-        {
-            get;
-            set;
-        }
-
-        public FontFlow FontFlow
-        {
-            get;
-            set;
-        }
-
-        public int MaxWidth
-        {
-            get;
-            set;
         }
 
         #endregion
@@ -76,7 +49,7 @@ namespace Manabind.Src.UI.Components
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(this.font, this.displayText, this.GetCoordinates(), this.DisplayColour, 0, default(Vector2), this.Scale, SpriteEffects.None, 0);
+            spriteBatch.DrawString(this.font, this.displayText, this.GetCoordinates(), this.colour, 0, default(Vector2), this.scale, SpriteEffects.None, 0);
         }
 
         public override void Initialise()
@@ -86,9 +59,19 @@ namespace Manabind.Src.UI.Components
             this.InitialiseCoordinates();
         }
 
+        public override void OnHover()
+        {
+            this.colour = this.hoverColour;
+        }
+
+        public override void OnHoverLeave()
+        {
+            this.colour = this.defaultColour;
+        }
+
         private void InitialiseDisplay()
         {
-            switch (this.FontFlow)
+            switch (this.fontFlow)
             {
                 case FontFlow.Wrap:
                     break;
@@ -102,20 +85,20 @@ namespace Manabind.Src.UI.Components
         {
             Vector2 dimensions = this.font.MeasureString(this.displayText);
 
-            this.Width = (int)(dimensions.X * this.Scale);
-            this.Height = (int)(dimensions.Y * this.Scale);
+            this.Width = (int)(dimensions.X * this.scale);
+            this.Height = (int)(dimensions.Y * this.scale);
         }
 
         private void WrapText()
         {
-            string[] words = this.Text.Split(' ');
+            string[] words = this.text.Split(' ');
 
             StringBuilder result = new StringBuilder();
             StringBuilder line = new StringBuilder();
 
             foreach (string word in words)
             {
-                if (this.font.MeasureString(line).X + this.font.MeasureString(word).X > this.MaxWidth)
+                if (this.font.MeasureString(line).X + this.font.MeasureString(word).X > this.maxWidth)
                 {
                     result.Append(line);
                     result.Append("\n");
@@ -146,13 +129,13 @@ namespace Manabind.Src.UI.Components
         {
             Vector2 dimensions = this.font.MeasureString(this.displayText);
 
-            if (dimensions.X > this.MaxWidth)
+            if (dimensions.X > this.maxWidth)
             {
-                this.Scale = this.MaxWidth / dimensions.X;
+                this.scale = this.maxWidth / dimensions.X;
             }
             else
             {
-                this.Scale = 1;
+                this.scale = 1;
             }
         }
 

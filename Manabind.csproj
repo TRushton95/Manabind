@@ -47,18 +47,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\Gameplay\AppStates\AppState.cs" />
     <Compile Include="Src\Gameplay\AppStates\MenuAppState.cs" />
-    <Compile Include="Src\UI\Components\BaseComponent.cs" />
-    <Compile Include="Src\UI\Components\Frame.cs" />
-    <Compile Include="Src\UI\Components\BaseResourceInstance.cs" />
-    <Compile Include="Src\UI\Components\TextBox.cs" />
+    <Compile Include="Src\UI\Components\BaseInstanceResources\Settings.cs" />
+    <Compile Include="Src\UI\Components\BaseInstanceResources\Textures.cs" />
+    <Compile Include="Src\UI\Components\Basic\BaseComponent.cs" />
+    <Compile Include="Src\UI\Components\BaseInstanceResources\BaseInstance.cs" />
+    <Compile Include="Src\UI\Components\Basic\Frame.cs" />
+    <Compile Include="Src\UI\Components\Basic\TextBox.cs" />
+    <Compile Include="Src\UI\Components\Complex\BaseComplexComponent.cs" />
+    <Compile Include="Src\UI\Components\Complex\Button.cs" />
+    <Compile Include="Src\UI\Components\Complex\Container.cs" />
+    <Compile Include="Src\UI\Components\Complex\RootContainer.cs" />
     <Compile Include="Src\UI\Enums\FontFlow.cs" />
     <Compile Include="Src\UI\Enums\HorizontalAlign.cs" />
     <Compile Include="Src\UI\Enums\VerticalAlign.cs" />
+    <Compile Include="Src\UI\PositionProfiles\AbsolutePositionProfile.cs" />
     <Compile Include="Src\UI\PositionProfiles\BasePositionProfile.cs" />
     <Compile Include="Src\UI\PositionProfiles\IPositionProfile.cs" />
     <Compile Include="Src\UI\PositionProfiles\RelativePositionProfile.cs" />
     <Compile Include="Src\UI\Serialisation\ComponentList.cs" />
-    <Compile Include="Src\UI\Components\RootComponent.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
