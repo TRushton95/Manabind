@@ -20,8 +20,10 @@ namespace Manabind.Src.UI.Components.Basic
         {
         }
 
-        public BaseComponent(BasePositionProfile positionProfile)
+        public BaseComponent(int width, int height, BasePositionProfile positionProfile)
         {
+            this.Width = width;
+            this.Height = height;
             this.PositionProfile = positionProfile;
         }
 

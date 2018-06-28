@@ -35,8 +35,6 @@ namespace Manabind.Src.UI.Components.Complex
             Color hoverBackgroundColour)
             : base(width, height, positionProfile)
         {
-            frame = new Frame(width, height, positionProfile, backgroundColour, hoverBackgroundColour);
-            textBox = new TextBox(text, width, 20, positionProfile, FontFlow.Shrink, textColour, hoverTextColour, Textures.ButtonFont); 
         }
 
         #endregion
@@ -53,7 +51,19 @@ namespace Manabind.Src.UI.Components.Complex
             set;
         }
 
+        public Color HoverTextColour
+        {
+            get;
+            set;
+        }
+
         public Color BackgroundColour
+        {
+            get;
+            set;
+        }
+
+        public Color HoverBackgroundColour
         {
             get;
             set;
@@ -69,7 +79,10 @@ namespace Manabind.Src.UI.Components.Complex
 
         public override void Initialise()
         {
+            frame = new Frame(Width, Height, PositionProfile, BackgroundColour, HoverBackgroundColour);
             frame.Initialise();
+
+            textBox = new TextBox(Text, Width, 20, PositionProfile, FontFlow.Shrink, TextColour, HoverTextColour, Textures.ButtonFont);
             textBox.Initialise();
         }
 

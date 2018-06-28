@@ -30,10 +30,21 @@ namespace Manabind.Src.UI.Components.Complex
             Color hoverBackgroundColor)
             : base(width, height, positionProfile)
         {
-            frame = new Frame(width, height, positionProfile, backgroundColour, hoverBackgroundColor);
         }
 
         #endregion
+
+        public Color BackgroundColour
+        {
+            get;
+            set;
+        }
+
+        public Color HoverBackgroundColour
+        {
+            get;
+            set;
+        }
 
         public List<BaseComplexComponent> Components
         {
@@ -55,6 +66,7 @@ namespace Manabind.Src.UI.Components.Complex
 
         public override void Initialise()
         {
+            frame = new Frame(Width, Height, PositionProfile, BackgroundColour, HoverBackgroundColour);
             frame.Initialise();
 
             foreach (BaseComplexComponent component in Components)
