@@ -58,7 +58,7 @@ namespace Manabind.Src.UI.Components.Complex
         {
             frame.Draw(spriteBatch);
 
-            foreach (ComplexBaseComponent component in Components)
+            foreach (BaseComplexComponent component in Components)
             {
                 component.Draw(spriteBatch);
             }

@@ -6,7 +6,7 @@ using Manabind.Src.UI.Components.BaseInstanceResources;
 
 namespace Manabind.Src.UI.Components.Basic
 {
-    public abstract class ComplexBaseComponent : BaseInstance
+    public abstract class BaseComponent : BaseInstance
     {
         #region Fields
 
@@ -16,11 +16,11 @@ namespace Manabind.Src.UI.Components.Basic
 
         #region Constructors
 
-        public ComplexBaseComponent()
+        public BaseComponent()
         {
         }
 
-        public ComplexBaseComponent(BasePositionProfile positionProfile)
+        public BaseComponent(BasePositionProfile positionProfile)
         {
             this.PositionProfile = positionProfile;
         }

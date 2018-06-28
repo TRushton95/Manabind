@@ -55,6 +55,7 @@
     <Compile Include="Src\UI\Components\Complex\BaseComplexComponent.cs" />
     <Compile Include="Src\UI\Components\Complex\Button.cs" />
     <Compile Include="Src\UI\Components\Complex\Container.cs" />
+    <Compile Include="Src\UI\Components\Complex\RootContainer.cs" />
     <Compile Include="Src\UI\Enums\FontFlow.cs" />
     <Compile Include="Src\UI\Enums\HorizontalAlign.cs" />
     <Compile Include="Src\UI\Enums\VerticalAlign.cs" />

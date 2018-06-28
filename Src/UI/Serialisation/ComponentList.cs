@@ -1,5 +1,4 @@
-﻿using Manabind.Src.UI.Components.Basic;
-using Manabind.Src.UI.Components.Complex;
+﻿using Manabind.Src.UI.Components.Complex;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
@@ -9,7 +8,7 @@ namespace Manabind.Src.UI.Serialisation
     {
         [XmlArrayItem(typeof(Container))]
         [XmlArrayItem(typeof(Button))]
-        public List<ComplexBaseComponent> Components
+        public List<BaseComplexComponent> Components
         {
             get;
             set;
