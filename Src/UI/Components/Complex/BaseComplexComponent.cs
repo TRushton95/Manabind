@@ -1,6 +1,5 @@
 ﻿using Manabind.Src.UI.Components.Basic;
 using Manabind.Src.UI.PositionProfiles;
-using System.Collections.Generic;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -9,11 +8,10 @@ namespace Manabind.Src.UI.Components.Complex
         #region Constructors
 
         public BaseComplexComponent()
-            : base()
         {
         }
 
-        public BaseComplexComponent(BasePositionProfile positionProfile)
+        public BaseComplexComponent(int width, int height, BasePositionProfile positionProfile)
             : base(positionProfile)
         {
         }
@@ -22,7 +20,9 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Methods
 
-        public abstract void OnClick();
+        public abstract void OnHover();
+
+        public abstract void OnHoverLeave();
 
         #endregion
     }

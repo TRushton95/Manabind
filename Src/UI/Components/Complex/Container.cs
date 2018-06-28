@@ -1,51 +1,36 @@
 ﻿using System;
-using Manabind.Src.UI.Components.Basic;
-using Manabind.Src.UI.PositionProfiles;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Manabind.Src.UI.Enums;
-using Manabind.Src.UI.Components.BaseInstanceResources;
+using Manabind.Src.UI.PositionProfiles;
+using Manabind.Src.UI.Components.Basic;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace Manabind.Src.UI.Components.Complex
 {
-    public class Button : BaseComplexComponent
+    public class Container : BaseComplexComponent
     {
-        #region Fields
+        #region Field
 
         private Frame frame;
-        private TextBox textBox;
 
         #endregion
 
         #region Constructors
 
-        public Button()
+        public Container()
             : base()
         {
         }
 
-        public Button(int width, int height, string text, BasePositionProfile positionProfile, Color textColour, Color backgroundColour)
+        public Container(int width, int height, BasePositionProfile positionProfile, Color backgroundColour)
             : base(width, height, positionProfile)
         {
             frame = new Frame(width, height, positionProfile, backgroundColour);
-            textBox = new TextBox(text, width, 20, positionProfile, FontFlow.Shrink, textColour, Textures.ButtonFont); 
         }
 
         #endregion
 
-        public string Text
-        {
-            get;
-            set;
-        }
-
-        public Color TextColour
-        {
-            get;
-            set;
-        }
-
-        public Color BackgroundColour
+        public List<BaseComplexComponent> Components
         {
             get;
             set;
@@ -56,19 +41,28 @@ namespace Manabind.Src.UI.Components.Complex
         public override void Draw(SpriteBatch spriteBatch)
         {
             frame.Draw(spriteBatch);
-            textBox.Draw(spriteBatch);
+
+            foreach (BaseComponent component in Components)
+            {
+                component.Draw(spriteBatch);
+            }
         }
 
         public override void Initialise()
         {
             frame.Initialise();
-            textBox.Initialise();
+
+            foreach (BaseComplexComponent component in Components)
+            {
+                component.Initialise();
+            }
         }
 
         public override void OnHover()
         {
             throw new NotImplementedException();
         }
+
         public override void OnHoverLeave()
         {
             throw new NotImplementedException();
