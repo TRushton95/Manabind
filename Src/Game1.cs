@@ -26,6 +26,7 @@ namespace Manabind.Src
             this.IsMouseVisible = true;
 
             Content.RootDirectory = "Content";
+
             appState = new MenuAppState();
         }
 
@@ -69,10 +70,7 @@ namespace Manabind.Src
             spriteBatch.Begin();
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             appState.Draw(spriteBatch);
-            // TODO: Add your drawing code here
-
             base.Draw(gameTime);
 
             spriteBatch.End();
