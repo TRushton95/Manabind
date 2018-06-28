@@ -8,7 +8,6 @@ namespace Manabind.Src.Gameplay.AppStates
 
         public MenuAppState()
         {
-            this.rootComponent.LoadUI(this.UIDefinitionFilename);
         }
 
         #endregion

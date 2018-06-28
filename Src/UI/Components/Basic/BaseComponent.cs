@@ -56,6 +56,10 @@ namespace Manabind.Src.UI.Components.Basic
 
         public abstract void Initialise();
 
+        public abstract void OnHover();
+
+        public abstract void OnHoverLeave();
+
         public Vector2 GetCoordinates()
         {
             return new Vector2(this.posX, this.posY);

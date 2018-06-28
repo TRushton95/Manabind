@@ -8,7 +8,6 @@ namespace Manabind.Src.Gameplay.AppStates
         #region Fields
 
         private MouseState currentMouseState, prevMouseState;
-        protected RootComponent rootComponent;
 
         #endregion
 
@@ -16,7 +15,6 @@ namespace Manabind.Src.Gameplay.AppStates
 
         public AppState()
         {
-            this.rootComponent = new RootComponent();
         }
 
         #endregion

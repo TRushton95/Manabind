@@ -24,11 +24,19 @@ namespace Manabind.Src.UI.Components.Complex
         {
         }
 
-        public Button(int width, int height, string text, BasePositionProfile positionProfile, Color textColour, Color backgroundColour)
+        public Button(
+            int width,
+            int height, 
+            string text, 
+            BasePositionProfile positionProfile,
+            Color textColour,
+            Color hoverTextColour,
+            Color backgroundColour,
+            Color hoverBackgroundColour)
             : base(width, height, positionProfile)
         {
-            frame = new Frame(width, height, positionProfile, backgroundColour);
-            textBox = new TextBox(text, width, 20, positionProfile, FontFlow.Shrink, textColour, Textures.ButtonFont); 
+            frame = new Frame(width, height, positionProfile, backgroundColour, hoverBackgroundColour);
+            textBox = new TextBox(text, width, 20, positionProfile, FontFlow.Shrink, textColour, hoverTextColour, Textures.ButtonFont); 
         }
 
         #endregion
@@ -67,11 +75,13 @@ namespace Manabind.Src.UI.Components.Complex
 
         public override void OnHover()
         {
-            throw new NotImplementedException();
+            frame.OnHover();
+            textBox.OnHover();
         }
         public override void OnHoverLeave()
         {
-            throw new NotImplementedException();
+            frame.OnHoverLeave();
+            textBox.OnHoverLeave();
         }
 
         #endregion

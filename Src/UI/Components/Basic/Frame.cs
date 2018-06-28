@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Manabind.Src.UI.PositionProfiles;
-using System.Xml.Serialization;
+using System;
 
 namespace Manabind.Src.UI.Components.Basic
 {
@@ -10,7 +9,8 @@ namespace Manabind.Src.UI.Components.Basic
     {
         #region Fields
         
-        private Texture2D texture;
+        private Texture2D texture, defaultTexture, hoverTexture;
+        private Color displayColour, hoverColour;
 
         #endregion
 
@@ -20,25 +20,16 @@ namespace Manabind.Src.UI.Components.Basic
         {
         }
 
-        public Frame(int width, int height, BasePositionProfile positionProfile, Color displayColour)
+        public Frame(int width, int height, BasePositionProfile positionProfile, Color displayColour, Color hoverColour)
             : base(positionProfile)
         {
             this.Width = width;
             this.Height = height;
             this.PositionProfile = positionProfile;
-            this.DisplayColour = displayColour;
+            this.displayColour = displayColour;
+            this.hoverColour = hoverColour;
 
             this.Initialise();
-        }
-
-        #endregion
-
-        #region Properties
-
-        public Color DisplayColour
-        {
-            get;
-            set;
         }
 
         #endregion
@@ -47,28 +38,41 @@ namespace Manabind.Src.UI.Components.Basic
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.GetCoordinates(), this.DisplayColour);
+            spriteBatch.Draw(this.texture, this.GetCoordinates(), this.displayColour);
         }
 
         public override void Initialise()
         {
             this.InitialiseCoordinates();
-            this.InitialiseTexture();
+            this.InitialiseTexture(this.defaultTexture, this.displayColour);
+            this.InitialiseTexture(this.hoverTexture, this.hoverColour);
+
+            this.texture = this.defaultTexture;
         }
 
-        private void InitialiseTexture()
+        public override void OnHover()
+        {
+            this.texture = this.hoverTexture;
+        }
+
+        public override void OnHoverLeave()
+        {
+            this.texture = this.defaultTexture;
+        }
+
+        private void InitialiseTexture(Texture2D texture, Color colour)
         {
             Texture2D newTexture = new Texture2D(GraphicsDevice, this.Width, this.Height);
 
             Color[] data = new Color[this.Width * this.Height];
             for (int pixel = 0; pixel < data.Length; pixel++)
             {
-                data[pixel] = DisplayColour;
+                data[pixel] = colour;
             }
 
             newTexture.SetData(data);
 
-            this.texture = newTexture;
+            texture = newTexture;
         }
 
         #endregion

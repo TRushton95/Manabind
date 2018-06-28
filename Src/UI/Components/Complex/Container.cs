@@ -22,10 +22,15 @@ namespace Manabind.Src.UI.Components.Complex
         {
         }
 
-        public Container(int width, int height, BasePositionProfile positionProfile, Color backgroundColour)
+        public Container(
+            int width,
+            int height,
+            BasePositionProfile positionProfile,
+            Color backgroundColour,
+            Color hoverBackgroundColor)
             : base(width, height, positionProfile)
         {
-            frame = new Frame(width, height, positionProfile, backgroundColour);
+            frame = new Frame(width, height, positionProfile, backgroundColour, hoverBackgroundColor);
         }
 
         #endregion
@@ -60,12 +65,12 @@ namespace Manabind.Src.UI.Components.Complex
 
         public override void OnHover()
         {
-            throw new NotImplementedException();
+            frame.OnHover();
         }
 
         public override void OnHoverLeave()
         {
-            throw new NotImplementedException();
+            frame.OnHoverLeave();
         }
 
         #endregion

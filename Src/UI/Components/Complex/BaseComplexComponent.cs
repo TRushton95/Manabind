@@ -17,13 +17,5 @@ namespace Manabind.Src.UI.Components.Complex
         }
 
         #endregion
-
-        #region Methods
-
-        public abstract void OnHover();
-
-        public abstract void OnHoverLeave();
-
-        #endregion
     }
 }
