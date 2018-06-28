@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Manabind.Src.Gameplay.AppStates
 {
@@ -8,6 +9,7 @@ namespace Manabind.Src.Gameplay.AppStates
 
         public MenuAppState()
         {
+            container.LoadUI(AppSettings.MenuUIFileName);
         }
 
         #endregion

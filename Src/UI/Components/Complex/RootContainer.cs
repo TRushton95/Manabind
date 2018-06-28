@@ -1,11 +1,12 @@
-﻿using Manabind.Src.UI.PositionProfiles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Xml.Serialization;
 using Manabind.Src.UI.Serialisation;
 using System.IO;
 using System.Xml;
+using Manabind.Src.UI.Components.BaseInstanceResources;
+using Manabind.Src.UI.PositionProfiles;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -16,11 +17,9 @@ namespace Manabind.Src.UI.Components.Complex
         public RootContainer()
             : base()
         {
-        }
-
-        public RootContainer(int width, int height, BasePositionProfile positionProfile)
-            : base(width, height, positionProfile)
-        {
+            this.Width = Settings.WindowWidth;
+            this.Height = Settings.WindowHeight;
+            this.PositionProfile = new AbsolutePositionProfile(0, 0);
         }
 
         #endregion
@@ -62,10 +61,8 @@ namespace Manabind.Src.UI.Components.Complex
             }
         }
 
-        public void Initialise(GraphicsDevice device)
+        public override void Initialise()
         {
-            this.InitialiseResources(device);
-
             foreach (BaseComplexComponent component in Components)
             {
                 component.Initialise();

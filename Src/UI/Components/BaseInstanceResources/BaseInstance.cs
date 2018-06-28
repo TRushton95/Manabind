@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Manabind.Src.UI.Components.BaseInstanceResources
 {
@@ -16,13 +17,17 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
 
         protected static Textures Textures => Textures.Instance;
 
+        protected static Settings Settings => Settings.Instance;
+
         #endregion
 
         #region Methods
 
-        public void InitialiseResources(GraphicsDevice device)
+        public void InitialiseResources(GraphicsDevice device, ContentManager content, int windowWidth, int windowHeight)
         {
             _graphicsDevice = device;
+            Textures.Initialise(content);
+            Settings.Initialise(windowWidth, windowHeight);
         }
 
         #endregion

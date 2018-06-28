@@ -44,8 +44,8 @@ namespace Manabind.Src.UI.Components.Basic
         public override void Initialise()
         {
             this.InitialiseCoordinates();
-            this.InitialiseTexture(this.defaultTexture, this.displayColour);
-            this.InitialiseTexture(this.hoverTexture, this.hoverColour);
+            this.defaultTexture = this.BuildTexture(this.displayColour);
+            this.hoverTexture = this.BuildTexture(this.hoverColour);
 
             this.texture = this.defaultTexture;
         }
@@ -60,7 +60,7 @@ namespace Manabind.Src.UI.Components.Basic
             this.texture = this.defaultTexture;
         }
 
-        private void InitialiseTexture(Texture2D texture, Color colour)
+        private Texture2D BuildTexture(Color colour)
         {
             Texture2D newTexture = new Texture2D(GraphicsDevice, this.Width, this.Height);
 
@@ -72,7 +72,7 @@ namespace Manabind.Src.UI.Components.Basic
 
             newTexture.SetData(data);
 
-            texture = newTexture;
+            return newTexture;
         }
 
         #endregion
