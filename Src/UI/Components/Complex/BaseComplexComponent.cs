@@ -3,7 +3,7 @@ using Manabind.Src.UI.PositionProfiles;
 
 namespace Manabind.Src.UI.Components.Complex
 {
-    public abstract class BaseComplexComponent : BaseComponent
+    public abstract class BaseComplexComponent : ComplexBaseComponent
     {
         #region Constructors
 

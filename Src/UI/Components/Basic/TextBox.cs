@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Manabind.Src.UI.Components.Basic
 {
-    public class TextBox : BaseComponent
+    public class TextBox : ComplexBaseComponent
     {
         #region Fields
         

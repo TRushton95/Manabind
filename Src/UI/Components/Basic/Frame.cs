@@ -5,7 +5,7 @@ using System;
 
 namespace Manabind.Src.UI.Components.Basic
 {
-    public class Frame : BaseComponent
+    public class Frame : ComplexBaseComponent
     {
         #region Fields
         
