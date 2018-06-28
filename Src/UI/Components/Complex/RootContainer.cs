@@ -5,6 +5,7 @@ using System;
 using System.Xml.Serialization;
 using Manabind.Src.UI.Serialisation;
 using System.IO;
+using System.Xml;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -46,6 +47,11 @@ namespace Manabind.Src.UI.Components.Complex
                 ComponentList componentList = (ComponentList)serializer.Deserialize(reader);
                 Components = componentList.Components;
             }
+
+            if (Components.Count == 0)
+            {
+                throw new XmlException("Failed to deserialise ui definition.");
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -56,8 +62,10 @@ namespace Manabind.Src.UI.Components.Complex
             }
         }
 
-        public override void Initialise()
+        public void Initialise(GraphicsDevice device)
         {
+            this.InitialiseResources(device);
+
             foreach (BaseComplexComponent component in Components)
             {
                 component.Initialise();
