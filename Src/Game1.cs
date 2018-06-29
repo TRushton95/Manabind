@@ -61,6 +61,7 @@ namespace Manabind.Src
                 Exit();
 
             // TODO: Add your update logic here
+            appState.Update();
 
             base.Update(gameTime);
         }

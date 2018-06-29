@@ -26,9 +26,10 @@ namespace Manabind.Src.UI.Components.Complex
             int width,
             int height,
             BasePositionProfile positionProfile,
+            int priority,
             Color backgroundColour,
             Color hoverBackgroundColor)
-            : base(width, height, positionProfile)
+            : base(width, height, positionProfile, priority)
         {
         }
 

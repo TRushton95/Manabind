@@ -65,6 +65,11 @@ namespace Manabind.Src.UI.Components
             return this.root;
         }
 
+        public List<BaseComplexComponent> GetAll()
+        {
+            return this.components;
+        }
+
         #endregion
     }
 }

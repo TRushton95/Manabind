@@ -23,7 +23,7 @@ namespace Manabind.Src.Gameplay.AppStates
 
         protected override void UpdateState()
         {
-            throw new NotImplementedException();
+
         }
 
         #endregion
