@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Manabind.Src.UI.PositionProfiles;
-using System;
 
 namespace Manabind.Src.UI.Components.Basic
 {
@@ -38,7 +37,7 @@ namespace Manabind.Src.UI.Components.Basic
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.GetCoordinates(), this.displayColour);
+            spriteBatch.Draw(this.texture, this.GetCoordinates(), Color.White);
         }
 
         public override void Initialise()
@@ -62,7 +61,7 @@ namespace Manabind.Src.UI.Components.Basic
 
         private Texture2D BuildTexture(Color colour)
         {
-            Texture2D newTexture = new Texture2D(GraphicsDevice, this.Width, this.Height);
+            Texture2D result = new Texture2D(GraphicsDevice, this.Width, this.Height);
 
             Color[] data = new Color[this.Width * this.Height];
             for (int pixel = 0; pixel < data.Length; pixel++)
@@ -70,9 +69,9 @@ namespace Manabind.Src.UI.Components.Basic
                 data[pixel] = colour;
             }
 
-            newTexture.SetData(data);
+            result.SetData(data);
 
-            return newTexture;
+            return result;
         }
 
         #endregion

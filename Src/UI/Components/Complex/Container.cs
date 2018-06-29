@@ -35,6 +35,8 @@ namespace Manabind.Src.UI.Components.Complex
 
         #endregion
 
+        #region Properties
+
         public Color BackgroundColour
         {
             get;
@@ -52,6 +54,8 @@ namespace Manabind.Src.UI.Components.Complex
             get;
             set;
         }
+
+        #endregion
 
         #region Methods
 
