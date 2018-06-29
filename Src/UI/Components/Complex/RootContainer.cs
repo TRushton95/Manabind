@@ -36,23 +36,6 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Methods
 
-        public void LoadUI(string fileName)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(ComponentList));
-
-            string path = String.Concat(AppSettings.UIDefinitionPath, "/", fileName);
-            using (StreamReader reader = new StreamReader(path))
-            {
-                ComponentList componentList = (ComponentList)serializer.Deserialize(reader);
-                Components = componentList.Components;
-            }
-
-            if (Components.Count == 0)
-            {
-                throw new XmlException("Failed to deserialise ui definition.");
-            }
-        }
-
         public override void Draw(SpriteBatch spriteBatch)
         {
             foreach (BaseComplexComponent component in Components)
@@ -75,6 +58,24 @@ namespace Manabind.Src.UI.Components.Complex
 
         public override void OnHoverLeave()
         {
+        }
+
+        public override List<BaseComplexComponent> BuildTree()
+        {
+            List<BaseComplexComponent> result = new List<BaseComplexComponent> { this };
+
+            List<BaseComplexComponent> total = new List<BaseComplexComponent>();
+            foreach (BaseComplexComponent child in Components)
+            {
+                total = child.BuildTree();
+
+                if (total.Count > 0)
+                {
+                    result.AddRange(total);
+                }
+            }
+
+            return result;
         }
 
         #endregion

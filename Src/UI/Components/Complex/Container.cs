@@ -85,6 +85,24 @@ namespace Manabind.Src.UI.Components.Complex
             frame.OnHoverLeave();
         }
 
+        public override List<BaseComplexComponent> BuildTree()
+        {
+            List<BaseComplexComponent> result = new List<BaseComplexComponent> { this };
+
+            List<BaseComplexComponent> total = new List<BaseComplexComponent>();
+            foreach (BaseComplexComponent child in Components)
+            {
+                total = child.BuildTree();
+
+                if (total.Count > 0)
+                {
+                    result.AddRange(total);
+                }
+            }
+
+            return result;
+        }
+
         #endregion
     }
 }

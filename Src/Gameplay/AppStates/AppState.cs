@@ -1,4 +1,5 @@
-﻿using Manabind.Src.UI.Components.Basic;
+﻿using Manabind.Src.UI.Components;
+using Manabind.Src.UI.Components.Basic;
 using Manabind.Src.UI.Components.Complex;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,8 +11,8 @@ namespace Manabind.Src.Gameplay.AppStates
     {
         #region Fields
 
-        protected RootContainer container;
-        private MouseState currentMouseState, prevMouseState;
+        protected ComponentManager componentManager;
+        protected MouseState currentMouseState, prevMouseState;
 
         #endregion
 
@@ -19,7 +20,7 @@ namespace Manabind.Src.Gameplay.AppStates
 
         public AppState()
         {
-            container = new RootContainer();
+            componentManager = new ComponentManager();
         }
 
         #endregion
@@ -40,13 +41,13 @@ namespace Manabind.Src.Gameplay.AppStates
 
         public void Initialise(GraphicsDevice device, ContentManager content, int windowWidth, int windowHeight)
         {
-            container.InitialiseResources(device, content, windowWidth, windowHeight);
-            container.Initialise();
+            componentManager.InitialiseResources(device, content, windowWidth, windowHeight);
+            componentManager.Initialise();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            container.Draw(spriteBatch);
+            componentManager.GetRoot().Draw(spriteBatch);
         }
 
         protected abstract void UpdateState();
