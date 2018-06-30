@@ -57,14 +57,6 @@ namespace Manabind.Src.UI.Components.Complex
             }
         }
 
-        public override void OnHover()
-        {
-        }
-
-        public override void OnHoverLeave()
-        {
-        }
-
         public override List<BaseComplexComponent> BuildTree()
         {
             List<BaseComplexComponent> result = new List<BaseComplexComponent>();
@@ -81,6 +73,14 @@ namespace Manabind.Src.UI.Components.Complex
             }
 
             return result;
+        }
+
+        protected override void HoverDetail()
+        {
+        }
+
+        protected override void HoverLeaveDetail()
+        {
         }
 
         #endregion

@@ -88,14 +88,14 @@ namespace Manabind.Src.UI.Components.Complex
             }
         }
 
-        public override void OnHover()
+        protected override void HoverDetail()
         {
-            frame.OnHover();
+            frame.Hover();
         }
 
-        public override void OnHoverLeave()
+        protected override void HoverLeaveDetail()
         {
-            frame.OnHoverLeave();
+            frame.HoverLeave();
         }
 
         public override List<BaseComplexComponent> BuildTree()

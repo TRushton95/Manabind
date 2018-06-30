@@ -18,4 +18,4 @@ Refactor EventsAreEqual out into utility class
 Look into event sending/recieving/executing system
 	-See if there is a simpler approach
 
-Change OnHover and OnHoverLeave (along with OnCLick and OnCLickLeave when implemented) to execute base behaviour in BaseComplexComponent
+Find Hover/Leave approach where Hover doesn't surface where it shouldn't

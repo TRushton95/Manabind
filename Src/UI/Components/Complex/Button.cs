@@ -89,13 +89,13 @@ namespace Manabind.Src.UI.Components.Complex
             frame.Initialise(this.GetBounds());
         }
 
-        public override void OnHover()
+        protected override void HoverDetail()
         {
-            frame.OnHover();
+            frame.Hover();
         }
-        public override void OnHoverLeave()
+        protected override void HoverLeaveDetail()
         {
-            frame.OnHoverLeave();
+            frame.HoverLeave();
         }
 
         #endregion

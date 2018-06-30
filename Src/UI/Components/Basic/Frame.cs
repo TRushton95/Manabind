@@ -71,23 +71,23 @@ namespace Manabind.Src.UI.Components.Basic
             }
         }
 
-        public override void OnHover()
+        public override void Hover()
         {
             this.texture = this.hoverTexture;
 
             foreach (BaseComponent component in Components)
             {
-                component.OnHover();
+                component.Hover();
             }
         }
 
-        public override void OnHoverLeave()
+        public override void HoverLeave()
         {
             this.texture = this.defaultTexture;
 
             foreach (BaseComponent component in Components)
             {
-                component.OnHoverLeave();
+                component.HoverLeave();
             }
         }
 

@@ -57,12 +57,12 @@ namespace Manabind.Src.UI.Components.Basic
             this.InitialiseCoordinates(parent);
         }
 
-        public override void OnHover()
+        public override void Hover()
         {
             this.colour = this.hoverColour;
         }
 
-        public override void OnHoverLeave()
+        public override void HoverLeave()
         {
             this.colour = this.defaultColour;
         }

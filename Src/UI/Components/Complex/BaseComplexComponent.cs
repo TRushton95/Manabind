@@ -18,6 +18,7 @@ namespace Manabind.Src.UI.Components.Complex
             this.Interactive = true;
             this.Visible = true;
             this.EventResponses = new List<EventResponse>();
+            this.Hovered = false;
         }
 
         public BaseComplexComponent(int width, int height, BasePositionProfile positionProfile, int priority)
@@ -27,6 +28,7 @@ namespace Manabind.Src.UI.Components.Complex
             this.Interactive = true;
             this.Visible = true;
             this.EventResponses = new List<EventResponse>();
+            this.Hovered = false;
         }
 
         #endregion
@@ -42,6 +44,13 @@ namespace Manabind.Src.UI.Components.Complex
 
         [XmlIgnore]
         public int Priority
+        {
+            get;
+            set;
+        }
+        
+        [XmlIgnore]
+        public bool Hovered
         {
             get;
             set;
@@ -77,6 +86,18 @@ namespace Manabind.Src.UI.Components.Complex
             this.Priority = parentPriority + 1;
 
             this.Initialise(parent);
+        }
+
+        public override void Hover()
+        {
+            this.Hovered = true;
+            this.HoverDetail();
+        }
+
+        public override void HoverLeave()
+        {
+            this.Hovered = false;
+            this.HoverLeaveDetail();
         }
 
         public virtual List<BaseComplexComponent> BuildTree()
@@ -117,6 +138,10 @@ namespace Manabind.Src.UI.Components.Complex
                     break;
             }
         }
+
+        protected abstract void HoverDetail();
+
+        protected abstract void HoverLeaveDetail();
 
         #endregion
     }

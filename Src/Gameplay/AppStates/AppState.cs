@@ -62,8 +62,8 @@ namespace Manabind.Src.Gameplay.AppStates
 
             if (currentHoveredComponent != prevHoveredComponent)
             {
-                prevHoveredComponent?.OnHoverLeave();
-                currentHoveredComponent?.OnHover();
+                prevHoveredComponent?.HoverLeave();
+                currentHoveredComponent?.Hover();
             }
 
             UpdateState();
