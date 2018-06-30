@@ -12,28 +12,6 @@
       <BackgroundColour r="255" g="0" b="255" a="255" />
       <HoverBackgroundColour r="255" g="50" b="255" a="255" />
     </Button>
-
-    <Button name="close-button" width="50" height="50" visible="false" interactive="false">
-      <EventResponses>
-        <EventResponse>
-          <Action>show</Action>
-          <UIEvent sender="confirm-yes" eventtype="Click" />
-        </EventResponse>
-        <EventResponse>
-          <Action>hide</Action>
-          <UIEvent sender="confirm-no" eventtype="Click" />
-        </EventResponse>
-      </EventResponses>
-      <Text>X</Text>
-      <PositionProfile>
-        <HorizontalAlign>Right</HorizontalAlign>
-        <VerticalAlign>Top</VerticalAlign>
-      </PositionProfile>
-      <TextColour r="0" g="0" b="0" a="255" />
-      <HoverTextColour r="255" g="255" b="255" a="255" />
-      <BackgroundColour r="255" g="0" b="255" a="255" />
-      <HoverBackgroundColour r="255" g="50" b="255" a="255" />
-    </Button>
     
     <Container name="confirm-container" width="500" height="300" visible="false" interactive="false">
       <EventResponses>
@@ -88,5 +66,27 @@
         </Button>
       </Components>
     </Container>
+
+    <Button name="close-button" width="50" height="50" visible="false" interactive="false">
+      <EventResponses>
+        <EventResponse>
+          <Action>show</Action>
+          <UIEvent sender="confirm-yes" eventtype="Click" />
+        </EventResponse>
+        <EventResponse>
+          <Action>hide</Action>
+          <UIEvent sender="confirm-no" eventtype="Click" />
+        </EventResponse>
+      </EventResponses>
+      <Text>X</Text>
+      <PositionProfile>
+        <HorizontalAlign>Right</HorizontalAlign>
+        <VerticalAlign>Top</VerticalAlign>
+      </PositionProfile>
+      <TextColour r="0" g="0" b="0" a="255" />
+      <HoverTextColour r="255" g="255" b="255" a="255" />
+      <BackgroundColour r="255" g="0" b="255" a="255" />
+      <HoverBackgroundColour r="255" g="50" b="255" a="255" />
+    </Button>
   </Components>
 </ComponentList>
