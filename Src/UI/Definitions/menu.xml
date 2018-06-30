@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ComponentList>
   <Components>
-    <Container>
-      <Width>500</Width>
-      <Height>300</Height>
+    <Container width="500" height="300" interactive="false">
       <PositionProfile>
         <HorizontalAlign>Middle</HorizontalAlign>
         <VerticalAlign>Middle</VerticalAlign>
@@ -16,13 +14,10 @@
         <B>255</B>
         <A>255</A>
       </BackgroundColour>
-      <Interactive>false</Interactive>
       <Components>
         
-        <Button>
+        <Button width="125" height="50">
           <Text>Yes</Text>
-          <Width>125</Width>
-          <Height>50</Height>
           <PositionProfile>
             <HorizontalAlign>Left</HorizontalAlign>
             <VerticalAlign>Middle</VerticalAlign>
@@ -55,10 +50,8 @@
           </HoverBackgroundColour>
         </Button>
         
-        <Button>
+        <Button width="125" height="50">
           <Text>No</Text>
-          <Width>125</Width>
-          <Height>50</Height>
           <PositionProfile>
             <HorizontalAlign>Right</HorizontalAlign>
             <VerticalAlign>Middle</VerticalAlign>

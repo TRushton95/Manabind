@@ -29,18 +29,20 @@ namespace Manabind.Src.UI.Components.Basic
 
         #region Properties
 
+        [XmlAttribute("width")]
         public int Width
         {
             get;
             set;
         }
 
+        [XmlAttribute("height")]
         public int Height
         {
             get;
             set;
         }
-
+        
         [XmlElement(typeof(RelativePositionProfile))]
         public BasePositionProfile PositionProfile
         {

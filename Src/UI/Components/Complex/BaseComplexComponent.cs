@@ -2,6 +2,7 @@
 using Manabind.Src.UI.PositionProfiles;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -26,12 +27,14 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Properties
 
+        [XmlIgnore]
         public int Priority
         {
             get;
             set;
         }
 
+        [XmlAttribute("interactive")]
         public bool Interactive
         {
             get;
