@@ -75,9 +75,12 @@ namespace Manabind.Src.UI.Components.Basic
             return new Rectangle(this.posX, this.posY, this.Width, this.Height);
         }
 
-        protected void InitialiseCoordinates()
+        protected void InitialiseCoordinates(Rectangle parent)
         {
-            //TODO this.Position.GetCoordinates
+            Vector2 coords = this.PositionProfile.GetCoordinates(parent, this.GetBounds());
+
+            this.posX = (int)coords.X;
+            this.posY = (int)coords.Y;
         }
 
         #endregion

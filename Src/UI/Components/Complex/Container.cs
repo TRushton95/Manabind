@@ -49,6 +49,8 @@ namespace Manabind.Src.UI.Components.Complex
             set;
         }
 
+        [XmlArrayItem(typeof(Container))]
+        [XmlArrayItem(typeof(Button))]
         public List<BaseComplexComponent> Components
         {
             get;
