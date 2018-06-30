@@ -32,12 +32,62 @@
         <A>255</A>
       </HoverBackgroundColour>
     </Button>
+
+    <Button name="close-button" width="50" height="50" visible="false" interactive="false">
+      <EventResponses>
+        <EventResponse>
+          <Action>show</Action>
+          <UIEvent sender="confirm-yes" eventtype="Click" />
+        </EventResponse>
+        <EventResponse>
+          <Action>hide</Action>
+          <UIEvent sender="confirm-no" eventtype="Click" />
+        </EventResponse>
+      </EventResponses>
+      <Text>X</Text>
+      <PositionProfile>
+        <HorizontalAlign>Right</HorizontalAlign>
+        <VerticalAlign>Top</VerticalAlign>
+      </PositionProfile>
+      <TextColour>
+        <R>0</R>
+        <G>0</G>
+        <B>0</B>
+        <A>255</A>
+      </TextColour>
+      <HoverTextColour>
+        <R>255</R>
+        <G>255</G>
+        <B>255</B>
+        <A>255</A>
+      </HoverTextColour>
+      <BackgroundColour>
+        <R>255</R>
+        <G>0</G>
+        <B>255</B>
+        <A>255</A>
+      </BackgroundColour>
+      <HoverBackgroundColour>
+        <R>255</R>
+        <G>50</G>
+        <B>255</B>
+        <A>255</A>
+      </HoverBackgroundColour>
+    </Button>
     
     <Container name="confirm-container" width="500" height="300" visible="false" interactive="false">
       <EventResponses>
         <EventResponse>
           <Action>show</Action>
           <UIEvent sender="options-button" eventtype="Click" />
+        </EventResponse>
+        <EventResponse>
+          <Action>hide</Action>
+          <UIEvent sender="confirm-no" eventtype="Click" />
+        </EventResponse>
+        <EventResponse>
+          <Action>hide</Action>
+          <UIEvent sender="confirm-yes" eventtype="Click" />
         </EventResponse>
       </EventResponses>
       <PositionProfile>
