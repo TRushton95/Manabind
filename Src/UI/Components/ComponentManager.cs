@@ -1,4 +1,5 @@
 ﻿using Manabind.Src.UI.Components.Complex;
+using Manabind.Src.UI.Events;
 using Manabind.Src.UI.Serialisation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -49,6 +50,11 @@ namespace Manabind.Src.UI.Components
             }
 
             components.AddRange(root.BuildTree());
+
+            foreach (BaseComplexComponent component in components)
+            {
+                EventManager.Subscribe(component);
+            }
         }
 
         public void InitialiseResources(GraphicsDevice device, ContentManager content, int windowWidth, int windowHeight)

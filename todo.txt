@@ -11,3 +11,11 @@ Root container should not be a base component inheritant
 
 Make Color xml use attributes to save LOTS of space
 	-Probably needs a wrapper class
+
+Refactor EventsAreEqual out into utility class
+	-Doesn't belong there
+
+Look into event sending/recieving/executing system
+	-See if there is a simpler approach
+
+Change OnHover and OnHoverLeave (along with OnCLick and OnCLickLeave when implemented) to execute base behaviour in BaseComplexComponent

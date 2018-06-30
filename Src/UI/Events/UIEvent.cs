@@ -7,6 +7,10 @@ namespace Manabind.Src.UI.Events
     {
         #region Constructors
 
+        public UIEvent()
+        {
+        }
+
         public UIEvent(string sender, EventType eventType)
         {
             this.Sender = sender;
@@ -18,10 +22,18 @@ namespace Manabind.Src.UI.Events
         #region Properties
 
         [XmlAttribute("sender")]
-        public string Sender { get; }
+        public string Sender
+        {
+            get;
+            set;
+        }
 
-        [XmlAttribute("eventType")]
-        public EventType EventType { get; }
+        [XmlAttribute("eventtype")]
+        public EventType EventType
+        {
+            get;
+            set;
+        }
 
         #endregion
     }

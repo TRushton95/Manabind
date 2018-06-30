@@ -1,22 +1,36 @@
-﻿namespace Manabind.Src.UI.Events
+﻿using System.Collections.Generic;
+
+namespace Manabind.Src.UI.Events
 {
     public class EventResponse
     {
         #region Constructors
 
-        public EventResponse(string action, UIEvent uiEvent)
+        public EventResponse()
         {
-            this.Action = action;
+        }
+
+        public EventResponse(UIEvent uiEvent, string action)
+        {
             this.UIEvent = uiEvent;
+            this.Action = action;
         }
 
         #endregion
 
         #region Properties
 
-        public string Action { get; }
+        public UIEvent UIEvent
+        {
+            get;
+            set;
+        }
 
-        public UIEvent UIEvent { get; }
+        public string Action
+        {
+            get;
+            set;
+        }
 
         #endregion
     }

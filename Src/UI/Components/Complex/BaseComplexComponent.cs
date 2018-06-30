@@ -1,4 +1,5 @@
 ﻿using Manabind.Src.UI.Components.Basic;
+using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Manabind.Src.UI.PositionProfiles;
 using Microsoft.Xna.Framework;
@@ -81,6 +82,40 @@ namespace Manabind.Src.UI.Components.Complex
         public virtual List<BaseComplexComponent> BuildTree()
         {
             return new List<BaseComplexComponent> { this };
+        }
+
+        public void Hide()
+        {
+            this.Visible = false;
+        }
+
+        public void Show()
+        {
+            this.Visible = true;
+        }
+
+        //Extend as necessary
+        public void RecieveEvent(UIEvent e)
+        {
+            foreach (EventResponse response in EventResponses)
+            {
+                if (EventManager.EventsAreEqual(response.UIEvent, e))
+                {
+                    this.ExecuteEventResponse(response.Action);
+                }
+            }
+        }
+
+        private void ExecuteEventResponse(string action)
+        {
+            switch (action)
+            {
+                case "hide": this.Hide();
+                    break;
+
+                case "show": this.Show();
+                    break;
+            }
         }
 
         #endregion

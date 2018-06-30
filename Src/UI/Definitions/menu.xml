@@ -1,7 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ComponentList>
   <Components>
-    <Container name="confirm-container" width="500" height="300" interactive="false">
+    <Button name="options-button" width="125" height="50">
+      <Text>Options</Text>
+      <PositionProfile>
+        <HorizontalAlign>Middle</HorizontalAlign>
+        <VerticalAlign>Middle</VerticalAlign>
+      </PositionProfile>
+      <TextColour>
+        <R>0</R>
+        <G>0</G>
+        <B>0</B>
+        <A>255</A>
+      </TextColour>
+      <HoverTextColour>
+        <R>255</R>
+        <G>255</G>
+        <B>255</B>
+        <A>255</A>
+      </HoverTextColour>
+      <BackgroundColour>
+        <R>255</R>
+        <G>0</G>
+        <B>255</B>
+        <A>255</A>
+      </BackgroundColour>
+      <HoverBackgroundColour>
+        <R>255</R>
+        <G>50</G>
+        <B>255</B>
+        <A>255</A>
+      </HoverBackgroundColour>
+    </Button>
+    
+    <Container name="confirm-container" width="500" height="300" visible="false" interactive="false">
+      <EventResponses>
+        <EventResponse>
+          <Action>show</Action>
+          <UIEvent sender="options-button" eventtype="Hover" />
+        </EventResponse>
+      </EventResponses>
       <PositionProfile>
         <HorizontalAlign>Middle</HorizontalAlign>
         <VerticalAlign>Middle</VerticalAlign>
