@@ -44,6 +44,7 @@ namespace Manabind.Src.UI.Components.Basic
         }
         
         [XmlElement(typeof(RelativePositionProfile))]
+        [XmlElement(typeof(AbsolutePositionProfile))]
         public BasePositionProfile PositionProfile
         {
             get;

@@ -3,10 +3,12 @@
   <Components>
     <Button name="options-button" width="125" height="50">
       <Text>Options</Text>
-      <PositionProfile>
+      <RelativePositionProfile>
         <HorizontalAlign>Middle</HorizontalAlign>
         <VerticalAlign>Middle</VerticalAlign>
-      </PositionProfile>
+        <OffsetX>0</OffsetX>
+        <OffsetY>0</OffsetY>
+      </RelativePositionProfile>
       <TextColour r="0" g="0" b="0" a="255" />
       <HoverTextColour r="255" g="255" b="255" a="255" />
       <BackgroundColour r="255" g="0" b="255" a="255" />
@@ -28,23 +30,23 @@
           <UIEvent sender="confirm-yes" eventtype="Click" />
         </EventResponse>
       </EventResponses>
-      <PositionProfile>
+      <RelativePositionProfile>
         <HorizontalAlign>Middle</HorizontalAlign>
         <VerticalAlign>Middle</VerticalAlign>
         <OffsetX>50</OffsetX>
         <OffsetY>0</OffsetY>
-      </PositionProfile>
+      </RelativePositionProfile>
       <BackgroundColour r="0" g="0" b="255" a="255" />
       <Components>
         
         <Button name="confirm-yes" width="125" height="50">
           <Text>Yes</Text>
-          <PositionProfile>
+          <RelativePositionProfile>
             <HorizontalAlign>Left</HorizontalAlign>
             <VerticalAlign>Middle</VerticalAlign>
             <OffsetX>75</OffsetX>
             <OffsetY>75</OffsetY>
-          </PositionProfile>
+          </RelativePositionProfile>
           <TextColour r="0" g="0" b="0" a="255" />
           <HoverTextColour r="255" g="255" b="255" a="255" />
           <BackgroundColour r="255" g="0" b="255" a="255" />
@@ -53,12 +55,12 @@
         
         <Button name="confirm-no" width="125" height="50">
           <Text>No</Text>
-          <PositionProfile>
+          <RelativePositionProfile>
             <HorizontalAlign>Right</HorizontalAlign>
             <VerticalAlign>Middle</VerticalAlign>
             <OffsetX>-75</OffsetX>
             <OffsetY>75</OffsetY>
-          </PositionProfile>
+          </RelativePositionProfile>
           <TextColour r="0" g="0" b="0" a="255" />
           <HoverTextColour r="255" g="255" b="255" a="255" />
           <BackgroundColour r="255" g="0" b="255" a="255" />
@@ -79,10 +81,12 @@
         </EventResponse>
       </EventResponses>
       <Text>X</Text>
-      <PositionProfile>
+      <RelativePositionProfile>
         <HorizontalAlign>Right</HorizontalAlign>
         <VerticalAlign>Top</VerticalAlign>
-      </PositionProfile>
+        <OffsetX>0</OffsetX>
+        <OffsetY>0</OffsetY>
+      </RelativePositionProfile>
       <TextColour r="0" g="0" b="0" a="255" />
       <HoverTextColour r="255" g="255" b="255" a="255" />
       <BackgroundColour r="255" g="0" b="255" a="255" />
