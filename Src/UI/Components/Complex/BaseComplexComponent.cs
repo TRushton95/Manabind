@@ -14,6 +14,7 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.Priority = 0;
             this.Interactive = true;
+            this.Visible = true;
         }
 
         public BaseComplexComponent(int width, int height, BasePositionProfile positionProfile, int priority)
@@ -21,6 +22,7 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.Priority = priority;
             this.Interactive = true;
+            this.Visible = true;
         }
 
         #endregion
@@ -48,6 +50,13 @@ namespace Manabind.Src.UI.Components.Complex
             set;
         }
 
+        [XmlAttribute("visible")]
+        public bool Visible
+        {
+            get;
+            set;
+        }
+        
         #endregion
 
         #region Methods

@@ -1,1 +1,8 @@
-﻿
+﻿Change draw approach
+	-Draw only draws itself and child base components
+	-ComponentManager draws all base complex components in list
+
+Root container should not be a base component inheritant
+	-Doesn't draw or hover
+	-Only provides parent boundaries
+	-Should it even exist???
