@@ -2,6 +2,7 @@
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Manabind.Src.UI.PositionProfiles;
+using Manabind.Src.UI.Utilities;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Xml.Serialization;
@@ -128,7 +129,7 @@ namespace Manabind.Src.UI.Components.Complex
         {
             foreach (EventResponse response in EventResponses)
             {
-                if (EventManager.EventsAreEqual(response.UIEvent, e))
+                if (Utility.EventsAreEqual(response.UIEvent, e))
                 {
                     this.ExecuteEventResponse(response.Action);
                 }
