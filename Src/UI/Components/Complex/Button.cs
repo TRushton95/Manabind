@@ -22,11 +22,6 @@ namespace Manabind.Src.UI.Components.Complex
         public Button()
             : base()
         {
-            this.PositionProfile = new AbsolutePositionProfile();
-            this.TextColour = new Colour(0, 0, 0, 0);
-            this.HoverTextColour = new Colour(0, 0, 0, 0);
-            this.BackgroundColour = new Colour(0, 0, 0, 0);
-            this.HoverBackgroundColour = new Colour(0, 0, 0, 0);
         }
 
         public Button(

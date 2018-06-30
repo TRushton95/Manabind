@@ -49,7 +49,7 @@ namespace Manabind.Src.UI.Components.Basic
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(this.font, this.displayText, this.GetCoordinates(), this.colour.GetColor(), 0,
+            spriteBatch.DrawString(this.font, this.displayText, this.GetCoordinates(), this.colour.GetValue(), 0,
                                     default(Vector2), this.scale, SpriteEffects.None, 0);
         }
 

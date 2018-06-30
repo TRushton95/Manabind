@@ -22,9 +22,6 @@ namespace Manabind.Src.UI.Components.Complex
         public Container()
             : base()
         {
-            this.PositionProfile = new AbsolutePositionProfile();
-            this.BackgroundColour = new Colour(0, 0, 0, 0);
-            this.HoverBackgroundColour = new Colour(0, 0, 0, 0);
         }
 
         public Container(

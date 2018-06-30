@@ -61,8 +61,8 @@ namespace Manabind.Src.UI.Components.Basic
         public override void Initialise(Rectangle parent)
         {
             this.InitialiseCoordinates(parent);
-            this.defaultTexture = this.BuildTexture(this.displayColour.GetColor());
-            this.hoverTexture = this.BuildTexture(this.hoverColour.GetColor());
+            this.defaultTexture = this.BuildTexture(this.displayColour.GetValue());
+            this.hoverTexture = this.BuildTexture(this.hoverColour.GetValue());
 
             this.texture = this.defaultTexture;
 
