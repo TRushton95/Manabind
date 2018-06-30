@@ -75,6 +75,10 @@ namespace Manabind.Src.UI.Components.Complex
             return result;
         }
 
+        protected override void ClickDetail()
+        {
+        }
+
         protected override void HoverDetail()
         {
         }

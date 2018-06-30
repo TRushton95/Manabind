@@ -88,6 +88,11 @@ namespace Manabind.Src.UI.Components.Complex
             }
         }
 
+        protected override void ClickDetail()
+        {
+            frame.Click();
+        }
+
         protected override void HoverDetail()
         {
             frame.Hover();

@@ -60,10 +60,20 @@ namespace Manabind.Src.Gameplay.AppStates
                 currentHoveredComponent = null;
             }
 
+            //hovered on component
             if (currentHoveredComponent != prevHoveredComponent)
             {
                 prevHoveredComponent?.HoverLeave();
                 currentHoveredComponent?.Hover();
+            }
+
+            //clicked on component
+            if (currentHoveredComponent != null && prevHoveredComponent != null &&
+                currentHoveredComponent == prevHoveredComponent &&
+                currentHoveredComponent.Hovered && currentMouseState.LeftButton == ButtonState.Pressed &&
+                prevHoveredComponent.Hovered && prevMouseState.LeftButton == ButtonState.Released)
+            {
+                currentHoveredComponent.Click();
             }
 
             UpdateState();

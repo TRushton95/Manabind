@@ -57,6 +57,10 @@ namespace Manabind.Src.UI.Components.Basic
             this.InitialiseCoordinates(parent);
         }
 
+        public override void Click()
+        {
+        }
+
         public override void Hover()
         {
             this.colour = this.hoverColour;

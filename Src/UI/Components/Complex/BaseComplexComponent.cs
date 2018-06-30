@@ -88,6 +88,12 @@ namespace Manabind.Src.UI.Components.Complex
             this.Initialise(parent);
         }
 
+        public override void Click()
+        {
+            this.ClickDetail();
+            EventManager.PushEvent(new UIEvent(this.Name, EventType.Click));
+        }
+
         public override void Hover()
         {
             this.Hovered = true;
@@ -140,6 +146,8 @@ namespace Manabind.Src.UI.Components.Complex
                     break;
             }
         }
+
+        protected abstract void ClickDetail();
 
         protected abstract void HoverDetail();
 

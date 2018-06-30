@@ -37,7 +37,7 @@
       <EventResponses>
         <EventResponse>
           <Action>show</Action>
-          <UIEvent sender="options-button" eventtype="Hover" />
+          <UIEvent sender="options-button" eventtype="Click" />
         </EventResponse>
       </EventResponses>
       <PositionProfile>

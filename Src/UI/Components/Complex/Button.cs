@@ -89,6 +89,11 @@ namespace Manabind.Src.UI.Components.Complex
             frame.Initialise(this.GetBounds());
         }
 
+        protected override void ClickDetail()
+        {
+            frame.Click();
+        }
+
         protected override void HoverDetail()
         {
             frame.Hover();

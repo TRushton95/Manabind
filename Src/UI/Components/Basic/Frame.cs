@@ -71,6 +71,11 @@ namespace Manabind.Src.UI.Components.Basic
             }
         }
 
+        public override void Click()
+        {
+
+        }
+
         public override void Hover()
         {
             this.texture = this.hoverTexture;
