@@ -70,6 +70,7 @@
     <Compile Include="Src\UI\PositionProfiles\BasePositionProfile.cs" />
     <Compile Include="Src\UI\PositionProfiles\IPositionProfile.cs" />
     <Compile Include="Src\UI\PositionProfiles\RelativePositionProfile.cs" />
+    <Compile Include="Src\UI\Serialisation\Colour.cs" />
     <Compile Include="Src\UI\Serialisation\ComponentList.cs" />
     <Compile Include="Src\UI\Utilities\Utility.cs" />
   </ItemGroup>

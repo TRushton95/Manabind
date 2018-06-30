@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using System.Xml.Serialization;
 using Manabind.Src.UI.Factories;
+using Manabind.Src.UI.Serialisation;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -21,6 +22,9 @@ namespace Manabind.Src.UI.Components.Complex
         public Container()
             : base()
         {
+            this.PositionProfile = new AbsolutePositionProfile();
+            this.BackgroundColour = new Colour(0, 0, 0, 0);
+            this.HoverBackgroundColour = new Colour(0, 0, 0, 0);
         }
 
         public Container(
@@ -28,8 +32,8 @@ namespace Manabind.Src.UI.Components.Complex
             int height,
             BasePositionProfile positionProfile,
             int priority,
-            Color backgroundColour,
-            Color hoverBackgroundColor)
+            Colour backgroundColour,
+            Colour hoverBackgroundColor)
             : base(width, height, positionProfile, priority)
         {
         }
@@ -38,13 +42,13 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Properties
 
-        public Color BackgroundColour
+        public Colour BackgroundColour
         {
             get;
             set;
         }
 
-        public Color HoverBackgroundColour
+        public Colour HoverBackgroundColour
         {
             get;
             set;

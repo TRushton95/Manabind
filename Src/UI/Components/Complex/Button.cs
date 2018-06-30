@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Factories;
+using Manabind.Src.UI.Serialisation;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -21,6 +22,11 @@ namespace Manabind.Src.UI.Components.Complex
         public Button()
             : base()
         {
+            this.PositionProfile = new AbsolutePositionProfile();
+            this.TextColour = new Colour(0, 0, 0, 0);
+            this.HoverTextColour = new Colour(0, 0, 0, 0);
+            this.BackgroundColour = new Colour(0, 0, 0, 0);
+            this.HoverBackgroundColour = new Colour(0, 0, 0, 0);
         }
 
         public Button(
@@ -29,10 +35,10 @@ namespace Manabind.Src.UI.Components.Complex
             string text, 
             BasePositionProfile positionProfile,
             int priority,
-            Color textColour,
-            Color hoverTextColour,
-            Color backgroundColour,
-            Color hoverBackgroundColour)
+            Colour textColour,
+            Colour hoverTextColour,
+            Colour backgroundColour,
+            Colour hoverBackgroundColour)
             : base(width, height, positionProfile, priority)
         {
         }
@@ -45,25 +51,25 @@ namespace Manabind.Src.UI.Components.Complex
             set;
         }
 
-        public Color TextColour
+        public Colour TextColour
         {
             get;
             set;
         }
 
-        public Color HoverTextColour
+        public Colour HoverTextColour
         {
             get;
             set;
         }
 
-        public Color BackgroundColour
+        public Colour BackgroundColour
         {
             get;
             set;
         }
 
-        public Color HoverBackgroundColour
+        public Colour HoverBackgroundColour
         {
             get;
             set;

@@ -9,9 +9,6 @@ Root container should not be a base component inheritant
 
 	-Must then consider how hiding affects child components
 
-Make Color xml use attributes to save LOTS of space
-	-Probably needs a wrapper class
-
 Refactor EventsAreEqual out into utility class
 	-Doesn't belong there
 
