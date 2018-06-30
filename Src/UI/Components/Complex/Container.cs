@@ -4,6 +4,9 @@ using Manabind.Src.UI.PositionProfiles;
 using Manabind.Src.UI.Components.Basic;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using System.Xml.Serialization;
+using Manabind.Src.UI.Enums;
+using Manabind.Src.UI.Factories;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -26,13 +29,16 @@ namespace Manabind.Src.UI.Components.Complex
             int width,
             int height,
             BasePositionProfile positionProfile,
+            int priority,
             Color backgroundColour,
             Color hoverBackgroundColor)
-            : base(width, height, positionProfile)
+            : base(width, height, positionProfile, priority)
         {
         }
 
         #endregion
+
+        #region Properties
 
         public Color BackgroundColour
         {
@@ -46,11 +52,15 @@ namespace Manabind.Src.UI.Components.Complex
             set;
         }
 
+        [XmlArrayItem(typeof(Container))]
+        [XmlArrayItem(typeof(Button))]
         public List<BaseComplexComponent> Components
         {
             get;
             set;
         }
+
+        #endregion
 
         #region Methods
 
@@ -64,14 +74,17 @@ namespace Manabind.Src.UI.Components.Complex
             }
         }
 
-        public override void Initialise()
+        public override void Initialise(Rectangle parent)
         {
-            frame = new Frame(Width, Height, PositionProfile, BackgroundColour, HoverBackgroundColour);
-            frame.Initialise();
+            this.InitialiseCoordinates(parent);
+
+            frame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(),
+                                BackgroundColour, HoverBackgroundColour);
+            frame.Initialise(this.GetBounds());
 
             foreach (BaseComplexComponent component in Components)
             {
-                component.Initialise();
+                component.Initialise(this.GetBounds());
             }
         }
 
@@ -83,6 +96,24 @@ namespace Manabind.Src.UI.Components.Complex
         public override void OnHoverLeave()
         {
             frame.OnHoverLeave();
+        }
+
+        public override List<BaseComplexComponent> BuildTree()
+        {
+            List<BaseComplexComponent> result = new List<BaseComplexComponent> { this };
+
+            List<BaseComplexComponent> total = new List<BaseComplexComponent>();
+            foreach (BaseComplexComponent child in Components)
+            {
+                total = child.BuildTree();
+
+                if (total.Count > 0)
+                {
+                    result.AddRange(total);
+                }
+            }
+
+            return result;
         }
 
         #endregion

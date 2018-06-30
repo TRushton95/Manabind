@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Manabind.Src.UI.PositionProfiles;
-using System;
+using System.Collections.Generic;
 
 namespace Manabind.Src.UI.Components.Basic
 {
@@ -18,6 +18,7 @@ namespace Manabind.Src.UI.Components.Basic
 
         public Frame()
         {
+            this.Components = new List<BaseComponent>();
         }
 
         public Frame(int width, int height, BasePositionProfile positionProfile, Color displayColour, Color hoverColour)
@@ -29,7 +30,17 @@ namespace Manabind.Src.UI.Components.Basic
             this.displayColour = displayColour;
             this.hoverColour = hoverColour;
 
-            this.Initialise();
+            this.Components = new List<BaseComponent>();
+        }
+
+        #endregion
+
+        #region Properties
+
+        public List<BaseComponent> Components
+        {
+            get;
+            set;
         }
 
         #endregion
@@ -38,31 +49,51 @@ namespace Manabind.Src.UI.Components.Basic
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.GetCoordinates(), this.displayColour);
+            spriteBatch.Draw(this.texture, this.GetCoordinates(), Color.White);
+
+            foreach (BaseComponent component in Components)
+            {
+                component.Draw(spriteBatch);
+            }
         }
 
-        public override void Initialise()
+        public override void Initialise(Rectangle parent)
         {
-            this.InitialiseCoordinates();
+            this.InitialiseCoordinates(parent);
             this.defaultTexture = this.BuildTexture(this.displayColour);
             this.hoverTexture = this.BuildTexture(this.hoverColour);
 
             this.texture = this.defaultTexture;
+
+            foreach(BaseComponent component in Components)
+            {
+                component.Initialise(this.GetBounds());
+            }
         }
 
         public override void OnHover()
         {
             this.texture = this.hoverTexture;
+
+            foreach (BaseComponent component in Components)
+            {
+                component.OnHover();
+            }
         }
 
         public override void OnHoverLeave()
         {
             this.texture = this.defaultTexture;
+
+            foreach (BaseComponent component in Components)
+            {
+                component.OnHoverLeave();
+            }
         }
 
         private Texture2D BuildTexture(Color colour)
         {
-            Texture2D newTexture = new Texture2D(GraphicsDevice, this.Width, this.Height);
+            Texture2D result = new Texture2D(GraphicsDevice, this.Width, this.Height);
 
             Color[] data = new Color[this.Width * this.Height];
             for (int pixel = 0; pixel < data.Length; pixel++)
@@ -70,9 +101,10 @@ namespace Manabind.Src.UI.Components.Basic
                 data[pixel] = colour;
             }
 
-            newTexture.SetData(data);
+            result.SetData(data);
 
-            return newTexture;
+
+            return result;
         }
 
         #endregion

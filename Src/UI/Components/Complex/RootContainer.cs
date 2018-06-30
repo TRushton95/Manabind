@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Xml.Serialization;
-using Manabind.Src.UI.Serialisation;
-using System.IO;
-using System.Xml;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.PositionProfiles;
+using Microsoft.Xna.Framework;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -36,23 +33,6 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Methods
 
-        public void LoadUI(string fileName)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(ComponentList));
-
-            string path = String.Concat(AppSettings.UIDefinitionPath, "/", fileName);
-            using (StreamReader reader = new StreamReader(path))
-            {
-                ComponentList componentList = (ComponentList)serializer.Deserialize(reader);
-                Components = componentList.Components;
-            }
-
-            if (Components.Count == 0)
-            {
-                throw new XmlException("Failed to deserialise ui definition.");
-            }
-        }
-
         public override void Draw(SpriteBatch spriteBatch)
         {
             foreach (BaseComplexComponent component in Components)
@@ -61,11 +41,15 @@ namespace Manabind.Src.UI.Components.Complex
             }
         }
 
-        public override void Initialise()
+        public override void Initialise(Rectangle parent)
         {
+            this.InitialiseCoordinates(parent);
+            this.Width = Settings.WindowWidth;
+            this.Height = Settings.WindowHeight;
+
             foreach (BaseComplexComponent component in Components)
             {
-                component.Initialise();
+                component.Initialise(this.GetBounds());
             }
         }
 
@@ -75,6 +59,24 @@ namespace Manabind.Src.UI.Components.Complex
 
         public override void OnHoverLeave()
         {
+        }
+
+        public override List<BaseComplexComponent> BuildTree()
+        {
+            List<BaseComplexComponent> result = new List<BaseComplexComponent> { this };
+
+            List<BaseComplexComponent> total = new List<BaseComplexComponent>();
+            foreach (BaseComplexComponent child in Components)
+            {
+                total = child.BuildTree();
+
+                if (total.Count > 0)
+                {
+                    result.AddRange(total);
+                }
+            }
+
+            return result;
         }
 
         #endregion

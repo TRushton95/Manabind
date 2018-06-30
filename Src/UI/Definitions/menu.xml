@@ -3,12 +3,12 @@
   <Components>
     <Container>
       <Width>500</Width>
-      <Height>500</Height>
+      <Height>300</Height>
       <PositionProfile>
-        <HorizontalAlign>Left</HorizontalAlign>
-        <VerticalAlign>Top</VerticalAlign>
+        <HorizontalAlign>Middle</HorizontalAlign>
+        <VerticalAlign>Middle</VerticalAlign>
         <OffsetX>50</OffsetX>
-        <OffsetY>50</OffsetY>
+        <OffsetY>0</OffsetY>
       </PositionProfile>
       <BackgroundColour>
         <R>0</R>
@@ -17,11 +17,85 @@
         <A>255</A>
       </BackgroundColour>
       <HoverBackgroundColour>
-        <R>255</R>
-        <G>0</G>
-        <B>0</B>
+        <R>50</R>
+        <G>50</G>
+        <B>255</B>
         <A>255</A>
       </HoverBackgroundColour>
+      <Components>
+        
+        <Button>
+          <Text>Yes</Text>
+          <Width>125</Width>
+          <Height>50</Height>
+          <PositionProfile>
+            <HorizontalAlign>Left</HorizontalAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+            <OffsetX>75</OffsetX>
+            <OffsetY>75</OffsetY>
+          </PositionProfile>
+          <TextColour>
+            <R>0</R>
+            <G>0</G>
+            <B>0</B>
+            <A>255</A>
+          </TextColour>
+          <HoverTextColour>
+            <R>255</R>
+            <G>255</G>
+            <B>255</B>
+            <A>255</A>
+          </HoverTextColour>
+          <BackgroundColour>
+            <R>255</R>
+            <G>0</G>
+            <B>255</B>
+            <A>255</A>
+          </BackgroundColour>
+          <HoverBackgroundColour>
+            <R>255</R>
+            <G>50</G>
+            <B>255</B>
+            <A>255</A>
+          </HoverBackgroundColour>
+        </Button>
+        
+        <Button>
+          <Text>No</Text>
+          <Width>125</Width>
+          <Height>50</Height>
+          <PositionProfile>
+            <HorizontalAlign>Right</HorizontalAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+            <OffsetX>-75</OffsetX>
+            <OffsetY>75</OffsetY>
+          </PositionProfile>
+          <TextColour>
+            <R>0</R>
+            <G>0</G>
+            <B>0</B>
+            <A>255</A>
+          </TextColour>
+          <HoverTextColour>
+            <R>255</R>
+            <G>255</G>
+            <B>255</B>
+            <A>255</A>
+          </HoverTextColour>
+          <BackgroundColour>
+            <R>255</R>
+            <G>0</G>
+            <B>255</B>
+            <A>255</A>
+          </BackgroundColour>
+          <HoverBackgroundColour>
+            <R>255</R>
+            <G>50</G>
+            <B>255</B>
+            <A>255</A>
+          </HoverBackgroundColour>
+        </Button>
+      </Components>
     </Container>
   </Components>
 </ComponentList>
