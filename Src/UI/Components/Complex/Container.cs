@@ -1,11 +1,9 @@
-﻿using System;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.PositionProfiles;
 using Manabind.Src.UI.Components.Basic;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using System.Xml.Serialization;
-using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Factories;
 
 namespace Manabind.Src.UI.Components.Complex
@@ -78,13 +76,12 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
 
-            frame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(),
-                                BackgroundColour, HoverBackgroundColour);
+            frame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour, HoverBackgroundColour);
             frame.Initialise(this.GetBounds());
 
             foreach (BaseComplexComponent component in Components)
             {
-                component.Initialise(this.GetBounds());
+                component.Initialise(this.GetBounds(), this.Priority);
             }
         }
 

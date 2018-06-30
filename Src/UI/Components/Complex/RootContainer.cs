@@ -17,6 +17,7 @@ namespace Manabind.Src.UI.Components.Complex
             this.Width = Settings.WindowWidth;
             this.Height = Settings.WindowHeight;
             this.PositionProfile = new AbsolutePositionProfile(0, 0);
+            this.Priority = 0;
         }
 
         #endregion
@@ -49,7 +50,7 @@ namespace Manabind.Src.UI.Components.Complex
 
             foreach (BaseComplexComponent component in Components)
             {
-                component.Initialise(this.GetBounds());
+                component.Initialise(this.GetBounds(), this.Priority);
             }
         }
 

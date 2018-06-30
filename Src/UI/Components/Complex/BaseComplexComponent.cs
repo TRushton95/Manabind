@@ -1,5 +1,6 @@
 ﻿using Manabind.Src.UI.Components.Basic;
 using Manabind.Src.UI.PositionProfiles;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace Manabind.Src.UI.Components.Complex
@@ -31,6 +32,13 @@ namespace Manabind.Src.UI.Components.Complex
         #endregion
 
         #region Methods
+
+        public void Initialise(Rectangle parent, int parentPriority)
+        {
+            this.Priority = parentPriority + 1;
+
+            this.Initialise(parent);
+        }
 
         public virtual List<BaseComplexComponent> BuildTree()
         {
