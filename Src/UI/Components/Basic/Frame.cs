@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Manabind.Src.UI.PositionProfiles;
 using System.Collections.Generic;
+using Manabind.Src.UI.Serialisation;
 
 namespace Manabind.Src.UI.Components.Basic
 {
@@ -10,7 +11,7 @@ namespace Manabind.Src.UI.Components.Basic
         #region Fields
         
         private Texture2D texture, defaultTexture, hoverTexture;
-        private Color displayColour, hoverColour;
+        private Colour displayColour, hoverColour;
 
         #endregion
 
@@ -21,7 +22,7 @@ namespace Manabind.Src.UI.Components.Basic
             this.Components = new List<BaseComponent>();
         }
 
-        public Frame(int width, int height, BasePositionProfile positionProfile, Color displayColour, Color hoverColour)
+        public Frame(int width, int height, BasePositionProfile positionProfile, Colour displayColour, Colour hoverColour)
             : base(positionProfile)
         {
             this.Width = width;
@@ -60,8 +61,8 @@ namespace Manabind.Src.UI.Components.Basic
         public override void Initialise(Rectangle parent)
         {
             this.InitialiseCoordinates(parent);
-            this.defaultTexture = this.BuildTexture(this.displayColour);
-            this.hoverTexture = this.BuildTexture(this.hoverColour);
+            this.defaultTexture = this.BuildTexture(this.displayColour.GetColor());
+            this.hoverTexture = this.BuildTexture(this.hoverColour.GetColor());
 
             this.texture = this.defaultTexture;
 
@@ -71,23 +72,28 @@ namespace Manabind.Src.UI.Components.Basic
             }
         }
 
-        public override void OnHover()
+        public override void Click()
+        {
+
+        }
+
+        public override void Hover()
         {
             this.texture = this.hoverTexture;
 
             foreach (BaseComponent component in Components)
             {
-                component.OnHover();
+                component.Hover();
             }
         }
 
-        public override void OnHoverLeave()
+        public override void HoverLeave()
         {
             this.texture = this.defaultTexture;
 
             foreach (BaseComponent component in Components)
             {
-                component.OnHoverLeave();
+                component.HoverLeave();
             }
         }
 

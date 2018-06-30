@@ -38,7 +38,10 @@ namespace Manabind.Src.UI.Components.Complex
         {
             foreach (BaseComplexComponent component in Components)
             {
-                component.Draw(spriteBatch);
+                if (component.Visible)
+                {
+                    component.Draw(spriteBatch);
+                }
             }
         }
 
@@ -52,14 +55,6 @@ namespace Manabind.Src.UI.Components.Complex
             {
                 component.Initialise(this.GetBounds(), this.Priority);
             }
-        }
-
-        public override void OnHover()
-        {
-        }
-
-        public override void OnHoverLeave()
-        {
         }
 
         public override List<BaseComplexComponent> BuildTree()
@@ -78,6 +73,18 @@ namespace Manabind.Src.UI.Components.Complex
             }
 
             return result;
+        }
+
+        protected override void ClickDetail()
+        {
+        }
+
+        protected override void HoverDetail()
+        {
+        }
+
+        protected override void HoverLeaveDetail()
+        {
         }
 
         #endregion

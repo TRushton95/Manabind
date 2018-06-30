@@ -45,7 +45,9 @@ namespace Manabind.Src.Gameplay.AppStates
 
             // Resolve hovers
             IEnumerable<BaseComplexComponent> hoveredComponents = componentManager.GetAll().Where(component => 
-                            component.GetBounds().Contains(currentMouseState.Position) && component.Interactive);
+                            component.GetBounds().Contains(currentMouseState.Position) && 
+                            component.Visible && 
+                            component.Interactive);
 
             prevHoveredComponent = currentHoveredComponent;
 
@@ -58,10 +60,20 @@ namespace Manabind.Src.Gameplay.AppStates
                 currentHoveredComponent = null;
             }
 
+            //hovered on component
             if (currentHoveredComponent != prevHoveredComponent)
             {
-                prevHoveredComponent?.OnHoverLeave();
-                currentHoveredComponent?.OnHover();
+                prevHoveredComponent?.HoverLeave();
+                currentHoveredComponent?.Hover();
+            }
+
+            //clicked on component
+            if (currentHoveredComponent != null && prevHoveredComponent != null &&
+                currentHoveredComponent == prevHoveredComponent &&
+                currentHoveredComponent.Hovered && currentMouseState.LeftButton == ButtonState.Pressed &&
+                prevHoveredComponent.Hovered && prevMouseState.LeftButton == ButtonState.Released)
+            {
+                currentHoveredComponent.Click();
             }
 
             UpdateState();

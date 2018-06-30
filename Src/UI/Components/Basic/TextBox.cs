@@ -4,6 +4,7 @@ using Manabind.Src.UI.PositionProfiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Text;
+using Manabind.Src.UI.Serialisation;
 
 namespace Manabind.Src.UI.Components.Basic
 {
@@ -13,7 +14,7 @@ namespace Manabind.Src.UI.Components.Basic
         
         private string text, displayText;
         private SpriteFont font;
-        private Color colour, defaultColour, hoverColour;
+        private Colour colour, defaultColour, hoverColour;
         private float scale;
         private int maxWidth;
         private FontFlow fontFlow;
@@ -26,7 +27,8 @@ namespace Manabind.Src.UI.Components.Basic
         {
         }
 
-        public TextBox(string text, int maxWidth, int gutter, BasePositionProfile positionProfile, FontFlow fontFlow, Color defaultColour, Color hoverColour, SpriteFont font)
+        public TextBox(string text, int maxWidth, int gutter, BasePositionProfile positionProfile, 
+                        FontFlow fontFlow, Colour defaultColour, Colour hoverColour, SpriteFont font)
             : base(positionProfile)
         {
             this.text = text;
@@ -47,7 +49,8 @@ namespace Manabind.Src.UI.Components.Basic
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(this.font, this.displayText, this.GetCoordinates(), this.colour, 0, default(Vector2), this.scale, SpriteEffects.None, 0);
+            spriteBatch.DrawString(this.font, this.displayText, this.GetCoordinates(), this.colour.GetColor(), 0,
+                                    default(Vector2), this.scale, SpriteEffects.None, 0);
         }
 
         public override void Initialise(Rectangle parent)
@@ -57,12 +60,16 @@ namespace Manabind.Src.UI.Components.Basic
             this.InitialiseCoordinates(parent);
         }
 
-        public override void OnHover()
+        public override void Click()
+        {
+        }
+
+        public override void Hover()
         {
             this.colour = this.hoverColour;
         }
 
-        public override void OnHoverLeave()
+        public override void HoverLeave()
         {
             this.colour = this.defaultColour;
         }

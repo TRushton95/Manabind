@@ -1,1 +1,18 @@
-﻿
+﻿Change draw approach
+	-Draw only draws itself and child base components
+	-ComponentManager draws all base complex components in list
+
+Root container should not be a base component inheritant
+	-Doesn't draw or hover
+	-Only provides parent boundaries (not strictl true, see below)
+	-Should it even exist???
+
+	-Must then consider how hiding affects child components
+
+Refactor EventsAreEqual out into utility class
+	-Doesn't belong there
+
+Look into event sending/recieving/executing system
+	-See if there is a simpler approach
+
+Find Hover/Leave approach where Hover doesn't surface where it shouldn't
