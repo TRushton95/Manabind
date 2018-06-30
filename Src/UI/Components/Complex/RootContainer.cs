@@ -38,7 +38,10 @@ namespace Manabind.Src.UI.Components.Complex
         {
             foreach (BaseComplexComponent component in Components)
             {
-                component.Draw(spriteBatch);
+                if (component.Visible)
+                {
+                    component.Draw(spriteBatch);
+                }
             }
         }
 
