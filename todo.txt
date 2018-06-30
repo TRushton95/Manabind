@@ -8,3 +8,6 @@ Root container should not be a base component inheritant
 	-Should it even exist???
 
 	-Must then consider how hiding affects child components
+
+Make Color xml use attributes to save LOTS of space
+	-Probably needs a wrapper class
