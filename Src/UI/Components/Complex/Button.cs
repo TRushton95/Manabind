@@ -1,5 +1,4 @@
-﻿using System;
-using Manabind.Src.UI.Components.Basic;
+﻿using Manabind.Src.UI.Components.Basic;
 using Manabind.Src.UI.PositionProfiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

@@ -16,12 +16,7 @@
         <B>255</B>
         <A>255</A>
       </BackgroundColour>
-      <HoverBackgroundColour>
-        <R>50</R>
-        <G>50</G>
-        <B>255</B>
-        <A>255</A>
-      </HoverBackgroundColour>
+      <Interactive>false</Interactive>
       <Components>
         
         <Button>

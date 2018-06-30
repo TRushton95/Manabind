@@ -44,7 +44,8 @@ namespace Manabind.Src.Gameplay.AppStates
             UpdateMouseState();
 
             // Resolve hovers
-            IEnumerable<BaseComplexComponent> hoveredComponents = componentManager.GetAll().Where(component => component.GetBounds().Contains(currentMouseState.Position));
+            IEnumerable<BaseComplexComponent> hoveredComponents = componentManager.GetAll().Where(component => 
+                            component.GetBounds().Contains(currentMouseState.Position) && component.Interactive);
 
             prevHoveredComponent = currentHoveredComponent;
 
