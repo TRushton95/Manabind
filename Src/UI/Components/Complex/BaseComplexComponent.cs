@@ -92,12 +92,14 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.Hovered = true;
             this.HoverDetail();
+            EventManager.PushEvent(new UIEvent(this.Name, EventType.Hover));
         }
 
         public override void HoverLeave()
         {
             this.Hovered = false;
             this.HoverLeaveDetail();
+            EventManager.PushEvent(new UIEvent(this.Name, EventType.HoverLeave));
         }
 
         public virtual List<BaseComplexComponent> BuildTree()
