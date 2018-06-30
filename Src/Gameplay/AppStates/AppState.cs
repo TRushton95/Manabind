@@ -1,6 +1,7 @@
 ﻿using Manabind.Src.UI.Components;
 using Manabind.Src.UI.Components.Basic;
 using Manabind.Src.UI.Components.Complex;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -65,10 +66,10 @@ namespace Manabind.Src.Gameplay.AppStates
             UpdateState();
         }
 
-        public void Initialise(GraphicsDevice device, ContentManager content, int windowWidth, int windowHeight)
+        public void Initialise(GraphicsDevice device, ContentManager content, Rectangle window)
         {
-            componentManager.InitialiseResources(device, content, windowWidth, windowHeight);
-            componentManager.Initialise();
+            componentManager.InitialiseResources(device, content, window.Width, window.Height);
+            componentManager.Initialise(window);
         }
 
         public void Draw(SpriteBatch spriteBatch)

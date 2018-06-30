@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Xml.Serialization;
-using Manabind.Src.UI.Serialisation;
-using System.IO;
-using System.Xml;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.PositionProfiles;
+using Microsoft.Xna.Framework;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -44,11 +41,15 @@ namespace Manabind.Src.UI.Components.Complex
             }
         }
 
-        public override void Initialise()
+        public override void Initialise(Rectangle parent)
         {
+            this.InitialiseCoordinates(parent);
+            this.Width = Settings.WindowWidth;
+            this.Height = Settings.WindowHeight;
+
             foreach (BaseComplexComponent component in Components)
             {
-                component.Initialise();
+                component.Initialise(this.GetBounds());
             }
         }
 

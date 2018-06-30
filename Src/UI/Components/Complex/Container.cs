@@ -4,6 +4,7 @@ using Manabind.Src.UI.PositionProfiles;
 using Manabind.Src.UI.Components.Basic;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using System.Xml.Serialization;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -71,14 +72,16 @@ namespace Manabind.Src.UI.Components.Complex
             }
         }
 
-        public override void Initialise()
+        public override void Initialise(Rectangle parent)
         {
+            this.InitialiseCoordinates(parent);
+
             frame = new Frame(Width, Height, PositionProfile, BackgroundColour, HoverBackgroundColour);
-            frame.Initialise();
+            frame.Initialise(this.GetBounds());
 
             foreach (BaseComplexComponent component in Components)
             {
-                component.Initialise();
+                component.Initialise(this.GetBounds());
             }
         }
 

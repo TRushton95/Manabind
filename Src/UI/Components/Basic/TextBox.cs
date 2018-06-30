@@ -39,8 +39,6 @@ namespace Manabind.Src.UI.Components.Basic
             this.scale = 1;
 
             this.colour = defaultColour;
-
-            this.Initialise();
         }
 
         #endregion
@@ -52,11 +50,11 @@ namespace Manabind.Src.UI.Components.Basic
             spriteBatch.DrawString(this.font, this.displayText, this.GetCoordinates(), this.colour, 0, default(Vector2), this.scale, SpriteEffects.None, 0);
         }
 
-        public override void Initialise()
+        public override void Initialise(Rectangle parent)
         {
             this.InitialiseDisplay();
             this.InitialiseDimensions();
-            this.InitialiseCoordinates();
+            this.InitialiseCoordinates(parent);
         }
 
         public override void OnHover()

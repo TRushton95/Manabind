@@ -13,7 +13,6 @@ namespace Manabind.Src.UI.Components.Complex
         #region Fields
 
         private Frame frame;
-        private TextBox textBox;
 
         #endregion
 
@@ -75,27 +74,28 @@ namespace Manabind.Src.UI.Components.Complex
         public override void Draw(SpriteBatch spriteBatch)
         {
             frame.Draw(spriteBatch);
-            textBox.Draw(spriteBatch);
         }
 
-        public override void Initialise()
+        public override void Initialise(Rectangle parent)
         {
-            frame = new Frame(Width, Height, PositionProfile, BackgroundColour, HoverBackgroundColour);
-            frame.Initialise();
+            this.InitialiseCoordinates(parent);
 
-            textBox = new TextBox(Text, Width, 20, PositionProfile, FontFlow.Shrink, TextColour, HoverTextColour, Textures.ButtonFont);
-            textBox.Initialise();
+            TextBox textBox = new TextBox(Text, Width, 20, new RelativePositionProfile(HorizontalAlign.Middle, VerticalAlign.Middle, 0, 0),
+                                            FontFlow.Shrink, TextColour, HoverTextColour, Textures.ButtonFont);
+
+            frame = new Frame(Width, Height, PositionProfile, BackgroundColour, HoverBackgroundColour);
+            frame.Components.Add(textBox);
+
+            frame.Initialise(this.GetBounds());
         }
 
         public override void OnHover()
         {
             frame.OnHover();
-            textBox.OnHover();
         }
         public override void OnHoverLeave()
         {
             frame.OnHoverLeave();
-            textBox.OnHoverLeave();
         }
 
         #endregion

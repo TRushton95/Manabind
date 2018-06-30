@@ -1,5 +1,6 @@
 ﻿using Manabind.Src.UI.Components.Complex;
 using Manabind.Src.UI.Serialisation;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -55,9 +56,9 @@ namespace Manabind.Src.UI.Components
             this.root.InitialiseResources(device, content, windowWidth, windowHeight);
         }
 
-        public void Initialise()
+        public void Initialise(Rectangle window)
         {
-            this.root.Initialise();
+            this.root.Initialise(window);
         }
 
         public RootContainer GetRoot()

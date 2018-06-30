@@ -54,7 +54,7 @@ namespace Manabind.Src.UI.Components.Basic
 
         public abstract void Draw(SpriteBatch spriteBatch);
 
-        public abstract void Initialise();
+        public abstract void Initialise(Rectangle parent);
 
         public abstract void OnHover();
 
