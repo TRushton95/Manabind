@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Components.BaseInstanceResources;
+using Manabind.Src.UI.Factories;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -80,10 +81,10 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
 
-            TextBox textBox = new TextBox(Text, Width, 20, new RelativePositionProfile(HorizontalAlign.Middle, VerticalAlign.Middle, 0, 0),
+            TextBox textBox = new TextBox(Text, Width, 20, PositionProfileFactory.BuildCenteredRelative(),
                                             FontFlow.Shrink, TextColour, HoverTextColour, Textures.ButtonFont);
 
-            frame = new Frame(Width, Height, PositionProfile, BackgroundColour, HoverBackgroundColour);
+            frame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour, HoverBackgroundColour);
             frame.Components.Add(textBox);
 
             frame.Initialise(this.GetBounds());

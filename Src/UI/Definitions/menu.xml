@@ -7,7 +7,7 @@
       <PositionProfile>
         <HorizontalAlign>Middle</HorizontalAlign>
         <VerticalAlign>Middle</VerticalAlign>
-        <OffsetX>0</OffsetX>
+        <OffsetX>50</OffsetX>
         <OffsetY>0</OffsetY>
       </PositionProfile>
       <BackgroundColour>
@@ -26,13 +26,13 @@
         
         <Button>
           <Text>Yes</Text>
-          <Width>100</Width>
+          <Width>125</Width>
           <Height>50</Height>
           <PositionProfile>
             <HorizontalAlign>Left</HorizontalAlign>
-            <VerticalAlign>Bottom</VerticalAlign>
-            <OffsetX>0</OffsetX>
-            <OffsetY>0</OffsetY>
+            <VerticalAlign>Middle</VerticalAlign>
+            <OffsetX>75</OffsetX>
+            <OffsetY>75</OffsetY>
           </PositionProfile>
           <TextColour>
             <R>0</R>
@@ -62,13 +62,13 @@
         
         <Button>
           <Text>No</Text>
-          <Width>100</Width>
+          <Width>125</Width>
           <Height>50</Height>
           <PositionProfile>
             <HorizontalAlign>Right</HorizontalAlign>
-            <VerticalAlign>Bottom</VerticalAlign>
-            <OffsetX>0</OffsetX>
-            <OffsetY>0</OffsetY>
+            <VerticalAlign>Middle</VerticalAlign>
+            <OffsetX>-75</OffsetX>
+            <OffsetY>75</OffsetY>
           </PositionProfile>
           <TextColour>
             <R>0</R>

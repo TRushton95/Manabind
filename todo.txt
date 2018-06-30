@@ -1,7 +1,1 @@
-﻿-Add a mechanism for adding and removing components to ComponentLookupService as they are built
-	-Create a hook that adds them when created, or register them
-
--Textures have a colour set, and a colour is sent as a parameter to the draw method
-	-What's up with that?
-
--Fix xml doc (was copied from previous version)
+﻿
