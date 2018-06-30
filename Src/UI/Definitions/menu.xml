@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ComponentList>
   <Components>
-    <Container width="500" height="300" interactive="false">
+    <Container name="confirm-container" width="500" height="300" interactive="false">
       <PositionProfile>
         <HorizontalAlign>Middle</HorizontalAlign>
         <VerticalAlign>Middle</VerticalAlign>
@@ -16,7 +16,7 @@
       </BackgroundColour>
       <Components>
         
-        <Button width="125" height="50">
+        <Button name="confirm-yes" width="125" height="50">
           <Text>Yes</Text>
           <PositionProfile>
             <HorizontalAlign>Left</HorizontalAlign>
@@ -50,7 +50,7 @@
           </HoverBackgroundColour>
         </Button>
         
-        <Button width="125" height="50">
+        <Button name="confirm-no" width="125" height="50">
           <Text>No</Text>
           <PositionProfile>
             <HorizontalAlign>Right</HorizontalAlign>

@@ -27,6 +27,13 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Properties
 
+        [XmlAttribute("name")]
+        public string Name
+        {
+            get;
+            set;
+        }
+
         [XmlIgnore]
         public int Priority
         {
