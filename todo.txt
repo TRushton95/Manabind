@@ -4,5 +4,7 @@
 
 Root container should not be a base component inheritant
 	-Doesn't draw or hover
-	-Only provides parent boundaries
+	-Only provides parent boundaries (not strictl true, see below)
 	-Should it even exist???
+
+	-Must then consider how hiding affects child components

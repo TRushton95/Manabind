@@ -1,4 +1,5 @@
 ﻿using Manabind.Src.UI.Components.Basic;
+using Manabind.Src.UI.Events;
 using Manabind.Src.UI.PositionProfiles;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace Manabind.Src.UI.Components.Complex
             this.Priority = 0;
             this.Interactive = true;
             this.Visible = true;
+            this.EventResponses = new List<EventResponse>();
         }
 
         public BaseComplexComponent(int width, int height, BasePositionProfile positionProfile, int priority)
@@ -23,6 +25,7 @@ namespace Manabind.Src.UI.Components.Complex
             this.Priority = priority;
             this.Interactive = true;
             this.Visible = true;
+            this.EventResponses = new List<EventResponse>();
         }
 
         #endregion
@@ -57,6 +60,13 @@ namespace Manabind.Src.UI.Components.Complex
             set;
         }
         
+        [XmlArrayItem(typeof(EventResponse))]
+        public List<EventResponse> EventResponses
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Methods

@@ -1,4 +1,5 @@
 ﻿using Manabind.Src.UI.Enums;
+using System.Xml.Serialization;
 
 namespace Manabind.Src.UI.Events
 {
@@ -16,8 +17,10 @@ namespace Manabind.Src.UI.Events
 
         #region Properties
 
+        [XmlAttribute("sender")]
         public string Sender { get; }
 
+        [XmlAttribute("eventType")]
         public EventType EventType { get; }
 
         #endregion

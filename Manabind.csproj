@@ -62,6 +62,8 @@
     <Compile Include="Src\UI\Enums\FontFlow.cs" />
     <Compile Include="Src\UI\Enums\HorizontalAlign.cs" />
     <Compile Include="Src\UI\Enums\VerticalAlign.cs" />
+    <Compile Include="Src\UI\Events\EventResponse.cs" />
+    <Compile Include="Src\UI\Events\EventManager.cs" />
     <Compile Include="Src\UI\Events\UIEvent.cs" />
     <Compile Include="Src\UI\Factories\PositionProfileFactory.cs" />
     <Compile Include="Src\UI\PositionProfiles\AbsolutePositionProfile.cs" />
