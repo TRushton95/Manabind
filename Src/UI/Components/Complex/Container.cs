@@ -3,9 +3,9 @@ using Manabind.Src.UI.PositionProfiles;
 using Manabind.Src.UI.Components.Basic;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using System.Xml.Serialization;
 using Manabind.Src.UI.Factories;
 using Manabind.Src.UI.Serialisation;
+using System.Xml.Serialization;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -53,6 +53,7 @@ namespace Manabind.Src.UI.Components.Complex
 
         [XmlArrayItem(typeof(Container))]
         [XmlArrayItem(typeof(Button))]
+        [XmlArrayItem(typeof(Heading))]
         public List<BaseComplexComponent> Components
         {
             get;

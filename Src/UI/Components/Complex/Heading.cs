@@ -32,12 +32,6 @@ namespace Manabind.Src.UI.Components.Complex
             set;
         }
 
-        public int Gutter
-        {
-            get;
-            set;
-        }
-
         public Colour TextColour
         {
             get;
@@ -63,7 +57,7 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
 
-            fontGraphics = new FontGraphics(Text, Width, Gutter, PositionProfile, FontFlow.Shrink, TextColour, HoverTextColour, Textures.ButtonFont);
+            fontGraphics = new FontGraphics(Text, Width, 0, PositionProfile, FontFlow.Shrink, TextColour, HoverTextColour, Textures.HeadingFont);
             fontGraphics.Initialise(this.GetBounds());
         }
 

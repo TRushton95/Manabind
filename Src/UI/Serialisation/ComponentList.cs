@@ -8,6 +8,7 @@ namespace Manabind.Src.UI.Serialisation
     {
         [XmlArrayItem(typeof(Container))]
         [XmlArrayItem(typeof(Button))]
+        [XmlArrayItem(typeof(Heading))]
         public List<BaseComplexComponent> Components
         {
             get;

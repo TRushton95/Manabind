@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ComponentList>
+  <Components>
+    <Heading name="heading" width="500" height="100">
+      <Text>Manabind</Text>
+      <Gutter>0</Gutter>
+      <RelativePositionProfile>
+        <HorizontalAlign>Middle</HorizontalAlign>
+        <VerticalAlign>Top</VerticalAlign>
+        <OffsetX>0</OffsetX>
+        <OffsetY>20</OffsetY>
+      </RelativePositionProfile>
+      <TextColour r="0" g="0" b="0" a="255" />
+      <HoverTextColour r="0" g="0" b="0" a="255" />
+    </Heading>
+    
+    <Button name="play-button" width="200" height="75">
+      <Text>Play</Text>
+      <RelativePositionProfile>
+        <HorizontalAlign>Middle</HorizontalAlign>
+        <VerticalAlign>Top</VerticalAlign>
+        <OffsetX>0</OffsetX>
+        <OffsetY>170</OffsetY>
+      </RelativePositionProfile>
+      <TextColour r="0" g="0" b="0" a="255" />
+      <HoverTextColour r="255" g="255" b="255" a="255" />
+      <BackgroundColour r="255" g="0" b="255" a="255" />
+      <HoverBackgroundColour r="255" g="50" b="255" a="255" />
+    </Button>
+  </Components>
+</ComponentList>

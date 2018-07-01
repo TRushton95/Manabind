@@ -11,6 +11,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
 
         //Fonts
         public static SpriteFont ButtonFont;
+        public static SpriteFont HeadingFont;
 
         #endregion
 
@@ -37,6 +38,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         {
             //Fonts
             ButtonFont = content.Load<SpriteFont>("ButtonFont");
+            HeadingFont = content.Load<SpriteFont>("HeadingFont");
         }
 
         #endregion

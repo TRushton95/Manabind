@@ -4,6 +4,7 @@ using System;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.PositionProfiles;
 using Microsoft.Xna.Framework;
+using System.Xml.Serialization;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -24,6 +25,9 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Properties
 
+        [XmlArrayItem(typeof(Container))]
+        [XmlArrayItem(typeof(Button))]
+        [XmlArrayItem(typeof(Heading))]
         public List<BaseComplexComponent> Components
         {
             get;
