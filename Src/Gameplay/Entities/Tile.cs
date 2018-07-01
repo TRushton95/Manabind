@@ -7,7 +7,7 @@ namespace Manabind.Src.Gameplay.Entities
     {
         #region Constants
 
-        public static int Diameter = 50;
+        public static int Diameter = 100;
 
         #endregion
 
