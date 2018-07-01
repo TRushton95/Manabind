@@ -47,6 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\Gameplay\AppStates\AppState.cs" />
     <Compile Include="Src\Gameplay\AppStates\MenuAppState.cs" />
+    <Compile Include="Src\Gameplay\GameManager.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Settings.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Textures.cs" />
     <Compile Include="Src\UI\Components\Basic\BaseComponent.cs" />

@@ -1,4 +1,5 @@
-﻿using Manabind.Src.Gameplay.AppStates;
+﻿using Manabind.Src.Gameplay;
+using Manabind.Src.Gameplay.AppStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -12,8 +13,6 @@ namespace Manabind.Src
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        private AppState appState;
-
         #endregion
 
         #region Constructors
@@ -26,8 +25,6 @@ namespace Manabind.Src
             this.IsMouseVisible = true;
 
             Content.RootDirectory = "Content";
-
-            appState = new MenuAppState();
         }
 
         #endregion
@@ -37,7 +34,7 @@ namespace Manabind.Src
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            appState.Initialise(GraphicsDevice, Content);
+            GameManager.Initialise(GraphicsDevice, Content);
 
             base.Initialize();
         }
@@ -61,7 +58,7 @@ namespace Manabind.Src
                 Exit();
 
             // TODO: Add your update logic here
-            appState.Update();
+            GameManager.Update();
 
             base.Update(gameTime);
         }
@@ -71,7 +68,7 @@ namespace Manabind.Src
             spriteBatch.Begin();
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            appState.Draw(spriteBatch);
+            GameManager.Draw(spriteBatch);
             base.Draw(gameTime);
 
             spriteBatch.End();
