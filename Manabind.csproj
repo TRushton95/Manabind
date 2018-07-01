@@ -93,6 +93,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\EmptyTile.png" />
+    <Content Include="Content\GroundTile.png" />
+    <Content Include="Content\GroundTileIcon.png" />
     <Content Include="Icon.ico" />
     <Content Include="Src\UI\Definitions\help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
