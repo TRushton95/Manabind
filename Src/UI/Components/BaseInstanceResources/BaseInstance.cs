@@ -23,11 +23,11 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
 
         #region Methods
 
-        public void InitialiseResources(GraphicsDevice device, ContentManager content, int windowWidth, int windowHeight)
+        public void InitialiseResources(GraphicsDevice device, ContentManager content)
         {
             _graphicsDevice = device;
             Textures.Initialise(content);
-            Settings.Initialise(windowWidth, windowHeight);
+            Settings.Initialise();
         }
 
         #endregion

@@ -6,9 +6,6 @@
 
         private static Settings _instance;
 
-        public static int WindowWidth;
-        public static int WindowHeight;
-
         #endregion
 
         #region Properties
@@ -30,10 +27,8 @@
 
         #region Methods
 
-        public void Initialise(int width, int height)
+        public void Initialise()
         {
-            WindowWidth = width;
-            WindowHeight = height;
         }
 
         #endregion
