@@ -15,8 +15,8 @@ namespace Manabind.Src.UI.Components.Complex
         public RootContainer()
             : base()
         {
-            this.Width = Settings.WindowWidth;
-            this.Height = Settings.WindowHeight;
+            this.Width = AppSettings.WindowWidth;
+            this.Height = AppSettings.WindowHeight;
             this.PositionProfile = new AbsolutePositionProfile(0, 0);
             this.Priority = 0;
         }
@@ -52,8 +52,8 @@ namespace Manabind.Src.UI.Components.Complex
         public override void Initialise(Rectangle parent)
         {
             this.InitialiseCoordinates(parent);
-            this.Width = Settings.WindowWidth;
-            this.Height = Settings.WindowHeight;
+            this.Width = AppSettings.WindowWidth;
+            this.Height = AppSettings.WindowHeight;
 
             foreach (BaseComplexComponent component in Components)
             {

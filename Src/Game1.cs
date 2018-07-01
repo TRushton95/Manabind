@@ -37,7 +37,7 @@ namespace Manabind.Src
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            appState.Initialise(GraphicsDevice, Content, this.Window.ClientBounds);
+            appState.Initialise(GraphicsDevice, Content);
 
             base.Initialize();
         }
