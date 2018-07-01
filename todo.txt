@@ -16,3 +16,5 @@ Look into event sending/recieving/executing system
 	-See if there is a simpler approach
 
 Find Hover/Leave approach where Hover doesn't surface where it shouldn't
+
+What does heading do when altering height?
