@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Manabind.Src.Gameplay.AppStates
+﻿namespace Manabind.Src.Gameplay.AppStates
 {
     public class MenuAppState : AppState
     {

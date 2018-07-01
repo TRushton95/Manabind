@@ -99,6 +99,9 @@
     <Content Include="Src\UI\Definitions\options.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Src\UI\Definitions\play.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Src\UI\Definitions\test.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
