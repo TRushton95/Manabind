@@ -21,8 +21,8 @@ namespace Manabind.Src
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 1280;
-            graphics.PreferredBackBufferHeight = 720;
+            graphics.PreferredBackBufferWidth = AppSettings.WindowWidth;
+            graphics.PreferredBackBufferHeight = AppSettings.WindowHeight;
             this.IsMouseVisible = true;
 
             Content.RootDirectory = "Content";

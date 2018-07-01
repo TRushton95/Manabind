@@ -57,9 +57,9 @@ namespace Manabind.Src.UI.Components
             }
         }
 
-        public void InitialiseResources(GraphicsDevice device, ContentManager content, int windowWidth, int windowHeight)
+        public void InitialiseResources(GraphicsDevice device, ContentManager content)
         {
-            this.root.InitialiseResources(device, content, windowWidth, windowHeight);
+            this.root.InitialiseResources(device, content, AppSettings.WindowWidth, AppSettings.WindowHeight);
         }
 
         public void Initialise(Rectangle window)
