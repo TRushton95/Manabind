@@ -1,5 +1,7 @@
 ﻿using Manabind.Src.Gameplay.AppStates;
 using Manabind.Src.UI.Components.BaseInstanceResources;
+using Manabind.Src.UI.Enums;
+using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -24,7 +26,7 @@ namespace Manabind.Src.Gameplay
 
         #region Properties
 
-        public static bool ReadyToExit
+        public bool ReadyToExit
         {
             get;
             set;
@@ -38,6 +40,8 @@ namespace Manabind.Src.Gameplay
         {
             appState = new MenuAppState();
             appState.Initialise(device, content);
+
+            this.EventResponses.Add(new EventResponse(new UIEvent("exit-button", EventType.Click), "exit"));
         }
 
         public void Update()
