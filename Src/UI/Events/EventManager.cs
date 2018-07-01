@@ -1,4 +1,5 @@
-﻿using Manabind.Src.UI.Components.Complex;
+﻿using Manabind.Src.UI.Components.BaseInstanceResources;
+using Manabind.Src.UI.Components.Complex;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Manabind.Src.UI.Events
     {
         #region Fields
 
-        private static List<BaseComplexComponent> listeners;
+        private static List<Listener> listeners;
 
         #endregion
 
@@ -17,14 +18,14 @@ namespace Manabind.Src.UI.Events
 
         static EventManager()
         {
-            listeners = new List<BaseComplexComponent>();
+            listeners = new List<Listener>();
         }
 
         #endregion
 
         #region Methods
 
-        public static void Subscribe(BaseComplexComponent subscriber)
+        public static void Subscribe(Listener subscriber)
         {
             if (!listeners.Contains(subscriber))
             {
@@ -47,9 +48,9 @@ namespace Manabind.Src.UI.Events
 
         public static void PushEvent(UIEvent e)
         {
-            List<BaseComplexComponent> relevantListeners = new List<BaseComplexComponent>();
+            List<Listener> relevantListeners = new List<Listener>();
 
-            foreach (BaseComplexComponent listener in listeners)
+            foreach (Listener listener in listeners)
             {
                 List<EventResponse> responses = listener.EventResponses;
 
@@ -59,9 +60,9 @@ namespace Manabind.Src.UI.Events
                 }
             }
 
-            foreach (BaseComplexComponent listener in relevantListeners)
+            foreach (Listener listener in relevantListeners)
             {
-                listener.RecieveEvent(e);
+                listener.PushEvent(e);
             }
         }
 

@@ -70,13 +70,6 @@ namespace Manabind.Src.UI.Components.Complex
             get;
             set;
         }
-        
-        [XmlArrayItem(typeof(EventResponse))]
-        public List<EventResponse> EventResponses
-        {
-            get;
-            set;
-        }
 
         #endregion
 
@@ -124,19 +117,7 @@ namespace Manabind.Src.UI.Components.Complex
             this.Visible = true;
         }
 
-        //Extend as necessary
-        public void RecieveEvent(UIEvent e)
-        {
-            foreach (EventResponse response in EventResponses)
-            {
-                if (Utility.EventsAreEqual(response.UIEvent, e))
-                {
-                    this.ExecuteEventResponse(response.Action);
-                }
-            }
-        }
-
-        private void ExecuteEventResponse(string action)
+        protected override void ExecuteEventResponse(string action)
         {
             switch (action)
             {

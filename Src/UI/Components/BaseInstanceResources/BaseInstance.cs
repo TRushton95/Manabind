@@ -3,11 +3,20 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Manabind.Src.UI.Components.BaseInstanceResources
 {
-    public abstract class BaseInstance
+    public abstract class BaseInstance : Listener
     {
         #region Fields
 
         private static GraphicsDevice _graphicsDevice;
+
+        #endregion
+
+        #region Constructors
+
+        public BaseInstance()
+            : base()
+        {
+        }
 
         #endregion
 

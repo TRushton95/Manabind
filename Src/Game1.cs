@@ -12,6 +12,7 @@ namespace Manabind.Src
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private GameManager gameManager;
 
         #endregion
 
@@ -24,6 +25,8 @@ namespace Manabind.Src
             graphics.PreferredBackBufferHeight = AppSettings.WindowHeight;
             this.IsMouseVisible = true;
 
+            gameManager = new GameManager();
+
             Content.RootDirectory = "Content";
         }
 
@@ -34,7 +37,7 @@ namespace Manabind.Src
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            GameManager.Initialise(GraphicsDevice, Content);
+            gameManager.Initialise(GraphicsDevice, Content);
 
             base.Initialize();
         }
@@ -58,7 +61,7 @@ namespace Manabind.Src
                 Exit();
 
             // TODO: Add your update logic here
-            GameManager.Update();
+            gameManager.Update();
 
             base.Update(gameTime);
         }
@@ -68,7 +71,7 @@ namespace Manabind.Src
             spriteBatch.Begin();
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            GameManager.Draw(spriteBatch);
+            gameManager.Draw(spriteBatch);
             base.Draw(gameTime);
 
             spriteBatch.End();
