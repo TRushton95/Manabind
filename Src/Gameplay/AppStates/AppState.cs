@@ -25,6 +25,7 @@ namespace Manabind.Src.Gameplay.AppStates
         public AppState()
         {
             componentManager = new ComponentManager();
+            componentManager.LoadUI(this.UIDefinitionFilename);
             currentHoveredComponent = null;
             prevHoveredComponent = null;
         }

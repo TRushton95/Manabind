@@ -46,7 +46,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\Gameplay\AppStates\AppState.cs" />
+    <Compile Include="Src\Gameplay\AppStates\HelpAppState.cs" />
     <Compile Include="Src\Gameplay\AppStates\MenuAppState.cs" />
+    <Compile Include="Src\Gameplay\AppStates\OptionsAppState.cs" />
+    <Compile Include="Src\Gameplay\AppStates\PlayAppState.cs" />
     <Compile Include="Src\Gameplay\GameManager.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Listener.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Settings.cs" />
@@ -87,7 +90,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <Content Include="Src\UI\Definitions\help.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Src\UI\Definitions\menu.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Src\UI\Definitions\options.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Src\UI\Definitions\test.xml">

@@ -4,14 +4,6 @@ namespace Manabind.Src.Gameplay.AppStates
 {
     public class MenuAppState : AppState
     {
-        #region Constructors
-
-        public MenuAppState()
-        {
-            componentManager.LoadUI(AppSettings.MenuUIFileName);
-        }
-
-        #endregion
 
         #region Properties
 

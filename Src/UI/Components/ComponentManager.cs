@@ -44,11 +44,6 @@ namespace Manabind.Src.UI.Components
                 root.Components = componentList.Components;
             }
 
-            if (root.Components.Count == 0)
-            {
-                throw new XmlException("Failed to deserialise ui definition.");
-            }
-
             components.AddRange(root.BuildTree());
 
             foreach (BaseComplexComponent component in components)
