@@ -1,5 +1,5 @@
-﻿using Manabind.Src.Gameplay;
-using Manabind.Src.Gameplay.AppStates;
+﻿using Manabind.Src.Control;
+using Manabind.Src.Control.AppStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;

@@ -1,11 +1,10 @@
-﻿namespace Manabind.Src.Gameplay.AppStates
+﻿namespace Manabind.Src.Control.AppStates
 {
-    public class HelpAppState : AppState
+    public class OptionsAppState : AppState
     {
-
         #region Properties
 
-        protected override string UIDefinitionFilename => AppSettings.HelpUIFileName;
+        protected override string UIDefinitionFilename => AppSettings.OptionsUIFileName;
 
         #endregion
 

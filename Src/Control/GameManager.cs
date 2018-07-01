@@ -1,11 +1,11 @@
-﻿using Manabind.Src.Gameplay.AppStates;
+﻿using Manabind.Src.Control.AppStates;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Manabind.Src.Gameplay
+namespace Manabind.Src.Control
 {
     public class GameManager : Listener
     {

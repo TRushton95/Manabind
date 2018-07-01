@@ -1,5 +1,4 @@
 ﻿using Manabind.Src.UI.Components;
-using Manabind.Src.UI.Components.Basic;
 using Manabind.Src.UI.Components.Complex;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -8,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Manabind.Src.Gameplay.AppStates
+namespace Manabind.Src.Control.AppStates
 {
     public abstract class AppState
     {
