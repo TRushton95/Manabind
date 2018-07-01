@@ -8,7 +8,7 @@ using Manabind.Src.UI.Serialisation;
 
 namespace Manabind.Src.UI.Components.Basic
 {
-    public class TextBox : BaseComponent
+    public class FontGraphics : BaseComponent
     {
         #region Fields
         
@@ -23,11 +23,11 @@ namespace Manabind.Src.UI.Components.Basic
 
         #region Constructors
 
-        public TextBox()
+        public FontGraphics()
         {
         }
 
-        public TextBox(string text, int maxWidth, int gutter, BasePositionProfile positionProfile, 
+        public FontGraphics(string text, int maxWidth, int gutter, BasePositionProfile positionProfile, 
                         FontFlow fontFlow, Colour defaultColour, Colour hoverColour, SpriteFont font)
             : base(positionProfile)
         {

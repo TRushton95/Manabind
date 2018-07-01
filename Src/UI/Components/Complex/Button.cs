@@ -81,11 +81,11 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
 
-            TextBox textBox = new TextBox(Text, Width, 20, PositionProfileFactory.BuildCenteredRelative(),
+            FontGraphics fontGraphics = new FontGraphics(Text, Width, 20, PositionProfileFactory.BuildCenteredRelative(),
                                             FontFlow.Shrink, TextColour, HoverTextColour, Textures.ButtonFont);
 
             frame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour, HoverBackgroundColour);
-            frame.Components.Add(textBox);
+            frame.Components.Add(fontGraphics);
 
             frame.Initialise(this.GetBounds());
         }
