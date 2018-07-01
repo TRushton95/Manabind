@@ -82,7 +82,7 @@ namespace Manabind.Src.Gameplay.AppStates
         public void Initialise(GraphicsDevice device, ContentManager content)
         {
             componentManager.InitialiseResources(device, content);
-            componentManager.Initialise(new Rectangle(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight);
+            componentManager.Initialise(new Rectangle(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight));
         }
 
         public void Draw(SpriteBatch spriteBatch)
