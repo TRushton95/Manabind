@@ -18,3 +18,6 @@ Look into event sending/recieving/executing system
 Find Hover/Leave approach where Hover doesn't surface where it shouldn't
 
 What does heading do when altering height?
+
+Allow AppState (and possibly in-game classes) to recieve notifications
+	-Maybe use BaseListener class that implements PushNotification(Event e) method

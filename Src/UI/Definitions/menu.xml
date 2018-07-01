@@ -3,7 +3,6 @@
   <Components>
     <Heading name="heading" width="400" height="100">
       <Text>Manabind</Text>
-      <Gutter>0</Gutter>
       <RelativePositionProfile>
         <HorizontalAlign>Middle</HorizontalAlign>
         <VerticalAlign>Top</VerticalAlign>
