@@ -51,6 +51,9 @@
     <Compile Include="Src\Control\AppStates\OptionsAppState.cs" />
     <Compile Include="Src\Control\AppStates\PlayAppState.cs" />
     <Compile Include="Src\Control\GameManager.cs" />
+    <Compile Include="Src\Gameplay\Entities\BaseEntity.cs" />
+    <Compile Include="Src\Gameplay\Entities\Board.cs" />
+    <Compile Include="Src\Gameplay\Entities\Tile.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Listener.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Settings.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Textures.cs" />
@@ -67,6 +70,7 @@
     <Compile Include="Src\UI\Enums\EventType.cs" />
     <Compile Include="Src\UI\Enums\FontFlow.cs" />
     <Compile Include="Src\UI\Enums\HorizontalAlign.cs" />
+    <Compile Include="Src\UI\Enums\TileType.cs" />
     <Compile Include="Src\UI\Enums\VerticalAlign.cs" />
     <Compile Include="Src\UI\Events\EventResponse.cs" />
     <Compile Include="Src\UI\Events\EventManager.cs" />
@@ -114,9 +118,7 @@
     <None Include="Content\ButtonFont.spritefont" />
     <None Include="Content\HeadingFont.spritefont" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Src\Gameplay\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

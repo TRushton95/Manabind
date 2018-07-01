@@ -3,11 +3,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Manabind.Src.Gameplay.Entities
 {
-    public abstract class BaseActor
+    public abstract class BaseEntity
     {
         #region Constructors
 
-        public BaseActor(int posX, int posY, Texture2D texture)
+        public BaseEntity(int posX, int posY, Texture2D texture)
         {
             this.PosX = posX;
             this.PosY = posY;
