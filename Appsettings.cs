@@ -21,9 +21,10 @@ namespace Manabind
 
         public static string PlayUIFileName { get => ConfigurationManager.AppSettings["PlayUIFileName"];  }
 
+        public static string EditorUIFileName { get => ConfigurationManager.AppSettings["EditorUIFileName"]; }
+
         public static string OptionsUIFileName { get => ConfigurationManager.AppSettings["OptionsUIFileName"]; }
 
-        public static string HelpUIFileName { get => ConfigurationManager.AppSettings["HelpUIFileName"]; }
 
         #endregion
     }

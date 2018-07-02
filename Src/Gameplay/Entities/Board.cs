@@ -9,14 +9,14 @@ namespace Manabind.Src.Gameplay.Entities
 
         public Board()
         {
-
+            Tiles = new List<List<Tile>>();
         }
 
         #endregion
 
         #region Properties
 
-        public List<Tile> Tiles
+        public List<List<Tile>> Tiles
         {
             get;
             set;
@@ -28,9 +28,12 @@ namespace Manabind.Src.Gameplay.Entities
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (Tile tile in Tiles)
+            foreach (List<Tile> row in Tiles)
             {
-                tile.Draw(spriteBatch, tile.PosX * Tile.Diameter, tile.PosY * Tile.Diameter);
+                foreach (Tile tile in row)
+                {
+                    tile.Draw(spriteBatch, tile.PosX * Tile.Diameter, tile.PosY * Tile.Diameter);
+                }
             }
         }
 

@@ -74,7 +74,7 @@ namespace Manabind.Src.Control
 
         private void SwitchToHelpState()
         {
-            appState = new HelpAppState();
+            appState = new EditorAppState();
         }
 
         private void Exit()
