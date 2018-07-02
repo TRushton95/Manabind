@@ -94,9 +94,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\EmptyTile.png" />
-    <Content Include="Content\GroundTile.png" />
-    <Content Include="Content\GroundTileIcon.png" />
+    <Content Include="Content\Tiles\EmptyTile.png" />
+    <Content Include="Content\Tiles\GroundTile.png" />
+    <Content Include="Content\Icons\GroundTileIcon.png" />
     <Content Include="Icon.ico" />
     <Content Include="Src\UI\Definitions\editor.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -119,8 +119,8 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="App.config" />
     <None Include="app.manifest" />
-    <None Include="Content\ButtonFont.spritefont" />
-    <None Include="Content\HeadingFont.spritefont" />
+    <None Include="Content\Fonts\ButtonFont.spritefont" />
+    <None Include="Content\Fonts\HeadingFont.spritefont" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

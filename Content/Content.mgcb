@@ -13,21 +13,21 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ButtonFont.spritefont
+#begin Fonts/ButtonFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:ButtonFont.spritefont
+/build:Fonts/ButtonFont.spritefont
 
-#begin HeadingFont.spritefont
+#begin Fonts/HeadingFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:HeadingFont.spritefont
+/build:Fonts/HeadingFont.spritefont
 
-#begin EmptyTile.png
+#begin Icons/GroundTileIcon.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -37,9 +37,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:EmptyTile.png
+/build:Icons/GroundTileIcon.png
 
-#begin GroundTile.png
+#begin Tiles/EmptyTile.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -49,9 +49,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:GroundTile.png
+/build:Tiles/EmptyTile.png
 
-#begin GroundTileIcon.png
+#begin Tiles/GroundTile.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -61,5 +61,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:GroundTileIcon.png
+/build:Tiles/GroundTile.png
 
