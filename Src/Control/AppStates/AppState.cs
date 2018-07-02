@@ -1,4 +1,5 @@
 ﻿using Manabind.Src.UI.Components;
+using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Components.Complex;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -9,7 +10,7 @@ using System.Linq;
 
 namespace Manabind.Src.Control.AppStates
 {
-    public abstract class AppState
+    public abstract class AppState : BaseInstance
     {
         #region Fields
 
@@ -76,21 +77,35 @@ namespace Manabind.Src.Control.AppStates
                 currentHoveredComponent.Click();
             }
 
-            UpdateState();
+            this.UpdateState();
         }
 
-        public void Initialise(GraphicsDevice device, ContentManager content)
+        public virtual void Initialise(GraphicsDevice device, ContentManager content)
         {
             componentManager.InitialiseResources(device, content);
             componentManager.Initialise(new Rectangle(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight));
+
+            this.InitialiseState(device, content);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             componentManager.GetRoot().Draw(spriteBatch);
+
+            this.DrawState(spriteBatch);
         }
 
-        protected abstract void UpdateState();
+        protected virtual void InitialiseState(GraphicsDevice device, ContentManager content)
+        {
+        }
+
+        protected virtual void UpdateState()
+        {
+        }
+
+        protected virtual void DrawState(SpriteBatch spriteBatch)
+        {
+        }
 
         private void UpdateMouseState()
         {

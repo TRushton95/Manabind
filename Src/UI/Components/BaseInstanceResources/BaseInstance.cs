@@ -8,6 +8,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         #region Fields
 
         private static GraphicsDevice _graphicsDevice;
+        private static ContentManager _content;
 
         #endregion
 
@@ -24,6 +25,8 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
 
         protected static GraphicsDevice GraphicsDevice => _graphicsDevice;
 
+        protected static ContentManager Content => _content;
+
         protected static Textures Textures => Textures.Instance;
 
         protected static Settings Settings => Settings.Instance;
@@ -35,6 +38,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         public void InitialiseResources(GraphicsDevice device, ContentManager content)
         {
             _graphicsDevice = device;
+            _content = content;
             Textures.Initialise(content);
             Settings.Initialise();
         }

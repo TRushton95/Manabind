@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Manabind.Src.Control
 {
-    public class GameManager : Listener
+    public class GameManager : BaseInstance
     {
         #region Fields
 
@@ -42,8 +42,8 @@ namespace Manabind.Src.Control
             appState.Initialise(device, content);
 
             this.EventResponses.Add(new EventResponse(new UIEvent("play-button", EventType.Click), "play"));
+            this.EventResponses.Add(new EventResponse(new UIEvent("editor-button", EventType.Click), "editor"));
             this.EventResponses.Add(new EventResponse(new UIEvent("options-button", EventType.Click), "options"));
-            this.EventResponses.Add(new EventResponse(new UIEvent("help-button", EventType.Click), "help"));
             this.EventResponses.Add(new EventResponse(new UIEvent("exit-button", EventType.Click), "exit"));
         }
 
@@ -60,21 +60,25 @@ namespace Manabind.Src.Control
         private void SwitchToMenuState()
         {
             appState = new MenuAppState();
+            appState.Initialise(GraphicsDevice, Content);
         }
 
         private void SwitchToPlayState()
         {
             appState = new PlayAppState();
+            appState.Initialise(GraphicsDevice, Content);
         }
 
         private void SwitchToOptionsState()
         {
             appState = new OptionsAppState();
+            appState.Initialise(GraphicsDevice, Content);
         }
 
-        private void SwitchToHelpState()
+        private void SwitchToEditorState()
         {
             appState = new EditorAppState();
+            appState.Initialise(GraphicsDevice, Content);
         }
 
         private void Exit()
@@ -89,10 +93,11 @@ namespace Manabind.Src.Control
                 case "play": this.SwitchToPlayState();
                     break;
 
-                case "options": this.SwitchToOptionsState();
+                case "editor":
+                    this.SwitchToEditorState();
                     break;
 
-                case "help": this.SwitchToHelpState();
+                case "options": this.SwitchToOptionsState();
                     break;
 
                 case "exit": this.Exit();

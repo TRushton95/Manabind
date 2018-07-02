@@ -1,7 +1,28 @@
-﻿namespace Manabind.Src.Control.AppStates
+﻿using Manabind.Src.Gameplay.Entities;
+using Manabind.Src.UI.Enums;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+
+namespace Manabind.Src.Control.AppStates
 {
     public class EditorAppState : AppState
     {
+        #region Fields
+
+        private Board board;
+        private Texture2D tileTexture;
+
+        #endregion
+
+        #region Constructors
+
+        public EditorAppState()
+        {
+            board = new Board();
+        }
+
+        #endregion
 
         #region Properties
 
@@ -9,13 +30,31 @@
 
         #endregion
 
-        #region Methods
+        protected override void InitialiseState(GraphicsDevice device, ContentManager content)
+        {
+            tileTexture = content.Load<Texture2D>("GroundTile");
+
+            for (int y = 0; y < 10; y++)
+            {
+                List<Tile> row = new List<Tile>();
+
+                for (int x = 0; x < 5; x++)
+                {
+                    row.Add(new Tile(x, y, TileType.Ground, tileTexture));
+                }
+
+                board.Tiles.Add(row);
+            }
+        }
 
         protected override void UpdateState()
         {
 
         }
 
-        #endregion
+        protected override void DrawState(SpriteBatch spriteBatch)
+        {
+            board.Draw(spriteBatch);
+        }
     }
 }
