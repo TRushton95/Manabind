@@ -34,11 +34,11 @@ namespace Manabind.Src.Control.AppStates
         {
             tileTexture = Content.Load<Texture2D>("GroundTile");
 
-            for (int y = 0; y < 10; y++)
+            for (int y = 0; y < 5; y++)
             {
                 List<Tile> row = new List<Tile>();
 
-                for (int x = 0; x < 5; x++)
+                for (int x = 0; x < 10; x++)
                 {
                     row.Add(new Tile(x, y, TileType.Ground, tileTexture));
                 }
