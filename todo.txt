@@ -9,9 +9,6 @@ Root container should not be a base component inheritant
 
 	-Must then consider how hiding affects child components
 
-Refactor EventsAreEqual out into utility class
-	-Doesn't belong there
-
 Look into event sending/recieving/executing system
 	-See if there is a simpler approach
 
