@@ -80,12 +80,11 @@ namespace Manabind.Src.Control.AppStates
             this.UpdateState();
         }
 
-        public virtual void Initialise(GraphicsDevice device, ContentManager content)
+        public virtual void Initialise()
         {
-            componentManager.InitialiseResources(device, content);
             componentManager.Initialise(new Rectangle(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight));
 
-            this.InitialiseState(device, content);
+            this.InitialiseState();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -95,7 +94,7 @@ namespace Manabind.Src.Control.AppStates
             this.DrawState(spriteBatch);
         }
 
-        protected virtual void InitialiseState(GraphicsDevice device, ContentManager content)
+        protected virtual void InitialiseState()
         {
         }
 

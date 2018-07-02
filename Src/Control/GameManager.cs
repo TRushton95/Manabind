@@ -38,8 +38,10 @@ namespace Manabind.Src.Control
 
         public void Initialise(GraphicsDevice device, ContentManager content)
         {
+            this.InitialiseResources(device, content);
+
             appState = new MenuAppState();
-            appState.Initialise(device, content);
+            appState.Initialise();
 
             this.EventResponses.Add(new EventResponse(new UIEvent("play-button", EventType.Click), "play"));
             this.EventResponses.Add(new EventResponse(new UIEvent("editor-button", EventType.Click), "editor"));
@@ -60,25 +62,25 @@ namespace Manabind.Src.Control
         private void SwitchToMenuState()
         {
             appState = new MenuAppState();
-            appState.Initialise(GraphicsDevice, Content);
+            appState.Initialise();
         }
 
         private void SwitchToPlayState()
         {
             appState = new PlayAppState();
-            appState.Initialise(GraphicsDevice, Content);
+            appState.Initialise();
         }
 
         private void SwitchToOptionsState()
         {
             appState = new OptionsAppState();
-            appState.Initialise(GraphicsDevice, Content);
+            appState.Initialise();
         }
 
         private void SwitchToEditorState()
         {
             appState = new EditorAppState();
-            appState.Initialise(GraphicsDevice, Content);
+            appState.Initialise();
         }
 
         private void Exit()

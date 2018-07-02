@@ -30,9 +30,9 @@ namespace Manabind.Src.Control.AppStates
 
         #endregion
 
-        protected override void InitialiseState(GraphicsDevice device, ContentManager content)
+        protected override void InitialiseState()
         {
-            tileTexture = content.Load<Texture2D>("GroundTile");
+            tileTexture = Content.Load<Texture2D>("GroundTile");
 
             for (int y = 0; y < 10; y++)
             {
