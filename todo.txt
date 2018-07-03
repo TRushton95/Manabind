@@ -26,3 +26,11 @@ Make an initialiseDetail method for complex components
 Rename default BaseComponent properties to have "Default" in front for clarity
 
 Create flag for hoverable (could re-use interactive?) to decide whether to bother switching BaseComponents
+
+--------------
+    URGENT
+--------------
+Event system cannot transfer enough useful information
+	-It needs to be able to send data (eg. SpellEventData..)
+
+Event system possibly too hard coded to recievers?
