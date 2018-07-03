@@ -81,7 +81,7 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
 
-            frame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour, HoverBackgroundColour);
+            frame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour);
             frame.Initialise(this.GetBounds());
 
             foreach (BaseComplexComponent component in Components)
@@ -92,17 +92,14 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void ClickDetail()
         {
-            frame.Click();
         }
 
         protected override void HoverDetail()
         {
-            frame.Hover();
         }
 
         protected override void HoverLeaveDetail()
         {
-            frame.HoverLeave();
         }
 
         public override List<BaseComplexComponent> BuildTree()

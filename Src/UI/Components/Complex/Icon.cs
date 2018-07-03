@@ -1,9 +1,7 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Components.Basic;
 using Manabind.Src.UI.PositionProfiles;
-using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Factories;
 
 namespace Manabind.Src.UI.Components.Complex
@@ -59,7 +57,7 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
 
-            this.image = new ImageGraphics(this.DefaultTexture, this.HoverTexture, PositionProfileFactory.BuildCenteredRelative());
+            this.image = new ImageGraphics(this.DefaultTexture, PositionProfileFactory.BuildCenteredRelative());
         }
 
         protected override void ClickDetail()
@@ -68,12 +66,10 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void HoverDetail()
         {
-            this.image.Hover();
         }
 
         protected override void HoverLeaveDetail()
         {
-            this.image.HoverLeave();
         }
 
         #endregion

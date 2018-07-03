@@ -13,7 +13,8 @@ namespace Manabind.Src.UI.Components.Complex
     {
         #region Fields
 
-        private Frame frame;
+        private Frame frame, defaultFrame, hoverFrame;
+        private FontGraphics defaultFontGraphics, hoverFontGraphics;
 
         #endregion
 
@@ -81,27 +82,35 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
 
-            FontGraphics fontGraphics = new FontGraphics(Text, Width, 20, PositionProfileFactory.BuildCenteredRelative(),
-                                            FontFlow.Shrink, TextColour, HoverTextColour, Textures.ButtonFont);
+            // default textures
+            defaultFrame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour);
+            defaultFontGraphics = new FontGraphics(Text, Width, 20, PositionProfileFactory.BuildCenteredRelative(),
+                                            FontFlow.Shrink, TextColour, Textures.ButtonFont);
+            defaultFrame.Components.Add(defaultFontGraphics);
+            defaultFrame.Initialise(this.GetBounds());
 
-            frame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour, HoverBackgroundColour);
-            frame.Components.Add(fontGraphics);
-
-            frame.Initialise(this.GetBounds());
+            // hover textures
+            hoverFrame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), HoverBackgroundColour);
+            hoverFontGraphics = new FontGraphics(Text, Width, 20, PositionProfileFactory.BuildCenteredRelative(),
+                                            FontFlow.Shrink, HoverTextColour, Textures.ButtonFont);
+            hoverFrame.Components.Add(hoverFontGraphics);
+            hoverFrame.Initialise(this.GetBounds());
+            
+            this.frame = this.defaultFrame;
         }
 
         protected override void ClickDetail()
         {
-            frame.Click();
         }
 
         protected override void HoverDetail()
         {
-            frame.Hover();
+            this.frame = this.hoverFrame;
         }
+
         protected override void HoverLeaveDetail()
         {
-            frame.HoverLeave();
+            this.frame = this.defaultFrame;
         }
 
         #endregion

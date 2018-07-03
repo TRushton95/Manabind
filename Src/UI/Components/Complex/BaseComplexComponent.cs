@@ -82,20 +82,20 @@ namespace Manabind.Src.UI.Components.Complex
             this.Initialise(parent);
         }
 
-        public override void Click()
+        public void Click()
         {
             this.ClickDetail();
             EventManager.PushEvent(new UIEvent(this.Name, EventType.Click));
         }
 
-        public override void Hover()
+        public void Hover()
         {
             this.Hovered = true;
             this.HoverDetail();
             EventManager.PushEvent(new UIEvent(this.Name, EventType.Hover));
         }
 
-        public override void HoverLeave()
+        public void HoverLeave()
         {
             this.Hovered = false;
             this.HoverLeaveDetail();

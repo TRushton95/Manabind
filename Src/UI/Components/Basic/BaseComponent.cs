@@ -59,12 +59,6 @@ namespace Manabind.Src.UI.Components.Basic
 
         public abstract void Initialise(Rectangle parent);
 
-        public abstract void Click();
-
-        public abstract void Hover();
-
-        public abstract void HoverLeave();
-
         public Vector2 GetCoordinates()
         {
             return new Vector2(this.posX, this.posY);

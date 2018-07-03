@@ -14,7 +14,7 @@ namespace Manabind.Src.UI.Components.Basic
         
         private string text, displayText;
         private SpriteFont font;
-        private Colour colour, defaultColour, hoverColour;
+        private Colour colour;
         private float scale;
         private int maxWidth;
         private FontFlow fontFlow;
@@ -28,19 +28,16 @@ namespace Manabind.Src.UI.Components.Basic
         }
 
         public FontGraphics(string text, int maxWidth, int gutter, BasePositionProfile positionProfile, 
-                        FontFlow fontFlow, Colour defaultColour, Colour hoverColour, SpriteFont font)
+                        FontFlow fontFlow, Colour colour, SpriteFont font)
             : base(positionProfile)
         {
             this.text = text;
             this.displayText = text;
             this.maxWidth = maxWidth;
             this.fontFlow = fontFlow;
-            this.defaultColour = defaultColour;
-            this.hoverColour = hoverColour;
+            this.colour = colour;
             this.font = font;
             this.scale = 1;
-
-            this.colour = defaultColour;
         }
 
         #endregion
@@ -58,20 +55,6 @@ namespace Manabind.Src.UI.Components.Basic
             this.InitialiseDisplay();
             this.InitialiseDimensions();
             this.InitialiseCoordinates(parent);
-        }
-
-        public override void Click()
-        {
-        }
-
-        public override void Hover()
-        {
-            this.colour = this.hoverColour;
-        }
-
-        public override void HoverLeave()
-        {
-            this.colour = this.defaultColour;
         }
 
         private void InitialiseDisplay()

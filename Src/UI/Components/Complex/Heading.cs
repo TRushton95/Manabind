@@ -57,23 +57,20 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
 
-            fontGraphics = new FontGraphics(Text, Width, 0, PositionProfile, FontFlow.Shrink, TextColour, HoverTextColour, Textures.HeadingFont);
+            fontGraphics = new FontGraphics(Text, Width, 0, PositionProfile, FontFlow.Shrink, TextColour, Textures.HeadingFont);
             fontGraphics.Initialise(this.GetBounds());
         }
 
         protected override void ClickDetail()
         {
-            fontGraphics.Click();
         }
 
         protected override void HoverDetail()
         {
-            fontGraphics.Hover();
         }
 
         protected override void HoverLeaveDetail()
         {
-            fontGraphics.HoverLeave();
         }
 
         #endregion

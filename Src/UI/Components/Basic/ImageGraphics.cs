@@ -8,7 +8,7 @@ namespace Manabind.Src.UI.Components.Basic
     {
         #region Fields
 
-        private Texture2D image, defaultImage, hoverImage;
+        private Texture2D image;
 
         #endregion
 
@@ -18,36 +18,18 @@ namespace Manabind.Src.UI.Components.Basic
         {
         }
 
-        public ImageGraphics(Texture2D defaultImage, Texture2D hoverImage, BasePositionProfile positionProfile)
+        public ImageGraphics(Texture2D image, BasePositionProfile positionProfile)
             : base(positionProfile)
         {
-            this.defaultImage = defaultImage;
-            this.hoverImage = hoverImage;
-
-            this.image = defaultImage;
+            this.image = image;
         }
 
         #endregion
 
         #region Methods
-
-        public override void Click()
-        {
-        }
-
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(this.image, this.GetBounds(), Color.White);
-        }
-
-        public override void Hover()
-        {
-            this.image = this.hoverImage;
-        }
-
-        public override void HoverLeave()
-        {
-            this.image = this.defaultImage;
         }
 
         public override void Initialise(Rectangle parent)

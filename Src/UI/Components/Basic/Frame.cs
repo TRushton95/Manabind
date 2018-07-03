@@ -9,9 +9,9 @@ namespace Manabind.Src.UI.Components.Basic
     public class Frame : BaseComponent
     {
         #region Fields
-        
-        private Texture2D texture, defaultTexture, hoverTexture;
-        private Colour displayColour, hoverColour;
+
+        private Texture2D texture;
+        private Colour colour;
 
         #endregion
 
@@ -22,14 +22,13 @@ namespace Manabind.Src.UI.Components.Basic
             this.Components = new List<BaseComponent>();
         }
 
-        public Frame(int width, int height, BasePositionProfile positionProfile, Colour displayColour, Colour hoverColour)
+        public Frame(int width, int height, BasePositionProfile positionProfile, Colour colour)
             : base(positionProfile)
         {
             this.Width = width;
             this.Height = height;
             this.PositionProfile = positionProfile;
-            this.displayColour = displayColour;
-            this.hoverColour = hoverColour;
+            this.colour = colour;
 
             this.Components = new List<BaseComponent>();
         }
@@ -61,39 +60,12 @@ namespace Manabind.Src.UI.Components.Basic
         public override void Initialise(Rectangle parent)
         {
             this.InitialiseCoordinates(parent);
-            this.defaultTexture = this.BuildTexture(this.displayColour.GetValue());
-            this.hoverTexture = this.BuildTexture(this.hoverColour.GetValue());
 
-            this.texture = this.defaultTexture;
+            this.texture = this.BuildTexture(this.colour.GetValue());
 
-            foreach(BaseComponent component in Components)
+            foreach (BaseComponent component in Components)
             {
                 component.Initialise(this.GetBounds());
-            }
-        }
-
-        public override void Click()
-        {
-
-        }
-
-        public override void Hover()
-        {
-            this.texture = this.hoverTexture;
-
-            foreach (BaseComponent component in Components)
-            {
-                component.Hover();
-            }
-        }
-
-        public override void HoverLeave()
-        {
-            this.texture = this.defaultTexture;
-
-            foreach (BaseComponent component in Components)
-            {
-                component.HoverLeave();
             }
         }
 
