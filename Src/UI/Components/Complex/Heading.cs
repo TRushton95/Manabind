@@ -11,7 +11,7 @@ namespace Manabind.Src.UI.Components.Complex
     {
         #region Fields
 
-        private FontGraphics fontGraphics;
+        private FontGraphics fontGraphics, defaultFontGraphics, hoverFontGraphics;
 
         #endregion
 
@@ -22,8 +22,7 @@ namespace Manabind.Src.UI.Components.Complex
         }
 
         #endregion
-
-
+        
         #region Properies
 
         public string Text
@@ -57,8 +56,13 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
 
-            fontGraphics = new FontGraphics(Text, Width, 0, PositionProfile, FontFlow.Shrink, TextColour, Textures.HeadingFont);
-            fontGraphics.Initialise(this.GetBounds());
+            defaultFontGraphics = new FontGraphics(Text, Width, 0, PositionProfile, FontFlow.Shrink, TextColour, Textures.HeadingFont);
+            defaultFontGraphics.Initialise(this.GetBounds());
+
+            hoverFontGraphics = new FontGraphics(Text, Width, 0, PositionProfile, FontFlow.Shrink, HoverTextColour, Textures.HeadingFont);
+            hoverFontGraphics.Initialise(this.GetBounds());
+
+            this.fontGraphics = this.defaultFontGraphics;
         }
 
         protected override void ClickDetail()
@@ -67,10 +71,12 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void HoverDetail()
         {
+            this.fontGraphics = this.hoverFontGraphics;
         }
 
         protected override void HoverLeaveDetail()
         {
+            this.fontGraphics = this.defaultFontGraphics;
         }
 
         #endregion

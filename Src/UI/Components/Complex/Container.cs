@@ -13,7 +13,7 @@ namespace Manabind.Src.UI.Components.Complex
     {
         #region Field
 
-        private Frame frame;
+        private Frame frame, defaultFrame, hoverFrame;
 
         #endregion
 
@@ -81,8 +81,13 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
 
-            frame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour);
-            frame.Initialise(this.GetBounds());
+            defaultFrame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour);
+            defaultFrame.Initialise(this.GetBounds());
+
+            hoverFrame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), HoverBackgroundColour);
+            hoverFrame.Initialise(this.GetBounds());
+
+            this.frame = this.defaultFrame;
 
             foreach (BaseComplexComponent component in Components)
             {
@@ -96,10 +101,12 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void HoverDetail()
         {
+            this.frame = this.hoverFrame;
         }
 
         protected override void HoverLeaveDetail()
         {
+            this.frame = this.defaultFrame;
         }
 
         public override List<BaseComplexComponent> BuildTree()

@@ -10,7 +10,7 @@ namespace Manabind.Src.UI.Components.Complex
     {
         #region Fields
 
-        private ImageGraphics image;
+        private ImageGraphics image, defaultImage, hoverImage;
 
         #endregion
 
@@ -57,7 +57,13 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
 
-            this.image = new ImageGraphics(this.DefaultTexture, PositionProfileFactory.BuildCenteredRelative());
+            this.defaultImage = new ImageGraphics(DefaultTexture, PositionProfileFactory.BuildCenteredRelative());
+            this.defaultImage.Initialise(this.GetBounds());
+
+            this.hoverImage = new ImageGraphics(HoverTexture, PositionProfileFactory.BuildCenteredRelative());
+            this.hoverImage.Initialise(this.GetBounds());
+
+            this.image = this.defaultImage;
         }
 
         protected override void ClickDetail()
@@ -66,10 +72,12 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void HoverDetail()
         {
+            this.image = this.hoverImage;
         }
 
         protected override void HoverLeaveDetail()
         {
+            this.image = this.defaultImage;
         }
 
         #endregion

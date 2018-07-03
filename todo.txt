@@ -20,9 +20,7 @@ Investigate possibility of defining AppState EventResponse behaviour in xml too
 	-Probably not possible though, as that requires game states setting up through xml
 	-Separation of UI and game or something
 
-BaseComplexComponent needs to have 2 of each BaseComponent that it can swap out for hovers
-	-Currently image graphics has to either replace or overlay when hovered
-	-Although, could have replacement image (use same if not applicable) then have ANOTHER image field with hover effect
-
 Make an initialiseDetail method for complex components
 	-Make a better name for it too
+
+Rename default BaseComponent properties to have "Default" in front for clarity
