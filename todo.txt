@@ -24,3 +24,5 @@ Make an initialiseDetail method for complex components
 	-Make a better name for it too
 
 Rename default BaseComponent properties to have "Default" in front for clarity
+
+Create flag for hoverable (could re-use interactive?) to decide whether to bother switching BaseComponents

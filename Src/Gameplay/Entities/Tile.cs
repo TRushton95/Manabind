@@ -1,9 +1,12 @@
-﻿using Manabind.Src.UI.Enums;
+﻿using System;
+using Manabind.Src.Gameplay.Interfaces;
+using Manabind.Src.UI.Components.Complex;
+using Manabind.Src.UI.Enums;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Manabind.Src.Gameplay.Entities
 {
-    public class Tile : BaseEntity
+    public class Tile : BaseEntity, IIconable
     {
         #region Constants
 
@@ -24,6 +27,11 @@ namespace Manabind.Src.Gameplay.Entities
         #region Properties
 
         public TileType TileType
+        {
+            get;
+            set;
+        }
+        public Icon Icon
         {
             get;
             set;
