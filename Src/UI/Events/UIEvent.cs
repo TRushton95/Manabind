@@ -1,7 +1,4 @@
-﻿using Manabind.Src.UI.Enums;
-using System.Xml.Serialization;
-
-namespace Manabind.Src.UI.Events
+﻿namespace Manabind.Src.UI.Events
 {
     public class UIEvent
     {
