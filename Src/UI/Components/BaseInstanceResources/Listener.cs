@@ -30,11 +30,11 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
 
         #region Methods
 
-        public void PushEvent(UIEvent e)
+        public void PushEvent(EventDetails e)
         {
             foreach (EventResponse response in EventResponses)
             {
-                if (Utility.EventsAreEqual(response.UIEvent, e))
+                if (Utility.EventsDetailsAreEqual(response.Trigger, e))
                 {
                     this.ExecuteEventResponse(response.Action);
                 }

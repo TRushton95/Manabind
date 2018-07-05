@@ -85,21 +85,21 @@ namespace Manabind.Src.UI.Components.Complex
         public void Click()
         {
             this.ClickDetail();
-            EventManager.PushEvent(new UIEvent(this.Name, EventType.Click));
+            EventManager.PushEvent(new EventDetails(this.Name, EventType.Click));
         }
 
         public void Hover()
         {
             this.Hovered = true;
             this.HoverDetail();
-            EventManager.PushEvent(new UIEvent(this.Name, EventType.Hover));
+            EventManager.PushEvent(new EventDetails(this.Name, EventType.Hover));
         }
 
         public void HoverLeave()
         {
             this.Hovered = false;
             this.HoverLeaveDetail();
-            EventManager.PushEvent(new UIEvent(this.Name, EventType.HoverLeave));
+            EventManager.PushEvent(new EventDetails(this.Name, EventType.HoverLeave));
         }
 
         public virtual List<BaseComplexComponent> BuildTree()

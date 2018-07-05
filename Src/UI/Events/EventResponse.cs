@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Manabind.Src.UI.Events
+﻿namespace Manabind.Src.UI.Events
 {
     public class EventResponse
     {
@@ -10,9 +8,9 @@ namespace Manabind.Src.UI.Events
         {
         }
 
-        public EventResponse(UIEvent uiEvent, string action)
+        public EventResponse(EventDetails trigger, string action)
         {
-            this.UIEvent = uiEvent;
+            this.Trigger = trigger;
             this.Action = action;
         }
 
@@ -20,7 +18,7 @@ namespace Manabind.Src.UI.Events
 
         #region Properties
 
-        public UIEvent UIEvent
+        public EventDetails Trigger
         {
             get;
             set;

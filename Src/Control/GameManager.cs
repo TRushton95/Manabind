@@ -43,10 +43,10 @@ namespace Manabind.Src.Control
             appState = new MenuAppState();
             appState.Initialise();
 
-            this.EventResponses.Add(new EventResponse(new UIEvent("play-button", EventType.Click), "play"));
-            this.EventResponses.Add(new EventResponse(new UIEvent("editor-button", EventType.Click), "editor"));
-            this.EventResponses.Add(new EventResponse(new UIEvent("options-button", EventType.Click), "options"));
-            this.EventResponses.Add(new EventResponse(new UIEvent("exit-button", EventType.Click), "exit"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("play-button", EventType.Click), "play"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("editor-button", EventType.Click), "editor"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("options-button", EventType.Click), "options"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("exit-button", EventType.Click), "exit"));
         }
 
         public void Update()

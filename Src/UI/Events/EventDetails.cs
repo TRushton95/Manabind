@@ -3,31 +3,34 @@ using System.Xml.Serialization;
 
 namespace Manabind.Src.UI.Events
 {
-    public class UIEvent
+    public class EventDetails
     {
         #region Constructors
 
-        public UIEvent()
+        public EventDetails()
         {
         }
 
-        public UIEvent(EventDetails eventDetails, object content)
+        public EventDetails(string sender, EventType eventType)
         {
-            this.EventDetails = eventDetails;
-            this.Content = content;
+            this.Sender = sender;
+            this.EventType = EventType;
         }
 
         #endregion
 
         #region Properties
 
-        public EventDetails EventDetails
+        [XmlAttribute("sender")]
+        public string Sender
         {
             get;
             set;
         }
 
-        public object Content
+
+        [XmlAttribute("eventtype")]
+        public EventType EventType
         {
             get;
             set;
