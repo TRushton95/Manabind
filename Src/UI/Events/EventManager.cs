@@ -1,5 +1,6 @@
 ﻿using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Components.Complex;
+using Manabind.Src.UI.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,9 +53,9 @@ namespace Manabind.Src.UI.Events
 
             foreach (Listener listener in listeners)
             {
-                List<EventResponse> responses = listener.EventResponses;
+                List<EventResponse> listenerResponses = listener.EventResponses;
 
-                if (responses.Any(response => String.Equals(e.Sender, response.Trigger.Sender)))
+                if (listenerResponses.Any(listenerResponse => Utility.EventsDetailsAreEqual(listenerResponse.Trigger, e)))
                 {
                     relevantListeners.Add(listener);
                 }
