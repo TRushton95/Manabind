@@ -69,7 +69,6 @@
     <Compile Include="Src\UI\Components\Complex\Icon.cs" />
     <Compile Include="Src\UI\Components\Complex\RootContainer.cs" />
     <Compile Include="Src\UI\Components\Complex\Heading.cs" />
-    <Compile Include="Src\UI\Components\Complex\Toolbar.cs" />
     <Compile Include="Src\UI\Components\ComponentManager.cs" />
     <Compile Include="Src\UI\Enums\EventType.cs" />
     <Compile Include="Src\UI\Enums\FontFlow.cs" />
