@@ -2,7 +2,6 @@
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Components.Complex;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
@@ -42,40 +41,9 @@ namespace Manabind.Src.Control.AppStates
 
         public void Update()
         {
-            UpdateMouseState();
+            this.UpdateMouseState();
 
-            // Resolve hovers
-            IEnumerable<BaseComplexComponent> hoveredComponents = componentManager.GetAll().Where(component => 
-                            component.GetBounds().Contains(currentMouseState.Position) && 
-                            component.Visible && 
-                            component.Interactive);
-
-            prevHoveredComponent = currentHoveredComponent;
-
-            if (hoveredComponents.Count() > 0)
-            {
-                currentHoveredComponent = hoveredComponents.Aggregate((c1, c2) => c1.Priority > c2.Priority ? c1 : c2);
-            }
-            else
-            {
-                currentHoveredComponent = null;
-            }
-
-            //hovered on component
-            if (currentHoveredComponent != prevHoveredComponent)
-            {
-                prevHoveredComponent?.HoverLeave();
-                currentHoveredComponent?.Hover();
-            }
-
-            //clicked on component
-            if (currentHoveredComponent != null && prevHoveredComponent != null &&
-                currentHoveredComponent == prevHoveredComponent &&
-                currentHoveredComponent.Hovered && currentMouseState.LeftButton == ButtonState.Pressed &&
-                prevHoveredComponent.Hovered && prevMouseState.LeftButton == ButtonState.Released)
-            {
-                currentHoveredComponent.Click();
-            }
+            this.HandleMouseState();
 
             this.UpdateState();
         }
@@ -110,6 +78,42 @@ namespace Manabind.Src.Control.AppStates
         {
             this.prevMouseState = this.currentMouseState;
             this.currentMouseState = Mouse.GetState();
+        }
+
+        private void HandleMouseState()
+        {
+            // Resolve hovers
+            IEnumerable<BaseComplexComponent> hoveredComponents = componentManager.GetAll().Where(component =>
+                            component.GetBounds().Contains(currentMouseState.Position) &&
+                            component.Visible &&
+                            component.Interactive);
+
+            prevHoveredComponent = currentHoveredComponent;
+
+            if (hoveredComponents.Count() > 0)
+            {
+                currentHoveredComponent = hoveredComponents.Aggregate((c1, c2) => c1.Priority > c2.Priority ? c1 : c2);
+            }
+            else
+            {
+                currentHoveredComponent = null;
+            }
+
+            //hovered on component
+            if (currentHoveredComponent != prevHoveredComponent)
+            {
+                prevHoveredComponent?.HoverLeave();
+                currentHoveredComponent?.Hover();
+            }
+
+            //clicked on component
+            if (currentHoveredComponent != null && prevHoveredComponent != null &&
+                currentHoveredComponent == prevHoveredComponent &&
+                currentHoveredComponent.Hovered && currentMouseState.LeftButton == ButtonState.Pressed &&
+                prevHoveredComponent.Hovered && prevMouseState.LeftButton == ButtonState.Released)
+            {
+                currentHoveredComponent.Click();
+            }
         }
 
         #endregion

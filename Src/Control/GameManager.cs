@@ -92,17 +92,20 @@ namespace Manabind.Src.Control
         {
             switch (action)
             {
-                case "play": this.SwitchToPlayState();
+                case "play":
+                    this.SwitchToPlayState();
                     break;
 
                 case "editor":
                     this.SwitchToEditorState();
                     break;
 
-                case "options": this.SwitchToOptionsState();
+                case "options":
+                    this.SwitchToOptionsState();
                     break;
 
-                case "exit": this.Exit();
+                case "exit":
+                    this.Exit();
                     break;
             }
         }
