@@ -14,7 +14,7 @@ namespace Manabind.Src.UI.Events
         public EventDetails(string sender, EventType eventType)
         {
             this.Sender = sender;
-            this.EventType = EventType;
+            this.EventType = eventType;
         }
 
         #endregion
