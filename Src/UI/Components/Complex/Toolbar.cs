@@ -5,11 +5,20 @@ using System.Collections.Generic;
 using Manabind.Src.UI.Components.Basic;
 using Manabind.Src.UI.PositionProfiles;
 using Manabind.Src.UI.Serialisation;
+using System.Linq;
+using System;
 
 namespace Manabind.Src.UI.Components.Complex
 {
     public class Toolbar : BaseComplexComponent
     {
+        #region Constants
+
+        private const int Gutter = 10;
+        private const int MaxToolCount = 8;
+
+        #endregion
+
         #region Fields
 
         private Frame frame;
@@ -23,6 +32,8 @@ namespace Manabind.Src.UI.Components.Complex
 
         public Toolbar()
         {
+            this.icons = new List<Icon>();
+            this.iconables = new List<IIconable>();
         }
 
         public Toolbar(
@@ -35,6 +46,7 @@ namespace Manabind.Src.UI.Components.Complex
             : base(width, height, positionProfile, priority)
         {
             this.BackgroundColour = backgroundColour;
+            this.icons = new List<Icon>();
             this.iconables = iconables;
         }
 
@@ -64,17 +76,18 @@ namespace Manabind.Src.UI.Components.Complex
 
         public override void Initialise(Rectangle parent)
         {
-            this.InitialiseCoordinates(parent);
-
-            frame = new Frame(Width, Height, PositionProfile, BackgroundColour);
-
             icons = new List<Icon>();
-
             foreach (IIconable iconable in iconables)
             {
                 iconable.Icon.Name = "tool";
                 icons.Add(iconable.Icon);
             }
+
+            this.InitialiseDimensions();
+            this.InitialiseCoordinates(parent);
+
+            frame = new Frame(Width, Height, PositionProfile, BackgroundColour);
+            frame.Initialise(this.GetBounds());
         }
 
         protected override void ClickDetail()
@@ -87,6 +100,14 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void HoverLeaveDetail()
         {
+        }
+
+        private void InitialiseDimensions()
+        {
+            int totalIconWidth = (MaxToolCount * Icon.Diameter) + (Gutter * 2);
+            this.Width = totalIconWidth + (Gutter * 2);
+
+            this.Height = Icon.Diameter + (Gutter * 2);
         }
 
         #endregion

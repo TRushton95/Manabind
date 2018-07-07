@@ -8,7 +8,7 @@ namespace Manabind.Src.Gameplay.Entities
 {
     public class Tile : BaseEntity, IIconable
     {
-        #region Constants
+        #region Fields
 
         public static int Diameter = 100;
 
