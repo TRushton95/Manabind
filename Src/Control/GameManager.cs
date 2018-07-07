@@ -88,7 +88,7 @@ namespace Manabind.Src.Control
             ReadyToExit = true;
         }
 
-        protected override void ExecuteEventResponse(string action)
+        protected override void ExecuteEventResponse(string action, object content)
         {
             switch (action)
             {

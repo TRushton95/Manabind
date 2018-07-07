@@ -13,7 +13,9 @@ namespace Manabind.Src.UI.Components.Complex
         #region Fields
 
         private Frame frame;
-        private List<IIconable> icons;
+        private List<Icon> icons;
+
+        private List<IIconable> iconables;
 
         #endregion
 
@@ -29,11 +31,11 @@ namespace Manabind.Src.UI.Components.Complex
             BasePositionProfile positionProfile,
             int priority,
             Colour backgroundColour,
-            List<IIconable> icons)
+            List<IIconable> iconables)
             : base(width, height, positionProfile, priority)
         {
             this.BackgroundColour = backgroundColour;
-            this.icons = icons;
+            this.iconables = iconables;
         }
 
         #endregion
@@ -65,6 +67,14 @@ namespace Manabind.Src.UI.Components.Complex
             this.InitialiseCoordinates(parent);
 
             frame = new Frame(Width, Height, PositionProfile, BackgroundColour);
+
+            icons = new List<Icon>();
+
+            foreach (IIconable iconable in iconables)
+            {
+                iconable.Icon.Name = "tool";
+                icons.Add(iconable.Icon);
+            }
         }
 
         protected override void ClickDetail()

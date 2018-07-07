@@ -47,7 +47,7 @@ namespace Manabind.Src.UI.Events
             listeners.Clear();
         }
 
-        public static void PushEvent(EventDetails e)
+        public static void PushEvent(UIEvent e)
         {
             List<Listener> relevantListeners = new List<Listener>();
 
@@ -55,7 +55,7 @@ namespace Manabind.Src.UI.Events
             {
                 List<EventResponse> listenerResponses = listener.EventResponses;
 
-                if (listenerResponses.Any(listenerResponse => Utility.EventsDetailsAreEqual(listenerResponse.Trigger, e)))
+                if (listenerResponses.Any(listenerResponse => Utility.EventsDetailsAreEqual(listenerResponse.Trigger, e.EventDetails)))
                 {
                     relevantListeners.Add(listener);
                 }

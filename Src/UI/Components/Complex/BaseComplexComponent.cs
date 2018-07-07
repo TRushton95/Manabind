@@ -85,21 +85,24 @@ namespace Manabind.Src.UI.Components.Complex
         public void Click()
         {
             this.ClickDetail();
-            EventManager.PushEvent(new EventDetails(this.Name, EventType.Click));
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.Click), this));
         }
 
         public void Hover()
         {
             this.Hovered = true;
             this.HoverDetail();
-            EventManager.PushEvent(new EventDetails(this.Name, EventType.Hover));
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.Hover), this));
         }
 
         public void HoverLeave()
         {
             this.Hovered = false;
             this.HoverLeaveDetail();
-            EventManager.PushEvent(new EventDetails(this.Name, EventType.HoverLeave));
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.HoverLeave), this));
         }
 
         public virtual List<BaseComplexComponent> BuildTree()
@@ -117,7 +120,7 @@ namespace Manabind.Src.UI.Components.Complex
             this.Visible = true;
         }
 
-        protected override void ExecuteEventResponse(string action)
+        protected override void ExecuteEventResponse(string action, object content)
         {
             switch (action)
             {
