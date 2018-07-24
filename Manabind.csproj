@@ -42,6 +42,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="Src\Control\Components\Entities\Clickable.cs" />
+    <Compile Include="Src\Control\Components\Interfaces\IClickable.cs" />
     <Compile Include="Src\Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Src\UI\Events\EventResponse.cs" />
     <Compile Include="Src\UI\Events\EventManager.cs" />
     <Compile Include="Src\UI\Events\UIEvent.cs" />
+    <Compile Include="Src\UI\Factories\IconFactory.cs" />
     <Compile Include="Src\UI\Factories\PositionProfileFactory.cs" />
     <Compile Include="Src\UI\PositionProfiles\AbsolutePositionProfile.cs" />
     <Compile Include="Src\UI\PositionProfiles\BasePositionProfile.cs" />

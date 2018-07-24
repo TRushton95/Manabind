@@ -19,6 +19,13 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
 
         #region Properties
 
+        [XmlAttribute("name")]
+        public string Name
+        {
+            get;
+            set;
+        }
+
         [XmlArrayItem(typeof(EventResponse))]
         public List<EventResponse> EventResponses
         {

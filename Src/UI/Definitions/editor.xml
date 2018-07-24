@@ -2,6 +2,12 @@
 <ComponentList>
   <Components>
     <Toolbar name="toolbar">
+      <EventResponses>
+        <EventResponse>
+          <Action>load-tiles</Action>
+          <UIEvent sender="appstate" eventtype="Initialise" />
+        </EventResponse>
+      </EventResponses>
       <RelativePositionProfile>
         <HorizontalAlign>Middle</HorizontalAlign>
         <VerticalAlign>Bottom</VerticalAlign>

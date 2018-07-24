@@ -2,6 +2,7 @@
 {
     public enum EventType
     {
+        Initialise,
         Click,
         Hover,
         HoverLeave

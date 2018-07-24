@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using Manabind.Src.UI.Components.Basic;
 using Manabind.Src.UI.PositionProfiles;
 using Manabind.Src.UI.Serialisation;
-using System.Linq;
-using System;
+using Manabind.Src.Gameplay.Entities;
+using Manabind.Src.UI.Enums;
+using Manabind.Src.UI.Components.BaseInstanceResources;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -108,6 +109,22 @@ namespace Manabind.Src.UI.Components.Complex
             this.Width = totalIconWidth + (Gutter * 2);
 
             this.Height = Icon.Diameter + (Gutter * 2);
+        }
+
+        private void LoadTiles()
+        {
+            this.iconables.Add(
+                new Tile(0, 0, TileType.Ground, Textures.GroundTile, Tile.GetIcon(TileType.Ground)));
+        }
+
+        protected override void ExecuteEventResponse(string action, object content)
+        {
+            switch (action)
+            {
+                case "load-tiles":
+                    this.LoadTiles();
+                    break;
+            }
         }
 
         #endregion

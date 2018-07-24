@@ -42,7 +42,7 @@ namespace Manabind.Src.Control.AppStates
 
                 for (int x = 0; x < 10; x++)
                 {
-                    row.Add(new Tile(x, y, TileType.Ground, tileTexture));
+                    row.Add(new Tile(x, y, TileType.Ground, tileTexture, Tile.GetIcon(TileType.Ground)));
                 }
 
                 board.Tiles.Add(row);

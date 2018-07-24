@@ -36,13 +36,6 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Properties
 
-        [XmlAttribute("name")]
-        public string Name
-        {
-            get;
-            set;
-        }
-
         [XmlIgnore]
         public int Priority
         {
@@ -78,13 +71,13 @@ namespace Manabind.Src.UI.Components.Complex
         public void Initialise(Rectangle parent, int parentPriority)
         {
             this.Priority = parentPriority + 1;
-
             this.Initialise(parent);
         }
 
         public void Click()
         {
             this.ClickDetail();
+
             EventManager.PushEvent(
                 new UIEvent(new EventDetails(this.Name, EventType.Click), this));
         }
@@ -93,6 +86,7 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.Hovered = true;
             this.HoverDetail();
+
             EventManager.PushEvent(
                 new UIEvent(new EventDetails(this.Name, EventType.Hover), this));
         }
@@ -101,6 +95,7 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.Hovered = false;
             this.HoverLeaveDetail();
+
             EventManager.PushEvent(
                 new UIEvent(new EventDetails(this.Name, EventType.HoverLeave), this));
         }

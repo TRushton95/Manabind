@@ -1,6 +1,8 @@
 ﻿using Manabind.Src.UI.Components;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Components.Complex;
+using Manabind.Src.UI.Enums;
+using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -53,6 +55,9 @@ namespace Manabind.Src.Control.AppStates
             componentManager.Initialise(new Rectangle(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight));
 
             this.InitialiseState();
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.Initialise), this));
         }
 
         public void Draw(SpriteBatch spriteBatch)
