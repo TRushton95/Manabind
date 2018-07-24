@@ -42,8 +42,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
-    <Compile Include="Src\Control\Components\Entities\Clickable.cs" />
-    <Compile Include="Src\Control\Components\Interfaces\IClickable.cs" />
     <Compile Include="Src\Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
