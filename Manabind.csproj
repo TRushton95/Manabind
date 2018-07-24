@@ -42,6 +42,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="Src\Control\Components\Entities\Clickable.cs" />
+    <Compile Include="Src\Control\Components\Interfaces\IClickable.cs" />
     <Compile Include="Src\Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,15 +71,18 @@
     <Compile Include="Src\UI\Components\Complex\Icon.cs" />
     <Compile Include="Src\UI\Components\Complex\RootContainer.cs" />
     <Compile Include="Src\UI\Components\Complex\Heading.cs" />
+    <Compile Include="Src\UI\Components\Complex\Toolbar.cs" />
     <Compile Include="Src\UI\Components\ComponentManager.cs" />
     <Compile Include="Src\UI\Enums\EventType.cs" />
     <Compile Include="Src\UI\Enums\FontFlow.cs" />
     <Compile Include="Src\UI\Enums\HorizontalAlign.cs" />
     <Compile Include="Src\UI\Enums\TileType.cs" />
     <Compile Include="Src\UI\Enums\VerticalAlign.cs" />
+    <Compile Include="Src\UI\Events\EventDetails.cs" />
     <Compile Include="Src\UI\Events\EventResponse.cs" />
     <Compile Include="Src\UI\Events\EventManager.cs" />
     <Compile Include="Src\UI\Events\UIEvent.cs" />
+    <Compile Include="Src\UI\Factories\IconFactory.cs" />
     <Compile Include="Src\UI\Factories\PositionProfileFactory.cs" />
     <Compile Include="Src\UI\PositionProfiles\AbsolutePositionProfile.cs" />
     <Compile Include="Src\UI\PositionProfiles\BasePositionProfile.cs" />

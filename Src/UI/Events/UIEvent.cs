@@ -1,7 +1,4 @@
-﻿using Manabind.Src.UI.Enums;
-using System.Xml.Serialization;
-
-namespace Manabind.Src.UI.Events
+﻿namespace Manabind.Src.UI.Events
 {
     public class UIEvent
     {
@@ -11,25 +8,23 @@ namespace Manabind.Src.UI.Events
         {
         }
 
-        public UIEvent(string sender, EventType eventType)
+        public UIEvent(EventDetails eventDetails, object content)
         {
-            this.Sender = sender;
-            this.EventType = eventType;
+            this.EventDetails = eventDetails;
+            this.Content = content;
         }
 
         #endregion
 
         #region Properties
 
-        [XmlAttribute("sender")]
-        public string Sender
+        public EventDetails EventDetails
         {
             get;
             set;
         }
 
-        [XmlAttribute("eventtype")]
-        public EventType EventType
+        public object Content
         {
             get;
             set;

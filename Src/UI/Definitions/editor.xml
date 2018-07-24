@@ -1,4 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ComponentList>
-  
+  <Components>
+    <Toolbar name="toolbar">
+      <EventResponses>
+        <EventResponse>
+          <Action>load-tiles</Action>
+          <UIEvent sender="appstate" eventtype="Initialise" />
+        </EventResponse>
+      </EventResponses>
+      <RelativePositionProfile>
+        <HorizontalAlign>Middle</HorizontalAlign>
+        <VerticalAlign>Bottom</VerticalAlign>
+        <OffsetX>0</OffsetX>
+        <OffsetY>0</OffsetY>
+      </RelativePositionProfile>
+      <BackgroundColour r="140" g="140" b="140" a="255"/>
+    </Toolbar>
+  </Components>
 </ComponentList>

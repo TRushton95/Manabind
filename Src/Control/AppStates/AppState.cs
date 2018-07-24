@@ -1,8 +1,9 @@
 ﻿using Manabind.Src.UI.Components;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Components.Complex;
+using Manabind.Src.UI.Enums;
+using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
@@ -42,12 +43,54 @@ namespace Manabind.Src.Control.AppStates
 
         public void Update()
         {
-            UpdateMouseState();
+            this.UpdateMouseState();
 
+            this.HandleMouseState();
+
+            this.UpdateState();
+        }
+
+        public virtual void Initialise()
+        {
+            componentManager.Initialise(new Rectangle(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight));
+
+            this.InitialiseState();
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.Initialise), this));
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            componentManager.GetRoot().Draw(spriteBatch);
+
+            this.DrawState(spriteBatch);
+        }
+
+        protected virtual void InitialiseState()
+        {
+        }
+
+        protected virtual void UpdateState()
+        {
+        }
+
+        protected virtual void DrawState(SpriteBatch spriteBatch)
+        {
+        }
+
+        private void UpdateMouseState()
+        {
+            this.prevMouseState = this.currentMouseState;
+            this.currentMouseState = Mouse.GetState();
+        }
+
+        private void HandleMouseState()
+        {
             // Resolve hovers
-            IEnumerable<BaseComplexComponent> hoveredComponents = componentManager.GetAll().Where(component => 
-                            component.GetBounds().Contains(currentMouseState.Position) && 
-                            component.Visible && 
+            IEnumerable<BaseComplexComponent> hoveredComponents = componentManager.GetAll().Where(component =>
+                            component.GetBounds().Contains(currentMouseState.Position) &&
+                            component.Visible &&
                             component.Interactive);
 
             prevHoveredComponent = currentHoveredComponent;
@@ -76,40 +119,6 @@ namespace Manabind.Src.Control.AppStates
             {
                 currentHoveredComponent.Click();
             }
-
-            this.UpdateState();
-        }
-
-        public virtual void Initialise()
-        {
-            componentManager.Initialise(new Rectangle(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight));
-
-            this.InitialiseState();
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            componentManager.GetRoot().Draw(spriteBatch);
-
-            this.DrawState(spriteBatch);
-        }
-
-        protected virtual void InitialiseState()
-        {
-        }
-
-        protected virtual void UpdateState()
-        {
-        }
-
-        protected virtual void DrawState(SpriteBatch spriteBatch)
-        {
-        }
-
-        private void UpdateMouseState()
-        {
-            this.prevMouseState = this.currentMouseState;
-            this.currentMouseState = Mouse.GetState();
         }
 
         #endregion

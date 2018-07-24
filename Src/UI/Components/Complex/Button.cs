@@ -41,6 +41,8 @@ namespace Manabind.Src.UI.Components.Complex
 
         #endregion
 
+        #region Properties
+
         public string Text
         {
             get;
@@ -70,6 +72,8 @@ namespace Manabind.Src.UI.Components.Complex
             get;
             set;
         }
+
+        #endregion
 
         #region Methods
 

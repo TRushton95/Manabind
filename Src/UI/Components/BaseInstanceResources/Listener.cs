@@ -19,6 +19,13 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
 
         #region Properties
 
+        [XmlAttribute("name")]
+        public string Name
+        {
+            get;
+            set;
+        }
+
         [XmlArrayItem(typeof(EventResponse))]
         public List<EventResponse> EventResponses
         {
@@ -34,14 +41,14 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         {
             foreach (EventResponse response in EventResponses)
             {
-                if (Utility.EventsAreEqual(response.UIEvent, e))
+                if (Utility.EventsDetailsAreEqual(response.Trigger, e.EventDetails))
                 {
-                    this.ExecuteEventResponse(response.Action);
+                    this.ExecuteEventResponse(response.Action, e.Content);
                 }
             }
         }
 
-        protected virtual void ExecuteEventResponse(string action)
+        protected virtual void ExecuteEventResponse(string action, object content)
         {
         }
 

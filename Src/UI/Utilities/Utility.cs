@@ -5,7 +5,7 @@ namespace Manabind.Src.UI.Utilities
 {
     public static class Utility
     {
-        public static bool EventsAreEqual(UIEvent e1, UIEvent e2)
+        public static bool EventsDetailsAreEqual(EventDetails e1, EventDetails e2)
         {
             bool result = false;
 

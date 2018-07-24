@@ -10,6 +10,8 @@ namespace Manabind.Src.UI.Components.Complex
     {
         #region Fields
 
+        public static int Diameter = 100;
+
         private ImageGraphics image, defaultImage, hoverImage;
 
         #endregion

@@ -27,10 +27,9 @@ Rename default BaseComponent properties to have "Default" in front for clarity
 
 Create flag for hoverable (could re-use interactive?) to decide whether to bother switching BaseComponents
 
---------------
-    URGENT
---------------
-Event system cannot transfer enough useful information
-	-It needs to be able to send data (eg. SpellEventData..)
+Add execute event response detail
 
-Event system possibly too hard coded to recievers?
+Don't assign priority to icon so overtly
+	-maybe assign this when it is added to toolbar somehow?
+
+Don't only call Initialise event on appstate

@@ -19,15 +19,15 @@
       <EventResponses>
         <EventResponse>
           <Action>show</Action>
-          <UIEvent sender="options-button" eventtype="Click" />
+          <Trigger sender="options-button" eventtype="Click" />
         </EventResponse>
         <EventResponse>
           <Action>hide</Action>
-          <UIEvent sender="confirm-no" eventtype="Click" />
+          <Trigger sender="confirm-no" eventtype="Click" />
         </EventResponse>
         <EventResponse>
           <Action>hide</Action>
-          <UIEvent sender="confirm-yes" eventtype="Click" />
+          <Trigger sender="confirm-yes" eventtype="Click" />
         </EventResponse>
       </EventResponses>
       <RelativePositionProfile>
