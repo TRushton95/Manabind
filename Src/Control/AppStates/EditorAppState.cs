@@ -34,6 +34,8 @@ namespace Manabind.Src.Control.AppStates
 
         protected override void InitialiseState()
         {
+            //TODO Proper load in logic here
+
             tileTexture = Content.Load<Texture2D>("GroundTile");
 
             for (int y = 0; y < 5; y++)

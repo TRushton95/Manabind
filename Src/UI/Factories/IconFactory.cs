@@ -15,5 +15,10 @@ namespace Manabind.Src.UI.Factories
         {
             return BuildIcon(Textures.GroundTileIcon);
         }
+
+        public static Icon BuildEmptyTileIcon()
+        {
+            return BuildIcon(Textures.EmptyTileIcon);
+        }
     }
 }

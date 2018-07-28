@@ -48,6 +48,10 @@ namespace Manabind.Src.Gameplay.Entities
 
             switch (tileType)
             {
+                case TileType.Empty:
+                    result = IconFactory.BuildEmptyTileIcon();
+                    break;
+
                 case TileType.Ground:
                     result = IconFactory.BuildGroundTileIcon();
                     break;

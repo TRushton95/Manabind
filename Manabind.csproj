@@ -99,9 +99,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Icons\EmptyTileIcon.jpg" />
+    <Content Include="Content\Icons\GroundTileIcon.png" />
     <Content Include="Content\Tiles\EmptyTile.png" />
     <Content Include="Content\Tiles\GroundTile.png" />
-    <Content Include="Content\Icons\GroundTileIcon.png" />
     <Content Include="Icon.ico" />
     <Content Include="Src\UI\Definitions\editor.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
