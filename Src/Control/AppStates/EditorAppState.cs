@@ -19,9 +19,9 @@ namespace Manabind.Src.Control.AppStates
 
         public EditorAppState()
         {
-            board = new Board();
+            this.board = new Board();
 
-            this.EventResponses.Add(new EventResponse(new EventDetails("tools", EventType.Click), "select-tile"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("tool", EventType.Click), "select-tile"));
         }
 
         #endregion

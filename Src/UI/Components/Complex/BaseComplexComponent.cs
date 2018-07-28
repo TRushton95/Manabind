@@ -2,7 +2,6 @@
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Manabind.Src.UI.PositionProfiles;
-using Manabind.Src.UI.Utilities;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Xml.Serialization;
@@ -72,6 +71,9 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.Priority = parentPriority + 1;
             this.Initialise(parent);
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.Initialise), this));
         }
 
         public void Click()

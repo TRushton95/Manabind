@@ -26,6 +26,9 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         public static Texture2D EmptyTile;
         public static Texture2D GroundTile;
 
+        //Icons
+        public static Texture2D GroundTileIcon;
+
         #endregion
 
         #region Properties
@@ -51,6 +54,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         {
             this.LoadFonts(content);
             this.LoadTiles(content);
+            this.LoadIcons(content);
         }
 
         private void LoadFonts(ContentManager content)
@@ -62,6 +66,11 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         private void LoadTiles(ContentManager content)
         {
             EmptyTile = content.Load<Texture2D>(Path.Combine(TilesPathName, "EmptyTile"));
+        }
+
+        private void LoadIcons(ContentManager content)
+        {
+            GroundTileIcon = content.Load<Texture2D>(Path.Combine(IconsPathName, "GroundTileIcon"));
         }
 
         #endregion
