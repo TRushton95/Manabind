@@ -13,7 +13,7 @@ namespace Manabind.Src.UI.Factories
 
         public static Icon BuildGroundTileIcon()
         {
-            return BuildIcon(Textures.GroundTile);
+            return BuildIcon(Textures.GroundTileIcon);
         }
     }
 }

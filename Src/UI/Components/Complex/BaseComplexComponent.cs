@@ -24,6 +24,8 @@ namespace Manabind.Src.UI.Components.Complex
         public BaseComplexComponent(int width, int height, BasePositionProfile positionProfile, int priority)
             : base(positionProfile)
         {
+            this.Width = width;
+            this.Height = height;
             this.Priority = priority;
             this.Interactive = true;
             this.Visible = true;

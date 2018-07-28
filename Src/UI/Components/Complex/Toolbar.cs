@@ -23,9 +23,8 @@ namespace Manabind.Src.UI.Components.Complex
         #region Fields
 
         private Frame frame;
+        private List<Tile> tiles;
         private List<Icon> icons;
-
-        private List<IIconable> iconables;
 
         #endregion
 
@@ -33,8 +32,8 @@ namespace Manabind.Src.UI.Components.Complex
 
         public Toolbar()
         {
+            this.tiles = new List<Tile>();
             this.icons = new List<Icon>();
-            this.iconables = new List<IIconable>();
         }
 
         public Toolbar(
@@ -48,7 +47,6 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.BackgroundColour = backgroundColour;
             this.icons = new List<Icon>();
-            this.iconables = iconables;
         }
 
         #endregion
@@ -69,23 +67,17 @@ namespace Manabind.Src.UI.Components.Complex
         {
             frame.Draw(spriteBatch);
 
-            foreach (IIconable iconable in icons)
+            foreach (Icon icon in icons)
             {
-                iconable.Icon.Draw(spriteBatch);
+                icon.Draw(spriteBatch);
             }
         }
 
         public override void Initialise(Rectangle parent)
         {
-            icons = new List<Icon>();
-            foreach (IIconable iconable in iconables)
-            {
-                iconable.Icon.Name = "tool";
-                icons.Add(iconable.Icon);
-            }
-
             this.InitialiseDimensions();
             this.InitialiseCoordinates(parent);
+            this.LoadTiles();
 
             frame = new Frame(Width, Height, PositionProfile, BackgroundColour);
             frame.Initialise(this.GetBounds());
@@ -113,17 +105,28 @@ namespace Manabind.Src.UI.Components.Complex
 
         private void LoadTiles()
         {
-            this.iconables.Add(
+            //Create flyweight tiles
+            this.tiles.Add(
                 new Tile(0, 0, TileType.Ground, Textures.GroundTile, Tile.GetIcon(TileType.Ground)));
+
+            //Load icons from tiles
+            icons = new List<Icon>();
+            foreach (Tile tile in tiles)
+            {
+                int index = tiles.IndexOf(tile);
+
+                tile.Icon.Name = "tool";
+                tile.Icon.PositionProfile = new RelativePositionProfile(HorizontalAlign.Left, VerticalAlign.Bottom, (index * Icon.Diameter) + 20, 0);
+                tile.Icon.Initialise(this.GetBounds());
+
+                icons.Add(tile.Icon);
+            }
         }
 
         protected override void ExecuteEventResponse(string action, object content)
         {
             switch (action)
             {
-                case "load-tiles":
-                    this.LoadTiles();
-                    break;
             }
         }
 

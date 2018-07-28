@@ -34,6 +34,7 @@ namespace Manabind.Src.UI.Components.Basic
 
         public override void Initialise(Rectangle parent)
         {
+            this.InitialiseDimensions();
             this.InitialiseCoordinates(parent);
         }
 
