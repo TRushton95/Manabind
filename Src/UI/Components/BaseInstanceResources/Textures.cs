@@ -25,6 +25,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         //Textures
         public static Texture2D EmptyTile;
         public static Texture2D GroundTile;
+        public static Texture2D TileHover;
 
         //Icons
         public static Texture2D GroundTileIcon;
@@ -60,20 +61,35 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
 
         private void LoadFonts(ContentManager content)
         {
-            ButtonFont = content.Load<SpriteFont>(Path.Combine(FontsPathName, "ButtonFont"));
-            HeadingFont = content.Load<SpriteFont>(Path.Combine(FontsPathName, "HeadingFont"));
+            ButtonFont = LoadFont(content, "ButtonFont");
+            HeadingFont = LoadFont(content, "HeadingFont");
         }
 
         private void LoadTiles(ContentManager content)
         {
-            EmptyTile = content.Load<Texture2D>(Path.Combine(TilesPathName, "EmptyTile"));
-            GroundTile = content.Load<Texture2D>(Path.Combine(TilesPathName, "GroundTile"));
+            EmptyTile = LoadTile(content, "EmptyTile");
+            GroundTile = LoadTile(content, "GroundTile");
+            TileHover = LoadTile(content, "TileHover");
         }
 
         private void LoadIcons(ContentManager content)
         {
-            EmptyTileIcon = content.Load<Texture2D>(Path.Combine(IconsPathName, "EmptyTileIcon"));
-            GroundTileIcon = content.Load<Texture2D>(Path.Combine(IconsPathName, "GroundTileIcon"));
+            EmptyTileIcon = LoadIcon(content, "EmptyTileIcon");
+            GroundTileIcon = LoadIcon(content, "GroundTileIcon");
+        }
+
+        private SpriteFont LoadFont(ContentManager content, string fontName)
+        {
+            return content.Load<SpriteFont>(Path.Combine(FontsPathName, fontName));
+        }
+
+        private Texture2D LoadTile(ContentManager content, string tileName)
+        {
+            return content.Load<Texture2D>(Path.Combine(TilesPathName, tileName));
+        }
+        private Texture2D LoadIcon(ContentManager content, string iconName)
+        {
+            return content.Load<Texture2D>(Path.Combine(IconsPathName, iconName));
         }
 
         #endregion

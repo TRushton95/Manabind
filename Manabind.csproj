@@ -101,6 +101,7 @@
   <ItemGroup>
     <Content Include="Content\Icons\EmptyTileIcon.jpg" />
     <Content Include="Content\Icons\GroundTileIcon.png" />
+    <Content Include="Content\Tiles\TileHover.png" />
     <Content Include="Content\Tiles\EmptyTile.png" />
     <Content Include="Content\Tiles\GroundTile.png" />
     <Content Include="Icon.ico" />

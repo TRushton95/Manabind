@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using System;
+using Microsoft.Xna.Framework;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -58,12 +59,17 @@ namespace Manabind.Src.Control.AppStates
                 return;
             }
 
-
+            selectedTile = board.GetTileAtMouse(currentMouseState.X, currentMouseState.Y);
         }
 
         protected override void DrawState(SpriteBatch spriteBatch)
         {
             board.Draw(spriteBatch);
+
+            if (selectedTile != null)
+            {
+                spriteBatch.Draw(Textures.TileHover, board.GetTileCanvasPos(selectedTile), Color.White);
+            }
         }
 
         protected override void ExecuteEventResponse(string action, object content)
