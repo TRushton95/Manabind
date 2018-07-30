@@ -123,14 +123,14 @@ namespace Manabind.Src.Gameplay.Entities
 
         private bool IsValidTile(int x, int y)
         {
-            List<Tile> column = (x >= 0 && x <= Tiles.Count) ? Tiles[x] : null;
+            List<Tile> column = (x >= 0 && x < Tiles.Count) ? Tiles[x] : null;
 
             if (column == null)
             {
                 return false;
             }
 
-            Tile tile = (y >= 0 && y <= column.Count) ? column[y] : null;
+            Tile tile = (y >= 0 && y < column.Count) ? column[y] : null;
 
             if (tile == null)
             {
