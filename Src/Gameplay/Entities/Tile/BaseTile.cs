@@ -4,9 +4,9 @@ using Manabind.Src.UI.Enums;
 using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Factories;
 
-namespace Manabind.Src.Gameplay.Entities
+namespace Manabind.Src.Gameplay.Entities.Tiles
 {
-    public class Tile : BaseEntity, IIconable
+    public class BaseTile : BaseEntity, IIconable
     {
         #region Fields
 
@@ -16,7 +16,7 @@ namespace Manabind.Src.Gameplay.Entities
 
         #region Constructors
 
-        public Tile(int posX, int posY, TileType tileType, Texture2D texture, Icon icon)
+        public BaseTile(int posX, int posY, TileType tileType, Texture2D texture, Icon icon)
             : base(posX, posY, texture)
         {
             this.TileType = tileType;

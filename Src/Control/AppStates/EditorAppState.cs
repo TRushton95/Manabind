@@ -1,4 +1,5 @@
 ﻿using Manabind.Src.Gameplay.Entities;
+using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework.Graphics;
@@ -13,8 +14,8 @@ namespace Manabind.Src.Control.AppStates
         #region Fields
 
         private Board board;
-        private Tile highlightedTile;
-        private Tile selectedTool;
+        private BaseTile highlightedTile;
+        private BaseTile selectedTool;
 
         #endregion
 
@@ -41,11 +42,11 @@ namespace Manabind.Src.Control.AppStates
 
             for (int x = 0; x < 10; x++)
             {
-                List<Tile> column = new List<Tile>();
+                List<BaseTile> column = new List<BaseTile>();
 
                 for (int y = 0; y < 6; y++)
                 {
-                    column.Add(new Tile(x, y, TileType.Empty, Textures.EmptyTile, Tile.GetIcon(TileType.Empty)));
+                    column.Add(new BaseTile(x, y, TileType.Empty, Textures.EmptyTile, BaseTile.GetIcon(TileType.Empty)));
                 }
 
                 board.Tiles.Add(column);
@@ -77,6 +78,7 @@ namespace Manabind.Src.Control.AppStates
             switch (action)
             {
                 case "select-tool":
+                    selectedTool = (BaseTile)content;
                     break;
             }
         }

@@ -53,7 +53,7 @@
     <Compile Include="Src\Control\GameManager.cs" />
     <Compile Include="Src\Gameplay\Entities\BaseEntity.cs" />
     <Compile Include="Src\Gameplay\Entities\Board.cs" />
-    <Compile Include="Src\Gameplay\Entities\Tile.cs" />
+    <Compile Include="Src\Gameplay\Entities\Tile\BaseTile.cs" />
     <Compile Include="Src\Gameplay\Interfaces\IIconable.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Listener.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Settings.cs" />

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Manabind.Src.UI.Components.Basic;
 using Manabind.Src.UI.PositionProfiles;
 using Manabind.Src.UI.Serialisation;
-using Manabind.Src.Gameplay.Entities;
+using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Events;
@@ -24,7 +24,7 @@ namespace Manabind.Src.UI.Components.Complex
         #region Fields
 
         private Frame frame;
-        private List<Tile> tiles;
+        private List<BaseTile> tiles;
         private List<Icon> icons;
 
         #endregion
@@ -33,7 +33,7 @@ namespace Manabind.Src.UI.Components.Complex
 
         public Toolbar()
         {
-            this.tiles = new List<Tile>();
+            this.tiles = new List<BaseTile>();
             this.icons = new List<Icon>();
 
             this.LoadTiles();
@@ -118,7 +118,7 @@ namespace Manabind.Src.UI.Components.Complex
                     
                     if (index <= tiles.Count)
                     {
-                        Tile tile = tiles[index];
+                        BaseTile tile = tiles[index];
 
                         EventManager.PushEvent(
                             new UIEvent(new EventDetails(this.Name, EventType.Select), tile));
@@ -140,13 +140,13 @@ namespace Manabind.Src.UI.Components.Complex
         {
             //Create flyweight tiles
             this.tiles.Add(
-                new Tile(0, 0, TileType.Empty, Textures.EmptyTile, Tile.GetIcon(TileType.Empty)));
+                new BaseTile(0, 0, TileType.Empty, Textures.EmptyTile, BaseTile.GetIcon(TileType.Empty)));
             this.tiles.Add(
-                new Tile(0, 0, TileType.Ground, Textures.GroundTile, Tile.GetIcon(TileType.Ground)));
+                new BaseTile(0, 0, TileType.Ground, Textures.GroundTile, BaseTile.GetIcon(TileType.Ground)));
 
             //Load icons from tiles
             icons = new List<Icon>();
-            foreach (Tile tile in tiles)
+            foreach (BaseTile tile in tiles)
             {
                 icons.Add(tile.Icon);
             }
@@ -154,7 +154,7 @@ namespace Manabind.Src.UI.Components.Complex
 
         private void InitialiseIcons()
         {
-            foreach (Tile tile in tiles)
+            foreach (BaseTile tile in tiles)
             {
                 int index = tiles.IndexOf(tile);
 

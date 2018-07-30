@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using Manabind.Src.Gameplay.Entities.Tiles;
 
 namespace Manabind.Src.Gameplay.Entities
 {
@@ -10,14 +11,14 @@ namespace Manabind.Src.Gameplay.Entities
 
         public Board()
         {
-            Tiles = new List<List<Tile>>();
+            Tiles = new List<List<BaseTile>>();
         }
 
         #endregion
 
         #region Properties
 
-        public List<List<Tile>> Tiles
+        public List<List<BaseTile>> Tiles
         {
             get;
             set;
@@ -29,33 +30,33 @@ namespace Manabind.Src.Gameplay.Entities
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (List<Tile> column in Tiles)
+            foreach (List<BaseTile> column in Tiles)
             {
-                foreach (Tile tile in column)
+                foreach (BaseTile tile in column)
                 {
-                    int canvasX = tile.PosX * Tile.Diameter + (IsOddRow(tile) ? 50 : 0);
-                    int canvasY = tile.PosY * (int)(Tile.Diameter * 0.75);
+                    int canvasX = tile.PosX * BaseTile.Diameter + (IsOddRow(tile) ? 50 : 0);
+                    int canvasY = tile.PosY * (int)(BaseTile.Diameter * 0.75);
 
                     tile.Draw(spriteBatch, canvasX, canvasY);
                 }
             }
         }
 
-        public Tile GetTileAtMouse(int mouseX, int mouseY)
+        public BaseTile GetTileAtMouse(int mouseX, int mouseY)
         {
-            Tile result = null;
+            BaseTile result = null;
 
-            int gridHeight = (Tile.Diameter / 4) * 3;
+            int gridHeight = (BaseTile.Diameter / 4) * 3;
 
             //get row and column hex is in
             int row = (int)(mouseY / gridHeight);
 
             bool rowIsOdd = row % 2 == 1;
-            int offsetX = rowIsOdd ? Tile.Diameter / 2 : 0;
+            int offsetX = rowIsOdd ? BaseTile.Diameter / 2 : 0;
 
-            int column = (int)((mouseX - offsetX) / Tile.Diameter); // Possible rounding error here with negative numbers
+            int column = (int)((mouseX - offsetX) / BaseTile.Diameter); // Possible rounding error here with negative numbers
 
-            if (rowIsOdd && mouseX < Tile.Diameter / 2) //hack to fix rounding error above
+            if (rowIsOdd && mouseX < BaseTile.Diameter / 2) //hack to fix rounding error above
             {
                 column--;
             }
@@ -66,18 +67,18 @@ namespace Manabind.Src.Gameplay.Entities
 
             if (rowIsOdd)
             {
-                relX = (mouseX - (column * Tile.Diameter)) - (Tile.Diameter / 2);
+                relX = (mouseX - (column * BaseTile.Diameter)) - (BaseTile.Diameter / 2);
             }
             else
             {
-                relX = mouseX - (column * Tile.Diameter);
+                relX = mouseX - (column * BaseTile.Diameter);
             }
 
             //Console.WriteLine("(" + relX + "," + relY + ")");
 
             //use y = mx + c to determine which side of the line the mousePosition. position falls on
-            double c = Tile.Diameter / 4;
-            double m = c / (Tile.Diameter / 2);
+            double c = BaseTile.Diameter / 4;
+            double m = c / (BaseTile.Diameter / 2);
 
             if (relY < (-m * relX) + c) //left edge
             {
@@ -106,31 +107,31 @@ namespace Manabind.Src.Gameplay.Entities
             return result;
         }
 
-        public Vector2 GetTileCanvasPos(Tile tile)
+        public Vector2 GetTileCanvasPos(BaseTile tile)
         {
             bool oddRow = IsOddRow(tile);
 
-            int canvasX = tile.PosX * Tile.Diameter + (oddRow ? 50 : 0);
-            int canvasY = tile.PosY * (int)(Tile.Diameter * 0.75);
+            int canvasX = tile.PosX * BaseTile.Diameter + (oddRow ? 50 : 0);
+            int canvasY = tile.PosY * (int)(BaseTile.Diameter * 0.75);
 
             return new Vector2(canvasX, canvasY);
         }
 
-        private bool IsOddRow(Tile tile)
+        private bool IsOddRow(BaseTile tile)
         {
             return tile.PosY % 2 == 1; ;
         }
 
         private bool IsValidTile(int x, int y)
         {
-            List<Tile> column = (x >= 0 && x < Tiles.Count) ? Tiles[x] : null;
+            List<BaseTile> column = (x >= 0 && x < Tiles.Count) ? Tiles[x] : null;
 
             if (column == null)
             {
                 return false;
             }
 
-            Tile tile = (y >= 0 && y < column.Count) ? column[y] : null;
+            BaseTile tile = (y >= 0 && y < column.Count) ? column[y] : null;
 
             if (tile == null)
             {
