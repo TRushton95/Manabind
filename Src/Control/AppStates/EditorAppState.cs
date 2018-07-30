@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Microsoft.Xna.Framework;
+using Manabind.Src.Gameplay.Entities.Tile;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -46,7 +47,7 @@ namespace Manabind.Src.Control.AppStates
 
                 for (int y = 0; y < 6; y++)
                 {
-                    column.Add(new BaseTile(x, y, TileType.Empty, Textures.EmptyTile, BaseTile.GetIcon(TileType.Empty)));
+                    column.Add(new EmptyTile(x, y));
                 }
 
                 board.Tiles.Add(column);

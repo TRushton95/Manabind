@@ -16,7 +16,7 @@
             {
                 if (_instance == null)
                 {
-                    return new Settings();
+                    _instance = new Settings();
                 }
 
                 return _instance;

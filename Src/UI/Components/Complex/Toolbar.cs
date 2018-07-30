@@ -9,6 +9,7 @@ using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Events;
+using Manabind.Src.Gameplay.Entities.Tile;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -140,9 +141,9 @@ namespace Manabind.Src.UI.Components.Complex
         {
             //Create flyweight tiles
             this.tiles.Add(
-                new BaseTile(0, 0, TileType.Empty, Textures.EmptyTile, BaseTile.GetIcon(TileType.Empty)));
+                new EmptyTile(0, 0));
             this.tiles.Add(
-                new BaseTile(0, 0, TileType.Ground, Textures.GroundTile, BaseTile.GetIcon(TileType.Ground)));
+                new GroundTile(0, 0));
 
             //Load icons from tiles
             icons = new List<Icon>();

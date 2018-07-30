@@ -6,7 +6,7 @@ using Manabind.Src.UI.Factories;
 
 namespace Manabind.Src.Gameplay.Entities.Tiles
 {
-    public class BaseTile : BaseEntity, IIconable
+    public abstract class BaseTile : BaseEntity, IIconable
     {
         #region Fields
 
