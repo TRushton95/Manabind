@@ -28,8 +28,9 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         public static Texture2D TileHover;
 
         //Icons
-        public static Texture2D GroundTileIcon;
-        public static Texture2D EmptyTileIcon;
+        public static Texture2D EmptyTileIcon, EmptyTileIconHover;
+        public static Texture2D GroundTileIcon, GroundTileIconHover;
+        public static Texture2D TileIconHover;
 
         #endregion
 
@@ -75,7 +76,10 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         private void LoadIcons(ContentManager content)
         {
             EmptyTileIcon = LoadIcon(content, "EmptyTileIcon");
+            EmptyTileIconHover = LoadIcon(content, "EmptyTileIconHover");
             GroundTileIcon = LoadIcon(content, "GroundTileIcon");
+            GroundTileIconHover = LoadIcon(content, "GroundTileIconHover");
+            TileIconHover = LoadIcon(content, "TileIconHover");
         }
 
         private SpriteFont LoadFont(ContentManager content, string fontName)

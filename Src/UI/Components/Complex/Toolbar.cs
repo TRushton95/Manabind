@@ -34,6 +34,8 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.tiles = new List<Tile>();
             this.icons = new List<Icon>();
+
+            this.LoadTiles();
         }
 
         public Toolbar(
@@ -47,6 +49,8 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.BackgroundColour = backgroundColour;
             this.icons = new List<Icon>();
+
+            this.LoadTiles();
         }
 
         #endregion
@@ -77,10 +81,19 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseDimensions();
             this.InitialiseCoordinates(parent);
-            this.LoadTiles();
 
             frame = new Frame(Width, Height, PositionProfile, BackgroundColour);
             frame.Initialise(this.GetBounds());
+            InitialiseIcons();
+        }
+
+        public override List<BaseComplexComponent> BuildTree()
+        {
+            List<BaseComplexComponent> result = new List<BaseComplexComponent>();
+
+            result.AddRange(icons);
+
+            return result;
         }
 
         protected override void ClickDetail()
@@ -115,14 +128,20 @@ namespace Manabind.Src.UI.Components.Complex
             icons = new List<Icon>();
             foreach (Tile tile in tiles)
             {
+                icons.Add(tile.Icon);
+            }
+        }
+
+        private void InitialiseIcons()
+        {
+            foreach (Tile tile in tiles)
+            {
                 int index = tiles.IndexOf(tile);
 
                 tile.Icon.Name = "tool";
                 tile.Icon.PositionProfile = new RelativePositionProfile(HorizontalAlign.Left, VerticalAlign.Bottom, (index * Icon.Diameter) + 20, 0);
                 tile.Icon.Priority = this.Priority + 1;
                 tile.Icon.Initialise(this.GetBounds());
-
-                icons.Add(tile.Icon);
             }
         }
 

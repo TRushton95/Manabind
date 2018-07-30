@@ -14,7 +14,7 @@ namespace Manabind.Src.Control.AppStates
         #region Fields
 
         private Board board;
-        private Tile selectedTile;
+        private Tile highlightedTile;
 
         #endregion
 
@@ -59,16 +59,16 @@ namespace Manabind.Src.Control.AppStates
                 return;
             }
 
-            selectedTile = board.GetTileAtMouse(currentMouseState.X, currentMouseState.Y);
+            highlightedTile = board.GetTileAtMouse(currentMouseState.X, currentMouseState.Y);
         }
 
         protected override void DrawState(SpriteBatch spriteBatch)
         {
             board.Draw(spriteBatch);
 
-            if (selectedTile != null)
+            if (highlightedTile != null)
             {
-                spriteBatch.Draw(Textures.TileHover, board.GetTileCanvasPos(selectedTile), Color.White);
+                spriteBatch.Draw(Textures.TileHover, board.GetTileCanvasPos(highlightedTile), Color.White);
             }
         }
 
@@ -77,7 +77,6 @@ namespace Manabind.Src.Control.AppStates
             switch (action)
             {
                 case "select-tile":
-                    this.selectedTile = (Tile)content;
                     break;
             }
         }
