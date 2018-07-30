@@ -39,16 +39,16 @@ namespace Manabind.Src.Control.AppStates
         {
             //TODO Proper load in logic here
 
-            for (int y = 0; y < 6; y++)
+            for (int x = 0; x < 10; x++)
             {
-                List<Tile> row = new List<Tile>();
+                List<Tile> column = new List<Tile>();
 
-                for (int x = 0; x < 10; x++)
+                for (int y = 0; y < 6; y++)
                 {
-                    row.Add(new Tile(x, y, TileType.Empty, Textures.EmptyTile, Tile.GetIcon(TileType.Empty)));
+                    column.Add(new Tile(x, y, TileType.Empty, Textures.EmptyTile, Tile.GetIcon(TileType.Empty)));
                 }
 
-                board.Tiles.Add(row);
+                board.Tiles.Add(column);
             }
         }
 

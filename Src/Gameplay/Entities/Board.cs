@@ -29,19 +29,15 @@ namespace Manabind.Src.Gameplay.Entities
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            bool oddRow = false;
-
-            foreach (List<Tile> row in Tiles)
+            foreach (List<Tile> column in Tiles)
             {
-                foreach (Tile tile in row)
+                foreach (Tile tile in column)
                 {
+                    int canvasX = tile.PosX * Tile.Diameter + (IsOddRow(tile) ? 50 : 0);
                     int canvasY = tile.PosY * (int)(Tile.Diameter * 0.75);
-                    int canvasX = tile.PosX * Tile.Diameter + (oddRow ? 50 : 0);
 
                     tile.Draw(spriteBatch, canvasX, canvasY);
                 }
-
-                oddRow = !oddRow;
             }
         }
 
