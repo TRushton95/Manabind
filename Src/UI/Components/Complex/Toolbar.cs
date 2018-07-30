@@ -119,6 +119,7 @@ namespace Manabind.Src.UI.Components.Complex
 
                 tile.Icon.Name = "tool";
                 tile.Icon.PositionProfile = new RelativePositionProfile(HorizontalAlign.Left, VerticalAlign.Bottom, (index * Icon.Diameter) + 20, 0);
+                tile.Icon.Priority = this.Priority + 1;
                 tile.Icon.Initialise(this.GetBounds());
 
                 icons.Add(tile.Icon);

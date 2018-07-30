@@ -3,6 +3,8 @@ using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using Manabind.Src.UI.Components.BaseInstanceResources;
+using System;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -11,7 +13,7 @@ namespace Manabind.Src.Control.AppStates
         #region Fields
 
         private Board board;
-        private Texture2D tileTexture;
+        private Tile selectedTile;
 
         #endregion
 
@@ -36,15 +38,13 @@ namespace Manabind.Src.Control.AppStates
         {
             //TODO Proper load in logic here
 
-            tileTexture = Content.Load<Texture2D>("GroundTile");
-
-            for (int y = 0; y < 5; y++)
+            for (int y = 0; y < 6; y++)
             {
                 List<Tile> row = new List<Tile>();
 
                 for (int x = 0; x < 10; x++)
                 {
-                    row.Add(new Tile(x, y, TileType.Ground, tileTexture, Tile.GetIcon(TileType.Ground)));
+                    row.Add(new Tile(x, y, TileType.Empty, Textures.EmptyTile, Tile.GetIcon(TileType.Empty)));
                 }
 
                 board.Tiles.Add(row);
@@ -53,6 +53,11 @@ namespace Manabind.Src.Control.AppStates
 
         protected override void UpdateState()
         {
+            if (uiInteracted)
+            {
+                return;
+            }
+
 
         }
 
@@ -66,6 +71,7 @@ namespace Manabind.Src.Control.AppStates
             switch (action)
             {
                 case "select-tile":
+                    this.selectedTile = (Tile)content;
                     break;
             }
         }

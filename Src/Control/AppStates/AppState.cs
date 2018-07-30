@@ -18,6 +18,7 @@ namespace Manabind.Src.Control.AppStates
         protected ComponentManager componentManager;
         protected MouseState currentMouseState, prevMouseState;
         protected BaseComplexComponent currentHoveredComponent, prevHoveredComponent;
+        protected bool uiInteracted;
 
         #endregion
 
@@ -29,6 +30,7 @@ namespace Manabind.Src.Control.AppStates
             componentManager.LoadUI(this.UIDefinitionFilename);
             currentHoveredComponent = null;
             prevHoveredComponent = null;
+            uiInteracted = false;
         }
 
         #endregion
@@ -45,6 +47,7 @@ namespace Manabind.Src.Control.AppStates
         {
             this.UpdateMouseState();
 
+            this.uiInteracted = false;
             this.HandleMouseState();
 
             this.UpdateState();
@@ -98,6 +101,7 @@ namespace Manabind.Src.Control.AppStates
             if (hoveredComponents.Count() > 0)
             {
                 currentHoveredComponent = hoveredComponents.Aggregate((c1, c2) => c1.Priority > c2.Priority ? c1 : c2);
+                uiInteracted = true;
             }
             else
             {

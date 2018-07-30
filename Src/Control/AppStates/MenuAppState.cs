@@ -1,11 +1,4 @@
-﻿using Manabind.Src.Gameplay.Entities;
-using Manabind.Src.UI.Enums;
-using System.Collections.Generic;
-using System;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-
-namespace Manabind.Src.Control.AppStates
+﻿namespace Manabind.Src.Control.AppStates
 {
     public class MenuAppState : AppState
     {
