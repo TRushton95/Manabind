@@ -8,6 +8,7 @@ using Manabind.Src.UI.Serialisation;
 using Manabind.Src.Gameplay.Entities;
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Components.BaseInstanceResources;
+using Manabind.Src.UI.Events;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -108,6 +109,25 @@ namespace Manabind.Src.UI.Components.Complex
         {
         }
 
+        protected override void ExecuteEventResponse(string action, object content)
+        {
+            switch (action)
+            {
+                case "select-tool":
+                    int index = icons.IndexOf((Icon)content);
+                    
+                    if (index <= tiles.Count)
+                    {
+                        Tile tile = tiles[index];
+
+                        EventManager.PushEvent(
+                            new UIEvent(new EventDetails(this.Name, EventType.Select), tile));
+                    }
+
+                    break;
+            }
+        }
+
         private void InitialiseDimensions()
         {
             int totalIconWidth = (MaxToolCount * Icon.Diameter) + (Gutter * 2);
@@ -142,13 +162,6 @@ namespace Manabind.Src.UI.Components.Complex
                 tile.Icon.PositionProfile = new RelativePositionProfile(HorizontalAlign.Left, VerticalAlign.Bottom, (index * Icon.Diameter) + 20, 0);
                 tile.Icon.Priority = this.Priority + 1;
                 tile.Icon.Initialise(this.GetBounds());
-            }
-        }
-
-        protected override void ExecuteEventResponse(string action, object content)
-        {
-            switch (action)
-            {
             }
         }
 

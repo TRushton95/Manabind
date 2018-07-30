@@ -5,6 +5,7 @@
         Initialise,
         Click,
         Hover,
-        HoverLeave
+        HoverLeave,
+        Select
     }
 }

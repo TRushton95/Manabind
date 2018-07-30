@@ -4,7 +4,6 @@ using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Manabind.Src.UI.Components.BaseInstanceResources;
-using System;
 using Microsoft.Xna.Framework;
 
 namespace Manabind.Src.Control.AppStates
@@ -15,6 +14,7 @@ namespace Manabind.Src.Control.AppStates
 
         private Board board;
         private Tile highlightedTile;
+        private Tile selectedTool;
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace Manabind.Src.Control.AppStates
         {
             this.board = new Board();
 
-            this.EventResponses.Add(new EventResponse(new EventDetails("tool", EventType.Click), "select-tile"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Select), "select-tool"));
         }
 
         #endregion
@@ -76,7 +76,7 @@ namespace Manabind.Src.Control.AppStates
         {
             switch (action)
             {
-                case "select-tile":
+                case "select-tool":
                     break;
             }
         }

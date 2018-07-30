@@ -4,8 +4,8 @@
     <Toolbar name="toolbar">
       <EventResponses>
         <EventResponse>
-          <Action>load-tiles</Action>
-          <UIEvent sender="appstate" eventtype="Initialise" />
+          <Action>select-tool</Action>
+          <Trigger sender="tool" eventtype="Click" />
         </EventResponse>
       </EventResponses>
       <RelativePositionProfile>
