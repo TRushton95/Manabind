@@ -1,42 +1,57 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace Manabind.Src.Control
 {
-    public class MouseInfo
+    public static class MouseInfo
     {
         #region Fields
 
-        private MouseState prevMouseState, currentMouseState;
+        private static MouseState prevMouseState, currentMouseState;
+
+        #endregion
+
+        #region Constructors
+
+        static MouseInfo()
+        {
+            prevMouseState = Mouse.GetState();
+            currentMouseState = Mouse.GetState();
+        }
 
         #endregion
 
         #region Properties
 
-        public int X => currentMouseState.X;
+        public static int X => currentMouseState.X;
 
-        public int Y => currentMouseState.Y;
+        public static int Y => currentMouseState.Y;
 
-        public int PrevX => prevMouseState.X;
+        public static Vector2 Position => new Vector2(X, Y);
 
-        public int PrevY => prevMouseState.Y;
+        public static int PrevX => prevMouseState.X;
 
-        public bool LeftMouseDown => currentMouseState.LeftButton == ButtonState.Pressed;
+        public static int PrevY => prevMouseState.Y;
 
-        public bool RightMouseDown => currentMouseState.RightButton == ButtonState.Pressed;
+        public static Vector2 PrevPosition => new Vector2(PrevX, PrevY);
 
-        public bool PrevLeftMouseDown => prevMouseState.LeftButton == ButtonState.Pressed;
+        public static bool LeftMouseDown => currentMouseState.LeftButton == ButtonState.Pressed;
 
-        public bool PrevRightMouseDown => prevMouseState.LeftButton == ButtonState.Pressed;
+        public static bool RightMouseDown => currentMouseState.RightButton == ButtonState.Pressed;
 
-        public bool LeftMouseClick => LeftMouseDown && !PrevLeftMouseDown;
+        public static bool PrevLeftMouseDown => prevMouseState.LeftButton == ButtonState.Pressed;
 
-        public bool RightMouseClick => RightMouseDown && !PrevRightMouseDown;
+        public static bool PrevRightMouseDown => prevMouseState.LeftButton == ButtonState.Pressed;
+
+        public static bool LeftMouseClicked => LeftMouseDown && !PrevLeftMouseDown;
+
+        public static bool RightMouseClicked => RightMouseDown && !PrevRightMouseDown;
 
         #endregion
 
         #region Methods
 
-        public void Update()
+        public static void Update()
         {
             prevMouseState = currentMouseState;
             currentMouseState = Mouse.GetState();

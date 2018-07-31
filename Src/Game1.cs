@@ -60,6 +60,8 @@ namespace Manabind.Src
                 Exit();
 
             // TODO: Add your update logic here
+            MouseInfo.Update();
+
             gameManager.Update();
 
             base.Update(gameTime);

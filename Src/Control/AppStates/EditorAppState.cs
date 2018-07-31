@@ -29,14 +29,6 @@ namespace Manabind.Src.Control.AppStates
             this.SetEventResponses();
         }
 
-        public EditorAppState(MouseState currentMouseState, MouseState prevMouseState)
-            : base(currentMouseState, prevMouseState)
-        {
-            this.camera = new Camera(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight);
-            this.board = new Board(10, 6);
-            this.SetEventResponses();
-        }
-
         #endregion
 
         #region Properties
@@ -54,9 +46,9 @@ namespace Manabind.Src.Control.AppStates
         {
             camera.Update();
 
-            Vector2 absoluteMousePosition = camera.GetAbsoluteMousePosition(new Vector2(currentMouseState.X, currentMouseState.Y));
+            Vector2 absoluteMousePosition = camera.GetAbsoluteMousePosition(new Vector2(MouseInfo.X, MouseInfo.Y));
             
-            board.Update(absoluteMousePosition, this.LeftMouseDown, this.LeftMouseClicked, !uiInteracted);
+            board.Update(absoluteMousePosition, MouseInfo.LeftMouseDown, MouseInfo.LeftMouseClicked, !uiInteracted);
         }
 
         protected override void DrawState(SpriteBatch spriteBatch)

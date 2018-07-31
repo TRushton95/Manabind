@@ -11,12 +11,6 @@ namespace Manabind.Src.Control.AppStates
             componentManager.LoadUI(AppSettings.PlayUIFileName);
         }
 
-        public PlayAppState(MouseState currentMouseState, MouseState prevMouseState)
-            : base(currentMouseState, prevMouseState)
-        {
-            componentManager.LoadUI(AppSettings.PlayUIFileName);
-        }
-
         #endregion
 
         #region Properties

@@ -62,25 +62,25 @@ namespace Manabind.Src.Control
 
         private void SwitchToMenuState()
         {
-            appState = new MenuAppState(appState.CurrentMouseState, appState.PrevMouseState);
+            appState = new MenuAppState();
             appState.Initialise();
         }
 
         private void SwitchToPlayState()
         {
-            appState = new PlayAppState(appState.CurrentMouseState, appState.PrevMouseState);
+            appState = new PlayAppState();
             appState.Initialise();
         }
 
         private void SwitchToOptionsState()
         {
-            appState = new OptionsAppState(appState.CurrentMouseState, appState.PrevMouseState);
+            appState = new OptionsAppState();
             appState.Initialise();
         }
 
         private void SwitchToEditorState()
         {
-            appState = new EditorAppState(appState.CurrentMouseState, appState.PrevMouseState);
+            appState = new EditorAppState();
             appState.Initialise();
         }
 

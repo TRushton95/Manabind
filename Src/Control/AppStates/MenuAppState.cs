@@ -10,11 +10,6 @@ namespace Manabind.Src.Control.AppStates
         {
         }
 
-        public MenuAppState(MouseState currentMouseState, MouseState prevMouseState)
-            : base(currentMouseState, prevMouseState)
-        {
-        }
-
         #endregion
 
         #region Properties

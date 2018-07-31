@@ -16,7 +16,6 @@ namespace Manabind.Src.Control.AppStates
         #region Fields
 
         protected ComponentManager componentManager;
-        protected MouseState currentMouseState, prevMouseState;
         protected BaseComplexComponent currentHoveredComponent, prevHoveredComponent;
         protected bool uiInteracted;
 
@@ -33,51 +32,9 @@ namespace Manabind.Src.Control.AppStates
             uiInteracted = false;
         }
 
-        public AppState(MouseState currentMouseState, MouseState prevMouseState)
-        {
-            componentManager = new ComponentManager();
-            componentManager.LoadUI(this.UIDefinitionFilename);
-            currentHoveredComponent = null;
-            prevHoveredComponent = null;
-            uiInteracted = false;
-
-            this.currentMouseState = currentMouseState;
-            this.prevMouseState = prevMouseState;
-        }
-
         #endregion
 
         #region Properties
-
-        public bool LeftMouseDown
-        {
-            get
-            {
-                return currentMouseState.LeftButton == ButtonState.Pressed;
-            }
-        }
-
-        public bool LeftMouseClicked
-        {
-            get
-            {
-                return currentMouseState.LeftButton == ButtonState.Pressed &&
-                    prevMouseState.LeftButton == ButtonState.Released;
-            }
-        }
-
-        public bool RightMouseClicked
-        {
-            get
-            {
-                return currentMouseState.RightButton == ButtonState.Pressed &&
-                    prevMouseState.RightButton == ButtonState.Released;
-            }
-        }
-
-        public MouseState CurrentMouseState => currentMouseState;
-
-        public MouseState PrevMouseState => prevMouseState;
 
         protected abstract string UIDefinitionFilename { get; }
         
@@ -87,8 +44,6 @@ namespace Manabind.Src.Control.AppStates
 
         public void Update()
         {
-            this.UpdateMouseState();
-
             this.uiInteracted = false;
             this.HandleMouseState();
 
@@ -124,17 +79,11 @@ namespace Manabind.Src.Control.AppStates
         {
         }
 
-        private void UpdateMouseState()
-        {
-            this.prevMouseState = this.currentMouseState;
-            this.currentMouseState = Mouse.GetState();
-        }
-
         private void HandleMouseState()
         {
             // Resolve hovers
             IEnumerable<BaseComplexComponent> hoveredComponents = componentManager.GetAll().Where(component =>
-                            component.GetBounds().Contains(currentMouseState.Position) &&
+                            component.GetBounds().Contains(MouseInfo.Position) &&
                             component.Visible &&
                             component.Interactive);
 
@@ -160,17 +109,17 @@ namespace Manabind.Src.Control.AppStates
             //clicked on component
             if (currentHoveredComponent != null)
             {
-                if (LeftMouseDown)
+                if (MouseInfo.LeftMouseDown)
                 {
                     currentHoveredComponent.LeftMouseDown();
 
-                    if (LeftMouseClicked)
+                    if (MouseInfo.LeftMouseClicked)
                     {
                         currentHoveredComponent.LeftClick();
                     }
                 }
 
-                if (RightMouseClicked)
+                if (MouseInfo.RightMouseClicked)
                 {
                     currentHoveredComponent.RightClick();
                 }
