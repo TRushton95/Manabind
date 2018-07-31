@@ -7,6 +7,10 @@
         RightClick,
         Hover,
         HoverLeave,
+        LeftMouseDown,
+        LeftMouseUp,
+        RightMouseDown,
+        RightMouseUp,
         Select
     }
 }

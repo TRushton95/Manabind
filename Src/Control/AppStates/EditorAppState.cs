@@ -25,20 +25,14 @@ namespace Manabind.Src.Control.AppStates
         public EditorAppState()
         {
             this.board = new Board(10, 6);
-
-            this.EventResponses.Add(new EventResponse(new EventDetails("*", EventType.RightClick), "deselect-tool"));
-            this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Select), "select-tool"));
-            this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Tile, EventType.LeftClick), "set-tile"));
+            this.SetEventResponses();
         }
 
         public EditorAppState(MouseState currentMouseState, MouseState prevMouseState)
             : base(currentMouseState, prevMouseState)
         {
             this.board = new Board(10, 6);
-
-            this.EventResponses.Add(new EventResponse(new EventDetails("*", EventType.RightClick), "deselect-tool"));
-            this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Select), "select-tool"));
-            this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Tile, EventType.LeftClick), "set-tile"));
+            this.SetEventResponses();
         }
 
         #endregion
@@ -62,6 +56,11 @@ namespace Manabind.Src.Control.AppStates
             }
 
             highlightedTile = board.GetTileAtMouse(currentMouseState.X, currentMouseState.Y);
+
+            if (highlightedTile != null && this.LeftMouseDown)
+            {
+                highlightedTile.LeftMouseDown();
+            }
 
             if (highlightedTile != null && this.LeftMouseClicked)
             {
@@ -97,17 +96,29 @@ namespace Manabind.Src.Control.AppStates
                     break;
 
                 case "set-tile":
-
-                    if (selectedTool == null)
-                    {
-                        return;
-                    }
-
-                    Vector2 tileCoords = new Vector2(((BaseTile)content).PosX, ((BaseTile)content).PosY);
-
-                    board.SetTileAtCoords((int)tileCoords.X, (int)tileCoords.Y, selectedTool.TileType);
+                    SetTile((BaseTile)content);
                     break;
             }
+        }
+
+        private void SetTile(BaseTile clickedTile)
+        {
+            if (selectedTool == null)
+            {
+                return;
+            }
+
+            if (clickedTile.TileType != selectedTool.TileType)
+            {
+                board.SetTileAtCoords(clickedTile.PosX, clickedTile.PosY, selectedTool.TileType);
+            }
+        }
+
+        private void SetEventResponses()
+        {
+            this.EventResponses.Add(new EventResponse(new EventDetails(EventManager.Wildcard, EventType.RightClick), "deselect-tool"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Select), "select-tool"));
+            this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Tile, EventType.LeftMouseDown), "set-tile"));
         }
     }
 }

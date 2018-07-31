@@ -60,6 +60,12 @@ namespace Manabind.Src.Gameplay.Entities
                 new UIEvent(new EventDetails(this.Name, EventType.LeftClick), this));
         }
 
+        public void LeftMouseDown()
+        {
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.LeftMouseDown), this));
+        }
+
         #endregion
     }
 }

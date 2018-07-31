@@ -73,6 +73,10 @@ namespace Manabind.Src.UI.Components.Complex
         {
         }
 
+        protected override void LeftMouseDownDetail()
+        {
+        }
+
         protected override void HoverDetail()
         {
             this.fontGraphics = this.hoverFontGraphics;

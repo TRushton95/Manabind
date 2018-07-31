@@ -7,7 +7,6 @@ using Manabind.Src.UI.PositionProfiles;
 using Manabind.Src.UI.Serialisation;
 using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.UI.Enums;
-using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Events;
 using Manabind.Src.Gameplay.Entities.Tile;
 
@@ -103,6 +102,10 @@ namespace Manabind.Src.UI.Components.Complex
         }
 
         protected override void RightClickDetail()
+        {
+        }
+
+        protected override void LeftMouseDownDetail()
         {
         }
 

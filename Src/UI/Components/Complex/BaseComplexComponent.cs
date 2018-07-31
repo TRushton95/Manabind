@@ -94,6 +94,14 @@ namespace Manabind.Src.UI.Components.Complex
                 new UIEvent(new EventDetails(this.Name, EventType.RightClick), this));
         }
 
+        public void LeftMouseDown()
+        {
+            this.LeftMouseDownDetail();
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.LeftMouseDown), this));
+        }
+
         public void Hover()
         {
             this.Hovered = true;
@@ -142,6 +150,8 @@ namespace Manabind.Src.UI.Components.Complex
         protected abstract void LeftClickDetail();
 
         protected abstract void RightClickDetail();
+
+        protected abstract void LeftMouseDownDetail();
 
         protected abstract void HoverDetail();
 
