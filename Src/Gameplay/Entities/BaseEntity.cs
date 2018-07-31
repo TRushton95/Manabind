@@ -7,10 +7,10 @@ namespace Manabind.Src.Gameplay.Entities
     {
         #region Constructors
 
-        public BaseEntity(int posX, int posY, Texture2D texture)
+        public BaseEntity(int canvasX, int canvasY, Texture2D texture)
         {
-            this.PosX = posX;
-            this.PosY = posY;
+            this.CanvasX = canvasX;
+            this.CanvasY = canvasY;
             this.Texture = texture;
         }
 
@@ -18,13 +18,13 @@ namespace Manabind.Src.Gameplay.Entities
 
         #region Properties
 
-        public int PosX
+        public int CanvasX
         {
             get;
             set;
         }
 
-        public int PosY
+        public int CanvasY
         {
             get;
             set;
@@ -40,9 +40,9 @@ namespace Manabind.Src.Gameplay.Entities
 
         #region Methods
 
-        public void Draw(SpriteBatch spriteBatch, int canvasX, int canvasY)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.Texture, new Vector2(canvasX, canvasY), Color.White);
+            spriteBatch.Draw(this.Texture, new Vector2(CanvasX, CanvasY), Color.White);
         }
 
         #endregion

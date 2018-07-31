@@ -8,13 +8,18 @@ namespace Manabind.Src.Gameplay.Entities.Tile
     {
         #region Constructors
 
-        public GroundTile(int posX, int posY)
-            : base(posX, posY, TileType.Ground, Textures.GroundTile, GetIcon(TileType.Ground))
+        public GroundTile()
+            : base(TileType.Ground, Textures.GroundTile, GetIcon(TileType.Ground))
+        {
+        }
+
+        public GroundTile(int posX, int posY, int canvasX, int canvasY)
+            : base(posX, posY, canvasX, canvasY, TileType.Ground, Textures.GroundTile, GetIcon(TileType.Ground))
         {
         }
 
         public GroundTile(BaseTile tile)
-            : base(tile.PosX, tile.PosY, TileType.Ground, Textures.GroundTile, GetIcon(TileType.Ground))
+            : base(tile.PosX, tile.PosY, tile.CanvasX, tile.CanvasY, TileType.Ground, Textures.GroundTile, GetIcon(TileType.Ground))
         {
         }
 

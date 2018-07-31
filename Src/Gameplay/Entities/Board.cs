@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Manabind.Src.Gameplay.Entities.Tiles;
+using Manabind.Src.Gameplay.Entities.Tile;
 
 namespace Manabind.Src.Gameplay.Entities
 {
@@ -11,12 +12,31 @@ namespace Manabind.Src.Gameplay.Entities
 
         public Board()
         {
-            Tiles = new List<List<BaseTile>>();
+            this.Tiles = new List<List<BaseTile>>();
+        }
+
+        public Board(int width, int height)
+        {
+            this.Width = width;
+            this.Height = height;
+            this.Tiles = new List<List<BaseTile>>();
         }
 
         #endregion
 
         #region Properties
+
+        public int Width
+        {
+            get;
+            private set;
+        }
+
+        public int Height
+        {
+            get;
+            private set;
+        }
 
         public List<List<BaseTile>> Tiles
         {
@@ -28,16 +48,33 @@ namespace Manabind.Src.Gameplay.Entities
 
         #region Methods
 
+        public void Generate()
+        {
+            for (int x = 0; x < this.Width; x++)
+            {
+                List<BaseTile> column = new List<BaseTile>();
+
+                for (int y = 0; y < this.Height; y++)
+                {
+                    bool oddRow = y % 2 == 1;
+
+                    int canvasX = x * BaseTile.Diameter + (oddRow ? BaseTile.Diameter / 2 : 0);
+                    int canvasY = y * (int)(BaseTile.Diameter * 0.75);
+
+                    column.Add(new EmptyTile(x, y, canvasX, canvasY));
+                }
+
+                Tiles.Add(column);
+            }
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (List<BaseTile> column in Tiles)
             {
                 foreach (BaseTile tile in column)
                 {
-                    int canvasX = tile.PosX * BaseTile.Diameter + (IsOddRow(tile) ? 50 : 0);
-                    int canvasY = tile.PosY * (int)(BaseTile.Diameter * 0.75);
-
-                    tile.Draw(spriteBatch, canvasX, canvasY);
+                    tile.Draw(spriteBatch);
                 }
             }
         }

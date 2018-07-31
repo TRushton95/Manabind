@@ -24,7 +24,7 @@ namespace Manabind.Src.Control.AppStates
 
         public EditorAppState()
         {
-            this.board = new Board();
+            this.board = new Board(10, 6);
 
             this.EventResponses.Add(new EventResponse(new EventDetails(EventManager.Wildcard, EventType.Click), "deselect-tool"));
             this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Select), "select-tool"));
@@ -40,19 +40,7 @@ namespace Manabind.Src.Control.AppStates
 
         protected override void InitialiseState()
         {
-            //TODO Proper load in logic here
-
-            for (int x = 0; x < 10; x++)
-            {
-                List<BaseTile> column = new List<BaseTile>();
-
-                for (int y = 0; y < 6; y++)
-                {
-                    column.Add(new EmptyTile(x, y));
-                }
-
-                board.Tiles.Add(column);
-            }
+            board.Generate();
         }
 
         protected override void UpdateState()

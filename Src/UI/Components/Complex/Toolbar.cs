@@ -141,9 +141,9 @@ namespace Manabind.Src.UI.Components.Complex
         {
             //Create flyweight tiles
             this.tiles.Add(
-                new EmptyTile(0, 0));
+                new EmptyTile(0, 0, 0, 0));
             this.tiles.Add(
-                new GroundTile(0, 0));
+                new GroundTile(0, 0, 0, 0));
 
             //Load icons from tiles
             icons = new List<Icon>();
