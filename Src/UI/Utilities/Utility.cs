@@ -5,18 +5,23 @@ namespace Manabind.Src.UI.Utilities
 {
     public static class Utility
     {
-        public static bool EventsDetailsAreEqual(EventDetails e1, EventDetails e2)
+        public static bool EventDetailsMatch(EventDetails pushedEvent, EventDetails triggerEvent)
         {
             bool result = false;
 
-            if (e1 != null && e2 != null &&
-                String.Equals(e1.Sender, e2.Sender) &&
-                e1.EventType == e2.EventType)
+            if (pushedEvent != null && triggerEvent != null &&
+                SenderMatch(pushedEvent.Sender, triggerEvent.Sender) &&
+                pushedEvent.EventType == triggerEvent.EventType)
             {
                 result = true;
             }
 
             return result;
+        }
+
+        private static bool SenderMatch(string pushedSender, string triggerSender)
+        {
+            return String.Equals(pushedSender, triggerSender) || String.Equals(triggerSender, EventManager.Wildcard);
         }
     }
 }

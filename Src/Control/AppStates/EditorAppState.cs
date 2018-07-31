@@ -26,6 +26,7 @@ namespace Manabind.Src.Control.AppStates
         {
             this.board = new Board();
 
+            this.EventResponses.Add(new EventResponse(new EventDetails("*", EventType.Click), "deselect-tool"));
             this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Select), "select-tool"));
         }
 
@@ -72,12 +73,21 @@ namespace Manabind.Src.Control.AppStates
             {
                 spriteBatch.Draw(Textures.TileHover, board.GetTileCanvasPos(highlightedTile), Color.White);
             }
+
+            if (selectedTool != null)
+            {
+                spriteBatch.Draw(selectedTool.Icon.DefaultTexture, new Vector2(0, 0), Color.White);
+            }
         }
 
         protected override void ExecuteEventResponse(string action, object content)
         {
             switch (action)
             {
+                case "deselect-tool":
+                    selectedTool = null;
+                    break;
+
                 case "select-tool":
                     selectedTool = (BaseTile)content;
                     break;

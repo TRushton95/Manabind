@@ -41,7 +41,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         {
             foreach (EventResponse response in EventResponses)
             {
-                if (Utility.EventsDetailsAreEqual(response.Trigger, e.EventDetails))
+                if (Utility.EventDetailsMatch(e.EventDetails, response.Trigger))
                 {
                     this.ExecuteEventResponse(response.Action, e.Content);
                 }

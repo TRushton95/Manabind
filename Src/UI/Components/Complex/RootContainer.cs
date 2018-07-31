@@ -62,7 +62,7 @@ namespace Manabind.Src.UI.Components.Complex
 
         public override List<BaseComplexComponent> BuildTree()
         {
-            List<BaseComplexComponent> result = new List<BaseComplexComponent>();
+            List<BaseComplexComponent> result = new List<BaseComplexComponent> { this };
 
             List<BaseComplexComponent> total = new List<BaseComplexComponent>();
             foreach (BaseComplexComponent child in Components)

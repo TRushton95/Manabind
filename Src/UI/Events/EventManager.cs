@@ -9,6 +9,12 @@ namespace Manabind.Src.UI.Events
 {
     public static class EventManager
     {
+        #region Constants
+
+        public const string Wildcard = "*";
+
+        #endregion
+
         #region Fields
 
         private static List<Listener> listeners;
@@ -55,7 +61,8 @@ namespace Manabind.Src.UI.Events
             {
                 List<EventResponse> listenerResponses = listener.EventResponses;
 
-                if (listenerResponses.Any(listenerResponse => Utility.EventsDetailsAreEqual(listenerResponse.Trigger, e.EventDetails)))
+                if (listenerResponses.Any(listenerResponse => 
+                    Utility.EventDetailsMatch(e.EventDetails, listenerResponse.Trigger)))
                 {
                     relevantListeners.Add(listener);
                 }
