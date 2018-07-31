@@ -107,9 +107,9 @@ namespace Manabind.Src.Control.AppStates
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            componentManager.GetRoot().Draw(spriteBatch);
-
             this.DrawState(spriteBatch);
+
+            componentManager.GetRoot().Draw(spriteBatch);
         }
 
         protected virtual void InitialiseState()

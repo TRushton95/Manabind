@@ -1,11 +1,12 @@
-﻿using Manabind.Src.UI.Enums;
+﻿using Manabind.Src.UI.Components.BaseInstanceResources;
+using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Manabind.Src.Gameplay.Entities
 {
-    public abstract class BaseEntity
+    public abstract class BaseEntity : Listener
     {
         #region Constructors
 
@@ -20,12 +21,6 @@ namespace Manabind.Src.Gameplay.Entities
         #endregion
 
         #region Properties
-
-        public string Name
-        {
-            get;
-            set;
-        }
 
         public int CanvasX
         {
@@ -49,9 +44,9 @@ namespace Manabind.Src.Gameplay.Entities
 
         #region Methods
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 offset = default(Vector2))
         {
-            spriteBatch.Draw(this.Texture, new Vector2(CanvasX, CanvasY), Color.White);
+            spriteBatch.Draw(this.Texture, new Vector2(CanvasX, CanvasY) + offset, Color.White);
         }
 
         public void Click()

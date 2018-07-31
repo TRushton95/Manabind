@@ -53,12 +53,13 @@
     <Compile Include="Src\Control\GameManager.cs" />
     <Compile Include="Src\Gameplay\Entities\BaseEntity.cs" />
     <Compile Include="Src\Gameplay\Entities\Board.cs" />
+    <Compile Include="Src\Gameplay\Entities\Camera.cs" />
     <Compile Include="Src\Gameplay\Entities\EntityNames.cs" />
     <Compile Include="Src\Gameplay\Entities\Tile\BaseTile.cs" />
     <Compile Include="Src\Gameplay\Entities\Tile\EmptyTile.cs" />
     <Compile Include="Src\Gameplay\Entities\Tile\GroundTile.cs" />
     <Compile Include="Src\Gameplay\Interfaces\IIconable.cs" />
-    <Compile Include="Src\UI\Components\BaseInstanceResources\Listener.cs" />
+    <Compile Include="Src\UI\Events\Listener.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Settings.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Textures.cs" />
     <Compile Include="Src\UI\Components\Basic\BaseComponent.cs" />

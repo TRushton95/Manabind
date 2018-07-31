@@ -4,20 +4,25 @@ using System.Collections.Generic;
 using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.Gameplay.Entities.Tile;
 using Manabind.Src.UI.Enums;
+using Manabind.Src.UI.Components.BaseInstanceResources;
+using Microsoft.Xna.Framework.Input;
+using Manabind.Src.UI.Events;
 
 namespace Manabind.Src.Gameplay.Entities
 {
-    public class Board
+    public class Board : Listener
     {
         #region Constructors
 
         public Board()
         {
+            this.Name = "board";
             this.Tiles = new List<List<BaseTile>>();
         }
 
         public Board(int width, int height)
         {
+            this.Name = "board";
             this.Width = width;
             this.Height = height;
             this.Tiles = new List<List<BaseTile>>();
@@ -40,6 +45,12 @@ namespace Manabind.Src.Gameplay.Entities
         }
 
         public List<List<BaseTile>> Tiles
+        {
+            get;
+            set;
+        }
+
+        public BaseTile HighlightedTile
         {
             get;
             set;
@@ -69,14 +80,31 @@ namespace Manabind.Src.Gameplay.Entities
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Update(Vector2 mouse, bool interact)
+        {
+            BaseTile highlightedTile = null;
+
+            if (interact)
+            {
+                highlightedTile = GetTileAtMouse((int)mouse.X, (int)mouse.Y);
+            }
+
+            this.HighlightedTile = highlightedTile;
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 offset = default(Vector2))
         {
             foreach (List<BaseTile> column in Tiles)
             {
                 foreach (BaseTile tile in column)
                 {
-                    tile.Draw(spriteBatch);
+                    tile.Draw(spriteBatch, offset);
                 }
+            }
+
+            if (this.HighlightedTile != null)
+            {
+                spriteBatch.Draw(Textures.TileHover, new Vector2(HighlightedTile.CanvasX, HighlightedTile.CanvasY) + offset, Color.White);
             }
         }
 

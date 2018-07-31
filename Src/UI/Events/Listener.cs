@@ -1,9 +1,8 @@
-﻿using Manabind.Src.UI.Events;
-using Manabind.Src.UI.Utilities;
+﻿using Manabind.Src.UI.Utilities;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace Manabind.Src.UI.Components.BaseInstanceResources
+namespace Manabind.Src.UI.Events
 {
     public abstract class Listener
     {

@@ -13,6 +13,7 @@ namespace Manabind.Src.Control.AppStates
     {
         #region Fields
 
+        private Camera camera;
         private Board board;
         private BaseTile highlightedTile;
         private BaseTile selectedTool;
@@ -23,6 +24,7 @@ namespace Manabind.Src.Control.AppStates
 
         public EditorAppState()
         {
+            this.camera = new Camera(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight);
             this.board = new Board(10, 6);
             this.SetEventResponses();
         }
@@ -30,6 +32,7 @@ namespace Manabind.Src.Control.AppStates
         public EditorAppState(MouseState currentMouseState, MouseState prevMouseState)
             : base(currentMouseState, prevMouseState)
         {
+            this.camera = new Camera(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight);
             this.board = new Board(10, 6);
             this.SetEventResponses();
         }
@@ -49,27 +52,16 @@ namespace Manabind.Src.Control.AppStates
 
         protected override void UpdateState()
         {
-            if (uiInteracted)
-            {
-                return;
-            }
+            Vector2 absoluteMousePosition = camera.GetAbsoluteMousePosition(new Vector2(currentMouseState.X, currentMouseState.Y));
 
-            highlightedTile = board.GetTileAtMouse(currentMouseState.X, currentMouseState.Y);
+            camera.Update();
 
-            if (highlightedTile != null && this.LeftMouseDown)
-            {
-                highlightedTile.LeftMouseDown();
-            }
-
-            if (highlightedTile != null && this.LeftMouseClicked)
-            {
-                highlightedTile.Click();
-            }
+            board.Update(absoluteMousePosition, !uiInteracted);
         }
 
         protected override void DrawState(SpriteBatch spriteBatch)
         {
-            board.Draw(spriteBatch);
+            camera.Draw(board, spriteBatch);
 
             if (highlightedTile != null)
             {
