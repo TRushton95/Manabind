@@ -13,6 +13,7 @@ namespace Manabind.Src.UI.Components.Complex
         public RootContainer()
             : base()
         {
+            this.Name = "root";
             this.Width = AppSettings.WindowWidth;
             this.Height = AppSettings.WindowHeight;
             this.PositionProfile = new AbsolutePositionProfile(0, 0);

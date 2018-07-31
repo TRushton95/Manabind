@@ -26,7 +26,7 @@ namespace Manabind.Src.Control.AppStates
         {
             this.board = new Board();
 
-            this.EventResponses.Add(new EventResponse(new EventDetails("*", EventType.Click), "deselect-tool"));
+            this.EventResponses.Add(new EventResponse(new EventDetails(EventManager.Wildcard, EventType.Click), "deselect-tool"));
             this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Select), "select-tool"));
         }
 
