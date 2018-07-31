@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Manabind.Src.Gameplay.Entities.Tile;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -79,7 +78,7 @@ namespace Manabind.Src.Control.AppStates
 
             if (selectedTool != null)
             {
-                spriteBatch.Draw(selectedTool.Icon.DefaultTexture, new Vector2(0, 0), Color.White);
+                spriteBatch.Draw(Textures.TileIconHover, selectedTool.Icon.GetBounds(), Color.White);
             }
         }
 
