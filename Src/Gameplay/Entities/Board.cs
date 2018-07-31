@@ -5,7 +5,6 @@ using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.Gameplay.Entities.Tile;
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Components.BaseInstanceResources;
-using Microsoft.Xna.Framework.Input;
 using Manabind.Src.UI.Events;
 
 namespace Manabind.Src.Gameplay.Entities
@@ -80,9 +79,19 @@ namespace Manabind.Src.Gameplay.Entities
             }
         }
 
-        public void Update(Vector2 mouse, bool interact)
+        public void Update(Vector2 mouse, bool leftMouseDown, bool leftMouseClicked, bool interact) //TO-DO Tidy this up
         {
             UpdateHighlightedTile(mouse, interact);
+
+            if (HighlightedTile != null && leftMouseDown)
+            {
+                HighlightedTile.LeftMouseDown();
+            }
+
+            if (HighlightedTile != null && leftMouseClicked)
+            {
+                HighlightedTile.Click();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 offset = default(Vector2))

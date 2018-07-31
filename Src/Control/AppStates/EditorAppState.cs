@@ -56,7 +56,7 @@ namespace Manabind.Src.Control.AppStates
 
             Vector2 absoluteMousePosition = camera.GetAbsoluteMousePosition(new Vector2(currentMouseState.X, currentMouseState.Y));
             
-            board.Update(absoluteMousePosition, !uiInteracted);
+            board.Update(absoluteMousePosition, this.LeftMouseDown, this.LeftMouseClicked, !uiInteracted);
         }
 
         protected override void DrawState(SpriteBatch spriteBatch)
