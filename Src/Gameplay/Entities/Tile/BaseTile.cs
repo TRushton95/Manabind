@@ -17,7 +17,7 @@ namespace Manabind.Src.Gameplay.Entities.Tiles
         #region Constructors
 
         public BaseTile(TileType tileType, Texture2D texture, Icon icon)
-            : base(0, 0, texture)
+            : base(EntityNames.Tile, 0, 0, texture)
         {
             this.TileType = tileType;
             this.Texture = texture;
@@ -25,7 +25,7 @@ namespace Manabind.Src.Gameplay.Entities.Tiles
         }
 
         public BaseTile(int posX, int posY, int canvasX, int canvasY, TileType tileType, Texture2D texture, Icon icon)
-            : base(canvasX, canvasY, texture)
+            : base(EntityNames.Tile, canvasX, canvasY, texture)
         {
             this.PosX = posX;
             this.PosY = posY;

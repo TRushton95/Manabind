@@ -4,6 +4,7 @@ using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Manabind.Src.Control
 {
@@ -61,25 +62,25 @@ namespace Manabind.Src.Control
 
         private void SwitchToMenuState()
         {
-            appState = new MenuAppState();
+            appState = new MenuAppState(appState.CurrentMouseState, appState.PrevMouseState);
             appState.Initialise();
         }
 
         private void SwitchToPlayState()
         {
-            appState = new PlayAppState();
+            appState = new PlayAppState(appState.CurrentMouseState, appState.PrevMouseState);
             appState.Initialise();
         }
 
         private void SwitchToOptionsState()
         {
-            appState = new OptionsAppState();
+            appState = new OptionsAppState(appState.CurrentMouseState, appState.PrevMouseState);
             appState.Initialise();
         }
 
         private void SwitchToEditorState()
         {
-            appState = new EditorAppState();
+            appState = new EditorAppState(appState.CurrentMouseState, appState.PrevMouseState);
             appState.Initialise();
         }
 

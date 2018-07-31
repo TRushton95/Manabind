@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Manabind.Src.UI.Enums;
+using Manabind.Src.UI.Events;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Manabind.Src.Gameplay.Entities
@@ -7,8 +9,9 @@ namespace Manabind.Src.Gameplay.Entities
     {
         #region Constructors
 
-        public BaseEntity(int canvasX, int canvasY, Texture2D texture)
+        public BaseEntity(string name, int canvasX, int canvasY, Texture2D texture)
         {
+            this.Name = name;
             this.CanvasX = canvasX;
             this.CanvasY = canvasY;
             this.Texture = texture;
@@ -17,6 +20,12 @@ namespace Manabind.Src.Gameplay.Entities
         #endregion
 
         #region Properties
+
+        public string Name
+        {
+            get;
+            set;
+        }
 
         public int CanvasX
         {
@@ -43,6 +52,12 @@ namespace Manabind.Src.Gameplay.Entities
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(this.Texture, new Vector2(CanvasX, CanvasY), Color.White);
+        }
+
+        public void Click()
+        {
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.Click), this));
         }
 
         #endregion

@@ -1,10 +1,17 @@
-﻿namespace Manabind.Src.Control.AppStates
+﻿using Microsoft.Xna.Framework.Input;
+
+namespace Manabind.Src.Control.AppStates
 {
     public class MenuAppState : AppState
     {
         #region Constructors
 
         public MenuAppState()
+        {
+        }
+
+        public MenuAppState(MouseState currentMouseState, MouseState prevMouseState)
+            : base(currentMouseState, prevMouseState)
         {
         }
 

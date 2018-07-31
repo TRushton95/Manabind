@@ -33,12 +33,37 @@ namespace Manabind.Src.Control.AppStates
             uiInteracted = false;
         }
 
+        public AppState(MouseState currentMouseState, MouseState prevMouseState)
+        {
+            componentManager = new ComponentManager();
+            componentManager.LoadUI(this.UIDefinitionFilename);
+            currentHoveredComponent = null;
+            prevHoveredComponent = null;
+            uiInteracted = false;
+
+            this.currentMouseState = currentMouseState;
+            this.prevMouseState = prevMouseState;
+        }
+
         #endregion
 
         #region Properties
 
-        protected abstract string UIDefinitionFilename { get; }
+        public bool MouseClicked
+        {
+            get
+            {
+                return currentMouseState.LeftButton == ButtonState.Pressed &&
+                    prevMouseState.LeftButton == ButtonState.Released;
+            }
+        }
 
+        public MouseState CurrentMouseState => currentMouseState;
+
+        public MouseState PrevMouseState => prevMouseState;
+
+        protected abstract string UIDefinitionFilename { get; }
+        
         #endregion
 
         #region Methods
@@ -116,10 +141,7 @@ namespace Manabind.Src.Control.AppStates
             }
 
             //clicked on component
-            if (currentHoveredComponent != null && prevHoveredComponent != null &&
-                currentHoveredComponent == prevHoveredComponent &&
-                currentHoveredComponent.Hovered && currentMouseState.LeftButton == ButtonState.Pressed &&
-                prevHoveredComponent.Hovered && prevMouseState.LeftButton == ButtonState.Released)
+            if (currentHoveredComponent != null && this.MouseClicked)
             {
                 currentHoveredComponent.Click();
             }

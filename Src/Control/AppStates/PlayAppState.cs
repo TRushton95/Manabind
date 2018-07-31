@@ -1,10 +1,18 @@
-﻿namespace Manabind.Src.Control.AppStates
+﻿using Microsoft.Xna.Framework.Input;
+
+namespace Manabind.Src.Control.AppStates
 {
     public class PlayAppState : AppState
     {
         #region Constructors
 
         public PlayAppState()
+        {
+            componentManager.LoadUI(AppSettings.PlayUIFileName);
+        }
+
+        public PlayAppState(MouseState currentMouseState, MouseState prevMouseState)
+            : base(currentMouseState, prevMouseState)
         {
             componentManager.LoadUI(AppSettings.PlayUIFileName);
         }

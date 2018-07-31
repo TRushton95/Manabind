@@ -3,10 +3,9 @@ using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Microsoft.Xna.Framework;
-using Manabind.Src.Gameplay.Entities.Tile;
+using Microsoft.Xna.Framework.Input;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -23,6 +22,15 @@ namespace Manabind.Src.Control.AppStates
         #region Constructors
 
         public EditorAppState()
+        {
+            this.board = new Board(10, 6);
+
+            this.EventResponses.Add(new EventResponse(new EventDetails(EventManager.Wildcard, EventType.Click), "deselect-tool"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Select), "select-tool"));
+        }
+
+        public EditorAppState(MouseState currentMouseState, MouseState prevMouseState)
+            : base(currentMouseState, prevMouseState)
         {
             this.board = new Board(10, 6);
 
@@ -51,6 +59,11 @@ namespace Manabind.Src.Control.AppStates
             }
 
             highlightedTile = board.GetTileAtMouse(currentMouseState.X, currentMouseState.Y);
+
+            if (highlightedTile != null && this.MouseClicked)
+            {
+                highlightedTile.Click();
+            }
         }
 
         protected override void DrawState(SpriteBatch spriteBatch)
