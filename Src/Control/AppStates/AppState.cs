@@ -101,7 +101,7 @@ namespace Manabind.Src.Control.AppStates
             if (hoveredComponents.Count() > 0)
             {
                 currentHoveredComponent = hoveredComponents.Aggregate((c1, c2) => c1.Priority > c2.Priority ? c1 : c2);
-                uiInteracted = true;
+                uiInteracted = currentHoveredComponent.Priority > 0 ? true : false;
             }
             else
             {
