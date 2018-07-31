@@ -3,7 +3,8 @@
     public enum EventType
     {
         Initialise,
-        Click,
+        LeftClick,
+        RightClick,
         Hover,
         HoverLeave,
         Select

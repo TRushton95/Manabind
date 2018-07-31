@@ -103,7 +103,11 @@ namespace Manabind.Src.UI.Components.Complex
             this.frame = this.defaultFrame;
         }
 
-        protected override void ClickDetail()
+        protected override void LeftClickDetail()
+        {
+        }
+
+        protected override void RightClickDetail()
         {
         }
 

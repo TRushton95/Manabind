@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.Gameplay.Entities.Tile;
+using Manabind.Src.UI.Enums;
 
 namespace Manabind.Src.Gameplay.Entities
 {
@@ -152,6 +153,40 @@ namespace Manabind.Src.Gameplay.Entities
             int canvasY = tile.PosY * (int)(BaseTile.Diameter * 0.75);
 
             return new Vector2(canvasX, canvasY);
+        }
+
+        public BaseTile GetTileAtCoords(int x, int y)
+        {
+            BaseTile result = null;
+
+            if (x >= 0 && x < Width &&
+                y >= 0 && y < Height)
+            {
+                result = Tiles[x][y];
+            }
+
+            return result;
+        }
+
+        public void SetTileAtCoords(int x, int y, TileType tileType)
+        {
+            BaseTile tile = GetTileAtCoords(x, y);
+
+            if (tile == null)
+            {
+                return;
+            }
+
+            switch (tileType)
+            {
+                case TileType.Empty:
+                    this.Tiles[x][y] = new EmptyTile(tile);
+                    break;
+
+                case TileType.Ground:
+                    this.Tiles[x][y] = new GroundTile(tile);
+                    break;
+            }
         }
 
         private bool IsOddRow(BaseTile tile)

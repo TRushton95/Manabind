@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Manabind.Src.Gameplay.Entities.Tile;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -25,8 +26,9 @@ namespace Manabind.Src.Control.AppStates
         {
             this.board = new Board(10, 6);
 
-            this.EventResponses.Add(new EventResponse(new EventDetails(EventManager.Wildcard, EventType.Click), "deselect-tool"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("*", EventType.RightClick), "deselect-tool"));
             this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Select), "select-tool"));
+            this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Tile, EventType.LeftClick), "set-tile"));
         }
 
         public EditorAppState(MouseState currentMouseState, MouseState prevMouseState)
@@ -34,8 +36,9 @@ namespace Manabind.Src.Control.AppStates
         {
             this.board = new Board(10, 6);
 
-            this.EventResponses.Add(new EventResponse(new EventDetails(EventManager.Wildcard, EventType.Click), "deselect-tool"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("*", EventType.RightClick), "deselect-tool"));
             this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Select), "select-tool"));
+            this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Tile, EventType.LeftClick), "set-tile"));
         }
 
         #endregion
@@ -60,7 +63,7 @@ namespace Manabind.Src.Control.AppStates
 
             highlightedTile = board.GetTileAtMouse(currentMouseState.X, currentMouseState.Y);
 
-            if (highlightedTile != null && this.MouseClicked)
+            if (highlightedTile != null && this.LeftMouseClicked)
             {
                 highlightedTile.Click();
             }
@@ -91,6 +94,18 @@ namespace Manabind.Src.Control.AppStates
 
                 case "select-tool":
                     selectedTool = (BaseTile)content;
+                    break;
+
+                case "set-tile":
+
+                    if (selectedTool == null)
+                    {
+                        return;
+                    }
+
+                    Vector2 tileCoords = new Vector2(((BaseTile)content).PosX, ((BaseTile)content).PosY);
+
+                    board.SetTileAtCoords((int)tileCoords.X, (int)tileCoords.Y, selectedTool.TileType);
                     break;
             }
         }

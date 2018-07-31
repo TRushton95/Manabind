@@ -68,7 +68,11 @@ namespace Manabind.Src.UI.Components.Complex
             this.image = this.defaultImage;
         }
 
-        protected override void ClickDetail()
+        protected override void LeftClickDetail()
+        {
+        }
+
+        protected override void RightClickDetail()
         {
         }
 

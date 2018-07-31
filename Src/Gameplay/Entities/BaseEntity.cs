@@ -57,7 +57,7 @@ namespace Manabind.Src.Gameplay.Entities
         public void Click()
         {
             EventManager.PushEvent(
-                new UIEvent(new EventDetails(this.Name, EventType.Click), this));
+                new UIEvent(new EventDetails(this.Name, EventType.LeftClick), this));
         }
 
         #endregion

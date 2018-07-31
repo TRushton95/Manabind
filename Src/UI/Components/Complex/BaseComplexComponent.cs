@@ -78,12 +78,20 @@ namespace Manabind.Src.UI.Components.Complex
                 new UIEvent(new EventDetails(this.Name, EventType.Initialise), this));
         }
 
-        public void Click()
+        public void LeftClick()
         {
-            this.ClickDetail();
+            this.LeftClickDetail();
 
             EventManager.PushEvent(
-                new UIEvent(new EventDetails(this.Name, EventType.Click), this));
+                new UIEvent(new EventDetails(this.Name, EventType.LeftClick), this));
+        }
+
+        public void RightClick()
+        {
+            this.RightClickDetail();
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.RightClick), this));
         }
 
         public void Hover()
@@ -131,7 +139,9 @@ namespace Manabind.Src.UI.Components.Complex
             }
         }
 
-        protected abstract void ClickDetail();
+        protected abstract void LeftClickDetail();
+
+        protected abstract void RightClickDetail();
 
         protected abstract void HoverDetail();
 

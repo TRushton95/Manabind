@@ -49,12 +49,20 @@ namespace Manabind.Src.Control.AppStates
 
         #region Properties
 
-        public bool MouseClicked
+        public bool LeftMouseClicked
         {
             get
             {
                 return currentMouseState.LeftButton == ButtonState.Pressed &&
                     prevMouseState.LeftButton == ButtonState.Released;
+            }
+        }
+        public bool RightMouseClicked
+        {
+            get
+            {
+                return currentMouseState.RightButton == ButtonState.Pressed &&
+                    prevMouseState.RightButton == ButtonState.Released;
             }
         }
 
@@ -141,9 +149,17 @@ namespace Manabind.Src.Control.AppStates
             }
 
             //clicked on component
-            if (currentHoveredComponent != null && this.MouseClicked)
+            if (currentHoveredComponent != null)
             {
-                currentHoveredComponent.Click();
+                if (LeftMouseClicked)
+                {
+                    currentHoveredComponent.LeftClick();
+                }
+
+                if (RightMouseClicked)
+                {
+                    currentHoveredComponent.RightClick();
+                }
             }
         }
 

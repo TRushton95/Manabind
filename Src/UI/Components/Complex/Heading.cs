@@ -65,7 +65,11 @@ namespace Manabind.Src.UI.Components.Complex
             this.fontGraphics = this.defaultFontGraphics;
         }
 
-        protected override void ClickDetail()
+        protected override void LeftClickDetail()
+        {
+        }
+
+        protected override void RightClickDetail()
         {
         }
 

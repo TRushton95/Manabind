@@ -79,7 +79,11 @@ namespace Manabind.Src.UI.Components.Complex
             return result;
         }
 
-        protected override void ClickDetail()
+        protected override void LeftClickDetail()
+        {
+        }
+
+        protected override void RightClickDetail()
         {
         }
 

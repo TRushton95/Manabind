@@ -5,7 +5,7 @@
       <EventResponses>
         <EventResponse>
           <Action>select-tool</Action>
-          <Trigger sender="tool" eventtype="Click" />
+          <Trigger sender="tool" eventtype="LeftClick" />
         </EventResponse>
       </EventResponses>
       <RelativePositionProfile>
