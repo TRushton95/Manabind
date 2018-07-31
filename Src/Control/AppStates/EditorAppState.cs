@@ -52,10 +52,10 @@ namespace Manabind.Src.Control.AppStates
 
         protected override void UpdateState()
         {
-            Vector2 absoluteMousePosition = camera.GetAbsoluteMousePosition(new Vector2(currentMouseState.X, currentMouseState.Y));
-
             camera.Update();
 
+            Vector2 absoluteMousePosition = camera.GetAbsoluteMousePosition(new Vector2(currentMouseState.X, currentMouseState.Y));
+            
             board.Update(absoluteMousePosition, !uiInteracted);
         }
 

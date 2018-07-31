@@ -82,14 +82,7 @@ namespace Manabind.Src.Gameplay.Entities
 
         public void Update(Vector2 mouse, bool interact)
         {
-            BaseTile highlightedTile = null;
-
-            if (interact)
-            {
-                highlightedTile = GetTileAtMouse((int)mouse.X, (int)mouse.Y);
-            }
-
-            this.HighlightedTile = highlightedTile;
+            UpdateHighlightedTile(mouse, interact);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 offset = default(Vector2))
@@ -239,6 +232,18 @@ namespace Manabind.Src.Gameplay.Entities
             }
 
             return true;
+        }
+
+        private void UpdateHighlightedTile(Vector2 mouse, bool interact)
+        {
+            BaseTile highlightedTile = null;
+
+            if (interact)
+            {
+                highlightedTile = GetTileAtMouse((int)mouse.X, (int)mouse.Y);
+            }
+
+            this.HighlightedTile = highlightedTile;
         }
 
         #endregion

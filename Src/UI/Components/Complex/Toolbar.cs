@@ -9,6 +9,7 @@ using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Manabind.Src.Gameplay.Entities.Tile;
+using Manabind.Src.UI.Components.BaseInstanceResources;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -26,6 +27,7 @@ namespace Manabind.Src.UI.Components.Complex
         private Frame frame;
         private List<BaseTile> tiles;
         private List<Icon> icons;
+        private Icon highlightedIcon;
 
         #endregion
 
@@ -76,6 +78,11 @@ namespace Manabind.Src.UI.Components.Complex
             {
                 icon.Draw(spriteBatch);
             }
+
+            if (highlightedIcon != null)
+            {
+                spriteBatch.Draw(Textures.TileIconHover, highlightedIcon.GetCoordinates(), Color.White);
+            }
         }
 
         public override void Initialise(Rectangle parent)
@@ -122,16 +129,11 @@ namespace Manabind.Src.UI.Components.Complex
             switch (action)
             {
                 case "select-tool":
-                    int index = icons.IndexOf((Icon)content);
-                    
-                    if (index <= tiles.Count)
-                    {
-                        BaseTile tile = tiles[index];
+                    SelectTool((Icon)content);
+                    break;
 
-                        EventManager.PushEvent(
-                            new UIEvent(new EventDetails(this.Name, EventType.Select), tile));
-                    }
-
+                case "deselect-tool":
+                    this.highlightedIcon = null;
                     break;
             }
         }
@@ -170,6 +172,21 @@ namespace Manabind.Src.UI.Components.Complex
                 tile.Icon.PositionProfile = new RelativePositionProfile(HorizontalAlign.Left, VerticalAlign.Bottom, (index * Icon.Diameter) + 20, 0);
                 tile.Icon.Priority = this.Priority + 1;
                 tile.Icon.Initialise(this.GetBounds());
+            }
+        }
+
+        private void SelectTool(Icon icon)
+        {
+            int index = icons.IndexOf(icon);
+
+            if (index <= tiles.Count)
+            {
+                this.highlightedIcon = icon;
+
+                BaseTile tile = tiles[index];
+
+                EventManager.PushEvent(
+                    new UIEvent(new EventDetails(this.Name, EventType.Select), tile));
             }
         }
 

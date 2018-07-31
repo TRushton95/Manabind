@@ -7,6 +7,10 @@
           <Action>select-tool</Action>
           <Trigger sender="tool" eventtype="LeftClick" />
         </EventResponse>
+        <EventResponse>
+          <Action>deselect-tool</Action>
+          <Trigger sender="*" eventtype="RightClick" />
+        </EventResponse>
       </EventResponses>
       <RelativePositionProfile>
         <HorizontalAlign>Middle</HorizontalAlign>
