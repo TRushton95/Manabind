@@ -9,7 +9,7 @@ using Manabind.Src.UI.Events;
 
 namespace Manabind.Src.Gameplay.Entities
 {
-    public class Board : Listener
+    public partial class Board : Listener
     {
         #region Constructors
 
