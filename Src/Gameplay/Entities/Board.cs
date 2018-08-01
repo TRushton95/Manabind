@@ -7,6 +7,7 @@ using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework.Input;
+using Manabind.Src.Control;
 
 namespace Manabind.Src.Gameplay.Entities
 {
@@ -80,16 +81,16 @@ namespace Manabind.Src.Gameplay.Entities
             }
         }
 
-        public void Update(Vector2 mouse, bool leftMouseDown, bool leftMouseClicked, bool interact) //TO-DO Tidy this up
+        public void Update(Vector2 absoluteMousePosition, bool interact) //TO-DO Tidy this up
         {
-            UpdateHighlightedTile(mouse, interact);
+            UpdateHighlightedTile(absoluteMousePosition, interact);
 
-            if (HighlightedTile != null && leftMouseDown)
+            if (HighlightedTile != null && MouseInfo.LeftMouseDown)
             {
                 HighlightedTile.LeftMouseDown();
             }
 
-            if (HighlightedTile != null && leftMouseClicked)
+            if (HighlightedTile != null && MouseInfo.LeftMouseClicked)
             {
                 HighlightedTile.Click();
             }
@@ -244,13 +245,13 @@ namespace Manabind.Src.Gameplay.Entities
             return true;
         }
 
-        private void UpdateHighlightedTile(Vector2 mouse, bool interact)
+        private void UpdateHighlightedTile(Vector2 absoluteMousePosition, bool interact)
         {
             BaseTile highlightedTile = null;
 
             if (interact)
             {
-                highlightedTile = GetTileAtMouse((int)mouse.X, (int)mouse.Y);
+                highlightedTile = GetTileAtMouse((int)absoluteMousePosition.X, (int)absoluteMousePosition.Y);
             }
 
             this.HighlightedTile = highlightedTile;
