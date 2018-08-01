@@ -6,6 +6,7 @@ using Manabind.Src.Gameplay.Entities.Tile;
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Events;
+using Microsoft.Xna.Framework.Input;
 
 namespace Manabind.Src.Gameplay.Entities
 {
