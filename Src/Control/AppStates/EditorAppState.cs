@@ -39,6 +39,12 @@ namespace Manabind.Src.Control.AppStates
         protected override void InitialiseState()
         {
             board.Generate();
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.ChangeWidth), board.Width));
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.ChangeHeight), board.Height));
         }
 
         protected override void UpdateState()
