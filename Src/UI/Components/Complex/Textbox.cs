@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Events;
+using Manabind.Src.Control;
+using Microsoft.Xna.Framework.Input;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -107,10 +109,14 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
             this.BuildComponents();
+
+            this.EventResponses.Add(
+                new EventResponse(new EventDetails(this.Name, EventType.LeftClick), "focus"));
         }
 
         public override void Refresh()
         {
+            this.BuildComponents();
         }
 
         protected override void HoverDetail()
@@ -141,6 +147,11 @@ namespace Manabind.Src.UI.Components.Complex
         {
             switch (action)
             {
+                case "focus":
+                    this.focus = true;
+                    this.frame = this.focusFrame;
+                    break;
+
                 case "unfocus":
                     this.focus = false;
                     this.frame = this.defaultFrame;
@@ -149,8 +160,13 @@ namespace Manabind.Src.UI.Components.Complex
                 case "edit-text":
                     if (focus)
                     {
-                        this.Text = content.ToString();
-                        this.Refresh();
+                        char c = KeyboardInfo.KeyToChar((Keys)content);
+
+                        if (c != char.MinValue)
+                        {
+                            this.Text += c;
+                            this.Refresh();
+                        }
                     }
                     break;
             }
