@@ -25,6 +25,13 @@ namespace Manabind
 
         public static string OptionsUIFileName { get => ConfigurationManager.AppSettings["OptionsUIFileName"]; }
 
+        #endregion
+
+        #region Board
+
+        public static string DefaultBoardWidth { get => ConfigurationManager.AppSettings["DefaultBoardWidth"]; }
+
+        public static string DefaultBoardHeight { get => ConfigurationManager.AppSettings["DefaultBoardHeight"]; }
 
         #endregion
     }

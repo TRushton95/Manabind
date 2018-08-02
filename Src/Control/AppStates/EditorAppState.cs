@@ -5,6 +5,7 @@ using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -110,6 +111,21 @@ namespace Manabind.Src.Control.AppStates
                     EventManager.PushEvent(
                         new UIEvent(new EventDetails(this.Name, EventType.ChangeHeight), board.Height));
                     break;
+
+                case "save-board":
+                    break;
+
+                case "load-board":
+                    break;
+
+                case "reset-board":
+                    int width = Int32.Parse(AppSettings.DefaultBoardWidth);
+                    int height = Int32.Parse(AppSettings.DefaultBoardHeight);
+
+                    board = new Board(width, height);
+                    board.Generate();
+
+                    break;
             }
         }
 
@@ -136,6 +152,10 @@ namespace Manabind.Src.Control.AppStates
             this.EventResponses.Add(new EventResponse(new EventDetails("remove-column-button", EventType.LeftClick), "remove-column"));
             this.EventResponses.Add(new EventResponse(new EventDetails("add-row-button", EventType.LeftClick), "add-row"));
             this.EventResponses.Add(new EventResponse(new EventDetails("remove-row-button", EventType.LeftClick), "remove-row"));
+
+            this.EventResponses.Add(new EventResponse(new EventDetails("save-button", EventType.LeftClick), "save-board"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("load-button", EventType.LeftClick), "load-board"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("reset-button", EventType.LeftClick), "reset-board"));
         }
     }
 }
