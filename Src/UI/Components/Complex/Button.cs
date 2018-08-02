@@ -125,6 +125,16 @@ namespace Manabind.Src.UI.Components.Complex
             this.frame = this.defaultFrame;
         }
 
+        protected override void ExecuteEventResponse(string action, object content)
+        {
+            switch (action)
+            {
+                case "edit-text":
+                    this.Text = content.ToString();
+                    break;
+            }
+        }
+
         #endregion
     }
 }

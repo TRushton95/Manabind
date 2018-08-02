@@ -35,12 +35,32 @@
       <HoverBackgroundColour r="255" g="50" b="255" a="255" />
     </Button>
     
+    <Button name="column-button" width="100" height="50">
+      <Text></Text>
+      <EventResponses>
+        <EventResponse>
+          <Action>edit-text</Action>
+          <Trigger sender="appstate" eventtype="Select" />
+        </EventResponse>
+      </EventResponses>
+      <RelativePositionProfile>
+        <HorizontalAlign>Left</HorizontalAlign>
+        <VerticalAlign>Top</VerticalAlign>
+        <OffsetX>70</OffsetX>
+        <OffsetY>10</OffsetY>
+      </RelativePositionProfile>
+      <TextColour r="0" g="0" b="0" a="255" />
+      <HoverTextColour r="0" g="0" b="0" a="255" />
+      <BackgroundColour r="255" g="0" b="255" a="255" />
+      <HoverBackgroundColour r="255" g="0" b="255" a="255" />
+    </Button>
+    
     <Button name="add-column-button" width="50" height="50">
       <Text>+</Text>
       <RelativePositionProfile>
         <HorizontalAlign>Left</HorizontalAlign>
         <VerticalAlign>Top</VerticalAlign>
-        <OffsetX>70</OffsetX>
+        <OffsetX>180</OffsetX>
         <OffsetY>10</OffsetY>
       </RelativePositionProfile>
       <TextColour r="0" g="0" b="0" a="255" />
@@ -63,12 +83,32 @@
       <HoverBackgroundColour r="255" g="50" b="255" a="255" />
     </Button>
     
+    <Button name="row-button" width="100" height="50">
+      <Text></Text>
+      <EventResponses>
+        <EventResponse>
+          <Action>edit-text</Action>
+          <Trigger sender="appstate" eventtype="Select" />
+        </EventResponse>
+      </EventResponses>
+      <RelativePositionProfile>
+        <HorizontalAlign>Left</HorizontalAlign>
+        <VerticalAlign>Top</VerticalAlign>
+        <OffsetX>70</OffsetX>
+        <OffsetY>70</OffsetY>
+      </RelativePositionProfile>
+      <TextColour r="0" g="0" b="0" a="255" />
+      <HoverTextColour r="0" g="0" b="0" a="255" />
+      <BackgroundColour r="255" g="0" b="255" a="255" />
+      <HoverBackgroundColour r="255" g="0" b="255" a="255" />
+    </Button>
+    
     <Button name="add-row-button" width="50" height="50">
       <Text>+</Text>
       <RelativePositionProfile>
         <HorizontalAlign>Left</HorizontalAlign>
         <VerticalAlign>Top</VerticalAlign>
-        <OffsetX>70</OffsetX>
+        <OffsetX>180</OffsetX>
         <OffsetY>70</OffsetY>
       </RelativePositionProfile>
       <TextColour r="0" g="0" b="0" a="255" />

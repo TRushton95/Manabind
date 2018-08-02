@@ -5,7 +5,6 @@ using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -81,6 +80,30 @@ namespace Manabind.Src.Control.AppStates
                 case "set-tile":
                     SetTile((BaseTile)content);
                     break;
+
+                case "add-column":
+                    board.AddColumn();
+                    EventManager.PushEvent(
+                        new UIEvent(new EventDetails(this.Name, EventType.Select), board.Width));
+                    break;
+
+                case "remove-column":
+                    board.RemoveColumn();
+                    EventManager.PushEvent(
+                        new UIEvent(new EventDetails(this.Name, EventType.Select), board.Width));
+                    break;
+
+                case "add-row":
+                    board.AddRow();
+                    EventManager.PushEvent(
+                        new UIEvent(new EventDetails(this.Name, EventType.Select), board.Height));
+                    break;
+
+                case "remove-row":
+                    board.RemoveRow();
+                    EventManager.PushEvent(
+                        new UIEvent(new EventDetails(this.Name, EventType.Select), board.Height));
+                    break;
             }
         }
 
@@ -102,6 +125,11 @@ namespace Manabind.Src.Control.AppStates
             this.EventResponses.Add(new EventResponse(new EventDetails(EventManager.Wildcard, EventType.RightClick), "deselect-tool"));
             this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Select), "select-tool"));
             this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Tile, EventType.LeftMouseDown), "set-tile"));
+
+            this.EventResponses.Add(new EventResponse(new EventDetails("add-column-button", EventType.LeftClick), "add-column"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("remove-column-button", EventType.LeftClick), "remove-column"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("add-row-button", EventType.LeftClick), "add-row"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("remove-row-button", EventType.LeftClick), "remove-row"));
         }
     }
 }

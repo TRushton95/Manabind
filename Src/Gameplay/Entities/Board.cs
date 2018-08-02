@@ -18,7 +18,6 @@ namespace Manabind.Src.Gameplay.Entities
         {
             this.Name = "board";
             this.Tiles = new List<List<BaseTile>>();
-            this.AddEventResponses();
         }
 
         public Board(int width, int height)
@@ -27,7 +26,6 @@ namespace Manabind.Src.Gameplay.Entities
             this.Width = width;
             this.Height = height;
             this.Tiles = new List<List<BaseTile>>();
-            this.AddEventResponses();
         }
 
         #endregion
@@ -256,41 +254,6 @@ namespace Manabind.Src.Gameplay.Entities
             }
 
             this.HighlightedTile = highlightedTile;
-        }
-
-        protected override void ExecuteEventResponse(string action, object content)
-        {
-            switch (action)
-            {
-                case "add-row":
-                    this.AddRow();
-                    break;
-
-                case "remove-row":
-                    this.RemoveRow();
-                    break;
-
-                case "add-column":
-                    this.AddColumn();
-                    break;
-
-                case "remove-column":
-                    this.RemoveColumn();
-                    break;
-            }
-        }
-
-        private void AddEventResponses()
-        {
-            this.EventResponses.Add(new EventResponse(
-                new EventDetails("add-row-button", EventType.LeftClick), "add-row"));
-            this.EventResponses.Add(new EventResponse(
-                new EventDetails("remove-row-button", EventType.LeftClick), "remove-row"));
-
-            this.EventResponses.Add(new EventResponse(
-                new EventDetails("add-column-button", EventType.LeftClick), "add-column"));
-            this.EventResponses.Add(new EventResponse(
-                new EventDetails("remove-column-button", EventType.LeftClick), "remove-column"));
         }
 
         #endregion

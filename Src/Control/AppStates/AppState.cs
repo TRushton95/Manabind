@@ -25,6 +25,8 @@ namespace Manabind.Src.Control.AppStates
 
         public AppState()
         {
+            this.Name = "appstate";
+
             componentManager = new ComponentManager();
             componentManager.LoadUI(this.UIDefinitionFilename);
             currentHoveredComponent = null;
