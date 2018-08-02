@@ -85,22 +85,12 @@ namespace Manabind.Src.UI.Components.Complex
         public override void Initialise(Rectangle parent)
         {
             this.InitialiseCoordinates(parent);
+            this.BuildComponents();
+        }
 
-            // default textures
-            defaultFrame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour);
-            defaultFontGraphics = new FontGraphics(Text, Width, 20, PositionProfileFactory.BuildCenteredRelative(),
-                                            FontFlow.Shrink, TextColour, Textures.ButtonFont);
-            defaultFrame.Components.Add(defaultFontGraphics);
-            defaultFrame.Initialise(this.GetBounds());
-
-            // hover textures
-            hoverFrame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), HoverBackgroundColour);
-            hoverFontGraphics = new FontGraphics(Text, Width, 20, PositionProfileFactory.BuildCenteredRelative(),
-                                            FontFlow.Shrink, HoverTextColour, Textures.ButtonFont);
-            hoverFrame.Components.Add(hoverFontGraphics);
-            hoverFrame.Initialise(this.GetBounds());
-            
-            this.frame = this.defaultFrame;
+        public override void Refresh()
+        {
+            this.BuildComponents();
         }
 
         protected override void LeftClickDetail()
@@ -131,8 +121,28 @@ namespace Manabind.Src.UI.Components.Complex
             {
                 case "edit-text":
                     this.Text = content.ToString();
+                    this.Refresh();
                     break;
             }
+        }
+
+        private void BuildComponents()
+        {
+            // default textures
+            defaultFrame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour);
+            defaultFontGraphics = new FontGraphics(Text, Width, 20, PositionProfileFactory.BuildCenteredRelative(),
+                                            FontFlow.Shrink, TextColour, Textures.ButtonFont);
+            defaultFrame.Components.Add(defaultFontGraphics);
+            defaultFrame.Initialise(this.GetBounds());
+
+            // hover textures
+            hoverFrame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), HoverBackgroundColour);
+            hoverFontGraphics = new FontGraphics(Text, Width, 20, PositionProfileFactory.BuildCenteredRelative(),
+                                            FontFlow.Shrink, HoverTextColour, Textures.ButtonFont);
+            hoverFrame.Components.Add(hoverFontGraphics);
+            hoverFrame.Initialise(this.GetBounds());
+
+            this.frame = this.defaultFrame;
         }
 
         #endregion

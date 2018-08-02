@@ -40,7 +40,7 @@
       <EventResponses>
         <EventResponse>
           <Action>edit-text</Action>
-          <Trigger sender="appstate" eventtype="Select" />
+          <Trigger sender="appstate" eventtype="ChangeWidth" />
         </EventResponse>
       </EventResponses>
       <RelativePositionProfile>
@@ -88,7 +88,7 @@
       <EventResponses>
         <EventResponse>
           <Action>edit-text</Action>
-          <Trigger sender="appstate" eventtype="Select" />
+          <Trigger sender="appstate" eventtype="ChangeHeight" />
         </EventResponse>
       </EventResponses>
       <RelativePositionProfile>

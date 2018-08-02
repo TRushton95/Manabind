@@ -84,25 +84,25 @@ namespace Manabind.Src.Control.AppStates
                 case "add-column":
                     board.AddColumn();
                     EventManager.PushEvent(
-                        new UIEvent(new EventDetails(this.Name, EventType.Select), board.Width));
+                        new UIEvent(new EventDetails(this.Name, EventType.ChangeWidth), board.Width));
                     break;
 
                 case "remove-column":
                     board.RemoveColumn();
                     EventManager.PushEvent(
-                        new UIEvent(new EventDetails(this.Name, EventType.Select), board.Width));
+                        new UIEvent(new EventDetails(this.Name, EventType.ChangeWidth), board.Width));
                     break;
 
                 case "add-row":
                     board.AddRow();
                     EventManager.PushEvent(
-                        new UIEvent(new EventDetails(this.Name, EventType.Select), board.Height));
+                        new UIEvent(new EventDetails(this.Name, EventType.ChangeHeight), board.Height));
                     break;
 
                 case "remove-row":
                     board.RemoveRow();
                     EventManager.PushEvent(
-                        new UIEvent(new EventDetails(this.Name, EventType.Select), board.Height));
+                        new UIEvent(new EventDetails(this.Name, EventType.ChangeHeight), board.Height));
                     break;
             }
         }

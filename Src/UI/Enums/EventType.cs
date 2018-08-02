@@ -11,6 +11,8 @@
         LeftMouseUp,
         RightMouseDown,
         RightMouseUp,
-        Select
+        Select,
+        ChangeWidth,
+        ChangeHeight
     }
 }

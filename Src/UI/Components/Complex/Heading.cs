@@ -55,14 +55,12 @@ namespace Manabind.Src.UI.Components.Complex
         public override void Initialise(Rectangle parent)
         {
             this.InitialiseCoordinates(parent);
+            this.BuildComponents();
+        }
 
-            defaultFontGraphics = new FontGraphics(Text, Width, 0, PositionProfile, FontFlow.Shrink, TextColour, Textures.HeadingFont);
-            defaultFontGraphics.Initialise(this.GetBounds());
-
-            hoverFontGraphics = new FontGraphics(Text, Width, 0, PositionProfile, FontFlow.Shrink, HoverTextColour, Textures.HeadingFont);
-            hoverFontGraphics.Initialise(this.GetBounds());
-
-            this.fontGraphics = this.defaultFontGraphics;
+        public override void Refresh()
+        {
+            this.BuildComponents();
         }
 
         protected override void LeftClickDetail()
@@ -84,6 +82,17 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void HoverLeaveDetail()
         {
+            this.fontGraphics = this.defaultFontGraphics;
+        }
+
+        private void BuildComponents()
+        {
+            defaultFontGraphics = new FontGraphics(Text, Width, 0, PositionProfile, FontFlow.Shrink, TextColour, Textures.HeadingFont);
+            defaultFontGraphics.Initialise(this.GetBounds());
+
+            hoverFontGraphics = new FontGraphics(Text, Width, 0, PositionProfile, FontFlow.Shrink, HoverTextColour, Textures.HeadingFont);
+            hoverFontGraphics.Initialise(this.GetBounds());
+
             this.fontGraphics = this.defaultFontGraphics;
         }
 

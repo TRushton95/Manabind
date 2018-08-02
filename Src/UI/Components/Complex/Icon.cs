@@ -58,14 +58,12 @@ namespace Manabind.Src.UI.Components.Complex
         public override void Initialise(Rectangle parent)
         {
             this.InitialiseCoordinates(parent);
+            this.BuildComponents();
+        }
 
-            this.defaultImage = new ImageGraphics(DefaultTexture, PositionProfileFactory.BuildCenteredRelative());
-            this.defaultImage.Initialise(this.GetBounds());
-
-            this.hoverImage = new ImageGraphics(HoverTexture, PositionProfileFactory.BuildCenteredRelative());
-            this.hoverImage.Initialise(this.GetBounds());
-
-            this.image = this.defaultImage;
+        public override void Refresh()
+        {
+            this.BuildComponents();
         }
 
         protected override void LeftClickDetail()
@@ -87,6 +85,17 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void HoverLeaveDetail()
         {
+            this.image = this.defaultImage;
+        }
+
+        private void BuildComponents()
+        {
+            this.defaultImage = new ImageGraphics(DefaultTexture, PositionProfileFactory.BuildCenteredRelative());
+            this.defaultImage.Initialise(this.GetBounds());
+
+            this.hoverImage = new ImageGraphics(HoverTexture, PositionProfileFactory.BuildCenteredRelative());
+            this.hoverImage.Initialise(this.GetBounds());
+
             this.image = this.defaultImage;
         }
 

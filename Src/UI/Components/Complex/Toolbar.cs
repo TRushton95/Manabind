@@ -89,10 +89,13 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseDimensions();
             this.InitialiseCoordinates(parent);
+            this.InitialiseIcons();
+            this.BuildComponents();
+        }
 
-            frame = new Frame(Width, Height, PositionProfile, BackgroundColour);
-            frame.Initialise(this.GetBounds());
-            InitialiseIcons();
+        public override void Refresh()
+        {
+            this.BuildComponents();
         }
 
         public override List<BaseComplexComponent> BuildTree()
@@ -188,6 +191,12 @@ namespace Manabind.Src.UI.Components.Complex
                 EventManager.PushEvent(
                     new UIEvent(new EventDetails(this.Name, EventType.Select), tile));
             }
+        }
+
+        private void BuildComponents()
+        {
+            frame = new Frame(Width, Height, PositionProfile, BackgroundColour);
+            frame.Initialise(this.GetBounds());
         }
 
         #endregion

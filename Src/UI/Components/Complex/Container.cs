@@ -81,19 +81,12 @@ namespace Manabind.Src.UI.Components.Complex
         public override void Initialise(Rectangle parent)
         {
             this.InitialiseCoordinates(parent);
+            this.BuildComponents();
+        }
 
-            defaultFrame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour);
-            defaultFrame.Initialise(this.GetBounds());
-
-            hoverFrame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), HoverBackgroundColour);
-            hoverFrame.Initialise(this.GetBounds());
-
-            this.frame = this.defaultFrame;
-
-            foreach (BaseComplexComponent component in Components)
-            {
-                component.Initialise(this.GetBounds(), this.Priority);
-            }
+        public override void Refresh()
+        {
+            this.BuildComponents();
         }
 
         protected override void LeftClickDetail()
@@ -134,6 +127,22 @@ namespace Manabind.Src.UI.Components.Complex
             }
 
             return result;
+        }
+
+        private void BuildComponents()
+        {
+            defaultFrame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour);
+            defaultFrame.Initialise(this.GetBounds());
+
+            hoverFrame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), HoverBackgroundColour);
+            hoverFrame.Initialise(this.GetBounds());
+
+            this.frame = this.defaultFrame;
+
+            foreach (BaseComplexComponent component in Components)
+            {
+                component.Initialise(this.GetBounds(), this.Priority);
+            }
         }
 
         #endregion

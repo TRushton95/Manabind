@@ -61,6 +61,10 @@ namespace Manabind.Src.UI.Components.Complex
             }
         }
 
+        public override void Refresh()
+        {
+        }
+
         public override List<BaseComplexComponent> BuildTree()
         {
             List<BaseComplexComponent> result = new List<BaseComplexComponent> { this };

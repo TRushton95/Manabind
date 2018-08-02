@@ -78,6 +78,8 @@ namespace Manabind.Src.UI.Components.Complex
                 new UIEvent(new EventDetails(this.Name, EventType.Initialise), this));
         }
 
+        public abstract void Refresh();
+
         public void LeftClick()
         {
             this.LeftClickDetail();
