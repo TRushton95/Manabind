@@ -13,6 +13,7 @@
         RightMouseUp,
         Select,
         ChangeWidth,
-        ChangeHeight
+        ChangeHeight,
+        KeyPress
     }
 }

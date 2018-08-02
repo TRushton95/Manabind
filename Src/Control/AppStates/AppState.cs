@@ -47,8 +47,9 @@ namespace Manabind.Src.Control.AppStates
         public void Update()
         {
             this.uiInteracted = false;
-            this.HandleMouseState();
 
+            this.HandleKeyboardState();
+            this.HandleMouseState();
             this.UpdateState();
         }
 
@@ -124,6 +125,20 @@ namespace Manabind.Src.Control.AppStates
                 if (MouseInfo.RightMouseClicked)
                 {
                     currentHoveredComponent.RightClick();
+                }
+            }
+        }
+
+        private void HandleKeyboardState()
+        {
+            Keys[] pressedKeys = KeyboardInfo.GetPressedKeys();
+
+            if (pressedKeys.Count() > 0)
+            {
+                foreach (Keys key in pressedKeys)
+                {
+                    EventManager.PushEvent(
+                        new UIEvent(new EventDetails("keyboard", EventType.KeyPress), key));
                 }
             }
         }

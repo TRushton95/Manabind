@@ -6,6 +6,7 @@ using Manabind.Src.UI.Serialisation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Components.BaseInstanceResources;
+using Manabind.Src.UI.Events;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -13,6 +14,7 @@ namespace Manabind.Src.UI.Components.Complex
     {
         #region Fields
 
+        private bool focus;
         private Frame frame, defaultFrame, hoverFrame, focusFrame;
         private FontGraphics defaultFontGraphics, hoverFontGraphics, focusFontGraphics;
 
@@ -23,6 +25,11 @@ namespace Manabind.Src.UI.Components.Complex
         public Textbox()
             : base()
         {
+            this.EventResponses.Add(
+                new EventResponse(new EventDetails(EventManager.Wildcard, EventType.LeftClick), "unfocus"));
+
+            this.EventResponses.Add(
+                new EventResponse(new EventDetails("keyboard", EventType.KeyPress), "edit-text"));
         }
 
         public Textbox(
@@ -118,6 +125,7 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void LeftClickDetail()
         {
+            this.focus = true;
             this.frame = this.focusFrame;
         }
 
@@ -133,9 +141,17 @@ namespace Manabind.Src.UI.Components.Complex
         {
             switch (action)
             {
+                case "unfocus":
+                    this.focus = false;
+                    this.frame = this.defaultFrame;
+                    break;
+
                 case "edit-text":
-                    this.Text = content.ToString();
-                    this.Refresh();
+                    if (focus)
+                    {
+                        this.Text = content.ToString();
+                        this.Refresh();
+                    }
                     break;
             }
         }

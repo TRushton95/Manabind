@@ -10,6 +10,7 @@ namespace Manabind.Src.UI.Serialisation
         [XmlArrayItem(typeof(Button))]
         [XmlArrayItem(typeof(Heading))]
         [XmlArrayItem(typeof(Toolbar))]
+        [XmlArrayItem(typeof(Textbox))]
         public List<BaseComplexComponent> Components
         {
             get;

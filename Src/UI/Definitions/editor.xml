@@ -158,5 +158,23 @@
       <BackgroundColour r="255" g="0" b="255" a="255" />
       <HoverBackgroundColour r="255" g="50" b="255" a="255" />
     </Button>
+    
+    <Button name="text" width="300" height="50">
+      <Text></Text>
+      <RelativePositionProfile>
+        <HorizontalAlign>Middle</HorizontalAlign>
+        <VerticalAlign>Middle</VerticalAlign>
+        <OffsetX>0</OffsetX>
+        <OffsetY>0</OffsetY>
+      </RelativePositionProfile>
+      <TextColour r="0" g="0" b="0" a="255" />
+      <HoverTextColour r="255" g="255" b="255" a="255" />
+      <BackgroundColour r="255" g="0" b="255" a="255" />
+      <HoverBackgroundColour r="255" g="50" b="255" a="255" />
+      <FocusBackgroundColour r="255" g="255" b="255" a="255" />
+      <BackgroundColour r="255" g="0" b="255" a="255" />
+      <HoverBackgroundColour r="255" g="50" b="255" a="255" />
+      <FocusBackgroundColour r="0" g="0" b="0" a="255" />
+    </Button>
   </Components>
 </ComponentList>
