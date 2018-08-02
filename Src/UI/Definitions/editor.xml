@@ -169,12 +169,10 @@
       </RelativePositionProfile>
       <TextColour r="0" g="0" b="0" a="255" />
       <HoverTextColour r="255" g="255" b="255" a="255" />
+      <FocusTextColour r="0" g="0" b="0" a="255" />
       <BackgroundColour r="255" g="0" b="255" a="255" />
       <HoverBackgroundColour r="255" g="50" b="255" a="255" />
       <FocusBackgroundColour r="255" g="255" b="255" a="255" />
-      <BackgroundColour r="255" g="0" b="255" a="255" />
-      <HoverBackgroundColour r="255" g="50" b="255" a="255" />
-      <FocusBackgroundColour r="0" g="0" b="0" a="255" />
     </Textbox>
   </Components>
 </ComponentList>

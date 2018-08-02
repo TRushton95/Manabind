@@ -121,12 +121,18 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void HoverDetail()
         {
-            this.frame = this.hoverFrame;
+            if (!focus)
+            {
+                this.frame = this.hoverFrame;
+            }
         }
 
         protected override void HoverLeaveDetail()
         {
-            this.frame = this.defaultFrame;
+            if (!focus)
+            {
+                this.frame = this.defaultFrame;
+            }
         }
 
         protected override void LeftClickDetail()
@@ -154,7 +160,7 @@ namespace Manabind.Src.UI.Components.Complex
 
                 case "unfocus":
                     this.focus = false;
-                    this.frame = this.defaultFrame;
+                    this.frame = Hovered ? this.hoverFrame : this.defaultFrame;
                     break;
 
                 case "edit-text":
@@ -195,7 +201,7 @@ namespace Manabind.Src.UI.Components.Complex
             focusFrame.Components.Add(focusFontGraphics);
             focusFrame.Initialise(this.GetBounds());
 
-            this.frame = this.defaultFrame;
+            this.frame = this.focus ? this.focusFrame : this.defaultFrame;
         }
 
         #endregion
