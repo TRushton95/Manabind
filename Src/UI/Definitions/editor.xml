@@ -159,20 +159,71 @@
       <HoverBackgroundColour r="255" g="50" b="255" a="255" />
     </Button>
     
-    <Textbox name="text" width="300" height="50">
-      <Text></Text>
+    <Container name="save-container" width="400" height="200" visible="false" interactive="false">
+      <EventResponses>
+        <EventResponse>
+          <Action>show</Action>
+          <Trigger sender="save-button" eventtype="LeftClick" />
+        </EventResponse>
+        <EventResponse>
+          <Action>hide</Action>
+          <Trigger sender="save-button-no" eventtype="LeftClick" />
+        </EventResponse>
+      </EventResponses>
       <RelativePositionProfile>
         <HorizontalAlign>Middle</HorizontalAlign>
         <VerticalAlign>Middle</VerticalAlign>
         <OffsetX>0</OffsetX>
         <OffsetY>0</OffsetY>
       </RelativePositionProfile>
-      <TextColour r="0" g="0" b="0" a="255" />
-      <HoverTextColour r="255" g="255" b="255" a="255" />
-      <FocusTextColour r="0" g="0" b="0" a="255" />
-      <BackgroundColour r="255" g="0" b="255" a="255" />
-      <HoverBackgroundColour r="255" g="50" b="255" a="255" />
-      <FocusBackgroundColour r="255" g="255" b="255" a="255" />
-    </Textbox>
+      <BackgroundColour r="100" g="100" b="100" a="255"/>
+      <HoverBackgroundColour r="100" g="100" b="100" a="255"/>
+      <Components>
+        
+        <Textbox name="text" width="300" height="50">
+          <Text></Text>
+          <RelativePositionProfile>
+            <HorizontalAlign>Middle</HorizontalAlign>
+            <VerticalAlign>Top</VerticalAlign>
+            <OffsetX>0</OffsetX>
+            <OffsetY>50</OffsetY>
+          </RelativePositionProfile>
+          <TextColour r="0" g="0" b="0" a="255" />
+          <HoverTextColour r="255" g="255" b="255" a="255" />
+          <FocusTextColour r="0" g="0" b="0" a="255" />
+          <BackgroundColour r="255" g="0" b="255" a="255" />
+          <HoverBackgroundColour r="255" g="50" b="255" a="255" />
+          <FocusBackgroundColour r="255" g="255" b="255" a="255" />
+        </Textbox>
+
+        <Button name="save-button-yes" width="100" height="50">
+          <Text>Save</Text>
+          <RelativePositionProfile>
+            <HorizontalAlign>Left</HorizontalAlign>
+            <VerticalAlign>Bottom</VerticalAlign>
+            <OffsetX>20</OffsetX>
+            <OffsetY>-20</OffsetY>
+          </RelativePositionProfile>
+          <TextColour r="0" g="0" b="0" a="255" />
+          <HoverTextColour r="255" g="255" b="255" a="255" />
+          <BackgroundColour r="255" g="0" b="255" a="255" />
+          <HoverBackgroundColour r="255" g="50" b="255" a="255" />
+        </Button>
+        
+        <Button name="save-button-no" width="100" height="50">
+          <Text>Cancel</Text>
+          <RelativePositionProfile>
+            <HorizontalAlign>Right</HorizontalAlign>
+            <VerticalAlign>Bottom</VerticalAlign>
+            <OffsetX>-20</OffsetX>
+            <OffsetY>-20</OffsetY>
+          </RelativePositionProfile>
+          <TextColour r="0" g="0" b="0" a="255" />
+          <HoverTextColour r="255" g="255" b="255" a="255" />
+          <BackgroundColour r="255" g="0" b="255" a="255" />
+          <HoverBackgroundColour r="255" g="50" b="255" a="255" />
+        </Button>
+      </Components>
+    </Container>
   </Components>
 </ComponentList>
