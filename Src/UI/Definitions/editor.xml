@@ -159,7 +159,7 @@
       <HoverBackgroundColour r="255" g="50" b="255" a="255" />
     </Button>
     
-    <Container name="save-container" width="400" height="200" visible="false" interactive="false">
+    <Container name="save-container" width="400" height="200" visible="false" interactive="false" blocker="true">
       <EventResponses>
         <EventResponse>
           <Action>show</Action>
@@ -227,7 +227,7 @@
     </Container>
   
     
-    <Container name="load-container" width="500" height="500" visible="false" interactive="false">
+    <Container name="load-container" width="500" height="500" visible="false" interactive="false" blocker="true">
       <EventResponses>
         <EventResponse>
           <Action>show</Action>

@@ -58,7 +58,7 @@ namespace Manabind.Src.UI.Components.Complex
 
             foreach (BaseComplexComponent component in Components)
             {
-                component.Initialise(this.GetBounds(), this.Priority);
+                component.Initialise(this.GetBounds(), this.Id, this.Priority);
             }
         }
 
