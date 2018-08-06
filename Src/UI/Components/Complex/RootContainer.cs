@@ -28,6 +28,7 @@ namespace Manabind.Src.UI.Components.Complex
         [XmlArrayItem(typeof(Button))]
         [XmlArrayItem(typeof(Heading))]
         [XmlArrayItem(typeof(Toolbar))]
+        [XmlArrayItem(typeof(Textbox))]
         public List<BaseComplexComponent> Components
         {
             get;
@@ -57,7 +58,7 @@ namespace Manabind.Src.UI.Components.Complex
 
             foreach (BaseComplexComponent component in Components)
             {
-                component.Initialise(this.GetBounds(), this.Priority);
+                component.Initialise(this.GetBounds(), this.Id, this.Priority);
             }
         }
 

@@ -61,6 +61,7 @@ namespace Manabind.Src
 
             // TODO: Add your update logic here
             MouseInfo.Update();
+            KeyboardInfo.Update();
 
             gameManager.Update();
 

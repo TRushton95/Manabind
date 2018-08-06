@@ -6,6 +6,7 @@ using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -47,8 +48,9 @@ namespace Manabind.Src.Control.AppStates
         public void Update()
         {
             this.uiInteracted = false;
-            this.HandleMouseState();
 
+            this.HandleKeyboardState();
+            this.HandleMouseState();
             this.UpdateState();
         }
 
@@ -91,10 +93,31 @@ namespace Manabind.Src.Control.AppStates
 
             prevHoveredComponent = currentHoveredComponent;
 
+            // Calculate if blockers exist
+            IEnumerable<BaseComplexComponent> blockers = componentManager.GetAll().Where(c => c.Blocker && c.Visible);
+            List<BaseComplexComponent> blockerChildren = new List<BaseComplexComponent>();
+            bool blocked = false; // possibly unnecessary
+
+            if (blockers.Count() > 0)
+            {
+                BaseComplexComponent topBlocker = blockers?.Aggregate((c1, c2) => c1.Priority > c2.Priority ? c1 : c2);
+                blockerChildren = componentManager.GetDescendants(topBlocker.Id);
+                blocked = true;
+            }
+
+            // Get hovered component
             if (hoveredComponents.Count() > 0)
             {
-                currentHoveredComponent = hoveredComponents.Aggregate((c1, c2) => c1.Priority > c2.Priority ? c1 : c2);
-                uiInteracted = currentHoveredComponent.Priority > 0 ? true : false;
+                currentHoveredComponent = hoveredComponents?.Aggregate((c1, c2) => c1.Priority > c2.Priority ? c1 : c2);
+                uiInteracted = currentHoveredComponent?.Priority > 0 ? true : false;
+
+                // Unhover if not top blocker
+                if (blocked && !blockerChildren.Contains(currentHoveredComponent))
+                {
+                    currentHoveredComponent = null;
+                    uiInteracted = true;
+                }
+
             }
             else
             {
@@ -124,6 +147,20 @@ namespace Manabind.Src.Control.AppStates
                 if (MouseInfo.RightMouseClicked)
                 {
                     currentHoveredComponent.RightClick();
+                }
+            }
+        }
+
+        private void HandleKeyboardState()
+        {
+            Keys[] pressedKeys = KeyboardInfo.GetPressedKeys();
+
+            if (pressedKeys.Count() > 0)
+            {
+                foreach (Keys key in pressedKeys)
+                {
+                    EventManager.PushEvent(
+                        new UIEvent(new EventDetails("keyboard", EventType.KeyPress), key));
                 }
             }
         }

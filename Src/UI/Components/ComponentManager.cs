@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace Manabind.Src.UI.Components
@@ -69,6 +70,22 @@ namespace Manabind.Src.UI.Components
         public List<BaseComplexComponent> GetAll()
         {
             return this.components;
+        }
+
+        public List<BaseComplexComponent> GetDescendants(string id)
+        {
+            List<BaseComplexComponent> result = new List<BaseComplexComponent>();
+
+            IEnumerable<BaseComplexComponent> children = components.Where(c => String.Equals(c.ParentId, id));
+
+            foreach (BaseComplexComponent child in children)
+            {
+                result.AddRange(GetDescendants(child.Id));
+            }
+
+            result.AddRange(children);
+
+            return result;
         }
 
         #endregion

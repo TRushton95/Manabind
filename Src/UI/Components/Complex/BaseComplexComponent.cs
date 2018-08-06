@@ -3,6 +3,7 @@ using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Manabind.Src.UI.PositionProfiles;
 using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
@@ -19,6 +20,7 @@ namespace Manabind.Src.UI.Components.Complex
             this.Visible = true;
             this.EventResponses = new List<EventResponse>();
             this.Hovered = false;
+            this.Blocker = false;
         }
 
         public BaseComplexComponent(int width, int height, BasePositionProfile positionProfile, int priority)
@@ -31,6 +33,7 @@ namespace Manabind.Src.UI.Components.Complex
             this.Visible = true;
             this.EventResponses = new List<EventResponse>();
             this.Hovered = false;
+            this.Blocker = false;
         }
 
         #endregion
@@ -38,7 +41,28 @@ namespace Manabind.Src.UI.Components.Complex
         #region Properties
 
         [XmlIgnore]
+        public string Id
+        {
+            get;
+            set;
+        }
+
+        [XmlIgnore]
+        public string ParentId
+        {
+            get;
+            set;
+        }
+
+        [XmlIgnore]
         public int Priority
+        {
+            get;
+            set;
+        }
+
+        [XmlAttribute("blocker")]
+        public bool Blocker
         {
             get;
             set;
@@ -69,8 +93,10 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Methods
 
-        public void Initialise(Rectangle parent, int parentPriority)
+        public void Initialise(Rectangle parent, string parentId, int parentPriority)
         {
+            this.Id = Guid.NewGuid().ToString();
+            this.ParentId = parentId;
             this.Priority = parentPriority + 1;
             this.Initialise(parent);
 

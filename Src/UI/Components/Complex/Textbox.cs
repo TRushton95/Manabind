@@ -6,6 +6,9 @@ using Manabind.Src.UI.Serialisation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Components.BaseInstanceResources;
+using Manabind.Src.UI.Events;
+using Manabind.Src.Control;
+using Microsoft.Xna.Framework.Input;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -13,6 +16,7 @@ namespace Manabind.Src.UI.Components.Complex
     {
         #region Fields
 
+        private bool focus;
         private Frame frame, defaultFrame, hoverFrame, focusFrame;
         private FontGraphics defaultFontGraphics, hoverFontGraphics, focusFontGraphics;
 
@@ -23,6 +27,11 @@ namespace Manabind.Src.UI.Components.Complex
         public Textbox()
             : base()
         {
+            this.EventResponses.Add(
+                new EventResponse(new EventDetails(EventManager.Wildcard, EventType.LeftClick), "unfocus"));
+
+            this.EventResponses.Add(
+                new EventResponse(new EventDetails("keyboard", EventType.KeyPress), "edit-text"));
         }
 
         public Textbox(
@@ -100,24 +109,35 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
             this.BuildComponents();
+
+            this.EventResponses.Add(
+                new EventResponse(new EventDetails(this.Name, EventType.LeftClick), "focus"));
         }
 
         public override void Refresh()
         {
+            this.BuildComponents();
         }
 
         protected override void HoverDetail()
         {
-            this.frame = this.hoverFrame;
+            if (!focus)
+            {
+                this.frame = this.hoverFrame;
+            }
         }
 
         protected override void HoverLeaveDetail()
         {
-            this.frame = this.defaultFrame;
+            if (!focus)
+            {
+                this.frame = this.defaultFrame;
+            }
         }
 
         protected override void LeftClickDetail()
         {
+            this.focus = true;
             this.frame = this.focusFrame;
         }
 
@@ -133,9 +153,27 @@ namespace Manabind.Src.UI.Components.Complex
         {
             switch (action)
             {
+                case "focus":
+                    this.focus = true;
+                    this.frame = this.focusFrame;
+                    break;
+
+                case "unfocus":
+                    this.focus = false;
+                    this.frame = Hovered ? this.hoverFrame : this.defaultFrame;
+                    break;
+
                 case "edit-text":
-                    this.Text = content.ToString();
-                    this.Refresh();
+                    if (focus)
+                    {
+                        char c = KeyboardInfo.KeyToChar((Keys)content);
+
+                        if (c != char.MinValue)
+                        {
+                            this.Text += c;
+                            this.Refresh();
+                        }
+                    }
                     break;
             }
         }
@@ -163,7 +201,7 @@ namespace Manabind.Src.UI.Components.Complex
             focusFrame.Components.Add(focusFontGraphics);
             focusFrame.Initialise(this.GetBounds());
 
-            this.frame = this.defaultFrame;
+            this.frame = this.focus ? this.focusFrame : this.defaultFrame;
         }
 
         #endregion
