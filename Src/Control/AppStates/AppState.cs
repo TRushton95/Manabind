@@ -39,6 +39,12 @@ namespace Manabind.Src.Control.AppStates
 
         #region Properties
 
+        public bool Blocked
+        {
+            get;
+            set;
+        }
+
         protected abstract string UIDefinitionFilename { get; }
         
         #endregion
@@ -96,13 +102,13 @@ namespace Manabind.Src.Control.AppStates
             // Calculate if blockers exist
             IEnumerable<BaseComplexComponent> blockers = componentManager.GetAll().Where(c => c.Blocker && c.Visible);
             List<BaseComplexComponent> blockerChildren = new List<BaseComplexComponent>();
-            bool blocked = false; // possibly unnecessary
+            this.Blocked = false;
 
             if (blockers.Count() > 0)
             {
                 BaseComplexComponent topBlocker = blockers?.Aggregate((c1, c2) => c1.Priority > c2.Priority ? c1 : c2);
                 blockerChildren = componentManager.GetDescendants(topBlocker.Id);
-                blocked = true;
+                this.Blocked = true;
             }
 
             // Get hovered component
@@ -112,7 +118,7 @@ namespace Manabind.Src.Control.AppStates
                 uiInteracted = currentHoveredComponent?.Priority > 0 ? true : false;
 
                 // Unhover if not top blocker
-                if (blocked && !blockerChildren.Contains(currentHoveredComponent))
+                if (this.Blocked && !blockerChildren.Contains(currentHoveredComponent))
                 {
                     currentHoveredComponent = null;
                     uiInteracted = true;

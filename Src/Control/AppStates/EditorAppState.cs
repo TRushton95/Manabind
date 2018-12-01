@@ -50,6 +50,13 @@ namespace Manabind.Src.Control.AppStates
 
         protected override void UpdateState()
         {
+            camera.Enable();
+
+            if (this.Blocked)
+            {
+                camera.Disable();
+            }
+
             camera.Update();
 
             Vector2 absoluteMousePosition = camera.GetAbsoluteMousePosition(new Vector2(MouseInfo.X, MouseInfo.Y));

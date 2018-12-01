@@ -50,6 +50,12 @@ namespace Manabind.Src.Gameplay.Entities
             set;
         }
 
+        private bool Enabled
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Methods
@@ -63,6 +69,11 @@ namespace Manabind.Src.Gameplay.Entities
 
         public void Update()
         {
+            if (!this.Enabled)
+            {
+                return;
+            }
+
             KeyboardState keyboard = Keyboard.GetState();
 
             if (keyboard.IsKeyDown(Keys.W))
@@ -86,6 +97,16 @@ namespace Manabind.Src.Gameplay.Entities
         public Vector2 GetAbsoluteMousePosition(Vector2 mousePosition)
         {
             return new Vector2(mousePosition.X + CanvasX, mousePosition.Y + CanvasY);
+        }
+
+        public void Enable()
+        {
+            this.Enabled = true;
+        }
+
+        public void Disable()
+        {
+            this.Disable = true;
         }
 
         #endregion
