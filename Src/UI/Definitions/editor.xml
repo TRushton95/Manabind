@@ -21,7 +21,7 @@
       <BackgroundColour r="140" g="140" b="140" a="255"/>
     </Toolbar>
     
-    <Button name="remove-column-button" width="50" height="50">
+    <Button name="remove-column-button" width="50" height="30">
       <Text>-</Text>
       <RelativePositionProfile>
         <HorizontalAlign>Left</HorizontalAlign>
@@ -35,7 +35,7 @@
       <HoverBackgroundColour r="255" g="50" b="255" a="255" />
     </Button>
     
-    <Button name="column-button" width="100" height="50">
+    <Button name="column-button" width="100" height="30">
       <Text></Text>
       <EventResponses>
         <EventResponse>
@@ -55,7 +55,7 @@
       <HoverBackgroundColour r="255" g="0" b="255" a="255" />
     </Button>
     
-    <Button name="add-column-button" width="50" height="50">
+    <Button name="add-column-button" width="50" height="30">
       <Text>+</Text>
       <RelativePositionProfile>
         <HorizontalAlign>Left</HorizontalAlign>
@@ -69,13 +69,13 @@
       <HoverBackgroundColour r="255" g="50" b="255" a="255" />
     </Button>
     
-    <Button name="remove-row-button" width="50" height="50">
+    <Button name="remove-row-button" width="50" height="30">
       <Text>-</Text>
       <RelativePositionProfile>
         <HorizontalAlign>Left</HorizontalAlign>
         <VerticalAlign>Top</VerticalAlign>
         <OffsetX>10</OffsetX>
-        <OffsetY>70</OffsetY>
+        <OffsetY>50</OffsetY>
       </RelativePositionProfile>
       <TextColour r="0" g="0" b="0" a="255" />
       <HoverTextColour r="255" g="255" b="255" a="255" />
@@ -83,7 +83,7 @@
       <HoverBackgroundColour r="255" g="50" b="255" a="255" />
     </Button>
     
-    <Button name="row-button" width="100" height="50">
+    <Button name="row-button" width="100" height="30">
       <Text></Text>
       <EventResponses>
         <EventResponse>
@@ -95,7 +95,7 @@
         <HorizontalAlign>Left</HorizontalAlign>
         <VerticalAlign>Top</VerticalAlign>
         <OffsetX>70</OffsetX>
-        <OffsetY>70</OffsetY>
+        <OffsetY>50</OffsetY>
       </RelativePositionProfile>
       <TextColour r="0" g="0" b="0" a="255" />
       <HoverTextColour r="0" g="0" b="0" a="255" />
@@ -103,13 +103,13 @@
       <HoverBackgroundColour r="255" g="0" b="255" a="255" />
     </Button>
     
-    <Button name="add-row-button" width="50" height="50">
+    <Button name="add-row-button" width="50" height="30">
       <Text>+</Text>
       <RelativePositionProfile>
         <HorizontalAlign>Left</HorizontalAlign>
         <VerticalAlign>Top</VerticalAlign>
         <OffsetX>180</OffsetX>
-        <OffsetY>70</OffsetY>
+        <OffsetY>50</OffsetY>
       </RelativePositionProfile>
       <TextColour r="0" g="0" b="0" a="255" />
       <HoverTextColour r="255" g="255" b="255" a="255" />
@@ -117,8 +117,22 @@
       <HoverBackgroundColour r="255" g="50" b="255" a="255" />
     </Button>
 
-    <Button name="save-button" width="220" height="50">
+    <Button name="save-button" width="220" height="30">
       <Text>Save</Text>
+      <RelativePositionProfile>
+        <HorizontalAlign>Left</HorizontalAlign>
+        <VerticalAlign>Top</VerticalAlign>
+        <OffsetX>10</OffsetX>
+        <OffsetY>90</OffsetY>
+      </RelativePositionProfile>
+      <TextColour r="0" g="0" b="0" a="255" />
+      <HoverTextColour r="255" g="255" b="255" a="255" />
+      <BackgroundColour r="255" g="0" b="255" a="255" />
+      <HoverBackgroundColour r="255" g="50" b="255" a="255" />
+    </Button>
+    
+    <Button name="load-button" width="220" height="30">
+      <Text>Load</Text>
       <RelativePositionProfile>
         <HorizontalAlign>Left</HorizontalAlign>
         <VerticalAlign>Top</VerticalAlign>
@@ -130,28 +144,14 @@
       <BackgroundColour r="255" g="0" b="255" a="255" />
       <HoverBackgroundColour r="255" g="50" b="255" a="255" />
     </Button>
-    
-    <Button name="load-button" width="220" height="50">
-      <Text>Load</Text>
-      <RelativePositionProfile>
-        <HorizontalAlign>Left</HorizontalAlign>
-        <VerticalAlign>Top</VerticalAlign>
-        <OffsetX>10</OffsetX>
-        <OffsetY>190</OffsetY>
-      </RelativePositionProfile>
-      <TextColour r="0" g="0" b="0" a="255" />
-      <HoverTextColour r="255" g="255" b="255" a="255" />
-      <BackgroundColour r="255" g="0" b="255" a="255" />
-      <HoverBackgroundColour r="255" g="50" b="255" a="255" />
-    </Button>
 
-    <Button name="reset-button" width="220" height="50">
+    <Button name="reset-button" width="220" height="30">
       <Text>Reset</Text>
       <RelativePositionProfile>
         <HorizontalAlign>Left</HorizontalAlign>
         <VerticalAlign>Top</VerticalAlign>
         <OffsetX>10</OffsetX>
-        <OffsetY>250</OffsetY>
+        <OffsetY>170</OffsetY>
       </RelativePositionProfile>
       <TextColour r="0" g="0" b="0" a="255" />
       <HoverTextColour r="255" g="255" b="255" a="255" />
