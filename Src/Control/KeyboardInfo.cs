@@ -28,6 +28,11 @@ namespace Manabind.Src.Control
         {
             char result = Char.MinValue;
 
+            if (key == Keys.Back)
+            {
+                return '\0';
+            }
+
             string s = IsShifted() ? key.ToString().ToUpper() : key.ToString().ToLower();
 
             if (s.Length == 1)
@@ -35,7 +40,8 @@ namespace Manabind.Src.Control
                 char c = Char.Parse(s);
 
                 if (c >= 'a' && c <= 'z' ||
-                    c >= 'A' && c <= 'Z')
+                    c >= 'A' && c <= 'Z' ||
+                    c >= '0' && c <= '9')
                 {
                     result = c;
                 }

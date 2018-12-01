@@ -166,15 +166,32 @@ namespace Manabind.Src.UI.Components.Complex
                 case "edit-text":
                     if (focus)
                     {
-                        char c = KeyboardInfo.KeyToChar((Keys)content);
+                        bool done = false;
 
-                        if (c != char.MinValue)
+                        if ((Keys)content == Keys.Back && this.Text.Length > 0)
                         {
-                            this.Text += c;
-                            this.Refresh();
+                            this.Text = this.Text.Remove(this.Text.Length - 1);
+                            done = true;
                         }
+
+                        if (!done)
+                        {
+                            ProcessAlphaNumericKeypress((Keys)content);
+                        }
+
+                        this.Refresh();
                     }
                     break;
+            }
+        }
+
+        private void ProcessAlphaNumericKeypress(Keys key)
+        {
+            char c = KeyboardInfo.KeyToChar(key);
+
+            if (c != char.MinValue)
+            {
+                this.Text += c;
             }
         }
 
