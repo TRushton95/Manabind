@@ -106,7 +106,7 @@ namespace Manabind.Src.Gameplay.Entities
 
         public void Disable()
         {
-            this.Disable = true;
+            this.Enabled = false;
         }
 
         #endregion
