@@ -96,6 +96,8 @@
     <Compile Include="Src\UI\PositionProfiles\RelativePositionProfile.cs" />
     <Compile Include="Src\UI\Serialisation\Colour.cs" />
     <Compile Include="Src\UI\Serialisation\ComponentList.cs" />
+    <Compile Include="Src\UI\Serialisation\Map.cs" />
+    <Compile Include="Src\UI\Serialisation\Tile.cs" />
     <Compile Include="Src\UI\Utilities\Utility.cs" />
   </ItemGroup>
   <ItemGroup>

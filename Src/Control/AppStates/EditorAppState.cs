@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework;
 using System;
 using Newtonsoft.Json;
 using System.IO;
+using Manabind.Src.UI.Serialisation;
+using System.Collections.Generic;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -20,7 +22,6 @@ namespace Manabind.Src.Control.AppStates
         private BaseTile highlightedTile;
         private BaseTile selectedTool;
         private string mapName;
-        private string mapFileLocation = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AppSettings.MapFileLocation);
 
         #endregion
 
@@ -169,12 +170,36 @@ namespace Manabind.Src.Control.AppStates
         
         private void SaveMap()
         {
-            string json = JsonConvert.SerializeObject(board);
+            List<List<Tile>> tilesToSerialize = new List<List<Tile>>();
 
-            using (StreamWriter file = new StreamWriter(Path.Combine(mapFileLocation, this.mapName)))
+            foreach (List<BaseTile> column in board.Tiles)
             {
-                file.Write(json);
+                List<Tile> columnToSerialize = new List<Tile>();
+
+                foreach (BaseTile tile in column)
+                {
+                    columnToSerialize.Add(
+                        new Tile(tile.PosX, tile.PosY, tile.TileType));
+                }
+
+                tilesToSerialize.Add(columnToSerialize);
             }
+
+            Map map = new Map()
+            {
+                Name = this.mapName,
+                Width = board.Width,
+                Height = board.Height,
+                Tiles = tilesToSerialize
+            };
+
+            string json = JsonConvert.SerializeObject(map);
+
+            Directory.CreateDirectory(AppSettings.MapDirectoryPath);
+            string fileName = string.Concat(this.mapName, ".json");
+            string mapDirectory = Path.Combine(AppSettings.MapDirectoryPath, fileName);
+
+            File.WriteAllText(mapDirectory, json);
         }
 
         private void SetEventResponses()

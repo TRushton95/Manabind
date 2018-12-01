@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.IO;
 
 namespace Manabind
 {
@@ -7,7 +8,9 @@ namespace Manabind
     {
         #region MapFiles
 
-        public static string MapFileLocation { get => ConfigurationManager.AppSettings["MapFileLocation"]; }
+        public static string MapDirectory { get => ConfigurationManager.AppSettings["MapDirectory"]; }
+
+        public static string MapDirectoryPath { get => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AppSettings.MapDirectory); }
 
         #endregion
 
