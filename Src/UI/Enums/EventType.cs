@@ -14,6 +14,7 @@
         Select,
         ChangeWidth,
         ChangeHeight,
+        ChangeText,
         KeyPress
     }
 }

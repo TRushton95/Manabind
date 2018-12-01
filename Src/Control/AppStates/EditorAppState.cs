@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Microsoft.Xna.Framework;
 using System;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -17,6 +19,8 @@ namespace Manabind.Src.Control.AppStates
         private Board board;
         private BaseTile highlightedTile;
         private BaseTile selectedTool;
+        private string mapName;
+        private string mapFileLocation = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AppSettings.MapFileLocation);
 
         #endregion
 
@@ -27,6 +31,8 @@ namespace Manabind.Src.Control.AppStates
             this.camera = new Camera(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight);
             this.board = new Board(10, 6);
             this.SetEventResponses();
+
+            this.mapName = string.Empty;
         }
 
         #endregion
@@ -120,6 +126,8 @@ namespace Manabind.Src.Control.AppStates
                     break;
 
                 case "save-board":
+                    this.SaveMap();
+
                     break;
 
                 case "load-board":
@@ -138,6 +146,11 @@ namespace Manabind.Src.Control.AppStates
                         new UIEvent(new EventDetails(this.Name, EventType.ChangeWidth), board.Width));
 
                     break;
+
+                case "change-map-name":
+                    this.mapName = (string)content;
+
+                    break;
             }
         }
 
@@ -153,6 +166,16 @@ namespace Manabind.Src.Control.AppStates
                 board.SetTileAtCoords(clickedTile.PosX, clickedTile.PosY, selectedTool.TileType);
             }
         }
+        
+        private void SaveMap()
+        {
+            string json = JsonConvert.SerializeObject(board);
+
+            using (StreamWriter file = new StreamWriter(Path.Combine(mapFileLocation, this.mapName)))
+            {
+                file.Write(json);
+            }
+        }
 
         private void SetEventResponses()
         {
@@ -165,9 +188,12 @@ namespace Manabind.Src.Control.AppStates
             this.EventResponses.Add(new EventResponse(new EventDetails("add-row-button", EventType.LeftClick), "add-row"));
             this.EventResponses.Add(new EventResponse(new EventDetails("remove-row-button", EventType.LeftClick), "remove-row"));
 
-            this.EventResponses.Add(new EventResponse(new EventDetails("save-button", EventType.LeftClick), "save-board"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("save-button-yes", EventType.LeftClick), "save-board"));
             this.EventResponses.Add(new EventResponse(new EventDetails("load-button", EventType.LeftClick), "load-board"));
             this.EventResponses.Add(new EventResponse(new EventDetails("reset-button", EventType.LeftClick), "reset-board"));
+            
+
+            this.EventResponses.Add(new EventResponse(new EventDetails("map-name-textbox", EventType.ChangeText), "change-map-name"));
         }
     }
 }

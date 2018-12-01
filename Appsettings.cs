@@ -5,6 +5,12 @@ namespace Manabind
 {
     public static class AppSettings
     {
+        #region MapFiles
+
+        public static string MapFileLocation { get => ConfigurationManager.AppSettings["MapFileLocation"]; }
+
+        #endregion
+
         #region Window
 
         public static int WindowWidth { get => Int32.Parse(ConfigurationManager.AppSettings["WindowWidth"]); }

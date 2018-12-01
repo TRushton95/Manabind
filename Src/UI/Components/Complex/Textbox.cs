@@ -180,6 +180,9 @@ namespace Manabind.Src.UI.Components.Complex
                         }
 
                         this.Refresh();
+                        
+                        EventManager.PushEvent(
+                            new UIEvent(new EventDetails(this.Name, EventType.ChangeText), this.Text));
                     }
                     break;
             }
