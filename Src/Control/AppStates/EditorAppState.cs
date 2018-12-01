@@ -132,6 +132,8 @@ namespace Manabind.Src.Control.AppStates
                     break;
 
                 case "load-board":
+                    this.LoadMap();
+
                     break;
 
                 case "reset-board":
@@ -202,6 +204,23 @@ namespace Manabind.Src.Control.AppStates
             File.WriteAllText(mapDirectory, json);
         }
 
+        private void LoadMap()
+        {
+            Directory.CreateDirectory(AppSettings.MapDirectoryPath);
+            string fileName = "test.json";
+            string mapDirectory = Path.Combine(AppSettings.MapDirectoryPath, fileName);
+
+            string json = File.ReadAllText(mapDirectory);
+            Map map = JsonConvert.DeserializeObject<Map>(json);
+
+            Board result = new Board();
+
+            result.Name = map.Name;
+            result.Generate(map);
+
+            this.board = result;
+        }
+
         private void SetEventResponses()
         {
             this.EventResponses.Add(new EventResponse(new EventDetails(EventManager.Wildcard, EventType.RightClick), "deselect-tool"));
@@ -213,10 +232,10 @@ namespace Manabind.Src.Control.AppStates
             this.EventResponses.Add(new EventResponse(new EventDetails("add-row-button", EventType.LeftClick), "add-row"));
             this.EventResponses.Add(new EventResponse(new EventDetails("remove-row-button", EventType.LeftClick), "remove-row"));
 
-            this.EventResponses.Add(new EventResponse(new EventDetails("save-button-yes", EventType.LeftClick), "save-board"));
-            this.EventResponses.Add(new EventResponse(new EventDetails("load-button", EventType.LeftClick), "load-board"));
             this.EventResponses.Add(new EventResponse(new EventDetails("reset-button", EventType.LeftClick), "reset-board"));
             
+            this.EventResponses.Add(new EventResponse(new EventDetails("save-button-yes", EventType.LeftClick), "save-board"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("load-button-yes", EventType.LeftClick), "load-board"));
 
             this.EventResponses.Add(new EventResponse(new EventDetails("map-name-textbox", EventType.ChangeText), "change-map-name"));
         }

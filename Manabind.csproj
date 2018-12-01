@@ -90,6 +90,7 @@
     <Compile Include="Src\UI\Events\UIEvent.cs" />
     <Compile Include="Src\UI\Factories\IconFactory.cs" />
     <Compile Include="Src\UI\Factories\PositionProfileFactory.cs" />
+    <Compile Include="Src\UI\Factories\TileFactory.cs" />
     <Compile Include="Src\UI\PositionProfiles\AbsolutePositionProfile.cs" />
     <Compile Include="Src\UI\PositionProfiles\BasePositionProfile.cs" />
     <Compile Include="Src\UI\PositionProfiles\IPositionProfile.cs" />

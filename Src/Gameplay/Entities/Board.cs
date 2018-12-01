@@ -7,6 +7,8 @@ using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Events;
 using Manabind.Src.Control;
+using Manabind.Src.UI.Serialisation;
+using Manabind.Src.UI.Factories;
 
 namespace Manabind.Src.Gameplay.Entities
 {
@@ -76,8 +78,28 @@ namespace Manabind.Src.Gameplay.Entities
                     column.Add(new EmptyTile(x, y, canvasX, canvasY));
                 }
 
-                Tiles.Add(column);
+                this.Tiles.Add(column);
             }
+        }
+
+        public void Generate(Map map)
+        {
+            List<List<BaseTile>> newTiles = new List<List<BaseTile>>();
+
+            for (int x = 0; x < map.Width; x++)
+            {
+                List<BaseTile> column = new List<BaseTile>();
+
+                for (int y = 0; y < map.Height; y++)
+                {
+                    column.Add(
+                        TileFactory.BuildTile(x, y, map.Tiles[x][y].TileType));
+                }
+
+                newTiles.Add(column);
+            }
+
+            this.Tiles = newTiles;
         }
 
         public void Update(Vector2 absoluteMousePosition, bool interact) //TO-DO Tidy this up
