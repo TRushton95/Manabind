@@ -125,6 +125,11 @@ namespace Manabind.Src.Control.AppStates
                     board = new Board(width, height);
                     board.Generate();
 
+                    EventManager.PushEvent(
+                        new UIEvent(new EventDetails(this.Name, EventType.ChangeHeight), board.Height));
+                    EventManager.PushEvent(
+                        new UIEvent(new EventDetails(this.Name, EventType.ChangeWidth), board.Width));
+
                     break;
             }
         }
