@@ -158,6 +158,20 @@
       <BackgroundColour r="255" g="0" b="255" a="255" />
       <HoverBackgroundColour r="255" g="50" b="255" a="255" />
     </Button>
+
+    <Button name="menu-button" width="220" height="30">
+      <Text>Exit</Text>
+      <RelativePositionProfile>
+        <HorizontalAlign>Left</HorizontalAlign>
+        <VerticalAlign>Top</VerticalAlign>
+        <OffsetX>10</OffsetX>
+        <OffsetY>210</OffsetY>
+      </RelativePositionProfile>
+      <TextColour r="0" g="0" b="0" a="255" />
+      <HoverTextColour r="255" g="255" b="255" a="255" />
+      <BackgroundColour r="255" g="0" b="255" a="255" />
+      <HoverBackgroundColour r="255" g="50" b="255" a="255" />
+    </Button>
     
     <Container name="save-container" width="400" height="200" visible="false" interactive="false" blocker="true">
       <EventResponses>

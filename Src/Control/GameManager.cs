@@ -44,6 +44,8 @@ namespace Manabind.Src.Control
             appState = new MenuAppState();
             appState.Initialise();
 
+
+            this.EventResponses.Add(new EventResponse(new EventDetails("menu-button", EventType.LeftClick), "menu"));
             this.EventResponses.Add(new EventResponse(new EventDetails("play-button", EventType.LeftClick), "play"));
             this.EventResponses.Add(new EventResponse(new EventDetails("editor-button", EventType.LeftClick), "editor"));
             this.EventResponses.Add(new EventResponse(new EventDetails("options-button", EventType.LeftClick), "options"));
@@ -93,6 +95,10 @@ namespace Manabind.Src.Control
         {
             switch (action)
             {
+                case "menu":
+                    this.SwitchToMenuState();
+                    break;
+
                 case "play":
                     this.SwitchToPlayState();
                     break;
