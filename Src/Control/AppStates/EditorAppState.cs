@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System.IO;
 using Manabind.Src.UI.Serialisation;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -21,7 +22,9 @@ namespace Manabind.Src.Control.AppStates
         private Board board;
         private BaseTile highlightedTile;
         private BaseTile selectedTool;
+        private int mapIndex;
         private string mapName;
+        private List<string> savedMaps;
 
         #endregion
 
@@ -33,7 +36,11 @@ namespace Manabind.Src.Control.AppStates
             this.board = new Board(10, 6);
             this.SetEventResponses();
 
+            this.mapIndex = 0;
             this.mapName = string.Empty;
+            this.savedMaps = Directory.EnumerateFiles(AppSettings.MapDirectoryPath)
+                                .Select(file => Path.GetFileNameWithoutExtension(file))
+                                .ToList();
         }
 
         #endregion
@@ -150,8 +157,33 @@ namespace Manabind.Src.Control.AppStates
 
                     break;
 
-                case "change-map-name":
-                    this.mapName = (string)content;
+                case "scroll-up-file":
+                    if (mapIndex == savedMaps.Count - 1)
+                    {
+                        mapIndex = 0;
+                    }
+                    else
+                    {
+                        mapIndex++;
+                    }
+
+                    EventManager.PushEvent(
+                        new UIEvent(new EventDetails(this.Name, EventType.ScrollLoadFiles), savedMaps[mapIndex]));
+
+                    break;
+
+                case "scroll-down-file":
+                    if (mapIndex == 0)
+                    {
+                        mapIndex = savedMaps.Count - 1;
+                    }
+                    else
+                    {
+                        mapIndex--;
+                    }
+
+                    EventManager.PushEvent(
+                        new UIEvent(new EventDetails(this.Name, EventType.ScrollLoadFiles), savedMaps[mapIndex]));
 
                     break;
             }
@@ -238,6 +270,10 @@ namespace Manabind.Src.Control.AppStates
             this.EventResponses.Add(new EventResponse(new EventDetails("load-button-yes", EventType.LeftClick), "load-board"));
 
             this.EventResponses.Add(new EventResponse(new EventDetails("map-name-textbox", EventType.ChangeText), "change-map-name"));
+
+
+            this.EventResponses.Add(new EventResponse(new EventDetails("page-up-button", EventType.LeftClick), "scroll-up-file"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("page-down-button", EventType.LeftClick), "scroll-down-file"));
         }
     }
 }

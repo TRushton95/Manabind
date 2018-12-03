@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Manabind.Src.UI.Factories;
 using Manabind.Src.UI.Serialisation;
 using System.Xml.Serialization;
+using Manabind.Src.UI.Components.Complex.ListItems;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -56,6 +57,7 @@ namespace Manabind.Src.UI.Components.Complex
         [XmlArrayItem(typeof(Heading))]
         [XmlArrayItem(typeof(Toolbar))]
         [XmlArrayItem(typeof(Textbox))]
+        [XmlArrayItem(typeof(TextboxListItem))]
         public List<BaseComplexComponent> Components
         {
             get;

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.PositionProfiles;
 using Microsoft.Xna.Framework;
 using System.Xml.Serialization;
+using Manabind.Src.UI.Components.Complex.ListItems;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -29,6 +30,7 @@ namespace Manabind.Src.UI.Components.Complex
         [XmlArrayItem(typeof(Heading))]
         [XmlArrayItem(typeof(Toolbar))]
         [XmlArrayItem(typeof(Textbox))]
+        [XmlArrayItem(typeof(TextboxListItem))]
         public List<BaseComplexComponent> Components
         {
             get;

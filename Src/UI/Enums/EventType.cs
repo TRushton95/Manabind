@@ -15,6 +15,7 @@
         ChangeWidth,
         ChangeHeight,
         ChangeText,
-        KeyPress
+        KeyPress,
+        ScrollLoadFiles
     }
 }

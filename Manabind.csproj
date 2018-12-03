@@ -62,6 +62,7 @@
     <Compile Include="Src\Gameplay\Entities\Tile\EmptyTile.cs" />
     <Compile Include="Src\Gameplay\Entities\Tile\GroundTile.cs" />
     <Compile Include="Src\Gameplay\Interfaces\IIconable.cs" />
+    <Compile Include="Src\UI\Components\Complex\ListItems\TextboxListItem.cs" />
     <Compile Include="Src\UI\Components\Complex\Textbox.cs" />
     <Compile Include="Src\UI\Events\Listener.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Settings.cs" />
@@ -124,6 +125,7 @@
     <Content Include="Icon.ico" />
     <Content Include="Src\UI\Definitions\editor.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Src\UI\Definitions\menu.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
