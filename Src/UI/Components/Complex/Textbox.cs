@@ -28,9 +28,6 @@ namespace Manabind.Src.UI.Components.Complex
             : base()
         {
             this.EventResponses.Add(
-                new EventResponse(new EventDetails(EventManager.Wildcard, EventType.LeftClick), "unfocus"));
-
-            this.EventResponses.Add(
                 new EventResponse(new EventDetails("keyboard", EventType.KeyPress), "edit-text"));
         }
 
@@ -112,6 +109,9 @@ namespace Manabind.Src.UI.Components.Complex
 
             this.EventResponses.Add(
                 new EventResponse(new EventDetails(this.Name, EventType.LeftClick), "focus"));
+
+            this.EventResponses.Add(
+                new EventResponse(new EventDetails(EventManager.Wildcard, EventType.RightClick), "unfocus"));
         }
 
         public override void Refresh()

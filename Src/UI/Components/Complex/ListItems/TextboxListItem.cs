@@ -1,4 +1,7 @@
-﻿namespace Manabind.Src.UI.Components.Complex.ListItems
+﻿using System.Collections.Generic;
+using System.Xml.Serialization;
+
+namespace Manabind.Src.UI.Components.Complex.ListItems
 {
     public class TextboxListItem : Textbox
     {
@@ -12,7 +15,12 @@
 
         #region Properties
 
-
+        [XmlAttribute("index")]
+        public int Index
+        {
+            get;
+            set;
+        }
 
         #endregion
 
@@ -26,7 +34,7 @@
             switch (action)
             {
                 case "scroll-selection":
-                    this.Text = (string)content;
+                    this.Text = ((List<string>)content)[this.Index];
                     this.Refresh();
                     break;
             }

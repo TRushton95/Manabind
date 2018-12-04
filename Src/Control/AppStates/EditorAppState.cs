@@ -11,6 +11,7 @@ using System.IO;
 using Manabind.Src.UI.Serialisation;
 using System.Collections.Generic;
 using System.Linq;
+using Manabind.Src.UI.Components.Complex.ListItems;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -22,8 +23,9 @@ namespace Manabind.Src.Control.AppStates
         private Board board;
         private BaseTile highlightedTile;
         private BaseTile selectedTool;
-        private int mapIndex;
+        private int mapIndex, availabeMapCount;
         private string mapName;
+        private string selectedMap;
         private List<string> savedMaps;
 
         #endregion
@@ -37,10 +39,14 @@ namespace Manabind.Src.Control.AppStates
             this.SetEventResponses();
 
             this.mapIndex = 0;
+            this.availabeMapCount = 4;
             this.mapName = string.Empty;
+            this.selectedMap = string.Empty;
             this.savedMaps = Directory.EnumerateFiles(AppSettings.MapDirectoryPath)
                                 .Select(file => Path.GetFileNameWithoutExtension(file))
                                 .ToList();
+
+            this.InitialiseLoadList();
         }
 
         #endregion
@@ -158,32 +164,17 @@ namespace Manabind.Src.Control.AppStates
                     break;
 
                 case "scroll-up-file":
-                    if (mapIndex == savedMaps.Count - 1)
-                    {
-                        mapIndex = 0;
-                    }
-                    else
-                    {
-                        mapIndex++;
-                    }
-
-                    EventManager.PushEvent(
-                        new UIEvent(new EventDetails(this.Name, EventType.ScrollLoadFiles), savedMaps[mapIndex]));
+                    //ScrollUpMap();
 
                     break;
 
                 case "scroll-down-file":
-                    if (mapIndex == 0)
-                    {
-                        mapIndex = savedMaps.Count - 1;
-                    }
-                    else
-                    {
-                        mapIndex--;
-                    }
+                    ScrollDownMap();
 
-                    EventManager.PushEvent(
-                        new UIEvent(new EventDetails(this.Name, EventType.ScrollLoadFiles), savedMaps[mapIndex]));
+                    break;
+
+                case "select-file":
+                    this.selectedMap = ((TextboxListItem)content).Text;
 
                     break;
             }
@@ -239,7 +230,7 @@ namespace Manabind.Src.Control.AppStates
         private void LoadMap()
         {
             Directory.CreateDirectory(AppSettings.MapDirectoryPath);
-            string fileName = "test.json";
+            string fileName = String.Concat(this.selectedMap, ".json");
             string mapDirectory = Path.Combine(AppSettings.MapDirectoryPath, fileName);
 
             string json = File.ReadAllText(mapDirectory);
@@ -251,6 +242,84 @@ namespace Manabind.Src.Control.AppStates
             result.Generate(map);
 
             this.board = result;
+            this.mapName = board.Name;
+        }
+
+        private void InitialiseLoadList()
+        {
+            int currentIndex = 0;
+
+            List<string> mapsToDisplay = new List<string>();
+
+            for (int i = 0; i < availabeMapCount; i++)
+            {
+                mapsToDisplay.Add(savedMaps[currentIndex]);
+
+                if (currentIndex > savedMaps.Count - 1)
+                {
+                    currentIndex = 0;
+                }
+                else
+                {
+                    currentIndex++;
+                }
+            }
+
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.ScrollLoadFiles), mapsToDisplay));
+        }
+
+        /* TO-DO Busted algorithm
+        private void ScrollUpMap()
+        {
+            mapIndex = WrapIndex(mapIndex - 1);
+            int currentIndex = mapIndex;
+
+            List<string> mapsToDisplay = new List<string>();
+
+            for (int i = 0; i < availabeMapCount; i++)
+            {
+                mapsToDisplay.Add(savedMaps[currentIndex]);
+                currentIndex = WrapIndex(currentIndex - 1);
+            }
+
+            currentIndex--;
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.ScrollLoadFiles), mapsToDisplay));
+        }
+        */
+
+        private void ScrollDownMap()
+        {
+            mapIndex = WrapIndex(mapIndex + 1);
+            int currentIndex = mapIndex;
+
+            List<string> mapsToDisplay = new List<string>();
+
+            for (int i = 0; i < availabeMapCount; i++)
+            {
+                mapsToDisplay.Add(savedMaps[currentIndex]);
+                currentIndex = WrapIndex(currentIndex + 1);
+            }
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.ScrollLoadFiles), mapsToDisplay));
+        }
+
+        private int WrapIndex(int i)
+        {
+            if (i < 0)
+            {
+                i = savedMaps.Count - 1;
+            }
+            else if (i > savedMaps.Count - 1)
+            {
+                i = 0;
+            }
+
+            return i;
         }
 
         private void SetEventResponses()
@@ -270,10 +339,14 @@ namespace Manabind.Src.Control.AppStates
             this.EventResponses.Add(new EventResponse(new EventDetails("load-button-yes", EventType.LeftClick), "load-board"));
 
             this.EventResponses.Add(new EventResponse(new EventDetails("map-name-textbox", EventType.ChangeText), "change-map-name"));
-
-
-            this.EventResponses.Add(new EventResponse(new EventDetails("page-up-button", EventType.LeftClick), "scroll-up-file"));
+            
+            //this.EventResponses.Add(new EventResponse(new EventDetails("page-up-button", EventType.LeftClick), "scroll-up-file"));
             this.EventResponses.Add(new EventResponse(new EventDetails("page-down-button", EventType.LeftClick), "scroll-down-file"));
+
+            this.EventResponses.Add(new EventResponse(new EventDetails("load-file-1", EventType.LeftClick), "select-file"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("load-file-2", EventType.LeftClick), "select-file"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("load-file-3", EventType.LeftClick), "select-file"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("load-file-4", EventType.LeftClick), "select-file"));
         }
     }
 }
