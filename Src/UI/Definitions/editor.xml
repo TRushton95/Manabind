@@ -199,6 +199,20 @@
       <Components>
         
         <Textbox name="map-name-textbox" width="300" height="50" editable="true">
+          <EventResponses>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="*" eventtype="RightClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="save-button-yes" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="save-button-no" eventtype="LeftClick" />
+            </EventResponse>
+          </EventResponses>
           <Text></Text>
           <RelativePositionProfile>
             <HorizontalAlign>Middle</HorizontalAlign>
