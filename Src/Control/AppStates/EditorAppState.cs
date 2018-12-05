@@ -23,7 +23,7 @@ namespace Manabind.Src.Control.AppStates
         private Board board;
         private BaseTile highlightedTile;
         private BaseTile selectedTool;
-        private int mapIndex, availabeMapCount;
+        private int mapIndex, availabeMapSlots;
         private string mapName;
         private string selectedMap;
         private List<string> savedMaps;
@@ -258,7 +258,7 @@ namespace Manabind.Src.Control.AppStates
 
             List<string> mapsToDisplay = new List<string>();
 
-            for (int i = 0; i < availabeMapCount; i++)
+            for (int i = 0; i < availabeMapSlots; i++)
             {
                 mapsToDisplay.Add(savedMaps[currentIndex]);
 
@@ -272,19 +272,23 @@ namespace Manabind.Src.Control.AppStates
                 }
             }
 
-
             EventManager.PushEvent(
                 new UIEvent(new EventDetails(this.Name, EventType.ScrollLoadFiles), mapsToDisplay));
         }
         
         private void ScrollUpMap()
         {
-            mapIndex = WrapIndex(mapIndex - 1);
+            mapIndex--;
+            if (mapIndex < 0)
+            {
+                mapIndex = 0;
+            }
+
             int currentIndex = mapIndex;
 
             List<string> mapsToDisplay = new List<string>();
 
-            for (int i = 0; i < availabeMapCount; i++)
+            for (int i = 0; i < availabeMapSlots; i++)
             {
                 mapsToDisplay.Add(savedMaps[currentIndex]);
                 currentIndex = WrapIndex(currentIndex + 1);
@@ -296,12 +300,17 @@ namespace Manabind.Src.Control.AppStates
 
         private void ScrollDownMap()
         {
-            mapIndex = WrapIndex(mapIndex + 1);
+            mapIndex++;
+            if (mapIndex + availabeMapSlots > savedMaps.Count())
+            {
+                mapIndex = savedMaps.Count() - availabeMapSlots;
+            }
+
             int currentIndex = mapIndex;
 
             List<string> mapsToDisplay = new List<string>();
 
-            for (int i = 0; i < availabeMapCount; i++)
+            for (int i = 0; i < availabeMapSlots; i++)
             {
                 mapsToDisplay.Add(savedMaps[currentIndex]);
                 currentIndex = WrapIndex(currentIndex + 1);
