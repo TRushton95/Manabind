@@ -1,1 +1,8 @@
 ﻿Change event names into class of enums
+
+Event system requires sending of click events even when element is blocked, eg.
+	sender="save-container"
+	eventtype="LeftClick"
+	blocked="true"
+
+	-this allows use of block-specific behaviour while still allowing click events to occur
