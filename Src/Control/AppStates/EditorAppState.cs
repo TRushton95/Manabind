@@ -170,7 +170,7 @@ namespace Manabind.Src.Control.AppStates
                     break;
 
                 case "scroll-up-file":
-                    //ScrollUpMap();
+                    ScrollUpMap();
                     break;
 
                 case "scroll-down-file":
@@ -276,8 +276,7 @@ namespace Manabind.Src.Control.AppStates
             EventManager.PushEvent(
                 new UIEvent(new EventDetails(this.Name, EventType.ScrollLoadFiles), mapsToDisplay));
         }
-
-        /* TO-DO Busted algorithm
+        
         private void ScrollUpMap()
         {
             mapIndex = WrapIndex(mapIndex - 1);
@@ -288,15 +287,12 @@ namespace Manabind.Src.Control.AppStates
             for (int i = 0; i < availabeMapCount; i++)
             {
                 mapsToDisplay.Add(savedMaps[currentIndex]);
-                currentIndex = WrapIndex(currentIndex - 1);
+                currentIndex = WrapIndex(currentIndex + 1);
             }
-
-            currentIndex--;
 
             EventManager.PushEvent(
                 new UIEvent(new EventDetails(this.Name, EventType.ScrollLoadFiles), mapsToDisplay));
         }
-        */
 
         private void ScrollDownMap()
         {
@@ -347,7 +343,7 @@ namespace Manabind.Src.Control.AppStates
 
             this.EventResponses.Add(new EventResponse(new EventDetails("map-name-textbox", EventType.ChangeText), "change-map-name"));
             
-            //this.EventResponses.Add(new EventResponse(new EventDetails("page-up-button", EventType.LeftClick), "scroll-up-file"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("page-up-button", EventType.LeftClick), "scroll-up-file"));
             this.EventResponses.Add(new EventResponse(new EventDetails("page-down-button", EventType.LeftClick), "scroll-down-file"));
 
             this.EventResponses.Add(new EventResponse(new EventDetails("load-file-1", EventType.LeftClick), "select-file"));
