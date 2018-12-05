@@ -141,10 +141,14 @@ namespace Manabind.Src.Control.AppStates
 
                 case "save-board":
                     this.SaveMap();
+                    EventManager.PushEvent(
+                        new UIEvent(new EventDetails(this.Name, EventType.MapSaved), null));
                     break;
 
                 case "load-board":
                     this.LoadMap();
+                    EventManager.PushEvent(
+                        new UIEvent(new EventDetails(this.Name, EventType.MapLoaded), null));
                     break;
 
                 case "change-map-name":

@@ -9,14 +9,14 @@ using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Events;
 using Manabind.Src.Control;
 using Microsoft.Xna.Framework.Input;
+using System.Xml.Serialization;
 
 namespace Manabind.Src.UI.Components.Complex
 {
     public class Textbox : BaseComplexComponent
     {
         #region Fields
-
-        private bool focus;
+        
         private Frame frame, defaultFrame, hoverFrame, focusFrame;
         private FontGraphics defaultFontGraphics, hoverFontGraphics, focusFontGraphics;
 
@@ -27,6 +27,8 @@ namespace Manabind.Src.UI.Components.Complex
         public Textbox()
             : base()
         {
+            this.Editable = false;
+
             this.EventResponses.Add(
                 new EventResponse(new EventDetails("keyboard", EventType.KeyPress), "edit-text"));
         }
@@ -93,6 +95,19 @@ namespace Manabind.Src.UI.Components.Complex
             set;
         }
 
+        [XmlAttribute("editable")]
+        public bool Editable
+        {
+            get;
+            set;
+        }
+
+        public bool Focus
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Methods
@@ -121,7 +136,7 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void HoverDetail()
         {
-            if (!focus)
+            if (!this.Focus)
             {
                 this.frame = this.hoverFrame;
             }
@@ -129,7 +144,7 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void HoverLeaveDetail()
         {
-            if (!focus)
+            if (!this.Focus)
             {
                 this.frame = this.defaultFrame;
             }
@@ -137,7 +152,7 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void LeftClickDetail()
         {
-            this.focus = true;
+            this.Focus = true;
             this.frame = this.focusFrame;
         }
 
@@ -154,17 +169,17 @@ namespace Manabind.Src.UI.Components.Complex
             switch (action)
             {
                 case "focus":
-                    this.focus = true;
+                    this.Focus = true;
                     this.frame = this.focusFrame;
                     break;
 
                 case "unfocus":
-                    this.focus = false;
+                    this.Focus = false;
                     this.frame = Hovered ? this.hoverFrame : this.defaultFrame;
                     break;
 
                 case "edit-text":
-                    if (focus)
+                    if (this.Focus && this.Editable)
                     {
                         bool done = false;
 
@@ -221,7 +236,7 @@ namespace Manabind.Src.UI.Components.Complex
             focusFrame.Components.Add(focusFontGraphics);
             focusFrame.Initialise(this.GetBounds());
 
-            this.frame = this.focus ? this.focusFrame : this.defaultFrame;
+            this.frame = this.Focus ? this.focusFrame : this.defaultFrame;
         }
 
         #endregion

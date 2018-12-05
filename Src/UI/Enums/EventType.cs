@@ -16,6 +16,8 @@
         ChangeHeight,
         ChangeText,
         KeyPress,
-        ScrollLoadFiles
+        ScrollLoadFiles,
+        MapSaved,
+        MapLoaded
     }
 }
