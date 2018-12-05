@@ -275,6 +275,26 @@
               <Action>scroll-selection</Action>
               <Trigger sender="appstate" eventtype="ScrollLoadFiles" />
             </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-button-yes" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-button-no" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-file-2" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-file-3" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-file-4" eventtype="LeftClick" />
+            </EventResponse>
           </EventResponses>
           <Text></Text>
           <RelativePositionProfile>
@@ -296,6 +316,26 @@
             <EventResponse>
               <Action>scroll-selection</Action>
               <Trigger sender="appstate" eventtype="ScrollLoadFiles" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-button-yes" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-button-no" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-file-1" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-file-3" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-file-4" eventtype="LeftClick" />
             </EventResponse>
           </EventResponses>
           <Text></Text>
@@ -319,6 +359,26 @@
               <Action>scroll-selection</Action>
               <Trigger sender="appstate" eventtype="ScrollLoadFiles" />
             </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-button-yes" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-button-no" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-file-1" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-file-2" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-file-4" eventtype="LeftClick" />
+            </EventResponse>
           </EventResponses>
           <Text></Text>
           <RelativePositionProfile>
@@ -340,6 +400,26 @@
             <EventResponse>
               <Action>scroll-selection</Action>
               <Trigger sender="appstate" eventtype="ScrollLoadFiles" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-button-yes" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-button-no" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-file-1" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-file-2" eventtype="LeftClick" />
+            </EventResponse>
+            <EventResponse>
+              <Action>unfocus</Action>
+              <Trigger sender="load-file-3" eventtype="LeftClick" />
             </EventResponse>
           </EventResponses>
           <Text></Text>
