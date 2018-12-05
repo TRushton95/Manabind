@@ -1,5 +1,8 @@
 ﻿Change event names into class of enums
 
+LoadListItems selected item must scroll
+	(or the whole thing should be reworked, would benefit from a better event system)
+
 Event system requires sending of click events even when element is blocked, eg.
 	sender="save-container"
 	eventtype="LeftClick"

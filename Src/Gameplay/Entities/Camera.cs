@@ -99,6 +99,12 @@ namespace Manabind.Src.Gameplay.Entities
             return new Vector2(mousePosition.X + CanvasX, mousePosition.Y + CanvasY);
         }
 
+        public void Reset()
+        {
+            this.CanvasX = 0;
+            this.CanvasY = 0;
+        }
+
         public void Enable()
         {
             this.Enabled = true;

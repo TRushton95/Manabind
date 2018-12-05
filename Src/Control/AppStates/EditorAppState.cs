@@ -147,6 +147,7 @@ namespace Manabind.Src.Control.AppStates
 
                 case "load-board":
                     this.LoadMap();
+                    this.camera.Reset();
                     EventManager.PushEvent(
                         new UIEvent(new EventDetails(this.Name, EventType.MapLoaded), null));
                     break;
