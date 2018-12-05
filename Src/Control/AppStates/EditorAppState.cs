@@ -23,7 +23,7 @@ namespace Manabind.Src.Control.AppStates
         private Board board;
         private BaseTile highlightedTile;
         private BaseTile selectedTool;
-        private int mapIndex, availabeMapSlots;
+        private int mapIndex, availableMapSlots, occupiedMapSlots;
         private string mapName;
         private string selectedMap;
         private List<string> savedMaps;
@@ -39,12 +39,13 @@ namespace Manabind.Src.Control.AppStates
             this.SetEventResponses();
 
             this.mapIndex = 0;
-            this.availabeMapCount = 4;
+            this.availableMapSlots = 4;
             this.mapName = string.Empty;
             this.selectedMap = string.Empty;
             this.savedMaps = Directory.EnumerateFiles(AppSettings.MapDirectoryPath)
                                 .Select(file => Path.GetFileNameWithoutExtension(file))
                                 .ToList();
+            this.occupiedMapSlots = savedMaps.Count() > availableMapSlots ? availableMapSlots : savedMaps.Count();
 
             this.InitialiseLoadList();
         }
@@ -234,6 +235,11 @@ namespace Manabind.Src.Control.AppStates
 
         private void LoadMap()
         {
+            if (string.IsNullOrWhiteSpace(this.selectedMap))
+            {
+                return;
+            }
+
             Directory.CreateDirectory(AppSettings.MapDirectoryPath);
             string fileName = String.Concat(this.selectedMap, ".json");
             string mapDirectory = Path.Combine(AppSettings.MapDirectoryPath, fileName);
@@ -258,7 +264,7 @@ namespace Manabind.Src.Control.AppStates
 
             List<string> mapsToDisplay = new List<string>();
 
-            for (int i = 0; i < availabeMapSlots; i++)
+            for (int i = 0; i < occupiedMapSlots; i++)
             {
                 mapsToDisplay.Add(savedMaps[currentIndex]);
 
@@ -278,6 +284,11 @@ namespace Manabind.Src.Control.AppStates
         
         private void ScrollUpMap()
         {
+            if (occupiedMapSlots < availableMapSlots)
+            {
+                return;
+            }
+
             mapIndex--;
             if (mapIndex < 0)
             {
@@ -288,7 +299,7 @@ namespace Manabind.Src.Control.AppStates
 
             List<string> mapsToDisplay = new List<string>();
 
-            for (int i = 0; i < availabeMapSlots; i++)
+            for (int i = 0; i < availableMapSlots; i++)
             {
                 mapsToDisplay.Add(savedMaps[currentIndex]);
                 currentIndex = WrapIndex(currentIndex + 1);
@@ -300,17 +311,22 @@ namespace Manabind.Src.Control.AppStates
 
         private void ScrollDownMap()
         {
-            mapIndex++;
-            if (mapIndex + availabeMapSlots > savedMaps.Count())
+            if (occupiedMapSlots < availableMapSlots)
             {
-                mapIndex = savedMaps.Count() - availabeMapSlots;
+                return;
+            }
+
+            mapIndex++;
+            if (mapIndex + availableMapSlots > savedMaps.Count())
+            {
+                mapIndex = savedMaps.Count() - availableMapSlots;
             }
 
             int currentIndex = mapIndex;
 
             List<string> mapsToDisplay = new List<string>();
 
-            for (int i = 0; i < availabeMapSlots; i++)
+            for (int i = 0; i < availableMapSlots; i++)
             {
                 mapsToDisplay.Add(savedMaps[currentIndex]);
                 currentIndex = WrapIndex(currentIndex + 1);

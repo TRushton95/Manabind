@@ -34,8 +34,14 @@ namespace Manabind.Src.UI.Components.Complex.ListItems
             switch (action)
             {
                 case "scroll-selection":
-                    this.Text = ((List<string>)content)[this.Index];
-                    this.Refresh();
+                    List<string> listItems = (List<string>)content;
+
+                    if (this.Index < listItems.Count)
+                    {
+                        this.Text = ((List<string>)content)[this.Index];
+                        this.Refresh();
+                    }
+
                     break;
             }
         }
