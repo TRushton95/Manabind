@@ -37,13 +37,13 @@ namespace Manabind.Src.Gameplay.Entities
         public int Width
         {
             get;
-            private set;
+            set;
         }
 
         public int Height
         {
             get;
-            private set;
+            set;
         }
 
         public List<List<BaseTile>> Tiles

@@ -141,12 +141,14 @@ namespace Manabind.Src.Control.AppStates
 
                 case "save-board":
                     this.SaveMap();
-
                     break;
 
                 case "load-board":
                     this.LoadMap();
+                    break;
 
+                case "change-map-name":
+                    this.mapName = (string)content;
                     break;
 
                 case "reset-board":
@@ -160,12 +162,10 @@ namespace Manabind.Src.Control.AppStates
                         new UIEvent(new EventDetails(this.Name, EventType.ChangeHeight), board.Height));
                     EventManager.PushEvent(
                         new UIEvent(new EventDetails(this.Name, EventType.ChangeWidth), board.Width));
-
                     break;
 
                 case "scroll-up-file":
                     //ScrollUpMap();
-
                     break;
 
                 case "scroll-down-file":
@@ -239,6 +239,8 @@ namespace Manabind.Src.Control.AppStates
             Board result = new Board();
 
             result.Name = map.Name;
+            result.Width = map.Width;
+            result.Height = map.Height;
             result.Generate(map);
 
             this.board = result;
