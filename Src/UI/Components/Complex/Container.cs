@@ -132,6 +132,26 @@ namespace Manabind.Src.UI.Components.Complex
             return result;
         }
 
+        public override void Hide()
+        {
+            base.Hide();
+
+            foreach (BaseComplexComponent child in Components)
+            {
+                child.Hide();
+            }
+        }
+
+        public override void Show()
+        {
+            base.Show();
+
+            foreach(BaseComplexComponent child in Components)
+            {
+                child.Show();
+            }
+        }
+
         private void BuildComponents()
         {
             defaultFrame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour);
@@ -144,7 +164,7 @@ namespace Manabind.Src.UI.Components.Complex
 
             foreach (BaseComplexComponent component in Components)
             {
-                component.Initialise(this.GetBounds(), this.Id, this.Priority);
+                component.Initialise(this.GetBounds(), this.Id, this.Priority, this.Visible);
             }
         }
 

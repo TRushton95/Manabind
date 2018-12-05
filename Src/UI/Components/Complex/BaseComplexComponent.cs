@@ -93,11 +93,17 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Methods
 
-        public void Initialise(Rectangle parent, string parentId, int parentPriority)
+        public void Initialise(Rectangle parent, string parentId, int parentPriority, bool parentVisible)
         {
             this.Id = Guid.NewGuid().ToString();
             this.ParentId = parentId;
             this.Priority = parentPriority + 1;
+
+            if (!parentVisible) //Only override child visibility if parent is invisible
+            {
+                this.Visible = false;
+            }
+
             this.Initialise(parent);
 
             EventManager.PushEvent(
@@ -153,12 +159,12 @@ namespace Manabind.Src.UI.Components.Complex
             return new List<BaseComplexComponent> { this };
         }
 
-        public void Hide()
+        public virtual void Hide()
         {
             this.Visible = false;
         }
 
-        public void Show()
+        public virtual void Show()
         {
             this.Visible = true;
         }
