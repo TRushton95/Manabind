@@ -99,7 +99,7 @@ namespace Manabind.Src.UI.Components.Complex
             this.ParentId = parentId;
             this.Priority = parentPriority + 1;
 
-            if (!parentVisible) //Only override child visibility if parent is invisible
+            if (!parentVisible) //Cascade visible property if parent is invisible
             {
                 this.Visible = false;
             }
