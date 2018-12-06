@@ -64,6 +64,7 @@
     <Compile Include="Src\Gameplay\Interfaces\IIconable.cs" />
     <Compile Include="Src\UI\Components\Complex\ListItems\TextboxListItem.cs" />
     <Compile Include="Src\UI\Components\Complex\Textbox.cs" />
+    <Compile Include="Src\UI\Enums\Tool.cs" />
     <Compile Include="Src\UI\Events\Listener.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Settings.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Textures.cs" />

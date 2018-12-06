@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ComponentList>
   <Components>
-    <Toolbar name="toolbar">
+    <Toolbar name="toolbar" tool="Tile">
       <EventResponses>
         <EventResponse>
           <Action>select-tool</Action>

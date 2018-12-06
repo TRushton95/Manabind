@@ -3,6 +3,7 @@ using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Enums;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace Manabind.Src.UI.Factories
 {
@@ -26,6 +27,17 @@ namespace Manabind.Src.UI.Factories
                     result = new GroundTile(x, y, canvasX, canvasY);
                     break;
             }
+
+            return result;
+        }
+
+        public static List<BaseTile> GetFlyweightTiles()
+        {
+            List<BaseTile> result = new List<BaseTile>()
+            {
+                new EmptyTile(0, 0, 0, 0),
+                new GroundTile(0, 0, 0, 0)
+            };
 
             return result;
         }

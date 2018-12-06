@@ -10,6 +10,9 @@ using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Manabind.Src.Gameplay.Entities.Tile;
 using Manabind.Src.UI.Components.BaseInstanceResources;
+using System.Linq;
+using Manabind.Src.UI.Factories;
+using System.Xml.Serialization;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -25,8 +28,6 @@ namespace Manabind.Src.UI.Components.Complex
         #region Fields
 
         private Frame frame;
-        private List<BaseTile> tiles;
-        private List<Icon> icons;
         private Icon highlightedIcon;
 
         #endregion
@@ -35,10 +36,14 @@ namespace Manabind.Src.UI.Components.Complex
 
         public Toolbar()
         {
-            this.tiles = new List<BaseTile>();
-            this.icons = new List<Icon>();
+            this.Tools = new List<IIconable>();
+            this.Icons = new List<Icon>();
+            this.Tools = new List<IIconable>();
 
-            this.LoadTiles();
+            if (Tool == Tool.Tile)
+            {
+                GetFlyweightTiles();
+            }
         }
 
         public Toolbar(
@@ -51,9 +56,13 @@ namespace Manabind.Src.UI.Components.Complex
             : base(width, height, positionProfile, priority)
         {
             this.BackgroundColour = backgroundColour;
-            this.icons = new List<Icon>();
+            this.Icons = new List<Icon>();
+            this.Tools = new List<IIconable>();
 
-            this.LoadTiles();
+            if (Tool == Tool.Tile)
+            {
+                GetFlyweightTiles();
+            }
         }
 
         #endregion
@@ -61,6 +70,27 @@ namespace Manabind.Src.UI.Components.Complex
         #region Properties
 
         public Colour BackgroundColour
+        {
+            get;
+            set;
+        }
+
+        [XmlAttribute("tool")]
+        public Tool Tool
+        {
+            get;
+            set;
+        }
+
+        [XmlIgnore]
+        public List<IIconable> Tools
+        {
+            get;
+            set;
+        }
+
+        [XmlIgnore]
+        public List<Icon> Icons
         {
             get;
             set;
@@ -74,7 +104,7 @@ namespace Manabind.Src.UI.Components.Complex
         {
             frame.Draw(spriteBatch);
 
-            foreach (Icon icon in icons)
+            foreach (Icon icon in Icons)
             {
                 icon.Draw(spriteBatch);
             }
@@ -90,6 +120,7 @@ namespace Manabind.Src.UI.Components.Complex
             this.InitialiseDimensions();
             this.InitialiseCoordinates(parent);
             this.InitialiseIcons();
+
             this.BuildComponents();
         }
 
@@ -102,9 +133,15 @@ namespace Manabind.Src.UI.Components.Complex
         {
             List<BaseComplexComponent> result = new List<BaseComplexComponent> { this };
 
-            result.AddRange(icons);
+            result.AddRange(Icons);
 
             return result;
+        }
+
+        public void LoadTools(List<IIconable> tools)
+        {
+            this.Tools = tools;
+            this.Icons = tools.Select(tool => tool.Icon).ToList();
         }
 
         protected override void LeftClickDetail()
@@ -149,47 +186,46 @@ namespace Manabind.Src.UI.Components.Complex
             this.Height = Icon.Diameter + (Gutter * 2);
         }
 
-        private void LoadTiles()
-        {
-            //Create flyweight tiles
-            this.tiles.Add(
-                new EmptyTile(0, 0, 0, 0));
-            this.tiles.Add(
-                new GroundTile(0, 0, 0, 0));
-
-            //Load icons from tiles
-            icons = new List<Icon>();
-            foreach (BaseTile tile in tiles)
-            {
-                icons.Add(tile.Icon);
-            }
-        }
-
         private void InitialiseIcons()
         {
-            foreach (BaseTile tile in tiles)
+            foreach (IIconable tool in Tools)
             {
-                int index = tiles.IndexOf(tile);
+                int index = Tools.IndexOf(tool);
 
-                tile.Icon.Name = "tool";
-                tile.Icon.PositionProfile = new RelativePositionProfile(HorizontalAlign.Left, VerticalAlign.Bottom, (index * Icon.Diameter) + 20, 0);
-                tile.Icon.Priority = this.Priority + 1;
-                tile.Icon.Initialise(this.GetBounds());
+                tool.Icon.Name = "tool";
+                tool.Icon.PositionProfile = new RelativePositionProfile(HorizontalAlign.Left, VerticalAlign.Bottom, (index * Icon.Diameter) + 20, 0);
+                tool.Icon.Priority = this.Priority + 1;
+                tool.Icon.Initialise(this.GetBounds());
             }
         }
 
         private void SelectTool(Icon icon)
         {
-            int index = icons.IndexOf(icon);
+            int index = Icons.IndexOf(icon);
 
-            if (index <= tiles.Count)
+            if (index <= Tools.Count)
             {
                 this.highlightedIcon = icon;
-
-                BaseTile tile = tiles[index];
+                IIconable tool = Tools[index];
 
                 EventManager.PushEvent(
-                    new UIEvent(new EventDetails(this.Name, EventType.Select), tile));
+                    new UIEvent(new EventDetails(this.Name, EventType.Select), tool));
+            }
+        }
+
+        private void GetFlyweightTiles()
+        {
+            if (this.Tool == Tool.Tile)
+            {
+                List<BaseTile> flyweightTiles = TileFactory.GetFlyweightTiles();
+                List<IIconable> tools = new List<IIconable>();
+
+                foreach (IIconable flyweightTile in flyweightTiles)
+                {
+                    tools.Add(flyweightTile);
+                }
+
+                LoadTools(tools);
             }
         }
 
