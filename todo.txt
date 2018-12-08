@@ -11,3 +11,9 @@ Event system requires sending of click events even when element is blocked, eg.
 	-this allows use of block-specific behaviour while still allowing click events to occur
 
 Don't want to rebuild entire page for tile change, this may come back to bite me
+
+Do BasicComponents need to be listeners?
+	-Don't think they do, changes are propogated from ComplexComponents
+
+Add Id and ParentId to Listener
+	-RemoveNode functionality to EventManager (recursive remove if parentId)
