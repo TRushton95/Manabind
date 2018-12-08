@@ -1,5 +1,4 @@
-﻿using Manabind.Src.UI.Components.BaseInstanceResources;
-using Manabind.Src.UI.Enums;
+﻿using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,9 +9,11 @@ namespace Manabind.Src.Gameplay.Entities
     {
         #region Constructors
 
-        public BaseEntity(string name, int canvasX, int canvasY, Texture2D texture)
+        public BaseEntity(string name, int posX, int posY, int canvasX, int canvasY, Texture2D texture)
         {
             this.Name = name;
+            this.PosX = posX;
+            this.PosY = posY;
             this.CanvasX = canvasX;
             this.CanvasY = canvasY;
             this.Texture = texture;
@@ -21,6 +22,18 @@ namespace Manabind.Src.Gameplay.Entities
         #endregion
 
         #region Properties
+
+        public int PosX
+        {
+            get;
+            set;
+        }
+
+        public int PosY
+        {
+            get;
+            set;
+        }
 
         public int CanvasX
         {

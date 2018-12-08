@@ -6,6 +6,8 @@
 
         public const string Tile = "tile";
 
+        public const string Unit = "unit";
+
         #endregion
     }
 }
