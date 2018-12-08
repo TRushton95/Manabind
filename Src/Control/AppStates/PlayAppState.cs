@@ -19,6 +19,11 @@
 
         #region Methods
 
+        public void StartGame(string map, int players)
+        {
+            
+        }
+
         protected override void UpdateState()
         {
 

@@ -12,6 +12,7 @@ using Manabind.Src.UI.Serialisation;
 using System.Collections.Generic;
 using System.Linq;
 using Manabind.Src.UI.Components.Complex.ListItems;
+using Manabind.Src.Control.Services;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -143,13 +144,17 @@ namespace Manabind.Src.Control.AppStates
                     break;
 
                 case "save-board":
-                    this.SaveMap();
+                    MapIO.SaveMap(board, mapName);
                     EventManager.PushEvent(
                         new UIEvent(new EventDetails(this.Name, EventType.MapSaved), null));
                     break;
 
                 case "load-board":
-                    this.LoadMap();
+                    Board result = MapIO.LoadMap(this.selectedMap);
+
+                    this.board = result;
+                    this.mapName = board.Name;
+
                     this.camera.Reset();
                     EventManager.PushEvent(
                         new UIEvent(new EventDetails(this.Name, EventType.MapLoaded), null));
@@ -199,65 +204,6 @@ namespace Manabind.Src.Control.AppStates
             {
                 board.SetTileAtCoords(clickedTile.PosX, clickedTile.PosY, selectedTool.TileType);
             }
-        }
-        
-        private void SaveMap()
-        {
-            List<List<Tile>> tilesToSerialize = new List<List<Tile>>();
-
-            foreach (List<BaseTile> column in board.Tiles)
-            {
-                List<Tile> columnToSerialize = new List<Tile>();
-
-                foreach (BaseTile tile in column)
-                {
-                    columnToSerialize.Add(
-                        new Tile(tile.PosX, tile.PosY, tile.TileType));
-                }
-
-                tilesToSerialize.Add(columnToSerialize);
-            }
-
-            Map map = new Map()
-            {
-                Name = this.mapName,
-                Width = board.Width,
-                Height = board.Height,
-                Tiles = tilesToSerialize
-            };
-
-            string json = JsonConvert.SerializeObject(map);
-
-            Directory.CreateDirectory(AppSettings.MapDirectoryPath);
-            string fileName = string.Concat(this.mapName, ".json");
-            string mapDirectory = Path.Combine(AppSettings.MapDirectoryPath, fileName);
-
-            File.WriteAllText(mapDirectory, json);
-        }
-
-        private void LoadMap()
-        {
-            if (string.IsNullOrWhiteSpace(this.selectedMap))
-            {
-                return;
-            }
-
-            Directory.CreateDirectory(AppSettings.MapDirectoryPath);
-            string fileName = String.Concat(this.selectedMap, ".json");
-            string mapDirectory = Path.Combine(AppSettings.MapDirectoryPath, fileName);
-
-            string json = File.ReadAllText(mapDirectory);
-            Map map = JsonConvert.DeserializeObject<Map>(json);
-
-            Board result = new Board();
-
-            result.Name = map.Name;
-            result.Width = map.Width;
-            result.Height = map.Height;
-            result.Generate(map);
-
-            this.board = result;
-            this.mapName = board.Name;
         }
 
         private void InitialiseLoadList()
