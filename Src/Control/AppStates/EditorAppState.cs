@@ -102,6 +102,8 @@ namespace Manabind.Src.Control.AppStates
 
         protected override void ExecuteEventResponse(string action, object content)
         {
+            base.ExecuteEventResponse(action, content);
+
             switch (action)
             {
                 case "deselect-tool":

@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework.Input;
-
-namespace Manabind.Src.Control.AppStates
+﻿namespace Manabind.Src.Control.AppStates
 {
     public class PlayAppState : AppState
     {

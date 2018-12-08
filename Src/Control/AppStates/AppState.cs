@@ -33,6 +33,9 @@ namespace Manabind.Src.Control.AppStates
             currentHoveredComponent = null;
             prevHoveredComponent = null;
             uiInteracted = false;
+
+            this.EventResponses.Add(new EventResponse(
+                new EventDetails(EventManager.Wildcard, EventType.RefreshTree), "refresh-tree"));
         }
 
         #endregion
@@ -87,6 +90,18 @@ namespace Manabind.Src.Control.AppStates
 
         protected virtual void DrawState(SpriteBatch spriteBatch)
         {
+        }
+
+        protected override void ExecuteEventResponse(string action, object content)
+        {
+            base.ExecuteEventResponse(action, content);
+
+            switch (action)
+            {
+                case "refresh-tree":
+                    componentManager.RefreshTree();
+                    break;
+            }
         }
 
         private void HandleMouseState()

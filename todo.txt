@@ -9,3 +9,5 @@ Event system requires sending of click events even when element is blocked, eg.
 	blocked="true"
 
 	-this allows use of block-specific behaviour while still allowing click events to occur
+
+Don't want to rebuild entire page for tile change, this may come back to bite me

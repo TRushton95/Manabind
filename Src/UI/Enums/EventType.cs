@@ -18,6 +18,7 @@
         KeyPress,
         ScrollLoadFiles,
         MapSaved,
-        MapLoaded
+        MapLoaded,
+        RefreshTree
     }
 }

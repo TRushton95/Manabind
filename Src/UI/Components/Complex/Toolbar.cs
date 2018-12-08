@@ -8,7 +8,6 @@ using Manabind.Src.UI.Serialisation;
 using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
-using Manabind.Src.Gameplay.Entities.Tile;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using System.Linq;
 using Manabind.Src.UI.Factories;
@@ -38,12 +37,6 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.Tools = new List<IIconable>();
             this.Icons = new List<Icon>();
-            this.Tools = new List<IIconable>();
-
-            if (Tool == Tool.Tile)
-            {
-                GetFlyweightTiles();
-            }
         }
 
         public Toolbar(
@@ -58,11 +51,6 @@ namespace Manabind.Src.UI.Components.Complex
             this.BackgroundColour = backgroundColour;
             this.Icons = new List<Icon>();
             this.Tools = new List<IIconable>();
-
-            if (Tool == Tool.Tile)
-            {
-                GetFlyweightTiles();
-            }
         }
 
         #endregion
@@ -119,6 +107,12 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseDimensions();
             this.InitialiseCoordinates(parent);
+
+            if (Tool == Tool.Tile)
+            {
+                LoadFlyweightTiles();
+            }
+
             this.InitialiseIcons();
 
             this.BuildComponents();
@@ -142,6 +136,9 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.Tools = tools;
             this.Icons = tools.Select(tool => tool.Icon).ToList();
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.RefreshTree), null));
         }
 
         protected override void LeftClickDetail()
@@ -213,7 +210,7 @@ namespace Manabind.Src.UI.Components.Complex
             }
         }
 
-        private void GetFlyweightTiles()
+        private void LoadFlyweightTiles()
         {
             if (this.Tool == Tool.Tile)
             {

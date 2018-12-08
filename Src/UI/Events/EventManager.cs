@@ -50,7 +50,10 @@ namespace Manabind.Src.UI.Events
 
         public static void ClearListeners()
         {
+            Listener root = listeners[0];
+
             listeners.Clear();
+            listeners.Add(root);
         }
 
         public static void PushEvent(UIEvent e)

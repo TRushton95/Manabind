@@ -44,12 +44,7 @@ namespace Manabind.Src.UI.Components
                 root.Components = componentList.Components;
             }
 
-            components.AddRange(root.BuildTree());
-
-            foreach (BaseComplexComponent component in components)
-            {
-                EventManager.Subscribe(component);
-            }
+            RefreshTree();
         }
 
         public void InitialiseResources(GraphicsDevice device, ContentManager content)
@@ -86,6 +81,18 @@ namespace Manabind.Src.UI.Components
             result.AddRange(children);
 
             return result;
+        }
+
+        public void RefreshTree()
+        {
+            EventManager.ClearListeners();
+
+            components.AddRange(root.BuildTree());
+
+            foreach (BaseComplexComponent component in components)
+            {
+                EventManager.Subscribe(component);
+            }
         }
 
         #endregion
