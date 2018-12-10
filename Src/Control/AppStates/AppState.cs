@@ -34,6 +34,8 @@ namespace Manabind.Src.Control.AppStates
             prevHoveredComponent = null;
             uiInteracted = false;
 
+            this.InitialiseListen(string.Empty); //No parent
+
             this.EventResponses.Add(new EventResponse(
                 new EventDetails(EventManager.Wildcard, EventType.RefreshTree), "refresh-tree"));
         }
@@ -68,7 +70,6 @@ namespace Manabind.Src.Control.AppStates
             componentManager.Initialise(new Rectangle(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight));
 
             this.InitialiseState();
-            this.InitialiseListen(string.Empty); //No parent
 
             EventManager.PushEvent(
                 new UIEvent(new EventDetails(this.Name, EventType.Initialise), this));
@@ -101,6 +102,8 @@ namespace Manabind.Src.Control.AppStates
             {
                 case "refresh-tree":
                     componentManager.RefreshTree();
+                    EventManager.Subscribe(this); //really dodgy way of handling this
+
                     break;
             }
         }
