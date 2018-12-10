@@ -41,20 +41,6 @@ namespace Manabind.Src.UI.Components.Complex
         #region Properties
 
         [XmlIgnore]
-        public string Id
-        {
-            get;
-            set;
-        }
-
-        [XmlIgnore]
-        public string ParentId
-        {
-            get;
-            set;
-        }
-
-        [XmlIgnore]
         public int Priority
         {
             get;
@@ -95,8 +81,7 @@ namespace Manabind.Src.UI.Components.Complex
 
         public void Initialise(Rectangle parent, string parentId, int parentPriority, bool parentVisible)
         {
-            this.Id = Guid.NewGuid().ToString();
-            this.ParentId = parentId;
+            this.InitialiseListen(parentId);
             this.Priority = parentPriority + 1;
 
             if (!parentVisible) //Cascade visible property if parent is invisible

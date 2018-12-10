@@ -68,6 +68,7 @@ namespace Manabind.Src.Control.AppStates
             componentManager.Initialise(new Rectangle(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight));
 
             this.InitialiseState();
+            this.InitialiseListen(string.Empty); //No parent
 
             EventManager.PushEvent(
                 new UIEvent(new EventDetails(this.Name, EventType.Initialise), this));

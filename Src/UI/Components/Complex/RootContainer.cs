@@ -54,6 +54,7 @@ namespace Manabind.Src.UI.Components.Complex
 
         public override void Initialise(Rectangle parent)
         {
+            this.InitialiseListen(string.Empty);
             this.InitialiseCoordinates(parent);
             this.Width = AppSettings.WindowWidth;
             this.Height = AppSettings.WindowHeight;

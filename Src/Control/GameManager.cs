@@ -4,7 +4,6 @@ using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace Manabind.Src.Control
 {
@@ -40,10 +39,10 @@ namespace Manabind.Src.Control
         public void Initialise(GraphicsDevice device, ContentManager content)
         {
             this.InitialiseResources(device, content);
+            this.InitialiseListen(string.Empty);
 
             appState = new MenuAppState();
             appState.Initialise();
-
 
             this.EventResponses.Add(new EventResponse(new EventDetails("menu-button", EventType.LeftClick), "menu"));
             this.EventResponses.Add(new EventResponse(new EventDetails("play-button", EventType.LeftClick), "play"));

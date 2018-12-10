@@ -50,6 +50,11 @@ namespace Manabind.Src.UI.Events
 
         public static void ClearListeners()
         {
+            if (listeners.Count == 0)
+            {
+                return;
+            }
+
             Listener root = listeners[0];
 
             listeners.Clear();

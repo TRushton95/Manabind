@@ -1,4 +1,5 @@
 ﻿using Manabind.Src.UI.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
@@ -11,12 +12,25 @@ namespace Manabind.Src.UI.Events
         public Listener()
         {
             this.EventResponses = new List<EventResponse>();
-            EventManager.Subscribe(this);
         }
 
         #endregion
 
         #region Properties
+
+        [XmlIgnore]
+        public string Id
+        {
+            get;
+            set;
+        }
+
+        [XmlIgnore]
+        public string ParentId
+        {
+            get;
+            set;
+        }
 
         [XmlAttribute("name")]
         public string Name
@@ -35,6 +49,14 @@ namespace Manabind.Src.UI.Events
         #endregion
 
         #region Methods
+
+        public void InitialiseListen(string parentId)
+        {
+            this.Id = Guid.NewGuid().ToString();
+            this.ParentId = parentId;
+
+            EventManager.Subscribe(this);
+        }
 
         public void PushEvent(UIEvent e)
         {
