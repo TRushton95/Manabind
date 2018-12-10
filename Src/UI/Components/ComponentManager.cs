@@ -86,8 +86,7 @@ namespace Manabind.Src.UI.Components
         public void RefreshTree()
         {
             EventManager.ClearListeners();
-
-            components.AddRange(root.BuildTree());
+            components = root.BuildTree();
 
             foreach (BaseComplexComponent component in components)
             {

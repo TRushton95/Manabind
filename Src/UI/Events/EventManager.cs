@@ -40,8 +40,18 @@ namespace Manabind.Src.UI.Events
             }
         }
 
-        public static void Unsubscribe(BaseComplexComponent unsubscriber)
+        public static void Unsubscribe(Listener unsubscriber)
         {
+            IEnumerable<Listener> children = listeners.Where(listener => listener.ParentId == unsubscriber.Id);
+
+            if (children.Count() > 0)
+            {
+                foreach (Listener child in children)
+                {
+                    Unsubscribe(child);
+                }
+            }
+            
             if (listeners.Contains(unsubscriber))
             {
                 listeners.Remove(unsubscriber);
