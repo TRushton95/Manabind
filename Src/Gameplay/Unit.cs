@@ -1,5 +1,6 @@
 ﻿using Manabind.Src.Gameplay.Abilities;
 using Manabind.Src.Gameplay.Entities;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace Manabind.Src.Gameplay
@@ -14,15 +15,29 @@ namespace Manabind.Src.Gameplay
         
         #region Constructors
 
-        public Unit()
-            : base(EntityNames.Unit, 0, 0, 0, 0, null)
+        public Unit(int team, int maxHealth, int maxEnergy, int posX, int posY, int canvasX, int canvasY, Texture2D texture)
+            : base(EntityNames.Unit, posX, posY, canvasX, canvasY, texture)
         {
+            this.Team = team;
+            this.MaxHealth = maxHealth;
+            this.CurrentHealth = maxHealth;
+            this.MaxEnergy = maxEnergy;
+            this.MaxEnergy = maxEnergy;
+            this.Texture = texture;
+
+            this.Abilities = new List<Ability>();
         }
 
         #endregion
 
         #region Properties
-        
+
+        public int Team
+        {
+            get;
+            set;
+        }
+
         public int MaxHealth
         {
             get;
@@ -42,12 +57,6 @@ namespace Manabind.Src.Gameplay
         }
 
         public int CurrentEnergy
-        {
-            get;
-            set;
-        }
-
-        public int Team
         {
             get;
             set;

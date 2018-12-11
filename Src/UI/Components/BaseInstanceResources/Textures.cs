@@ -11,6 +11,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         private string FontsPathName = "Fonts";
         private string IconsPathName = "Icons";
         private string TilesPathName = "Tiles";
+        private string UnitsPathName = "Units";
 
         #endregion
 
@@ -31,6 +32,9 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         public static Texture2D EmptyTileIcon, EmptyTileIconHover;
         public static Texture2D GroundTileIcon, GroundTileIconHover;
         public static Texture2D TileIconHover;
+
+        //Units
+        public static Texture2D AllyUnit, EnemyUnit;
 
         #endregion
 
@@ -58,6 +62,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
             this.LoadFonts(content);
             this.LoadTiles(content);
             this.LoadIcons(content);
+            this.LoadUnits(content);
         }
 
         private void LoadFonts(ContentManager content)
@@ -82,6 +87,12 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
             TileIconHover = LoadIcon(content, "TileIconHover");
         }
 
+        private void LoadUnits(ContentManager content)
+        {
+            AllyUnit = LoadUnit(content, "BlueUnit");
+            EnemyUnit = LoadUnit(content, "RedUnit");
+        }
+
         private SpriteFont LoadFont(ContentManager content, string fontName)
         {
             return content.Load<SpriteFont>(Path.Combine(FontsPathName, fontName));
@@ -91,9 +102,15 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         {
             return content.Load<Texture2D>(Path.Combine(TilesPathName, tileName));
         }
+
         private Texture2D LoadIcon(ContentManager content, string iconName)
         {
             return content.Load<Texture2D>(Path.Combine(IconsPathName, iconName));
+        }
+
+        private Texture2D LoadUnit(ContentManager content, string unitName)
+        {
+            return content.Load<Texture2D>(Path.Combine(UnitsPathName, unitName));
         }
 
         #endregion

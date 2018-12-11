@@ -1,7 +1,10 @@
-﻿using Manabind.Src.Gameplay.Abilities;
+﻿using Manabind.Src.Control.Services;
+using Manabind.Src.Gameplay;
+using Manabind.Src.Gameplay.Abilities;
 using Manabind.Src.Gameplay.Entities;
 using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.UI.Components.BaseInstanceResources;
+using Manabind.Src.UI.Factories;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -15,6 +18,9 @@ namespace Manabind.Src.Control.AppStates
         private Board board;
         private BaseTile highlightedTile;
         private Ability selectedTool;
+        private const string MapName = "rogg";
+
+        public Unit p1, p2;
 
         #endregion
 
@@ -23,7 +29,13 @@ namespace Manabind.Src.Control.AppStates
         public PlayAppState()
         {
             this.camera = new Camera(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight);
-            this.board = new Board(10, 6);
+            this.board = MapIO.LoadMap(MapName);
+            
+            p1 = UnitFactory.BuildUnit(1, 100, 100, 0, 0);
+            p2 = UnitFactory.BuildUnit(2, 150, 50, 5, 5);
+
+            board.SpawnUnit(p1);
+            board.SpawnUnit(p2);
 
             componentManager.LoadUI(AppSettings.PlayUIFileName);
         }

@@ -242,6 +242,28 @@ namespace Manabind.Src.Gameplay.Entities
             }
         }
 
+        public void SpawnUnit(Unit unit)
+        {
+            int x = unit.PosX;
+            int y = unit.PosY;
+
+            if (IsValidTile(x, y) && Tiles[x][y].Occupant == null)
+            {
+                GetTileAtCoords(x, y).Occupant = unit;
+            }
+        }
+
+        public void MoveUnit(Unit unit, int x, int y)
+        {
+            if (IsValidTile(x, y) && GetTileAtCoords(x, y).Occupant == null)
+            {
+                GetTileAtCoords(unit.PosX, unit.PosY).Occupant = null;
+                unit.PosX = x;
+                unit.PosY = y;
+                GetTileAtCoords(x, y).Occupant = unit;
+            }
+        }
+
         private bool IsOddRow(BaseTile tile)
         {
             return tile.PosY % 2 == 1; ;

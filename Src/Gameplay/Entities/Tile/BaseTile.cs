@@ -3,6 +3,7 @@ using Manabind.Src.UI.Components.Complex;
 using Manabind.Src.UI.Enums;
 using Microsoft.Xna.Framework.Graphics;
 using Manabind.Src.UI.Factories;
+using Microsoft.Xna.Framework;
 
 namespace Manabind.Src.Gameplay.Entities.Tiles
 {
@@ -11,6 +12,7 @@ namespace Manabind.Src.Gameplay.Entities.Tiles
         #region Fields
 
         public static int Diameter = 100;
+
 
         #endregion
 
@@ -42,6 +44,13 @@ namespace Manabind.Src.Gameplay.Entities.Tiles
             get;
             set;
         }
+
+        public Unit Occupant
+        {
+            get;
+            set;
+        }
+
         public Icon Icon
         {
             get;
@@ -68,6 +77,16 @@ namespace Manabind.Src.Gameplay.Entities.Tiles
             }
 
             return result;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, Vector2 offset = default(Vector2))
+        {
+            base.Draw(spriteBatch, offset);
+
+            if (this.Occupant != null)
+            {
+                Occupant.Draw(spriteBatch, offset);
+            }
         }
 
         #endregion

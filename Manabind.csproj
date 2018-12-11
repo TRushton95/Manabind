@@ -98,6 +98,7 @@
     <Compile Include="Src\UI\Factories\IconFactory.cs" />
     <Compile Include="Src\UI\Factories\PositionProfileFactory.cs" />
     <Compile Include="Src\UI\Factories\TileFactory.cs" />
+    <Compile Include="Src\UI\Factories\UnitFactory.cs" />
     <Compile Include="Src\UI\PositionProfiles\AbsolutePositionProfile.cs" />
     <Compile Include="Src\UI\PositionProfiles\BasePositionProfile.cs" />
     <Compile Include="Src\UI\PositionProfiles\IPositionProfile.cs" />
@@ -128,6 +129,8 @@
     <Content Include="Content\Tiles\TileHover.png" />
     <Content Include="Content\Tiles\EmptyTile.png" />
     <Content Include="Content\Tiles\GroundTile.png" />
+    <Content Include="Content\Units\BlueUnit.png" />
+    <Content Include="Content\Units\RedUnit.png" />
     <Content Include="Icon.ico" />
     <Content Include="Src\UI\Definitions\editor.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
