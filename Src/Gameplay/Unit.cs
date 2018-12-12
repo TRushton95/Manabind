@@ -9,7 +9,7 @@ namespace Manabind.Src.Gameplay
     {
         #region Fields
 
-        public static int Diameter = 25;
+        public static int Diameter = 50;
 
         #endregion
         
