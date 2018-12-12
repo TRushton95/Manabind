@@ -57,7 +57,6 @@ namespace Manabind.Src.Control.AppStates
 
         protected override void InitialiseState()
         {
-            board.Generate();
         }
 
         protected override void UpdateState()

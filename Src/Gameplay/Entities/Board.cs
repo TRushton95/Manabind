@@ -64,6 +64,8 @@ namespace Manabind.Src.Gameplay.Entities
 
         public void Generate()
         {
+            List<List<BaseTile>> newTiles = new List<List<BaseTile>>();
+
             for (int x = 0; x < this.Width; x++)
             {
                 List<BaseTile> column = new List<BaseTile>();
@@ -78,8 +80,10 @@ namespace Manabind.Src.Gameplay.Entities
                     column.Add(new EmptyTile(x, y, canvasX, canvasY));
                 }
 
-                this.Tiles.Add(column);
+                newTiles.Add(column);
             }
+
+            this.Tiles = newTiles;
         }
 
         public void Generate(Map map)
