@@ -58,6 +58,18 @@ namespace Manabind.Src.Gameplay.Entities
             set;
         }
 
+        public List<Unit> Units
+        {
+            get;
+            set;
+        }
+
+        public Unit HighlightedUnit
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Methods

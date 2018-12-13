@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="Src\Control\AppStates\PlayAppState.Response.cs" />
     <Compile Include="Src\Control\KeyboardInfo.cs" />
     <Compile Include="Src\Control\MouseInfo.cs" />
     <Compile Include="Src\Control\Services\MapIO.cs" />
@@ -66,6 +67,9 @@
     <Compile Include="Src\Gameplay\Faction.cs" />
     <Compile Include="Src\Gameplay\Interfaces\IIconable.cs" />
     <Compile Include="Src\Gameplay\Player.cs" />
+    <Compile Include="Src\Gameplay\PlayerStates\IPlayerState.cs" />
+    <Compile Include="Src\Gameplay\PlayerStates\SelectedPlayerState.cs" />
+    <Compile Include="Src\Gameplay\PlayerStates\UnselectedPlayerState.cs" />
     <Compile Include="Src\Gameplay\Unit.cs" />
     <Compile Include="Src\UI\Components\Complex\ListItems\TextboxListItem.cs" />
     <Compile Include="Src\UI\Components\Complex\Textbox.cs" />

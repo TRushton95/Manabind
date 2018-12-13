@@ -3,22 +3,29 @@ using Manabind.Src.Gameplay;
 using Manabind.Src.Gameplay.Abilities;
 using Manabind.Src.Gameplay.Entities;
 using Manabind.Src.Gameplay.Entities.Tiles;
+using Manabind.Src.Gameplay.PlayerStates;
 using Manabind.Src.UI.Components.BaseInstanceResources;
+using Manabind.Src.UI.Enums;
+using Manabind.Src.UI.Events;
 using Manabind.Src.UI.Factories;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Manabind.Src.Control.AppStates
 {
-    public class PlayAppState : AppState
+    partial class PlayAppState : AppState
     {
         #region Fields
 
         private Camera camera;
         private Board board;
         private BaseTile highlightedTile;
-        private Ability selectedTool;
+        private Unit selectedUnit;
+        private Ability selectedAbility;
+        private IPlayerState playerState;
         private const string MapName = "rogg";
+
+        private int team = 1;
 
         public Unit p1, p2;
 
@@ -30,14 +37,10 @@ namespace Manabind.Src.Control.AppStates
         {
             this.camera = new Camera(0, 0, AppSettings.WindowWidth, AppSettings.WindowHeight);
             this.board = MapIO.LoadMap(MapName);
-            
-            p1 = UnitFactory.BuildUnit(1, 100, 100, 0, 0);
-            p2 = UnitFactory.BuildUnit(2, 150, 50, 5, 5);
 
-            board.SpawnUnit(p1);
-            board.SpawnUnit(p2);
+            this.SetEventResponses();
 
-            componentManager.LoadUI(AppSettings.PlayUIFileName);
+            this.StartGame();
         }
 
         #endregion
@@ -50,9 +53,15 @@ namespace Manabind.Src.Control.AppStates
 
         #region Methods
 
-        public void StartGame(string map, int players)
+        public void StartGame()
         {
-            
+            p1 = UnitFactory.BuildUnit(1, 100, 100, 0, 0);
+            p2 = UnitFactory.BuildUnit(2, 150, 50, 5, 5);
+
+            board.SpawnUnit(p1);
+            board.SpawnUnit(p2);
+
+            playerState = new UnselectedPlayerState(team);
         }
 
         protected override void InitialiseState()
@@ -84,10 +93,28 @@ namespace Manabind.Src.Control.AppStates
                 spriteBatch.Draw(Textures.TileHover, board.GetTileCanvasPos(highlightedTile), Color.White);
             }
 
-            if (selectedTool != null)
+            if (selectedAbility != null)
             {
-                spriteBatch.Draw(Textures.TileIconHover, selectedTool.Icon.GetBounds(), Color.White);
+                spriteBatch.Draw(Textures.TileIconHover, selectedAbility.Icon.GetBounds(), Color.White);
             }
+        }
+
+        protected override void ExecuteEventResponse(string action, object content)
+        {
+            base.ExecuteEventResponse(action, content);
+
+            switch (action)
+            {
+                case "tile-click":
+                    BaseTile tile = (BaseTile)content;
+                    TileClick(tile);
+                    break;
+            }
+        }
+
+        private void SetEventResponses()
+        {
+            this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Tile, EventType.LeftClick), "tile-click"));
         }
 
         #endregion
