@@ -95,7 +95,7 @@ namespace Manabind.Src.Control.AppStates
 
             if (selectedTool != null)
             {
-                spriteBatch.Draw(Textures.TileIconHover, selectedTool.Icon.GetBounds(), Color.White);
+                spriteBatch.Draw(Textures.IconHover, selectedTool.Icon.GetBounds(), Color.White);
             }
         }
 

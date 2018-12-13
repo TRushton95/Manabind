@@ -99,7 +99,7 @@ namespace Manabind.Src.UI.Components.Complex
 
             if (highlightedIcon != null)
             {
-                spriteBatch.Draw(Textures.TileIconHover, highlightedIcon.GetCoordinates(), Color.White);
+                spriteBatch.Draw(Textures.IconHover, highlightedIcon.GetCoordinates(), Color.White);
             }
         }
 

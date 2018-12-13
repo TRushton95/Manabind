@@ -75,7 +75,7 @@
 /processorParam:TextureFormat=Color
 /build:Icons/GroundTileIconHover.png
 
-#begin Icons/TileIconHover.png
+#begin Icons/IconHover.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -85,7 +85,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Icons/TileIconHover.png
+/build:Icons/IconHover.png
 
 #begin Tiles/EmptyTile.png
 /importer:TextureImporter
