@@ -19,6 +19,7 @@
         ScrollLoadFiles,
         MapSaved,
         MapLoaded,
-        RefreshTree
+        RefreshTree,
+        UnitSelected
     }
 }

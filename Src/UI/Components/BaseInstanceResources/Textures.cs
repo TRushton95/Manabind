@@ -35,6 +35,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
 
         //Units
         public static Texture2D AllyUnit, EnemyUnit;
+        public static Texture2D UnitHover;
 
         #endregion
 
@@ -91,6 +92,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         {
             AllyUnit = LoadUnit(content, "BlueUnit");
             EnemyUnit = LoadUnit(content, "RedUnit");
+            UnitHover = LoadUnit(content, "UnitHover");
         }
 
         private SpriteFont LoadFont(ContentManager content, string fontName)

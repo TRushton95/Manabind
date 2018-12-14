@@ -135,6 +135,7 @@
     <Content Include="Content\Tiles\GroundTile.png" />
     <Content Include="Content\Units\BlueUnit.png" />
     <Content Include="Content\Units\RedUnit.png" />
+    <Content Include="Content\Units\UnitHover.png" />
     <Content Include="Icon.ico" />
     <Content Include="Src\UI\Definitions\editor.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

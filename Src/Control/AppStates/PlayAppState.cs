@@ -97,6 +97,11 @@ namespace Manabind.Src.Control.AppStates
             {
                 spriteBatch.Draw(Textures.IconHover, selectedAbility.Icon.GetBounds(), Color.White);
             }
+
+            if (selectedUnit != null)
+            {
+                spriteBatch.Draw(Textures.UnitHover, new Rectangle(selectedUnit.CanvasX, selectedUnit.CanvasY, Unit.Diameter, Unit.Diameter), Color.White);
+            }
         }
 
         protected override void ExecuteEventResponse(string action, object content)
@@ -109,12 +114,17 @@ namespace Manabind.Src.Control.AppStates
                     BaseTile tile = (BaseTile)content;
                     TileClick(tile);
                     break;
+
+                case "unit-selected":
+                    selectedUnit = (Unit)content;
+                    break;
             }
         }
 
         private void SetEventResponses()
         {
             this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Tile, EventType.LeftClick), "tile-click"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("player-state", EventType.UnitSelected), "unit-selected"));
         }
 
         #endregion
