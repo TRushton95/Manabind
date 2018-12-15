@@ -22,7 +22,7 @@ namespace Manabind.Src.Control.AppStates
         private Camera camera;
         private Board board;
         private BaseTile highlightedTile;
-        private Unit selectedUnit;
+        private Unit selectedUnit, hoveredUnit;
         private Ability selectedAbility;
         private IPlayerState playerState;
         private const string MapName = "rogg";
@@ -105,9 +105,14 @@ namespace Manabind.Src.Control.AppStates
                 spriteBatch.Draw(Textures.IconHover, selectedAbility.Icon.GetBounds(), Color.White);
             }
 
+            if (hoveredUnit != null)
+            {
+                spriteBatch.Draw(Textures.UnitHover, new Rectangle(hoveredUnit.CanvasX, hoveredUnit.CanvasY, Unit.Diameter, Unit.Diameter), Color.White);
+            }
+
             if (selectedUnit != null)
             {
-                spriteBatch.Draw(Textures.UnitHover, new Rectangle(selectedUnit.CanvasX, selectedUnit.CanvasY, Unit.Diameter, Unit.Diameter), Color.White);
+                spriteBatch.Draw(Textures.UnitSelect, new Rectangle(selectedUnit.CanvasX, selectedUnit.CanvasY, Unit.Diameter, Unit.Diameter), Color.White);
             }
         }
 
@@ -126,12 +131,22 @@ namespace Manabind.Src.Control.AppStates
                     selectedUnit = (Unit)content;
                     UnitSelected(selectedUnit);
                     break;
+
+                case "unit-hover":
+                    hoveredUnit = (Unit)content;
+                    break;
+
+                case "unit-hover-leave":
+                    hoveredUnit = null;
+                    break;
             }
         }
 
         private void SetEventResponses()
         {
             this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Tile, EventType.LeftClick), "tile-click"));
+            this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Unit, EventType.Hover), "unit-hover"));
+            this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Unit, EventType.HoverLeave), "unit-hover-leave"));
             this.EventResponses.Add(new EventResponse(new EventDetails("player-state", EventType.UnitSelected), "unit-selected"));
         }
 

@@ -70,6 +70,12 @@ namespace Manabind.Src.Gameplay.Entities
             set;
         }
 
+        public Unit PrevHighlightedUnit
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Methods
@@ -121,6 +127,20 @@ namespace Manabind.Src.Gameplay.Entities
         public void Update(Vector2 absoluteMousePosition, bool interact) //TO-DO Tidy this up
         {
             UpdateHighlightedTile(absoluteMousePosition, interact);
+            UpdateHighlightedUnit(absoluteMousePosition, interact);
+
+            //TO-DO The tiles use events but this is calculated in the board?
+            if (HighlightedUnit != PrevHighlightedUnit)
+            {
+                if (HighlightedUnit != null)
+                {
+                    HighlightedUnit.Hover();
+                }
+                else
+                {
+                    PrevHighlightedUnit.HoverLeave();
+                }
+            }
 
             if (HighlightedTile != null && MouseInfo.LeftMouseDown)
             {
@@ -314,6 +334,19 @@ namespace Manabind.Src.Gameplay.Entities
             }
 
             this.HighlightedTile = highlightedTile;
+        }
+
+        private void UpdateHighlightedUnit(Vector2 absoluteMousePosition, bool interact)
+        {
+            Unit highlightedUnit = null;
+
+            if (interact)
+            {
+                highlightedUnit = GetTileAtMouse((int)absoluteMousePosition.X, (int)absoluteMousePosition.Y)?.Occupant;
+            }
+
+            PrevHighlightedUnit = this.HighlightedUnit;
+            this.HighlightedUnit = highlightedUnit;
         }
 
         #endregion

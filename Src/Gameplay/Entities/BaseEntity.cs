@@ -62,6 +62,18 @@ namespace Manabind.Src.Gameplay.Entities
             spriteBatch.Draw(this.Texture, new Vector2(CanvasX, CanvasY) + offset, Color.White);
         }
 
+        public void Hover()
+        {
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.Hover), this));
+        }
+
+        public void HoverLeave()
+        {
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.HoverLeave), this));
+        }
+
         public void Click()
         {
             EventManager.PushEvent(

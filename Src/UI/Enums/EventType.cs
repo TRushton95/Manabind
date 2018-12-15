@@ -20,6 +20,7 @@
         MapSaved,
         MapLoaded,
         RefreshTree,
+        UnitHover,
         UnitSelected,
         ChangeTools
     }
