@@ -12,8 +12,6 @@ using Manabind.Src.UI.Components.BaseInstanceResources;
 using System.Linq;
 using Manabind.Src.UI.Factories;
 using System.Xml.Serialization;
-using System;
-using Manabind.Src.Gameplay.Abilities;
 
 namespace Manabind.Src.UI.Components.Complex
 {

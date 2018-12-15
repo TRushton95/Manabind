@@ -22,6 +22,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         //Fonts
         public static SpriteFont ButtonFont;
         public static SpriteFont HeadingFont;
+        public static SpriteFont TooltipFont;
 
         //Textures
         public static Texture2D EmptyTile;
@@ -71,6 +72,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         {
             ButtonFont = LoadFont(content, "ButtonFont");
             HeadingFont = LoadFont(content, "HeadingFont");
+            TooltipFont = LoadFont(content, "TooltipFont");
         }
 
         private void LoadTiles(ContentManager content)

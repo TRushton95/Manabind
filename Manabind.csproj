@@ -162,6 +162,7 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="App.config" />
     <None Include="app.manifest" />
+    <None Include="Content\Fonts\TooltipFont.spritefont" />
     <None Include="Content\Fonts\ButtonFont.spritefont" />
     <None Include="Content\Fonts\HeadingFont.spritefont" />
     <None Include="packages.config" />

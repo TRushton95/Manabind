@@ -1,4 +1,7 @@
 ﻿using Manabind.Src.UI.Components.Basic;
+using Manabind.Src.UI.Enums;
+using Manabind.Src.UI.Components.BaseInstanceResources;
+using Manabind.Src.UI.Factories;
 using Manabind.Src.UI.Serialisation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -16,7 +19,9 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Constructors
 
-
+        public Tooltip()
+        {
+        }
 
         #endregion
 
@@ -34,7 +39,7 @@ namespace Manabind.Src.UI.Components.Complex
             set;
         }
 
-        public decimal Transparency
+        public Colour BackgroundColour
         {
             get;
             set;
@@ -42,42 +47,48 @@ namespace Manabind.Src.UI.Components.Complex
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            throw new System.NotImplementedException();
+            frame.Draw(spriteBatch);
         }
 
         public override void Initialise(Rectangle parent)
         {
-            throw new System.NotImplementedException();
+            this.InitialiseCoordinates(parent);
+            this.BuildComponents();
         }
 
         public override void Refresh()
         {
-            throw new System.NotImplementedException();
+            this.BuildComponents();
         }
 
         protected override void HoverDetail()
         {
-            throw new System.NotImplementedException();
         }
 
         protected override void HoverLeaveDetail()
         {
-            throw new System.NotImplementedException();
         }
 
         protected override void LeftClickDetail()
         {
-            throw new System.NotImplementedException();
         }
 
         protected override void LeftMouseDownDetail()
         {
-            throw new System.NotImplementedException();
         }
 
         protected override void RightClickDetail()
         {
-            throw new System.NotImplementedException();
+        }
+
+        private void BuildComponents()
+        {
+            frame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour);
+            fontGraphics = new FontGraphics(Text, Width, 20, PositionProfileFactory.BuildLeftRelative(),
+                                    FontFlow.Wrap, TextColour, Textures.TooltipFont);
+
+            frame.Components.Add(fontGraphics);
+            frame.Initialise(this.GetBounds());
         }
 
         #endregion

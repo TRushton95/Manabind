@@ -100,7 +100,7 @@ namespace Manabind.Src.Control.AppStates
 
             if (selectedAbility != null)
             {
-                spriteBatch.Draw(Textures.IconHover, selectedAbility.Icon.GetBounds(), Color.White);
+                spriteBatch.Draw(Textures.IconHover, camera.GetAbsoluteEntityPosition(selectedAbility.Icon.GetCoordinates()), Color.White);
             }
 
             if (hoveredUnit != null)

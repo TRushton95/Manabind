@@ -27,6 +27,13 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/HeadingFont.spritefont
 
+#begin Fonts/TooltipFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/TooltipFont.spritefont
+
 #begin Icons/EmptyTileIcon.png
 /importer:TextureImporter
 /processor:TextureProcessor

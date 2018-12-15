@@ -29,6 +29,7 @@ namespace Manabind.Src.UI.Components.Complex
         [XmlArrayItem(typeof(Button))]
         [XmlArrayItem(typeof(Heading))]
         [XmlArrayItem(typeof(Toolbar))]
+        [XmlArrayItem(typeof(Tooltip))]
         [XmlArrayItem(typeof(Textbox))]
         [XmlArrayItem(typeof(TextboxListItem))]
         public List<BaseComplexComponent> Components

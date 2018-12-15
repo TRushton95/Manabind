@@ -20,5 +20,15 @@
       </RelativePositionProfile>
       <BackgroundColour r="140" g="140" b="140" a="255"/>
     </Toolbar>
+
+    <Tooltip name="tooltip" width="100" height="100" visible="false" interactive="false">
+      <Text></Text>
+      <AbsolutePositionProfile>
+        <PosX>0</PosX>
+        <PosY>0</PosY>
+      </AbsolutePositionProfile>
+      <TextColour r="0" g="0" b="0" a="255"/>
+      <BackgroundColour r="66" g="0134" b="244" a="255"/>
+    </Tooltip>
   </Components>
 </ComponentList>
