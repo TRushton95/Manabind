@@ -22,6 +22,7 @@
         RefreshTree,
         UnitHover,
         UnitSelected,
-        ChangeTools
+        ChangeTools,
+        Update
     }
 }

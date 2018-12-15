@@ -63,6 +63,9 @@ namespace Manabind.Src.Control.AppStates
             this.HandleKeyboardState();
             this.HandleMouseState();
             this.UpdateState();
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.Update), null));
         }
 
         public virtual void Initialise()

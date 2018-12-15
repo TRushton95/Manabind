@@ -10,6 +10,7 @@ using System.Text;
 using Manabind.Src.Gameplay;
 using Manabind.Src.UI.Events;
 using Manabind.Src.Gameplay.Entities;
+using Manabind.Src.Control;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -73,6 +74,9 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.InitialiseCoordinates(parent);
             this.BuildComponents();
+
+            this.EventResponses.Add(new EventResponse(
+                new EventDetails("appstate", EventType.Update), "update"));
         }
 
         public override void Refresh()
@@ -109,6 +113,10 @@ namespace Manabind.Src.UI.Components.Complex
                 case "load-content":
                     LoadContent((Unit)content);
                     break;
+
+                case "update":
+                    Update();
+                    break;
             }
         }
 
@@ -123,6 +131,16 @@ namespace Manabind.Src.UI.Components.Complex
             this.Text = sb.ToString();
             this.posX = unit.CanvasX + Unit.Diameter;
             this.posY = unit.CanvasY;
+
+            this.Refresh();
+        }
+
+        private void Update()
+        {
+            Vector2 mousePos = MouseInfo.Position;
+
+            this.posX = (int)mousePos.X;
+            this.posY = (int)mousePos.Y - this.Height;
 
             this.Refresh();
         }
