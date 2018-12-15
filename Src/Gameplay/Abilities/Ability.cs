@@ -7,6 +7,18 @@ namespace Manabind.Src.Gameplay.Abilities
     {
         #region Properties
 
+        public string Name
+        {
+            get;
+            set;
+        }
+
+        public int Cost
+        {
+            get;
+            set;
+        }
+
         public Icon Icon
         {
             get;
