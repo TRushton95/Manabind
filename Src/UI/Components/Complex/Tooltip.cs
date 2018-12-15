@@ -6,6 +6,10 @@ using Manabind.Src.UI.Serialisation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Xml.Serialization;
+using System.Text;
+using Manabind.Src.Gameplay;
+using Manabind.Src.UI.Events;
+using Manabind.Src.Gameplay.Entities;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -94,6 +98,33 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void RightClickDetail()
         {
+        }
+
+        protected override void ExecuteEventResponse(string action, object content)
+        {
+            base.ExecuteEventResponse(action, content);
+
+            switch (action)
+            {
+                case "load-content":
+                    LoadContent((Unit)content);
+                    break;
+            }
+        }
+
+        private void LoadContent(Unit unit)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Team: {unit.Team}");
+            sb.AppendLine($"Health: {unit.CurrentHealth}/{unit.MaxHealth}");
+            sb.AppendLine($"Energy: {unit.CurrentEnergy}/{unit.MaxEnergy}");
+
+            this.Text = sb.ToString();
+            this.posX = unit.CanvasX + Unit.Diameter;
+            this.posY = unit.CanvasY;
+
+            this.Refresh();
         }
 
         private void BuildComponents()

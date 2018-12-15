@@ -21,14 +21,30 @@
       <BackgroundColour r="140" g="140" b="140" a="255"/>
     </Toolbar>
 
-    <Tooltip name="tooltip" width="200" height="1" gutter="10" visible="true" interactive="false">
-      <Text>The quick frown fox jumped over the very lazy wolf. Then some other old shit to test the wrapping functionality.</Text>
+    <Tooltip name="tooltip" width="200" height="1" gutter="10" visible="false" interactive="false">
+      <EventResponses>
+        <EventResponse>
+          <Action>load-content</Action>
+          <Trigger sender="unit" eventtype="Hover" />
+        </EventResponse>
+        <EventResponse>
+          <Action>show</Action>
+          <Trigger sender="unit" eventtype="Hover" />
+        </EventResponse>
+        <EventResponse>
+          <Action>hide</Action>
+          <Trigger sender="unit" eventtype="HoverLeave" />
+        </EventResponse>
+      </EventResponses>
+      <Text>The quick frown fox jumped over the very lazy wolf. Then some other old shit to test the wrapping functionality.
+
+Then some other stuff on a new line.</Text>
       <AbsolutePositionProfile>
         <PosX>0</PosX>
         <PosY>0</PosY>
       </AbsolutePositionProfile>
-      <TextColour r="0" g="0" b="0" a="255"/>
-      <BackgroundColour r="66" g="134" b="244" a="255"/>
+      <TextColour r="0" g="0" b="0" a="125"/>
+      <BackgroundColour r="66" g="134" b="244" a="125"/>
     </Tooltip>
 
 
