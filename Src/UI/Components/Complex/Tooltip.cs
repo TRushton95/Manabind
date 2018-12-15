@@ -139,8 +139,8 @@ namespace Manabind.Src.UI.Components.Complex
         {
             Vector2 mousePos = MouseInfo.Position;
 
-            this.posX = (int)mousePos.X;
-            this.posY = (int)mousePos.Y - this.Height;
+            this.posX = mousePos.X + this.Width > AppSettings.WindowWidth ? AppSettings.WindowWidth - this.Width : (int)mousePos.X;
+            this.posY = mousePos.Y - this.Height < 0 ? 0 : (int)mousePos.Y - this.Height;
 
             this.Refresh();
         }
