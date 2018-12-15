@@ -77,6 +77,11 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Methods
 
+        public override void Update()
+        {
+            frame.Update();
+        }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             frame.Draw(spriteBatch);

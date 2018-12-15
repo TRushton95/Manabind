@@ -47,6 +47,11 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Methods
 
+        public override void Update()
+        {
+            fontGraphics.Update();
+        }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             fontGraphics.Draw(spriteBatch);

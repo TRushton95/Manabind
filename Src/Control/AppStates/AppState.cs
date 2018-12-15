@@ -63,6 +63,8 @@ namespace Manabind.Src.Control.AppStates
             this.HandleKeyboardState();
             this.HandleMouseState();
             this.UpdateState();
+
+            componentManager.Update();
         }
 
         public virtual void Initialise()
