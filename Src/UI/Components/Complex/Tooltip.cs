@@ -8,7 +8,8 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Xml.Serialization;
 using System.Text;
 using Manabind.Src.Gameplay;
-using Manabind.Src.Control;
+using Manabind.Src.UI.Events;
+using Manabind.Src.Gameplay.Entities;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -61,22 +62,6 @@ namespace Manabind.Src.UI.Components.Complex
         {
             get;
             set;
-        }
-
-        #endregion
-
-        #region Method
-
-        public override void Update()
-        {
-            Vector2 mousePos = MouseInfo.Position;
-
-            this.posX = (int)mousePos.X;
-            this.posY = (int)mousePos.Y - this.Height;
-
-            this.Refresh();
-
-            frame.Update();
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -55,8 +55,6 @@ namespace Manabind.Src.UI.Components.Basic
 
         #region Methods
 
-        public abstract void Update();
-
         public abstract void Draw(SpriteBatch spriteBatch);
 
         public abstract void Initialise(Rectangle parent);

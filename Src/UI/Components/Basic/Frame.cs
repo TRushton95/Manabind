@@ -47,10 +47,6 @@ namespace Manabind.Src.UI.Components.Basic
 
         #region Methods
 
-        public override void Update()
-        {
-        }
-
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(this.texture, this.GetCoordinates(), Color.White);

@@ -50,11 +50,6 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Methods
 
-        public override void Update()
-        {
-            image.Update();
-        }
-
         public override void Draw(SpriteBatch spriteBatch)
         {
             this.image.Draw(spriteBatch);

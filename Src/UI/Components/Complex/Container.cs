@@ -69,16 +69,6 @@ namespace Manabind.Src.UI.Components.Complex
 
         #region Methods
 
-        public override void Update()
-        {
-            frame.Update();
-
-            foreach (BaseComplexComponent component in Components)
-            {
-                component.Update();
-            }
-        }
-
         public override void Draw(SpriteBatch spriteBatch)
         {
             frame.Draw(spriteBatch);
