@@ -21,8 +21,8 @@
       <BackgroundColour r="140" g="140" b="140" a="255"/>
     </Toolbar>
 
-    <Tooltip name="tooltip" width="200" height="100" visible="true" interactive="false">
-      <Text>This is a wrapping test. This is a wrapping test. This is a wrapping test. This is a wrapping test.</Text>
+    <Tooltip name="tooltip" width="200" height="1" visible="true" interactive="false">
+      <Text>The quick frown fox jumped over the very lazy wolf. Then some other old shit to test the wrapping functionality.</Text>
       <AbsolutePositionProfile>
         <PosX>0</PosX>
         <PosY>0</PosY>

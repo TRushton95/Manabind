@@ -5,6 +5,7 @@ using Manabind.Src.UI.Factories;
 using Manabind.Src.UI.Serialisation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Xml.Serialization;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -40,6 +41,13 @@ namespace Manabind.Src.UI.Components.Complex
         }
 
         public Colour BackgroundColour
+        {
+            get;
+            set;
+        }
+
+        [XmlAttribute("stretchToChildren")]
+        public bool StretchToChildren
         {
             get;
             set;
@@ -88,6 +96,16 @@ namespace Manabind.Src.UI.Components.Complex
                                     FontFlow.Wrap, TextColour, Textures.TooltipFont);
 
             frame.Components.Add(fontGraphics);
+            frame.Initialise(this.GetBounds());
+            
+            //TO-DO Fix this fucking shit
+            /*
+             * Now that the dimensions are assigned for the fontGraphics,
+             * assign the known height to Tooltip and rebuild the frame
+             * using it.
+             */
+            this.Height = fontGraphics.Height;
+            frame.Height = fontGraphics.Height;
             frame.Initialise(this.GetBounds());
         }
 
