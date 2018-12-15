@@ -27,6 +27,11 @@ namespace Manabind.Src.UI.Components.Basic
         #endregion
 
         #region Methods
+
+        public override void Update()
+        {
+        }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(this.image, this.GetBounds(), Color.White);

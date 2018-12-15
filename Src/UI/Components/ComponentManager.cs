@@ -47,6 +47,11 @@ namespace Manabind.Src.UI.Components
             RefreshTree();
         }
 
+        public void Update()
+        {
+            root.Update();
+        }
+
         public void InitialiseResources(GraphicsDevice device, ContentManager content)
         {
             this.root.InitialiseResources(device, content);
