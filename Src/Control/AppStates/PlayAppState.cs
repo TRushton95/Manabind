@@ -3,6 +3,7 @@ using Manabind.Src.Gameplay;
 using Manabind.Src.Gameplay.Abilities;
 using Manabind.Src.Gameplay.Entities;
 using Manabind.Src.Gameplay.Entities.Tiles;
+using Manabind.Src.Gameplay.Interfaces;
 using Manabind.Src.Gameplay.PlayerStates;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Enums;
@@ -10,6 +11,7 @@ using Manabind.Src.UI.Events;
 using Manabind.Src.UI.Factories;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -56,6 +58,11 @@ namespace Manabind.Src.Control.AppStates
         public void StartGame()
         {
             p1 = UnitFactory.BuildUnit(1, 100, 100, 0, 0);
+            p1.Abilities.Add(new Ability()
+            {
+                Icon = IconFactory.BuildFireballIcon()
+            });
+
             p2 = UnitFactory.BuildUnit(2, 150, 50, 5, 5);
 
             board.SpawnUnit(p1);
@@ -117,6 +124,7 @@ namespace Manabind.Src.Control.AppStates
 
                 case "unit-selected":
                     selectedUnit = (Unit)content;
+                    UnitSelected(selectedUnit);
                     break;
             }
         }

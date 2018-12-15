@@ -1,8 +1,9 @@
-﻿using Manabind.Src.UI.Components.Complex;
+﻿using Manabind.Src.Gameplay.Interfaces;
+using Manabind.Src.UI.Components.Complex;
 
 namespace Manabind.Src.Gameplay.Abilities
 {
-    public class Ability
+    public class Ability : IIconable
     {
         #region Properties
 

@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Icons\EmptyTileIconHover.png" />
+    <Content Include="Content\Icons\FireballIcon.png" />
     <Content Include="Content\Icons\GroundTileIconHover.png" />
     <Content Include="Content\Icons\IconHover.png" />
     <Content Include="Content\Icons\EmptyTileIcon.png" />

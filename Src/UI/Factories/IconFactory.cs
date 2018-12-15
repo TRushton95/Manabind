@@ -20,5 +20,10 @@ namespace Manabind.Src.UI.Factories
         {
             return BuildIcon(Textures.GroundTileIcon, Textures.GroundTileIconHover);
         }
+
+        public static Icon BuildFireballIcon()
+        {
+            return BuildIcon(Textures.FireballIcon, Textures.FireballIcon);
+        }
     }
 }

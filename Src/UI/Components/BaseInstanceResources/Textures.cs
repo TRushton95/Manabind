@@ -31,6 +31,7 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         //Icons
         public static Texture2D EmptyTileIcon, EmptyTileIconHover;
         public static Texture2D GroundTileIcon, GroundTileIconHover;
+        public static Texture2D FireballIcon;
         public static Texture2D IconHover;
 
         //Units
@@ -85,6 +86,9 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
             EmptyTileIconHover = LoadIcon(content, "EmptyTileIconHover");
             GroundTileIcon = LoadIcon(content, "GroundTileIcon");
             GroundTileIconHover = LoadIcon(content, "GroundTileIconHover");
+
+            FireballIcon = LoadIcon(content, "FireballIcon");
+
             IconHover = LoadIcon(content, "IconHover");
         }
 

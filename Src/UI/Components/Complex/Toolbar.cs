@@ -12,6 +12,8 @@ using Manabind.Src.UI.Components.BaseInstanceResources;
 using System.Linq;
 using Manabind.Src.UI.Factories;
 using System.Xml.Serialization;
+using System;
+using Manabind.Src.Gameplay.Abilities;
 
 namespace Manabind.Src.UI.Components.Complex
 {
@@ -116,6 +118,9 @@ namespace Manabind.Src.UI.Components.Complex
             this.InitialiseIcons();
 
             this.BuildComponents();
+
+            EventResponses.Add(new EventResponse(
+                new EventDetails(EventManager.Wildcard, EventType.ChangeTools), "load-tools"));
         }
 
         public override void Refresh()
@@ -136,6 +141,7 @@ namespace Manabind.Src.UI.Components.Complex
         {
             this.Tools = tools;
             this.Icons = tools.Select(tool => tool.Icon).ToList();
+            this.InitialiseIcons();
 
             EventManager.PushEvent(
                 new UIEvent(new EventDetails(this.Name, EventType.RefreshTree), null));
@@ -165,6 +171,11 @@ namespace Manabind.Src.UI.Components.Complex
         {
             switch (action)
             {
+                case "load-tools":
+                    List<IIconable> iconables = (List<IIconable>)content;
+                    LoadTools(iconables);
+                    break;
+
                 case "select-tool":
                     SelectTool((Icon)content);
                     break;
