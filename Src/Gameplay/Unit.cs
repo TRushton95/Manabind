@@ -1,5 +1,6 @@
 ﻿using Manabind.Src.Gameplay.Abilities;
 using Manabind.Src.Gameplay.Entities;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
@@ -89,6 +90,22 @@ namespace Manabind.Src.Gameplay
             }
         }
         */
+
+        public Vector2 GetCoordinates()
+        {
+            return new Vector2(this.CanvasX, this.CanvasY);
+        }
+
+        public Vector2 GetSize()
+        {
+            return new Vector2(Unit.Diameter, Unit.Diameter);
+        }
+
+
+        public Rectangle GetBounds()
+        {
+            return new Rectangle(this.CanvasX, this.CanvasY, Unit.Diameter, Unit.Diameter);
+        }
 
         #endregion
     }

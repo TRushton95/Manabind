@@ -99,6 +99,11 @@ namespace Manabind.Src.Gameplay.Entities
             return new Vector2(mousePosition.X + CanvasX, mousePosition.Y + CanvasY);
         }
 
+        public Vector2 GetAbsoluteEntityPosition(Vector2 position)
+        {
+            return new Vector2(position.X - CanvasX, position.Y - CanvasY);
+        }
+
         public void Reset()
         {
             this.CanvasX = 0;

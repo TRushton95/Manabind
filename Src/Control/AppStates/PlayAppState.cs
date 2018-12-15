@@ -3,7 +3,6 @@ using Manabind.Src.Gameplay;
 using Manabind.Src.Gameplay.Abilities;
 using Manabind.Src.Gameplay.Entities;
 using Manabind.Src.Gameplay.Entities.Tiles;
-using Manabind.Src.Gameplay.Interfaces;
 using Manabind.Src.Gameplay.PlayerStates;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Enums;
@@ -11,7 +10,6 @@ using Manabind.Src.UI.Events;
 using Manabind.Src.UI.Factories;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
 namespace Manabind.Src.Control.AppStates
 {
@@ -107,12 +105,13 @@ namespace Manabind.Src.Control.AppStates
 
             if (hoveredUnit != null)
             {
-                spriteBatch.Draw(Textures.UnitHover, new Rectangle(hoveredUnit.CanvasX, hoveredUnit.CanvasY, Unit.Diameter, Unit.Diameter), Color.White);
+
+                spriteBatch.Draw(Textures.UnitHover, camera.GetAbsoluteEntityPosition(hoveredUnit.GetCoordinates()), Color.White);
             }
 
             if (selectedUnit != null)
             {
-                spriteBatch.Draw(Textures.UnitSelect, new Rectangle(selectedUnit.CanvasX, selectedUnit.CanvasY, Unit.Diameter, Unit.Diameter), Color.White);
+                spriteBatch.Draw(Textures.UnitSelect, camera.GetAbsoluteEntityPosition(selectedUnit.GetCoordinates()), Color.White);
             }
         }
 
