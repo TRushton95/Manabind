@@ -46,6 +46,13 @@ namespace Manabind.Src.UI.Components.Complex
             set;
         }
 
+        [XmlAttribute("gutter")]
+        public int Gutter
+        {
+            get;
+            set;
+        }
+
         [XmlAttribute("stretchToChildren")]
         public bool StretchToChildren
         {
@@ -92,7 +99,7 @@ namespace Manabind.Src.UI.Components.Complex
         private void BuildComponents()
         {
             frame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour);
-            fontGraphics = new FontGraphics(Text, Width, 20, PositionProfileFactory.BuildTopLeftRelative(),
+            fontGraphics = new FontGraphics(Text, Width, Gutter, PositionProfileFactory.BuildTopLeftRelative(),
                                     FontFlow.Wrap, TextColour, Textures.TooltipFont);
 
             frame.Components.Add(fontGraphics);
@@ -104,8 +111,9 @@ namespace Manabind.Src.UI.Components.Complex
              * assign the known height to Tooltip and rebuild the frame
              * using it.
              */
-            this.Height = fontGraphics.Height;
-            frame.Height = fontGraphics.Height;
+            int adjustedHeight = fontGraphics.Height + (Gutter * 2);
+            this.Height = adjustedHeight;
+            frame.Height = adjustedHeight;
             frame.Initialise(this.GetBounds());
         }
 

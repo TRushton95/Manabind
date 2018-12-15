@@ -17,6 +17,7 @@ namespace Manabind.Src.UI.Components.Basic
         private Colour colour;
         private float scale;
         private int maxWidth;
+        private int gutter;
         private FontFlow fontFlow;
 
         #endregion
@@ -34,6 +35,7 @@ namespace Manabind.Src.UI.Components.Basic
             this.text = text;
             this.displayText = text;
             this.maxWidth = maxWidth;
+            this.gutter = gutter;
             this.fontFlow = fontFlow;
             this.colour = colour;
             this.font = font;
@@ -54,7 +56,14 @@ namespace Manabind.Src.UI.Components.Basic
         {
             this.InitialiseDisplay();
             this.InitialiseDimensions();
-            this.InitialiseCoordinates(parent);
+
+            Rectangle gutterAdjustedParent = new Rectangle(
+                parent.X + gutter,
+                parent.Y + gutter,
+                parent.Width - (gutter * 2),
+                parent.Height - (gutter * 2));
+
+            this.InitialiseCoordinates(gutterAdjustedParent);
         }
 
         private void InitialiseDisplay()
@@ -88,7 +97,7 @@ namespace Manabind.Src.UI.Components.Basic
 
             foreach (string word in words)
             {
-                if (this.font.MeasureString(line).X + this.font.MeasureString(word).X > this.maxWidth)
+                if (this.font.MeasureString(line).X + this.font.MeasureString(word).X > this.maxWidth - (this.gutter * 2))
                 {
                     result.Append(line);
                     result.Append("\n");
@@ -119,9 +128,9 @@ namespace Manabind.Src.UI.Components.Basic
         {
             Vector2 dimensions = this.font.MeasureString(this.displayText);
 
-            if (dimensions.X > this.maxWidth)
+            if (dimensions.X > this.maxWidth - (this.gutter * 2))
             {
-                this.scale = this.maxWidth / dimensions.X;
+                this.scale = this.maxWidth / (dimensions.X - (this.gutter * 2));
             }
             else
             {

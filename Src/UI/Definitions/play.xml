@@ -21,14 +21,29 @@
       <BackgroundColour r="140" g="140" b="140" a="255"/>
     </Toolbar>
 
-    <Tooltip name="tooltip" width="200" height="1" visible="true" interactive="false">
+    <Tooltip name="tooltip" width="200" height="1" gutter="10" visible="true" interactive="false">
       <Text>The quick frown fox jumped over the very lazy wolf. Then some other old shit to test the wrapping functionality.</Text>
       <AbsolutePositionProfile>
         <PosX>0</PosX>
         <PosY>0</PosY>
       </AbsolutePositionProfile>
       <TextColour r="0" g="0" b="0" a="255"/>
-      <BackgroundColour r="66" g="0134" b="244" a="255"/>
+      <BackgroundColour r="66" g="134" b="244" a="255"/>
     </Tooltip>
+
+
+    <Button name="menu-button" width="150" height="75">
+      <Text>Menu</Text>
+      <RelativePositionProfile>
+        <HorizontalAlign>Left</HorizontalAlign>
+        <VerticalAlign>Bottom</VerticalAlign>
+        <OffsetX>10</OffsetX>
+        <OffsetY>-10</OffsetY>
+      </RelativePositionProfile>
+      <TextColour r="0" g="0" b="0" a="255" />
+      <HoverTextColour r="255" g="255" b="255" a="255" />
+      <BackgroundColour r="66" g="134" b="244" a="255" />
+      <HoverBackgroundColour r="66" g="84" b="244" a="255" />
+    </Button>
   </Components>
 </ComponentList>
