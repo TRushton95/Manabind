@@ -62,9 +62,11 @@ namespace Manabind.Src.UI.Components.Basic
             switch (this.fontFlow)
             {
                 case FontFlow.Wrap:
+                    WrapText();
                     break;
 
                 case FontFlow.Shrink:
+                    ScaleText();
                     break;
             }
         }

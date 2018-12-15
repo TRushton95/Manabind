@@ -10,9 +10,9 @@ namespace Manabind.Src.UI.Factories
             return new RelativePositionProfile(HorizontalAlign.Middle, VerticalAlign.Middle, 0, 0);
         }
 
-        public static RelativePositionProfile BuildLeftRelative()
+        public static RelativePositionProfile BuildTopLeftRelative()
         {
-            return new RelativePositionProfile(HorizontalAlign.Left, VerticalAlign.Middle, 0, 0);
+            return new RelativePositionProfile(HorizontalAlign.Left, VerticalAlign.Top, 0, 0);
         }
     }
 }

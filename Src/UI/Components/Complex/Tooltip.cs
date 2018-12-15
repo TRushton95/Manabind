@@ -84,7 +84,7 @@ namespace Manabind.Src.UI.Components.Complex
         private void BuildComponents()
         {
             frame = new Frame(Width, Height, PositionProfileFactory.BuildCenteredRelative(), BackgroundColour);
-            fontGraphics = new FontGraphics(Text, Width, 20, PositionProfileFactory.BuildLeftRelative(),
+            fontGraphics = new FontGraphics(Text, Width, 20, PositionProfileFactory.BuildTopLeftRelative(),
                                     FontFlow.Wrap, TextColour, Textures.TooltipFont);
 
             frame.Components.Add(fontGraphics);
