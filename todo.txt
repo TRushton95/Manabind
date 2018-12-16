@@ -22,3 +22,7 @@ Add Id and ParentId to Listener
 
 AppState is not re-added automatically after a refreshTree() call
 	-Currently manually resubscribing it after each refreshTree call, not a clean way of handling it
+
+Template resolution
+	-Don't want to pass board into template
+	-Need to easily idenify tempalte type on ability without reflection
