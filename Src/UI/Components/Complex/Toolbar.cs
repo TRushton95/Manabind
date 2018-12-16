@@ -179,14 +179,13 @@ namespace Manabind.Src.UI.Components.Complex
                     List<IIconable> iconables = (List<IIconable>)content;
                     LoadTools(iconables);
                     break;
-                    
 
                 case "select-tool":
                     SelectTool((Icon)content);
                     break;
 
                 case "deselect-tool":
-                    this.selectedIcon = null;
+                    DeselectTool();
                     break;
             }
         }
@@ -224,6 +223,14 @@ namespace Manabind.Src.UI.Components.Complex
                 EventManager.PushEvent(
                     new UIEvent(new EventDetails(this.Name, EventType.Select), tool));
             }
+        }
+
+        private void DeselectTool()
+        {
+            this.selectedIcon = null;
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.Deselect), null));
         }
 
         private void LoadFlyweightTiles()

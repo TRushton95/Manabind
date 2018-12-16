@@ -383,6 +383,9 @@ namespace Manabind.Src.Gameplay.Entities
 
             this.EventResponses.Add(new EventResponse(
                 new EventDetails("appstate", EventType.TemplateSelected), "select-ability"));
+
+            this.EventResponses.Add(new EventResponse(
+                new EventDetails("appstate", EventType.UnitDeselected), "deselect-ability"));
         }
 
         protected override void ExecuteEventResponse(string action, object content)
@@ -393,7 +396,10 @@ namespace Manabind.Src.Gameplay.Entities
             {
                 case "select-ability":
                     this.SelectedTemplate = (ITemplate)content;
+                    break;
 
+                case "deselect-ability":
+                    this.SelectedTemplate = null;
                     break;
             }
         }

@@ -59,7 +59,7 @@ namespace Manabind.Src.Control.AppStates
             p1 = UnitFactory.BuildUnit(1, 100, 100, 0, 0);
             p1.Abilities.Add(new Ability()
             {
-                Template = new AreaAffectTemplate(3),
+                Template = new AreaAffectTemplate(2),
                 Icon = IconFactory.BuildFireballIcon()
             });
 
@@ -137,7 +137,7 @@ namespace Manabind.Src.Control.AppStates
                     selectedAbility = (Ability)content;
 
                     EventManager.PushEvent(
-                        new UIEvent(new EventDetails(this.Name, EventType.TemplateSelected), selectedAbility.Template));
+                        new UIEvent(new EventDetails(this.Name, EventType.TemplateSelected), selectedAbility?.Template));
                     break;
 
                 case "unit-hover":
@@ -162,6 +162,7 @@ namespace Manabind.Src.Control.AppStates
             this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Unit, EventType.HoverLeave), "unit-hover-leave"));
             this.EventResponses.Add(new EventResponse(new EventDetails("player-state", EventType.UnitSelected), "unit-selected"));
             this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Select), "ability-selected"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Deselect), "ability-selected"));
         }
 
         #endregion

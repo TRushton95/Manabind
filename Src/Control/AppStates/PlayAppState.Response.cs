@@ -33,6 +33,9 @@ namespace Manabind.Src.Control.AppStates
 
             EventManager.PushEvent(
                 new UIEvent(new EventDetails(this.Name, EventType.ChangeTools), iconables));
+
+            EventManager.PushEvent(
+                new UIEvent(new EventDetails(this.Name, EventType.UnitDeselected), null));
         }
 
         private void ProcessState(IPlayerState newState)
