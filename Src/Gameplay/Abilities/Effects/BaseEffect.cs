@@ -34,6 +34,8 @@ namespace Manabind.Src.Gameplay.Abilities.Effects
 
         #region Methods
 
+        public abstract void Execute(Unit caster, BaseTile targetTile);
+
         public abstract string GetDescription();
 
         protected bool ValidateTarget(BaseTile targetTile)

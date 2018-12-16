@@ -28,7 +28,7 @@ namespace Manabind.Src.Gameplay.Abilities.Effects
 
         #region Methods
 
-        public void Execute(Unit caster, BaseTile targetTile)
+        public override void Execute(Unit caster, BaseTile targetTile)
         {
             if (!ValidateTarget(targetTile))
             {
