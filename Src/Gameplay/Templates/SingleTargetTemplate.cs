@@ -1,18 +1,13 @@
-﻿using Manabind.Src.UI.Enums;
+﻿using System.Collections.Generic;
+using Manabind.Src.Gameplay.Entities.Tiles;
 
 namespace Manabind.Src.Gameplay.Templates
 {
-    public class SingleTargetTemplate : BaseTemplate
+    public class SingleTargetTemplate : ITemplate
     {
-        #region Constructors
-
-        public SingleTargetTemplate(int range)
-            : base(range)
+        public List<BaseTile> GetAffectedTiles(BaseTile targetTile)
         {
+            return new List<BaseTile>() { targetTile };
         }
-
-        public override TemplateType TemplateType => TemplateType.SingleTarget;
-
-        #endregion
     }
 }

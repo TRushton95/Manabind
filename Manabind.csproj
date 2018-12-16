@@ -80,15 +80,11 @@
     <Compile Include="Src\Gameplay\PlayerStates\SelectedPlayerState.cs" />
     <Compile Include="Src\Gameplay\PlayerStates\UnselectedPlayerState.cs" />
     <Compile Include="Src\Gameplay\Services\TargetValidatorService.cs" />
-    <Compile Include="Src\Gameplay\Templates\BaseTemplate.cs" />
-    <Compile Include="Src\Gameplay\Templates\AreaEffectTemplate.cs" />
-    <Compile Include="Src\Gameplay\Templates\SingleTargetTemplate.cs" />
     <Compile Include="Src\Gameplay\Unit.cs" />
     <Compile Include="Src\UI\Components\Complex\ListItems\TextboxListItem.cs" />
     <Compile Include="Src\UI\Components\Complex\Textbox.cs" />
     <Compile Include="Src\UI\Components\Complex\Tooltip.cs" />
     <Compile Include="Src\UI\Enums\TargetType.cs" />
-    <Compile Include="Src\UI\Enums\TemplateType.cs" />
     <Compile Include="Src\UI\Enums\Tool.cs" />
     <Compile Include="Src\UI\Events\Listener.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Settings.cs" />
