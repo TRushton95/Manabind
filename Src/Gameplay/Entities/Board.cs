@@ -9,6 +9,7 @@ using Manabind.Src.UI.Events;
 using Manabind.Src.Control;
 using Manabind.Src.UI.Serialisation;
 using Manabind.Src.UI.Factories;
+using Manabind.Src.Gameplay.Templates;
 
 namespace Manabind.Src.Gameplay.Entities
 {
@@ -18,7 +19,6 @@ namespace Manabind.Src.Gameplay.Entities
 
         public Board()
         {
-            this.Name = "board";
             this.Tiles = new List<List<BaseTile>>();
 
             this.Initialise();
@@ -26,10 +26,8 @@ namespace Manabind.Src.Gameplay.Entities
 
         public Board(int width, int height)
         {
-            this.Name = "board";
             this.Width = width;
             this.Height = height;
-            this.Tiles = new List<List<BaseTile>>();
 
             this.Initialise();
         }
@@ -75,6 +73,12 @@ namespace Manabind.Src.Gameplay.Entities
         }
 
         public Unit PrevHighlightedUnit
+        {
+            get;
+            set;
+        }
+
+        public ITemplate SelectedTemplate
         {
             get;
             set;
@@ -170,6 +174,22 @@ namespace Manabind.Src.Gameplay.Entities
             if (this.HighlightedTile != null)
             {
                 spriteBatch.Draw(Textures.TileHover, new Vector2(HighlightedTile.CanvasX, HighlightedTile.CanvasY) + offset, Color.White);
+            }
+
+            if (this.SelectedTemplate != null && this.HighlightedTile != null)
+            {
+                List<Vector2> affectedTilesCoords = this.SelectedTemplate.GetAffectedTiles(new Vector2(this.HighlightedTile.PosX, this.HighlightedTile.PosY));
+
+                foreach (Vector2 tileCoords in affectedTilesCoords)
+                {
+                    BaseTile tile = GetTileAtCoords((int)tileCoords.X, (int)tileCoords.Y);
+
+                    if (tile != null)
+                    {
+                        Vector2 canvasPos = new Vector2(tile.CanvasX, tile.CanvasY);
+                        spriteBatch.Draw(Textures.RedFilter, canvasPos + offset, Color.White);
+                    }
+                }
             }
         }
 
@@ -355,8 +375,14 @@ namespace Manabind.Src.Gameplay.Entities
 
         private void Initialise()
         {
+            this.Name = "board";
+            this.Tiles = new List<List<BaseTile>>();
+
             this.InitialiseListen(string.Empty);
             this.PersistantListener = true;
+
+            this.EventResponses.Add(new EventResponse(
+                new EventDetails("appstate", EventType.TemplateSelected), "select-ability"));
         }
 
         protected override void ExecuteEventResponse(string action, object content)
@@ -365,7 +391,10 @@ namespace Manabind.Src.Gameplay.Entities
 
             switch (action)
             {
+                case "select-ability":
+                    this.SelectedTemplate = (ITemplate)content;
 
+                    break;
             }
         }
 

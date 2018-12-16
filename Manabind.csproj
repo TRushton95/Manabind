@@ -145,6 +145,8 @@
     <Content Include="Content\Icons\EmptyTileIcon.png" />
     <Content Include="Content\Icons\GroundTileIcon.png" />
     <Content Include="Content\Icons\IconSelect.png" />
+    <Content Include="Content\Tiles\GreenFilter.png" />
+    <Content Include="Content\Tiles\RedFilter.png" />
     <Content Include="Content\Tiles\TileHover.png" />
     <Content Include="Content\Tiles\EmptyTile.png" />
     <Content Include="Content\Tiles\GroundTile.png" />

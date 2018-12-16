@@ -4,6 +4,7 @@ using Manabind.Src.Gameplay.Abilities;
 using Manabind.Src.Gameplay.Entities;
 using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.Gameplay.PlayerStates;
+using Manabind.Src.Gameplay.Templates;
 using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Enums;
 using Manabind.Src.UI.Events;
@@ -58,6 +59,7 @@ namespace Manabind.Src.Control.AppStates
             p1 = UnitFactory.BuildUnit(1, 100, 100, 0, 0);
             p1.Abilities.Add(new Ability()
             {
+                Template = new AreaAffectTemplate(3),
                 Icon = IconFactory.BuildFireballIcon()
             });
 
@@ -131,6 +133,13 @@ namespace Manabind.Src.Control.AppStates
                     UnitSelected(selectedUnit);
                     break;
 
+                case "ability-selected":
+                    selectedAbility = (Ability)content;
+
+                    EventManager.PushEvent(
+                        new UIEvent(new EventDetails(this.Name, EventType.TemplateSelected), selectedAbility.Template));
+                    break;
+
                 case "unit-hover":
                     hoveredUnit = (Unit)content;
                     break;
@@ -152,6 +161,7 @@ namespace Manabind.Src.Control.AppStates
             this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Unit, EventType.Hover), "unit-hover"));
             this.EventResponses.Add(new EventResponse(new EventDetails(EntityNames.Unit, EventType.HoverLeave), "unit-hover-leave"));
             this.EventResponses.Add(new EventResponse(new EventDetails("player-state", EventType.UnitSelected), "unit-selected"));
+            this.EventResponses.Add(new EventResponse(new EventDetails("toolbar", EventType.Select), "ability-selected"));
         }
 
         #endregion

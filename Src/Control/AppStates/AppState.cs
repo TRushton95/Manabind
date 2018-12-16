@@ -105,7 +105,6 @@ namespace Manabind.Src.Control.AppStates
             {
                 case "refresh-tree":
                     componentManager.RefreshTree(hardRefresh: false);
-                    //EventManager.Subscribe(this); //really dodgy way of handling this
 
                     break;
             }

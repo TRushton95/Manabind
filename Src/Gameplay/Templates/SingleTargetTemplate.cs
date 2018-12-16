@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
-using Manabind.Src.Gameplay.Entities.Tiles;
 using Microsoft.Xna.Framework;
 
 namespace Manabind.Src.Gameplay.Templates
 {
     public class SingleTargetTemplate : ITemplate
     {
-        public List<Vector2> GetAffectedTiles(BaseTile targetTile)
+        public List<Vector2> GetAffectedTiles(Vector2 targetTileCoords)
         {
             return new List<Vector2>()
             {
-                new Vector2(targetTile.PosX, targetTile.PosY)
+                targetTileCoords
             };
         }
     }

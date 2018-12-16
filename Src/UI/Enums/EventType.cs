@@ -22,6 +22,8 @@
         RefreshTree,
         UnitHover,
         UnitSelected,
+        AbilitySelected,
+        TemplateSelected,
         ChangeTools,
         Update
     }

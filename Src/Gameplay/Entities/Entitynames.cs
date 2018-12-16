@@ -8,6 +8,8 @@
 
         public const string Unit = "unit";
 
+        public const string Board = "board";
+
         #endregion
     }
 }

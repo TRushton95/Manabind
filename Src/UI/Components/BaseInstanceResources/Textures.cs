@@ -25,8 +25,8 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         public static SpriteFont TooltipFont;
 
         //Textures
-        public static Texture2D EmptyTile;
-        public static Texture2D GroundTile;
+        public static Texture2D EmptyTile, GroundTile;
+        public static Texture2D RedFilter, GreenFilter;
         public static Texture2D TileHover;
 
         //Icons
@@ -79,6 +79,8 @@ namespace Manabind.Src.UI.Components.BaseInstanceResources
         {
             EmptyTile = LoadTile(content, "EmptyTile");
             GroundTile = LoadTile(content, "GroundTile");
+            RedFilter = LoadTile(content, "RedFilter");
+            GreenFilter = LoadTile(content, "GreenFilter");
             TileHover = LoadTile(content, "TileHover");
         }
 
