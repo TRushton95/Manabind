@@ -1,4 +1,7 @@
-﻿using Manabind.Src.UI.Enums;
+﻿using Manabind.Src.Gameplay.Abilities.Ticks;
+using Manabind.Src.Gameplay.Entities.Tiles;
+using Manabind.Src.UI.Enums;
+using System;
 
 namespace Manabind.Src.Gameplay.Abilities.Effects
 {
@@ -38,6 +41,29 @@ namespace Manabind.Src.Gameplay.Abilities.Effects
         #endregion
 
         #region Methods
+
+        public void Execute(Unit caster, BaseTile targetTile)
+        {
+            if (!ValidateTarget(targetTile))
+            {
+                return;
+            }
+
+            Unit target = targetTile.Occupant;
+
+            foreach (BaseTick tick in target.Ticks)
+            {
+                if (tick.GetType() == typeof(DamageTick))
+                {
+                    //TO-DO Replace this with a proper UI message
+                    Console.WriteLine("Target already has a DamageTick");
+                    return;
+                }
+            }
+
+            targetTile.Occupant.Ticks.Add(
+                new DamageTick(Value, Duration, target));
+        }
 
         public override string GetDescription()
         {

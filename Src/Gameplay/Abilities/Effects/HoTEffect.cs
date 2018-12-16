@@ -1,5 +1,7 @@
-﻿using Manabind.Src.Gameplay.Entities.Tiles;
+﻿using Manabind.Src.Gameplay.Abilities.Ticks;
+using Manabind.Src.Gameplay.Entities.Tiles;
 using Manabind.Src.UI.Enums;
+using System;
 
 namespace Manabind.Src.Gameplay.Abilities.Effects
 {
@@ -33,6 +35,29 @@ namespace Manabind.Src.Gameplay.Abilities.Effects
         #endregion
 
         #region Methods
+
+        public void Execute(Unit caster, BaseTile targetTile)
+        {
+            if (!ValidateTarget(targetTile))
+            {
+                return;
+            }
+
+            Unit target = targetTile.Occupant;
+
+            foreach (BaseTick tick in target.Ticks)
+            {
+                if (tick.GetType() == typeof(HealTick))
+                {
+                    //TO-DO Replace this with real UI message
+                    Console.WriteLine("Target already has a HealTick");
+                    return;
+                }
+            }
+
+            targetTile.Occupant.Ticks.Add(
+                new HealTick(Value, Duration, target));
+        }
 
         public override string GetDescription()
         {

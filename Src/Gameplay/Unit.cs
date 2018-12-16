@@ -1,4 +1,5 @@
 ﻿using Manabind.Src.Gameplay.Abilities;
+using Manabind.Src.Gameplay.Abilities.Ticks;
 using Manabind.Src.Gameplay.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -68,14 +69,12 @@ namespace Manabind.Src.Gameplay
             get;
             set;
         }
-
-        /*
+        
         public List<BaseTick> Ticks
         {
             get;
             set;
         }
-        */
 
         #endregion
 
