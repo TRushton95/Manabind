@@ -6,24 +6,24 @@ namespace Manabind.Src.UI.Factories
 {
     public class IconFactory : BaseInstance
     {
-        public static Icon BuildIcon(Texture2D texture, Texture2D hoverTexture)
+        public static Icon BuildIcon(Texture2D texture)
         {
-            return new Icon(Icon.Diameter, Icon.Diameter, PositionProfileFactory.BuildCenteredRelative(), 0, texture, hoverTexture);
+            return new Icon(Icon.Diameter, Icon.Diameter, PositionProfileFactory.BuildCenteredRelative(), 0, texture);
         }
 
         public static Icon BuildEmptyTileIcon()
         {
-            return BuildIcon(Textures.EmptyTileIcon, Textures.EmptyTileIconHover);
+            return BuildIcon(Textures.EmptyTileIcon);
         }
 
         public static Icon BuildGroundTileIcon()
         {
-            return BuildIcon(Textures.GroundTileIcon, Textures.GroundTileIconHover);
+            return BuildIcon(Textures.GroundTileIcon);
         }
 
         public static Icon BuildFireballIcon()
         {
-            return BuildIcon(Textures.FireballIcon, Textures.FireballIcon);
+            return BuildIcon(Textures.FireballIcon);
         }
     }
 }

@@ -4,11 +4,11 @@
     <Toolbar name="toolbar" tool="Ability">
       <EventResponses>
         <EventResponse>
-          <Action>select-ability</Action>
-          <Trigger sender="ability" eventtype="LeftClick" />
+          <Action>select-tool</Action>
+          <Trigger sender="tool" eventtype="LeftClick" />
         </EventResponse>
         <EventResponse>
-          <Action>deselect-ability</Action>
+          <Action>deselect-tool</Action>
           <Trigger sender="*" eventtype="RightClick" />
         </EventResponse>
       </EventResponses>
@@ -36,9 +36,7 @@
           <Trigger sender="unit" eventtype="HoverLeave" />
         </EventResponse>
       </EventResponses>
-      <Text>The quick frown fox jumped over the very lazy wolf. Then some other old shit to test the wrapping functionality.
-
-Then some other stuff on a new line.</Text>
+      <Text></Text>
       <AbsolutePositionProfile>
         <PosX>0</PosX>
         <PosY>0</PosY>

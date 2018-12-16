@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Manabind.Src.UI.Components.BaseInstanceResources;
 using Manabind.Src.UI.Components.Basic;
 using Manabind.Src.UI.PositionProfiles;
 using Manabind.Src.UI.Factories;
@@ -12,7 +13,8 @@ namespace Manabind.Src.UI.Components.Complex
 
         public static int Diameter = 100;
 
-        private ImageGraphics image, defaultImage, hoverImage;
+        private ImageGraphics image;
+        private bool hovered;
 
         #endregion
 
@@ -23,24 +25,17 @@ namespace Manabind.Src.UI.Components.Complex
         {
         }
 
-        public Icon(int width, int height, BasePositionProfile positionProfile, int priority, Texture2D defaultTexture, Texture2D hoverTexture)
+        public Icon(int width, int height, BasePositionProfile positionProfile, int priority, Texture2D texture)
             : base(width, height, positionProfile, priority)
         {
-            this.DefaultTexture = defaultTexture;
-            this.HoverTexture = hoverTexture;
+            this.Texture = texture;
         }
 
         #endregion
 
         #region Properties
 
-        public Texture2D DefaultTexture
-        {
-            get;
-            set;
-        }
-
-        public Texture2D HoverTexture
+        public Texture2D Texture
         {
             get;
             set;
@@ -53,6 +48,11 @@ namespace Manabind.Src.UI.Components.Complex
         public override void Draw(SpriteBatch spriteBatch)
         {
             this.image.Draw(spriteBatch);
+
+            if (this.hovered)
+            {
+                spriteBatch.Draw(Textures.IconHover, this.GetBounds(), Color.White);
+            }
         }
 
         public override void Initialise(Rectangle parent)
@@ -80,23 +80,18 @@ namespace Manabind.Src.UI.Components.Complex
 
         protected override void HoverDetail()
         {
-            this.image = this.hoverImage;
+            this.hovered = true;
         }
 
         protected override void HoverLeaveDetail()
         {
-            this.image = this.defaultImage;
+            this.hovered = false;
         }
 
         private void BuildComponents()
         {
-            this.defaultImage = new ImageGraphics(DefaultTexture, PositionProfileFactory.BuildCenteredRelative());
-            this.defaultImage.Initialise(this.GetBounds());
-
-            this.hoverImage = new ImageGraphics(HoverTexture, PositionProfileFactory.BuildCenteredRelative());
-            this.hoverImage.Initialise(this.GetBounds());
-
-            this.image = this.defaultImage;
+            this.image = new ImageGraphics(this.Texture, PositionProfileFactory.BuildCenteredRelative());
+            this.image.Initialise(this.GetBounds());
         }
 
         #endregion
