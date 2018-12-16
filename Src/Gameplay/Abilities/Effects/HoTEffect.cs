@@ -1,4 +1,5 @@
-﻿using Manabind.Src.UI.Enums;
+﻿using Manabind.Src.Gameplay.Entities.Tiles;
+using Manabind.Src.UI.Enums;
 
 namespace Manabind.Src.Gameplay.Abilities.Effects
 {
@@ -6,8 +7,8 @@ namespace Manabind.Src.Gameplay.Abilities.Effects
     {
         #region Constructors
 
-        public HoTEffect(int value, int duration, TargetType targetType, int casterId)
-            :base(targetType, casterId)
+        public HoTEffect(int value, int duration, TargetType targetType, Unit caster)
+            :base(targetType, caster)
         {
             this.Value = value;
             this.Duration = duration;

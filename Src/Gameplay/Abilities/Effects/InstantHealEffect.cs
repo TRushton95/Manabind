@@ -1,4 +1,6 @@
-﻿using Manabind.Src.UI.Enums;
+﻿using Manabind.Src.Gameplay.Abilities.BaseEffects;
+using Manabind.Src.Gameplay.Entities.Tiles;
+using Manabind.Src.UI.Enums;
 
 namespace Manabind.Src.Gameplay.Abilities.Effects
 {
@@ -6,8 +8,8 @@ namespace Manabind.Src.Gameplay.Abilities.Effects
     {
         #region Constructors
 
-        public InstantHealEffect(int value, TargetType targetType, int casterId)
-            : base(targetType, casterId)
+        public InstantHealEffect(int value, TargetType targetType, Unit caster)
+            : base(targetType, caster)
         {
             this.Value = value;
         }
@@ -25,6 +27,16 @@ namespace Manabind.Src.Gameplay.Abilities.Effects
         #endregion
 
         #region Methods
+
+        public void Execute(Unit caster, BaseTile targetTile)
+        {
+            if (!ValidateTarget(targetTile))
+            {
+                return;
+            }
+
+            AtomicEffects.Heal(targetTile.Occupant, Value);
+        }
 
         public override string GetDescription()
         {

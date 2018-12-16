@@ -6,8 +6,8 @@ namespace Manabind.Src.Gameplay.Abilities.Effects
     {
         #region Constructors
 
-        public DoTEffect(int value, int duration, TargetType targetType, int casterId)
-            : base(targetType, casterId)
+        public DoTEffect(int value, int duration, TargetType targetType, Unit caster)
+            : base(targetType, caster)
         {
             this.Value = value;
             this.Duration = duration;
