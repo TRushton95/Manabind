@@ -92,11 +92,6 @@ namespace Manabind.Src.Control.AppStates
             {
                 spriteBatch.Draw(Textures.TileHover, board.GetTileCanvasPos(highlightedTile), Color.White);
             }
-
-            if (selectedTool != null)
-            {
-                spriteBatch.Draw(Textures.IconHover, selectedTool.Icon.GetBounds(), Color.White);
-            }
         }
 
         protected override void ExecuteEventResponse(string action, object content)

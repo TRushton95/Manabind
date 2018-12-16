@@ -137,12 +137,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Icons\EmptyTileIconHover.png" />
     <Content Include="Content\Icons\FireballIcon.png" />
-    <Content Include="Content\Icons\GroundTileIconHover.png" />
     <Content Include="Content\Icons\IconHover.png" />
     <Content Include="Content\Icons\EmptyTileIcon.png" />
     <Content Include="Content\Icons\GroundTileIcon.png" />
+    <Content Include="Content\Icons\IconSelect.png" />
     <Content Include="Content\Tiles\TileHover.png" />
     <Content Include="Content\Tiles\EmptyTile.png" />
     <Content Include="Content\Tiles\GroundTile.png" />

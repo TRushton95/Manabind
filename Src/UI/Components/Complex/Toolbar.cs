@@ -27,7 +27,7 @@ namespace Manabind.Src.UI.Components.Complex
         #region Fields
 
         private Frame frame;
-        private Icon highlightedIcon;
+        private Icon highlightedIcon, selectedIcon;
 
         #endregion
 
@@ -101,6 +101,11 @@ namespace Manabind.Src.UI.Components.Complex
             {
                 spriteBatch.Draw(Textures.IconHover, highlightedIcon.GetCoordinates(), Color.White);
             }
+
+            if (selectedIcon != null)
+            {
+                spriteBatch.Draw(Textures.IconSelect, selectedIcon.GetCoordinates(), Color.White);
+            }
         }
 
         public override void Initialise(Rectangle parent)
@@ -173,13 +178,14 @@ namespace Manabind.Src.UI.Components.Complex
                     List<IIconable> iconables = (List<IIconable>)content;
                     LoadTools(iconables);
                     break;
+                    
 
                 case "select-tool":
                     SelectTool((Icon)content);
                     break;
 
                 case "deselect-tool":
-                    this.highlightedIcon = null;
+                    this.selectedIcon = null;
                     break;
             }
         }
@@ -211,7 +217,7 @@ namespace Manabind.Src.UI.Components.Complex
 
             if (index <= Tools.Count)
             {
-                this.highlightedIcon = icon;
+                this.selectedIcon = icon;
                 IIconable tool = Tools[index];
 
                 EventManager.PushEvent(

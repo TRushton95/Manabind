@@ -46,18 +46,6 @@
 /processorParam:TextureFormat=Color
 /build:Icons/EmptyTileIcon.png
 
-#begin Icons/EmptyTileIconHover.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Icons/EmptyTileIconHover.png
-
 #begin Icons/FireballIcon.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -82,18 +70,6 @@
 /processorParam:TextureFormat=Color
 /build:Icons/GroundTileIcon.png
 
-#begin Icons/GroundTileIconHover.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Icons/GroundTileIconHover.png
-
 #begin Icons/IconHover.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -105,6 +81,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Icons/IconHover.png
+
+#begin Icons/IconSelect.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Icons/IconSelect.png
 
 #begin Tiles/EmptyTile.png
 /importer:TextureImporter
