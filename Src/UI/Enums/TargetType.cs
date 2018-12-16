@@ -4,7 +4,7 @@
     {
         Any,
         EmptyTile,
-        Hero,
+        Unit,
         Self,
         Enemy,
         Ally

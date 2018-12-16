@@ -56,6 +56,11 @@
     <Compile Include="Src\Control\AppStates\PlayAppState.cs" />
     <Compile Include="Src\Control\GameManager.cs" />
     <Compile Include="Src\Gameplay\Abilities\Ability.cs" />
+    <Compile Include="Src\Gameplay\Abilities\Effects\BaseEffect.cs" />
+    <Compile Include="Src\Gameplay\Abilities\Effects\DoTEffect.cs" />
+    <Compile Include="Src\Gameplay\Abilities\Effects\HoTEffect.cs" />
+    <Compile Include="Src\Gameplay\Abilities\Effects\InstantDamageEffect.cs" />
+    <Compile Include="Src\Gameplay\Abilities\Effects\InstantHealEffect.cs" />
     <Compile Include="Src\Gameplay\Entities\BaseEntity.cs" />
     <Compile Include="Src\Gameplay\Entities\Board.cs" />
     <Compile Include="Src\Gameplay\Entities\Camera.cs" />
@@ -74,6 +79,7 @@
     <Compile Include="Src\UI\Components\Complex\ListItems\TextboxListItem.cs" />
     <Compile Include="Src\UI\Components\Complex\Textbox.cs" />
     <Compile Include="Src\UI\Components\Complex\Tooltip.cs" />
+    <Compile Include="Src\UI\Enums\TargetType.cs" />
     <Compile Include="Src\UI\Enums\Tool.cs" />
     <Compile Include="Src\UI\Events\Listener.cs" />
     <Compile Include="Src\UI\Components\BaseInstanceResources\Settings.cs" />
