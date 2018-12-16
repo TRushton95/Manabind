@@ -22,9 +22,3 @@ Add Id and ParentId to Listener
 
 AppState is not re-added automatically after a refreshTree() call
 	-Currently manually resubscribing it after each refreshTree call, not a clean way of handling it
-
---------------------------
-
-HighlightIcon draw is being duplicated in Toolbar and EditorAppState
-
-Is highlightedTile being used in EditorAppState?
