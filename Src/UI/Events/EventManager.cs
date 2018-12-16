@@ -58,6 +58,19 @@ namespace Manabind.Src.UI.Events
             }
         }
 
+        public static void ClearFlaggedListeners()
+        {
+            if (listeners.Count == 0)
+            {
+                return;
+            }
+
+            List<Listener> retainedListeners = listeners.Where(listener => listener.PersistantListener).ToList();
+
+            listeners.Clear();
+            listeners.AddRange(retainedListeners);
+        }
+
         public static void ClearListeners()
         {
             if (listeners.Count == 0)
@@ -65,10 +78,11 @@ namespace Manabind.Src.UI.Events
                 return;
             }
 
-            Listener root = listeners[0];
+            Listener gameManager = listeners.SingleOrDefault(listener => listener.Name == "game-manager");
 
             listeners.Clear();
-            listeners.Add(root);
+
+            listeners.Add(gameManager);
         }
 
         public static void PushEvent(UIEvent e)

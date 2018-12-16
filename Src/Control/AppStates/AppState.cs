@@ -6,7 +6,6 @@ using Manabind.Src.UI.Events;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,6 +26,7 @@ namespace Manabind.Src.Control.AppStates
         public AppState()
         {
             this.Name = "appstate";
+            this.PersistantListener = true;
 
             componentManager = new ComponentManager();
             componentManager.LoadUI(this.UIDefinitionFilename);
@@ -104,8 +104,8 @@ namespace Manabind.Src.Control.AppStates
             switch (action)
             {
                 case "refresh-tree":
-                    componentManager.RefreshTree();
-                    EventManager.Subscribe(this); //really dodgy way of handling this
+                    componentManager.RefreshTree(hardRefresh: false);
+                    //EventManager.Subscribe(this); //really dodgy way of handling this
 
                     break;
             }

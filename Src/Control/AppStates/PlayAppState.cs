@@ -138,6 +138,11 @@ namespace Manabind.Src.Control.AppStates
                 case "unit-hover-leave":
                     hoveredUnit = null;
                     break;
+
+                case "refresh-tree":
+                    EventManager.Subscribe(board); //really dodgy way of handling this
+
+                    break;
             }
         }
 

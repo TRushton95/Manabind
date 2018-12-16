@@ -20,6 +20,8 @@ namespace Manabind.Src.Gameplay.Entities
         {
             this.Name = "board";
             this.Tiles = new List<List<BaseTile>>();
+
+            this.Initialise();
         }
 
         public Board(int width, int height)
@@ -28,6 +30,8 @@ namespace Manabind.Src.Gameplay.Entities
             this.Width = width;
             this.Height = height;
             this.Tiles = new List<List<BaseTile>>();
+
+            this.Initialise();
         }
 
         #endregion
@@ -347,6 +351,22 @@ namespace Manabind.Src.Gameplay.Entities
 
             PrevHighlightedUnit = this.HighlightedUnit;
             this.HighlightedUnit = highlightedUnit;
+        }
+
+        private void Initialise()
+        {
+            this.InitialiseListen(string.Empty);
+            this.PersistantListener = true;
+        }
+
+        protected override void ExecuteEventResponse(string action, object content)
+        {
+            base.ExecuteEventResponse(action, content);
+
+            switch (action)
+            {
+
+            }
         }
 
         #endregion

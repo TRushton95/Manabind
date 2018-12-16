@@ -11,6 +11,7 @@ namespace Manabind.Src.UI.Events
 
         public Listener()
         {
+            this.PersistantListener = false;
             this.EventResponses = new List<EventResponse>();
         }
 
@@ -41,6 +42,12 @@ namespace Manabind.Src.UI.Events
 
         [XmlArrayItem(typeof(EventResponse))]
         public List<EventResponse> EventResponses
+        {
+            get;
+            set;
+        }
+
+        public bool PersistantListener
         {
             get;
             set;

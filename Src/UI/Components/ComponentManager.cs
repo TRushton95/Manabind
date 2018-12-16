@@ -44,7 +44,7 @@ namespace Manabind.Src.UI.Components
                 root.Components = componentList.Components;
             }
 
-            RefreshTree();
+            RefreshTree(hardRefresh: true);
         }
 
         public void InitialiseResources(GraphicsDevice device, ContentManager content)
@@ -83,9 +83,23 @@ namespace Manabind.Src.UI.Components
             return result;
         }
 
-        public void RefreshTree()
+        /// <summary>
+        /// Hard refresh - Remove all subscribers except the game manager
+        /// Soft refresh - Remove all subscribers that are NOT flagged as persistant listeners
+        ///                (ie. appstate, board)
+        /// After refresh, gather tree from root component and re-subscribe all components
+        /// </summary>
+        public void RefreshTree(bool hardRefresh)
         {
-            EventManager.ClearListeners();
+            if (hardRefresh)
+            {
+                EventManager.ClearListeners();
+            }
+            else
+            {
+                EventManager.ClearFlaggedListeners();
+            }
+
             components = root.BuildTree();
 
             foreach (BaseComplexComponent component in components)

@@ -15,10 +15,11 @@ namespace Manabind.Src.Control
 
         #endregion
 
-        #region Static Constructors
+        #region Constructors
 
         public GameManager()
         {
+            this.Name = "game-manager";
             ReadyToExit = false;
         }
 
@@ -40,6 +41,7 @@ namespace Manabind.Src.Control
         {
             this.InitialiseResources(device, content);
             this.InitialiseListen(string.Empty);
+            this.PersistantListener = true;
 
             appState = new MenuAppState();
             appState.Initialise();
