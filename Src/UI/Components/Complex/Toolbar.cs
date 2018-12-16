@@ -142,6 +142,7 @@ namespace Manabind.Src.UI.Components.Complex
 
         public void LoadTools(List<IIconable> tools)
         {
+            this.selectedIcon = null;
             this.Tools = tools;
             this.Icons = tools.Select(tool => tool.Icon).ToList();
             this.InitialiseIcons();
