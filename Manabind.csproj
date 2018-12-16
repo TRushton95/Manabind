@@ -80,6 +80,9 @@
     <Compile Include="Src\Gameplay\PlayerStates\SelectedPlayerState.cs" />
     <Compile Include="Src\Gameplay\PlayerStates\UnselectedPlayerState.cs" />
     <Compile Include="Src\Gameplay\Services\TargetValidatorService.cs" />
+    <Compile Include="Src\Gameplay\Templates\AreaAffectTemplate.cs" />
+    <Compile Include="Src\Gameplay\Templates\ITemplate.cs" />
+    <Compile Include="Src\Gameplay\Templates\SingleTargetTemplate.cs" />
     <Compile Include="Src\Gameplay\Unit.cs" />
     <Compile Include="Src\UI\Components\Complex\ListItems\TextboxListItem.cs" />
     <Compile Include="Src\UI\Components\Complex\Textbox.cs" />
